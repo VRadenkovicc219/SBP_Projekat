@@ -1,3 +1,5 @@
 treba zameniti u dijagramu da je ucenik odeljenje M : N veza, zbog toga sto ucenik moze da ponavlja razred, a odeljenje ima i skolsku godinu i cuva kao snapshot odeljenje koje je te godine pohadjalo. 
 
 Izbaciti razred iz ucenik, vec postoji veza ka odeljenju
+
+Nastava kao weak entity umesto spoja, i onda 
