@@ -81,18 +81,6 @@
           }
         }
       },
-      "NHibernate.Linq/1.0.0": {
-        "type": "package",
-        "dependencies": {
-          "NHibernate": "2.1.2.4000"
-        },
-        "compile": {
-          "lib/NHibernate.Linq.dll": {}
-        },
-        "runtime": {
-          "lib/NHibernate.Linq.dll": {}
-        }
-      },
       "Oracle.ManagedDataAccess.Core/23.26.301": {
         "type": "package",
         "dependencies": {
@@ -310,19 +298,6 @@
         "nhibernate.nuspec"
       ]
     },
-    "NHibernate.Linq/1.0.0": {
-      "sha512": "iHt5IrvPWXEh90BV9XDPMBkiCKwlwJ/iCHY5fP7qAvJ512J59cya8eFAY1FJJ6QcTGa8bD5MlSJAXJDXx2VHaA==",
-      "type": "package",
-      "path": "nhibernate.linq/1.0.0",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "lib/NHibernate.Linq.dll",
-        "lib/NHibernate.Linq.xml",
-        "nhibernate.linq.1.0.0.nupkg.sha512",
-        "nhibernate.linq.nuspec"
-      ]
-    },
     "Oracle.ManagedDataAccess.Core/23.26.301": {
       "sha512": "hhl6m5sam9vWNXt4Xad+bAcB+VBMBxya16/P+R3xRMKzNVl/6ssF6HuNZNeofD+5qDaTRqhWbKjdFn65rD5KYw==",
       "type": "package",
@@ -434,28 +409,27 @@
     "net10.0-windows": [
       "FluentNHibernate >= 3.5.0",
       "NHibernate >= 5.7.0",
-      "NHibernate.Linq >= 1.0.0",
       "Oracle.ManagedDataAccess.Core >= 23.26.301"
     ]
   },
   "packageFolders": {
-    "C:\\Users\\desko\\.nuget\\packages\\": {},
+    "C:\\Users\\vrade\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\desko\\Desktop\\Baza\\Git\\SBP_Projekat\\Projekat II\\Skoslki dnevnik\\Skoslki dnevnik\\Skoslki dnevnik.csproj",
+      "projectUniqueName": "D:\\faks\\RII\\III godina\\VI semestar\\Sistemi baza podataka\\SBP_Projekat\\SBP_Projekat\\Projekat II\\Skoslki dnevnik\\Skoslki dnevnik\\Skoslki dnevnik.csproj",
       "projectName": "Skoslki dnevnik",
-      "projectPath": "C:\\Users\\desko\\Desktop\\Baza\\Git\\SBP_Projekat\\Projekat II\\Skoslki dnevnik\\Skoslki dnevnik\\Skoslki dnevnik.csproj",
-      "packagesPath": "C:\\Users\\desko\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\desko\\Desktop\\Baza\\Git\\SBP_Projekat\\Projekat II\\Skoslki dnevnik\\Skoslki dnevnik\\obj\\",
+      "projectPath": "D:\\faks\\RII\\III godina\\VI semestar\\Sistemi baza podataka\\SBP_Projekat\\SBP_Projekat\\Projekat II\\Skoslki dnevnik\\Skoslki dnevnik\\Skoslki dnevnik.csproj",
+      "packagesPath": "C:\\Users\\vrade\\.nuget\\packages\\",
+      "outputPath": "D:\\faks\\RII\\III godina\\VI semestar\\Sistemi baza podataka\\SBP_Projekat\\SBP_Projekat\\Projekat II\\Skoslki dnevnik\\Skoslki dnevnik\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\desko\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\vrade\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -497,10 +471,6 @@
           "NHibernate": {
             "target": "Package",
             "version": "[5.7.0, )"
-          },
-          "NHibernate.Linq": {
-            "target": "Package",
-            "version": "[1.0.0, )"
           },
           "Oracle.ManagedDataAccess.Core": {
             "target": "Package",
@@ -819,17 +789,5 @@
         }
       }
     }
-  },
-  "logs": [
-    {
-      "code": "NU1701",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Package 'NHibernate.Linq 1.0.0' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework 'net10.0-windows7.0'. This package may not be fully compatible with your project.",
-      "libraryId": "NHibernate.Linq",
-      "targetGraphs": [
-        "net10.0-windows"
-      ]
-    }
-  ]
+  }
 }

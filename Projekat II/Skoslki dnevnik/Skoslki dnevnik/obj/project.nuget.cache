@@ -1,33 +1,19 @@
 {
   "version": 2,
-  "dgSpecHash": "w5sUPMoL9dk=",
+  "dgSpecHash": "BmrSCBsLgQQ=",
   "success": true,
-  "projectFilePath": "C:\\Users\\desko\\Desktop\\Baza\\Git\\SBP_Projekat\\Projekat II\\Skoslki dnevnik\\Skoslki dnevnik\\Skoslki dnevnik.csproj",
+  "projectFilePath": "D:\\faks\\RII\\III godina\\VI semestar\\Sistemi baza podataka\\SBP_Projekat\\SBP_Projekat\\Projekat II\\Skoslki dnevnik\\Skoslki dnevnik\\Skoslki dnevnik.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\desko\\.nuget\\packages\\antlr3.runtime\\3.5.1\\antlr3.runtime.3.5.1.nupkg.sha512",
-    "C:\\Users\\desko\\.nuget\\packages\\fluentnhibernate\\3.5.0\\fluentnhibernate.3.5.0.nupkg.sha512",
-    "C:\\Users\\desko\\.nuget\\packages\\iesi.collections\\4.1.1\\iesi.collections.4.1.1.nupkg.sha512",
-    "C:\\Users\\desko\\.nuget\\packages\\microsoft.netcore.platforms\\1.0.1\\microsoft.netcore.platforms.1.0.1.nupkg.sha512",
-    "C:\\Users\\desko\\.nuget\\packages\\netstandard.library\\1.6.0\\netstandard.library.1.6.0.nupkg.sha512",
-    "C:\\Users\\desko\\.nuget\\packages\\nhibernate\\5.7.0\\nhibernate.5.7.0.nupkg.sha512",
-    "C:\\Users\\desko\\.nuget\\packages\\nhibernate.linq\\1.0.0\\nhibernate.linq.1.0.0.nupkg.sha512",
-    "C:\\Users\\desko\\.nuget\\packages\\oracle.manageddataaccess.core\\23.26.301\\oracle.manageddataaccess.core.23.26.301.nupkg.sha512",
-    "C:\\Users\\desko\\.nuget\\packages\\remotion.linq\\2.2.0\\remotion.linq.2.2.0.nupkg.sha512",
-    "C:\\Users\\desko\\.nuget\\packages\\remotion.linq.eagerfetching\\2.2.0\\remotion.linq.eagerfetching.2.2.0.nupkg.sha512",
-    "C:\\Users\\desko\\.nuget\\packages\\system.directoryservices.protocols\\8.0.2\\system.directoryservices.protocols.8.0.2.nupkg.sha512"
+    "C:\\Users\\vrade\\.nuget\\packages\\antlr3.runtime\\3.5.1\\antlr3.runtime.3.5.1.nupkg.sha512",
+    "C:\\Users\\vrade\\.nuget\\packages\\fluentnhibernate\\3.5.0\\fluentnhibernate.3.5.0.nupkg.sha512",
+    "C:\\Users\\vrade\\.nuget\\packages\\iesi.collections\\4.1.1\\iesi.collections.4.1.1.nupkg.sha512",
+    "C:\\Users\\vrade\\.nuget\\packages\\microsoft.netcore.platforms\\1.0.1\\microsoft.netcore.platforms.1.0.1.nupkg.sha512",
+    "C:\\Users\\vrade\\.nuget\\packages\\netstandard.library\\1.6.0\\netstandard.library.1.6.0.nupkg.sha512",
+    "C:\\Users\\vrade\\.nuget\\packages\\nhibernate\\5.7.0\\nhibernate.5.7.0.nupkg.sha512",
+    "C:\\Users\\vrade\\.nuget\\packages\\oracle.manageddataaccess.core\\23.26.301\\oracle.manageddataaccess.core.23.26.301.nupkg.sha512",
+    "C:\\Users\\vrade\\.nuget\\packages\\remotion.linq\\2.2.0\\remotion.linq.2.2.0.nupkg.sha512",
+    "C:\\Users\\vrade\\.nuget\\packages\\remotion.linq.eagerfetching\\2.2.0\\remotion.linq.eagerfetching.2.2.0.nupkg.sha512",
+    "C:\\Users\\vrade\\.nuget\\packages\\system.directoryservices.protocols\\8.0.2\\system.directoryservices.protocols.8.0.2.nupkg.sha512"
   ],
-  "logs": [
-    {
-      "code": "NU1701",
-      "level": "Warning",
-      "message": "Package 'NHibernate.Linq 1.0.0' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework 'net10.0-windows7.0'. This package may not be fully compatible with your project.",
-      "projectPath": "C:\\Users\\desko\\Desktop\\Baza\\Git\\SBP_Projekat\\Projekat II\\Skoslki dnevnik\\Skoslki dnevnik\\Skoslki dnevnik.csproj",
-      "warningLevel": 1,
-      "filePath": "C:\\Users\\desko\\Desktop\\Baza\\Git\\SBP_Projekat\\Projekat II\\Skoslki dnevnik\\Skoslki dnevnik\\Skoslki dnevnik.csproj",
-      "libraryId": "NHibernate.Linq",
-      "targetGraphs": [
-        "net10.0-windows"
-      ]
-    }
-  ]
+  "logs": []
 }

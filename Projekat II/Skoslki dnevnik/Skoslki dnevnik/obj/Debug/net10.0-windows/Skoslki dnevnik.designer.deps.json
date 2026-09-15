@@ -47,17 +47,6 @@
           }
         }
       },
-      "NHibernate.Linq/1.0.0": {
-        "dependencies": {
-          "NHibernate": "5.7.0"
-        },
-        "runtime": {
-          "lib/NHibernate.Linq.dll": {
-            "assemblyVersion": "1.1.0.1001",
-            "fileVersion": "1.1.0.1001"
-          }
-        }
-      },
       "Oracle.ManagedDataAccess.Core/23.26.301": {
         "dependencies": {
           "System.DirectoryServices.Protocols": "8.0.2"
@@ -146,13 +135,6 @@
       "sha512": "sha512-1F+hr6k6Ox2Im8rylpEczLBNcXyB5AD4EgQbScGwKMboikmT0KPzrPP6q/h3bceHKpM+8MQTKVz3DslP89Hr7Q==",
       "path": "nhibernate/5.7.0",
       "hashPath": "nhibernate.5.7.0.nupkg.sha512"
-    },
-    "NHibernate.Linq/1.0.0": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-iHt5IrvPWXEh90BV9XDPMBkiCKwlwJ/iCHY5fP7qAvJ512J59cya8eFAY1FJJ6QcTGa8bD5MlSJAXJDXx2VHaA==",
-      "path": "nhibernate.linq/1.0.0",
-      "hashPath": "nhibernate.linq.1.0.0.nupkg.sha512"
     },
     "Oracle.ManagedDataAccess.Core/23.26.301": {
       "type": "package",
