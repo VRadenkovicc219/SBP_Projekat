@@ -11,7 +11,9 @@ namespace Skoslki_dnevnik.Entiteti
         public required IzostanakId Id{ get; set; }
         public TipIzostanka TipIzostanka{ get; set; }
         public Opravdao Opravdao { get; set; }
+        public string? RazlogIzostanka { get; set; }
         public string? Komentar { get; set; }
         public required Nastava Nastava{ get; set; }
+           
     }
 }
