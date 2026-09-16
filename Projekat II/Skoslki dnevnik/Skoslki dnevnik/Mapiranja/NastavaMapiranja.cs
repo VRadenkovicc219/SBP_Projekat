@@ -1,0 +1,18 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace Skoslki_dnevnik.Mapiranja
+{
+    public class NastavaMapiranja : ClassMap<Nastava>
+    {
+        public NastavaMapiranja()
+        {
+            Table("NASTAVA");
+            Id(x => x.Id, "ID").GeneratedBy.Identity();
+            References(x => x.Odeljenje).Not.Nullable();
+            References(x => x.Nastavnik).Not.Nullable();
+            References(x => x.Predmet).Not.Nullable();
+        }
+    }
+}

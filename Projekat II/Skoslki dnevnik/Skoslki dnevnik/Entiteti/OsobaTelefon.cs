@@ -1,4 +1,6 @@
-﻿namespace Skoslki_dnevnik.Entiteti
+﻿using Skoslki_dnevnik.Entiteti.KompozitniKljucevi;
+
+namespace Skoslki_dnevnik.Entiteti
 {
     public class OsobaTelefon
     {

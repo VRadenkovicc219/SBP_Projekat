@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Skoslki_dnevnik.Entiteti.KompozitniKljucevi;
+using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Text;
 
 namespace Skoslki_dnevnik.Entiteti

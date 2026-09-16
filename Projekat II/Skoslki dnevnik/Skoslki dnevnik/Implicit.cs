@@ -3,3 +3,7 @@ global using System.Collections.Generic;
 global using System.Text;
 global using FluentNHibernate.Mapping;
 global using Skoslki_dnevnik.Entiteti;
+global using FluentNHibernate.Cfg;
+global using FluentNHibernate.Cfg.Db;
+global using NHibernate;
+global using Skoslki_dnevnik.Mapiranja;

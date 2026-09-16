@@ -1,11 +1,4 @@
-﻿using FluentNHibernate.Cfg;
-using FluentNHibernate.Cfg.Db;
-using NHibernate;
-using Skoslki_dnevnik.Entiteti;
-using Skoslki_dnevnik.Mapiranja;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿
 
 namespace Skoslki_dnevnik
 {

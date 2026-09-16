@@ -18,6 +18,8 @@ namespace Skoslki_dnevnik.Entiteti
         public virtual DateOnly DatumRodjenja { get; set; }
         public virtual required String Email { get; set; }
         public virtual String? Komentar { get; set; }
-        public IEnumerable<OsobaTelefon> Telefoni { get; set; } = new HashSet<OsobaTelefon>();
+        public virtual ISet<OsobaTelefon> Telefoni { get; set; } = new HashSet<OsobaTelefon>();
+
+        public Osoba(){}
     }
 }

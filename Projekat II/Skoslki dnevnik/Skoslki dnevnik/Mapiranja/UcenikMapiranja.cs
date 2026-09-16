@@ -6,11 +6,11 @@ using System.Text;
 
 namespace Skoslki_dnevnik.Mapiranja
 {
-    public class UenikMapiranja : SubclassMap<Ucenik>
+    public class UcenikMapiranja : SubclassMap<Ucenik>
     {
-        public UenikMapiranja()
+        public UcenikMapiranja()
         {
-            Table("Vojnik");
+            Table("UCENIK");
             KeyColumn("ID_OSOBA");
             Map(x => x.Status, "STATUS");
             Map(x => x.GodinaUpisa, "GODINA_UPISA");
