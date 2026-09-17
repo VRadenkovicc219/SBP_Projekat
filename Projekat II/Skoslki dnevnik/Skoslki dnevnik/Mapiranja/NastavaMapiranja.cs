@@ -13,6 +13,9 @@ namespace Skoslki_dnevnik.Mapiranja
             References(x => x.Odeljenje).Not.Nullable();
             References(x => x.Nastavnik).Not.Nullable();
             References(x => x.Predmet).Not.Nullable();
+            HasMany(x => x.Ocene).KeyColumn("ID_NASTAVA").Inverse();
+            HasMany(x => x.Izostanci).KeyColumn("ID_NASTAVA").Inverse();
+
         }
     }
 }

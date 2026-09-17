@@ -11,5 +11,8 @@ namespace Skoslki_dnevnik.Entiteti
         public virtual required Odeljenje Odeljenje { get; set; }
         public virtual required Predmet Predmet { get; set; }
         public virtual required Nastavnik Nastavnik { get; set; }
+        public IList<Ocena> Ocene { get; set; } = new List<Ocena>();
+        public IList<Izostanak> Izostanci { get; set; } = new List<Izostanak>();
+
     }
 }

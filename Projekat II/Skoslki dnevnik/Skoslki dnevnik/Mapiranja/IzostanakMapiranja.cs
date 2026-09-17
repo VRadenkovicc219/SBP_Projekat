@@ -14,10 +14,10 @@ namespace Skoslki_dnevnik.Mapiranja
                 .KeyProperty(x => x.Datum, "DATUM")
                 .KeyProperty(x => x.RedniBrojCasa, "REDNI_BROJ_CASA");
             Map(x => x.TipIzostanka, "TIP").CustomType<TipIzostanka>().CustomSqlType("Varchar2(10)").Not.Nullable();
-            References(x => x.Nastava, "ID_NASTAVA").Not.Nullable();
             Map(x => x.RazlogIzostanka, "RAZLOG_IZOSTANKA");
             Map(x => x.Opravdao, "OPRAVDAO").CustomType<Opravdao>().CustomSqlType("VARCHAR2(10)");
             Map(x => x.Komentar, "KOMENTAR");
+            References(x => x.Nastava, "ID_NASTAVA").Not.Nullable();
         }
     }
 }

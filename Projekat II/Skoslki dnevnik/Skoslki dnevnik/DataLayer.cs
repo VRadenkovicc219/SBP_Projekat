@@ -2,7 +2,7 @@
 
 namespace Skoslki_dnevnik
 {
-    class SqlConnection
+    class DataLayer
     {
         private static ISessionFactory _factory = null;
         private static object _lockObj = new();

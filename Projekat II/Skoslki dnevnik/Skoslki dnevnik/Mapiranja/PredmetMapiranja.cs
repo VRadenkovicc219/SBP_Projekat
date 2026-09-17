@@ -14,6 +14,11 @@
             Map(x => x.Opis, "OPIS");
             Map(x => x.Komentar, "KOMENTAR");
             HasMany(x => x.PredajeSe).KeyColumn("ID_PREDMET").Inverse().Cascade.All();
+            HasManyToMany(x => x.Polaznici)
+                .Table("SLUSA_PREDMET")
+                .ParentKeyColumn("ID_PREDMET")
+                .ChildKeyColumn("ID_UCENIK")
+                .Inverse();
         }
     }
 }
