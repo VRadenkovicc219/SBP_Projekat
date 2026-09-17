@@ -48,6 +48,7 @@
             login_btn.TabIndex = 1;
             login_btn.Text = "Prijavi se";
             login_btn.UseVisualStyleBackColor = true;
+            login_btn.Click += login_btn_Click;
             // 
             // login_form
             // 

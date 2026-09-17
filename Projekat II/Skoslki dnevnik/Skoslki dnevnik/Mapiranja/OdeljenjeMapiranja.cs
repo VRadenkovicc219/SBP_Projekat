@@ -10,7 +10,7 @@ namespace Skoslki_dnevnik.Mapiranja
         public OdeljenjeMapiranja()
         {
             Table("ODELJENJE");
-            Id(x => x.Id, "ID").GeneratedBy.Identity();
+            Id(x => x.Id, "ID").GeneratedBy.TriggerIdentity();
             Map(x=>x.Razred, "RAZRED").Not.Nullable();
             Map(x => x.SkolskaGodina, "SKOLSKA_GODINA").Not.Nullable();
             Map(x => x.Oznaka, "OZNAKA").Not.Nullable();

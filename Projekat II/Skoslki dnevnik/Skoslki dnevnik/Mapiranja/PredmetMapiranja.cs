@@ -5,7 +5,7 @@
         public PredmetMapiranja()
         {
             Table("PREDMET");
-            Id(x => x.Id, "ID").GeneratedBy.Identity();
+            Id(x => x.Id, "ID").GeneratedBy.TriggerIdentity();
             Map(x => x.Naziv, "NAZIV").Not.Nullable();
             Map(x => x.Razred, "RAZRED").Not.Nullable();
             Map(x => x.SkolskaGodina, "SKOLSKA_GODINA").Not.Nullable();

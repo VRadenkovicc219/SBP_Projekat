@@ -13,7 +13,7 @@ namespace Skoslki_dnevnik.Mapiranja
             Map(x => x.Licenca, "LICENCA").Not.Nullable();
             Map(x => x.StrucnaOblast, "STRUCNA_OBLAST").CustomType<StrucnaOblast>().CustomSqlType("VARCHAR2(50)").Not.Nullable();
             Map(x => x.BrojOdrzanihRadionica, "BROJ_ODRZANIH_RADIONICA").Not.Nullable();
-            Map(x=>x.BrojSprovedenihRazgovora, "BROJ_SPROVEDENIH_RAZGOVORA")
+            Map(x => x.BrojSprovedenihRazgovora, "BROJ_SPROVEDENIH_RAZGOVORA");
         }
     }
 }

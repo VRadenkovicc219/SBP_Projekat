@@ -7,9 +7,9 @@ namespace Skoslki_dnevnik
         private static ISessionFactory _factory = null;
         private static object _lockObj = new();
         public static ISession GetSession() {
-            if (_factory == null) {
+            if (_factory is null) {
                 lock (_lockObj) {
-                    if (_factory == null) {
+                    if (_factory is null) {
                         _factory = CreateSessionFactory();
                     }
                 }
@@ -21,15 +21,16 @@ namespace Skoslki_dnevnik
             try
             {
                 var cfg = OracleManagedDataClientConfiguration.Oracle10
+                        .ShowSql()
                         .ConnectionString(c =>
-                         c.Is("Data Source=gislab-oracle.elfak.ni.ac.rs:1521/SBP_PDB;UserId=S19862;Password=ZaSistemeBaza"));
+                         c.Is("Data Source=gislab-oracle.elfak.ni.ac.rs:1521/SBP_PDB;User Id=S19862;Password=ZaSistemeBaza"));
                
                 return Fluently.Configure().Database(cfg).Mappings(m => m.FluentMappings
                                                                          .AddFromAssemblyOf<OsobaMapiranja>())
                                                                          .BuildSessionFactory();
             }
             catch (Exception ex) {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.ToString());
                 return null;
             }
         }

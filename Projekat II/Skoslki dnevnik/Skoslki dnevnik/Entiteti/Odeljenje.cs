@@ -7,11 +7,11 @@ namespace Skoslki_dnevnik.Entiteti
     public class Odeljenje
     {
         public virtual int Id { get; protected set; }
-        public required string Oznaka { get; set; }
-        public required string SkolskaGodina { get; set; }
-        public required int Razred { get; set; }
-        public IList<Nastava> Predmeti { get; set; } = new List<Nastava>();
-        public IList<Ucenik> Ucenici { get; set; } = new List<Ucenik>();
+        public virtual required string Oznaka { get; set; }
+        public virtual required string SkolskaGodina { get; set; }
+        public virtual required int Razred { get; set; }
+        public virtual IList<Nastava> Predmeti { get; set; } = new List<Nastava>();
+        public virtual IList<Ucenik> Ucenici { get; set; } = new List<Ucenik>();
 
     }
 }

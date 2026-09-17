@@ -9,7 +9,7 @@ namespace Skoslki_dnevnik.Mapiranja
         public NastavaMapiranja()
         {
             Table("NASTAVA");
-            Id(x => x.Id, "ID").GeneratedBy.Identity();
+            Id(x => x.Id, "ID").GeneratedBy.TriggerIdentity();
             References(x => x.Odeljenje).Not.Nullable();
             References(x => x.Nastavnik).Not.Nullable();
             References(x => x.Predmet).Not.Nullable();
