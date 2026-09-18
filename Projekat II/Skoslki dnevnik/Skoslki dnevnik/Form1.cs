@@ -10,7 +10,7 @@ namespace Skoslki_dnevnik
 
         private void login_btn_Click(object sender, EventArgs e)
         {
-            dm.dodajOsobu();
+            dm.dodajUcenika();
         }
     }
 }
