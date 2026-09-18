@@ -1,4 +1,5 @@
-﻿using Skoslki_dnevnik.Entiteti.KompozitniKljucevi;
+﻿using NHibernate.Linq;
+using Skoslki_dnevnik.Entiteti.KompozitniKljucevi;
 using System;
 using System.Collections.Generic;
 using System.Runtime.InteropServices.Marshalling;
@@ -6,10 +7,10 @@ using System.Text;
 
 namespace Skoslki_dnevnik
 {
-    public class DTOManager
+    public static class DTOManager
     {
         
-        public void izvrsiUpit(Action<ISession> upit, string porukaGreske) {
+        private static void izvrsiUpit(Action<ISession> upit, string porukaGreske) {
             try
             {
                 using (ISession s = DataLayer.GetSession())
@@ -24,25 +25,49 @@ namespace Skoslki_dnevnik
             }
         }
 
+        private static T izvrsiUpit<T>(Func<ISession, T> upit, string porukaGreske)
+        {
+            try
+            {
+                using (ISession s = DataLayer.GetSession())
+                using (ITransaction t = s.BeginTransaction())
+                {
+                    T rezultat = upit(s);
+                    t.Commit();
+                    return rezultat;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"{porukaGreske}: {ex.Message}");
+                return default;
+            }
+        }
+
         #region Osoba
-        public void dodajOsobu(Osoba o)
+        public static void dodajOsobu(Osoba o)
         {
             izvrsiUpit(s => s.Save(o), "Greska prilikom dodavanja osobe");
         }
         #endregion
 
         #region Ucenik
-        public void dodajUcenika(Ucenik u) {
+        public static void dodajUcenika(Ucenik u) {
             izvrsiUpit(s => s.Save(u), "Greska prilikom dodavanja ucenika");
         }
 
-        public void ObrisiUcenika()
-        {
-            try
-            {
-                ISession s = DataLayer.GetSession();
-                
-            }
+        public static List<UcenikDTO> vratiUcenike() {
+            return izvrsiUpit(s => s.Query<Ucenik>()
+                             .ToList()
+                             .Select(x=> new UcenikDTO(x.Id, 
+                                                       x.Ime, 
+                                                       x.Prezime, 
+                                                       x.JMBG,  
+                                                       x.Adresa, 
+                                                       x.Status.ToString()
+                                                       )
+                             )
+                             .ToList(), "Greska pri preuzimanju ucenika iz baze") ?? new List<UcenikDTO>();
         }
         #endregion
     }

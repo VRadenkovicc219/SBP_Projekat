@@ -28,46 +28,80 @@
         /// </summary>
         private void InitializeComponent()
         {
-            email_tb = new TextBox();
-            login_btn = new Button();
+            uceniciBtn = new Button();
+            nastavniciBtn = new Button();
+            odeljenjeBtn = new Button();
+            predmetiBtn = new Button();
+            roditeljiBtn = new Button();
             SuspendLayout();
             // 
-            // email_tb
+            // uceniciBtn
             // 
-            email_tb.Location = new Point(206, 179);
-            email_tb.Name = "email_tb";
-            email_tb.PlaceholderText = "example@email.com";
-            email_tb.Size = new Size(393, 23);
-            email_tb.TabIndex = 0;
+            uceniciBtn.Location = new Point(12, 67);
+            uceniciBtn.Name = "uceniciBtn";
+            uceniciBtn.Size = new Size(246, 23);
+            uceniciBtn.TabIndex = 0;
+            uceniciBtn.Text = "Ucenici";
+            uceniciBtn.UseVisualStyleBackColor = true;
             // 
-            // login_btn
+            // nastavniciBtn
             // 
-            login_btn.Location = new Point(351, 208);
-            login_btn.Name = "login_btn";
-            login_btn.Size = new Size(75, 23);
-            login_btn.TabIndex = 1;
-            login_btn.Text = "Prijavi se";
-            login_btn.UseVisualStyleBackColor = true;
-            login_btn.Click += login_btn_Click;
+            nastavniciBtn.Location = new Point(12, 96);
+            nastavniciBtn.Name = "nastavniciBtn";
+            nastavniciBtn.Size = new Size(246, 23);
+            nastavniciBtn.TabIndex = 1;
+            nastavniciBtn.Text = "Nastavnici";
+            nastavniciBtn.UseVisualStyleBackColor = true;
+            // 
+            // odeljenjeBtn
+            // 
+            odeljenjeBtn.Location = new Point(12, 125);
+            odeljenjeBtn.Name = "odeljenjeBtn";
+            odeljenjeBtn.Size = new Size(246, 23);
+            odeljenjeBtn.TabIndex = 2;
+            odeljenjeBtn.Text = "Odeljenja";
+            odeljenjeBtn.UseVisualStyleBackColor = true;
+            // 
+            // predmetiBtn
+            // 
+            predmetiBtn.Location = new Point(12, 154);
+            predmetiBtn.Name = "predmetiBtn";
+            predmetiBtn.Size = new Size(246, 23);
+            predmetiBtn.TabIndex = 3;
+            predmetiBtn.Text = "Predmeti";
+            predmetiBtn.UseVisualStyleBackColor = true;
+            // 
+            // roditeljiBtn
+            // 
+            roditeljiBtn.Location = new Point(12, 183);
+            roditeljiBtn.Name = "roditeljiBtn";
+            roditeljiBtn.Size = new Size(246, 23);
+            roditeljiBtn.TabIndex = 4;
+            roditeljiBtn.Text = "Roditelji";
+            roditeljiBtn.UseVisualStyleBackColor = true;
             // 
             // login_form
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackgroundImage = Properties.Resources.pngtree_back_to_school_chalkboard_with_supplies_and_math_equations_for_classroom_image_16963243;
             BackgroundImageLayout = ImageLayout.Stretch;
-            ClientSize = new Size(807, 450);
-            Controls.Add(login_btn);
-            Controls.Add(email_tb);
+            ClientSize = new Size(272, 261);
+            Controls.Add(roditeljiBtn);
+            Controls.Add(predmetiBtn);
+            Controls.Add(odeljenjeBtn);
+            Controls.Add(nastavniciBtn);
+            Controls.Add(uceniciBtn);
             Name = "login_form";
             Text = "Skolski dnevnik";
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
 
-        private TextBox email_tb;
-        private Button login_btn;
+        private Button uceniciBtn;
+        private Button nastavniciBtn;
+        private Button odeljenjeBtn;
+        private Button predmetiBtn;
+        private Button roditeljiBtn;
     }
 }
