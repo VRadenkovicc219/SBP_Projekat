@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            dataGridView1 = new DataGridView();
+            nastavniciDGV = new DataGridView();
             dodeliOcenuBtn = new Button();
             dodeliIzostanakBtn = new Button();
             izostanciBtn = new Button();
@@ -36,16 +36,16 @@
             comboBox1 = new ComboBox();
             label1 = new Label();
             izbaciUcenikaBtn = new Button();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)nastavniciDGV).BeginInit();
             SuspendLayout();
             // 
-            // dataGridView1
+            // nastavniciDGV
             // 
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(12, 46);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.Size = new Size(364, 426);
-            dataGridView1.TabIndex = 0;
+            nastavniciDGV.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            nastavniciDGV.Location = new Point(12, 46);
+            nastavniciDGV.Name = "nastavniciDGV";
+            nastavniciDGV.Size = new Size(364, 426);
+            nastavniciDGV.TabIndex = 0;
             // 
             // dodeliOcenuBtn
             // 
@@ -121,17 +121,17 @@
             Controls.Add(dodeliIzostanakBtn);
             Controls.Add(izostanciBtn);
             Controls.Add(oceneBtn);
-            Controls.Add(dataGridView1);
+            Controls.Add(nastavniciDGV);
             Name = "PregledUcenikaForm";
             Text = "PregledUcenikaForm";
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)nastavniciDGV).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
 
-        private DataGridView dataGridView1;
+        private DataGridView nastavniciDGV;
         private Button dodeliOcenuBtn;
         private Button dodeliIzostanakBtn;
         private Button izostanciBtn;

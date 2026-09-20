@@ -71,4 +71,14 @@ namespace Skoslki_dnevnik
         }
         #endregion
     }
+
+
+    #region Nastavnik
+
+        public static List<Nastavnik> vratiNastavnike() {
+            return izvrsiUpit(s => s.Query<Nastavnik>().ToList(), "Greska pri preuzimanju nastavnika iz baze") 
+                ?? new List<Nastavnik>();    
+        }
+    #endregion
 }
+

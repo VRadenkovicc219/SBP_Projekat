@@ -114,6 +114,7 @@
             Controls.Add(dodajNastavnikaBtn);
             Name = "NastavnikPocetna";
             Text = "NastavnikPocetna";
+            Load += NastavnikPocetna_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
         }
