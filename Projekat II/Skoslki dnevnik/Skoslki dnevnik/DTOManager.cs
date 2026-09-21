@@ -70,15 +70,24 @@ namespace Skoslki_dnevnik
                              .ToList(), "Greska pri preuzimanju ucenika iz baze") ?? new List<UcenikDTO>();
         }
         #endregion
-    }
+        #region Nastavnik
 
-
-    #region Nastavnik
-
-        public static List<Nastavnik> vratiNastavnike() {
-            return izvrsiUpit(s => s.Query<Nastavnik>().ToList(), "Greska pri preuzimanju nastavnika iz baze") 
-                ?? new List<Nastavnik>();    
+        public static List<Nastavnik> vratiNastavnike()
+        {
+            return izvrsiUpit(s => s.Query<Nastavnik>().ToList(), "Greska pri preuzimanju nastavnika iz baze")
+                ?? new List<Nastavnik>();
         }
-    #endregion
+        #endregion
+
+        public static void dodajNastavnika(Nastavnik nastavnik) {
+            izvrsiUpit(n => n.Save(nastavnik), "Greska pri dodavanju novog nastavnika");
+        }
+
+        public static void obrisiNastavnika(Nastavnik nastavnik) {
+            izvrsiUpit(n => n.Delete(nastavnik), "Greska pri brisanju nastavnika iz baze");
+        }
+
+        public static void azurirajPodatke(Nastavnik n, Nastavnik )
+    }
 }
 
