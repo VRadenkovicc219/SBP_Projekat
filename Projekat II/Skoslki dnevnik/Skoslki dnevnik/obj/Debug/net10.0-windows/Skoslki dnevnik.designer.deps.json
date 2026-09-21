@@ -33,6 +33,25 @@
           }
         }
       },
+      "Microsoft.Extensions.DependencyInjection.Abstractions/10.0.0": {
+        "runtime": {
+          "lib/net10.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll": {
+            "assemblyVersion": "10.0.0.0",
+            "fileVersion": "10.0.25.52411"
+          }
+        }
+      },
+      "Microsoft.Extensions.Logging.Abstractions/10.0.0": {
+        "dependencies": {
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "10.0.0"
+        },
+        "runtime": {
+          "lib/net10.0/Microsoft.Extensions.Logging.Abstractions.dll": {
+            "assemblyVersion": "10.0.0.0",
+            "fileVersion": "10.0.25.52411"
+          }
+        }
+      },
       "NHibernate/5.7.0": {
         "dependencies": {
           "Antlr3.Runtime": "3.5.1",
@@ -44,6 +63,29 @@
           "lib/net10.0/NHibernate.dll": {
             "assemblyVersion": "5.7.0.0",
             "fileVersion": "5.7.0.0"
+          }
+        }
+      },
+      "NHibernate.Extensions.Npgsql/10.0.5": {
+        "dependencies": {
+          "NHibernate": "5.7.0",
+          "Npgsql": "10.0.3"
+        },
+        "runtime": {
+          "lib/net10.0/NHibernate.Extensions.Npgsql.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "Npgsql/10.0.3": {
+        "dependencies": {
+          "Microsoft.Extensions.Logging.Abstractions": "10.0.0"
+        },
+        "runtime": {
+          "lib/net10.0/Npgsql.dll": {
+            "assemblyVersion": "10.0.3.0",
+            "fileVersion": "10.0.3.0"
           }
         }
       },
@@ -129,12 +171,40 @@
       "path": "iesi.collections/4.1.1",
       "hashPath": "iesi.collections.4.1.1.nupkg.sha512"
     },
+    "Microsoft.Extensions.DependencyInjection.Abstractions/10.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-L3AdmZ1WOK4XXT5YFPEwyt0ep6l8lGIPs7F5OOBZc77Zqeo01Of7XXICy47628sdVl0v/owxYJTe86DTgFwKCA==",
+      "path": "microsoft.extensions.dependencyinjection.abstractions/10.0.0",
+      "hashPath": "microsoft.extensions.dependencyinjection.abstractions.10.0.0.nupkg.sha512"
+    },
+    "Microsoft.Extensions.Logging.Abstractions/10.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-FU/IfjDfwaMuKr414SSQNTIti/69bHEMb+QKrskRb26oVqpx3lNFXMjs/RC9ZUuhBhcwDM2BwOgoMw+PZ+beqQ==",
+      "path": "microsoft.extensions.logging.abstractions/10.0.0",
+      "hashPath": "microsoft.extensions.logging.abstractions.10.0.0.nupkg.sha512"
+    },
     "NHibernate/5.7.0": {
       "type": "package",
       "serviceable": true,
       "sha512": "sha512-1F+hr6k6Ox2Im8rylpEczLBNcXyB5AD4EgQbScGwKMboikmT0KPzrPP6q/h3bceHKpM+8MQTKVz3DslP89Hr7Q==",
       "path": "nhibernate/5.7.0",
       "hashPath": "nhibernate.5.7.0.nupkg.sha512"
+    },
+    "NHibernate.Extensions.Npgsql/10.0.5": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-nTsL69HLXzEDTut5Z0CED4Z96RsKr53ximGnPSvZ8XkFZUjoAg0Z0gYbkgF9YDDghL139KBphT/jF0dO5vSbHQ==",
+      "path": "nhibernate.extensions.npgsql/10.0.5",
+      "hashPath": "nhibernate.extensions.npgsql.10.0.5.nupkg.sha512"
+    },
+    "Npgsql/10.0.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-7nb5YzXuvWWJxB0J8DiyL3we+X4FOctZrt0fIBnucOIaIevFEEwGQVZKtiu9olXdlNAK1eNgqSral6r/jlhI4w==",
+      "path": "npgsql/10.0.3",
+      "hashPath": "npgsql.10.0.3.nupkg.sha512"
     },
     "Oracle.ManagedDataAccess.Core/23.26.301": {
       "type": "package",

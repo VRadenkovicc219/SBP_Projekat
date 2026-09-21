@@ -87,7 +87,7 @@ namespace Skoslki_dnevnik
             izvrsiUpit(n => n.Delete(nastavnik), "Greska pri brisanju nastavnika iz baze");
         }
 
-        public static void azurirajPodatke(Nastavnik n, Nastavnik )
+        //public static void azurirajPodatke(Nastavnik n, Nastavnik )
     }
 }
 

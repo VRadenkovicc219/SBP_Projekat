@@ -3,7 +3,7 @@ using Skoslki_dnevnik.Forme;
 namespace Skoslki_dnevnik
 {
     public partial class login_form : Form
-    { 
+    {
         public login_form()
         {
             InitializeComponent();
@@ -13,6 +13,12 @@ namespace Skoslki_dnevnik
         {
             UcenikPocetna novaForma = new UcenikPocetna();
             novaForma.Show();
+        }
+
+        private void nastavniciBtn_Click(object sender, EventArgs e)
+        {
+            NastavnikPocetna nf = new NastavnikPocetna();
+            nf.Show();
         }
     }
 }

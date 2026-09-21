@@ -60,6 +60,10 @@
               "target": "Package",
               "version": "[5.7.0, )"
             },
+            "NHibernate.Extensions.Npgsql": {
+              "target": "Package",
+              "version": "[10.0.5, )"
+            },
             "Oracle.ManagedDataAccess.Core": {
               "target": "Package",
               "version": "[23.26.301, )"

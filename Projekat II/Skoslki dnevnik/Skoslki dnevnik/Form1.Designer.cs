@@ -52,6 +52,7 @@
             nastavniciBtn.TabIndex = 1;
             nastavniciBtn.Text = "Nastavnici";
             nastavniciBtn.UseVisualStyleBackColor = true;
+            nastavniciBtn.Click += nastavniciBtn_Click;
             // 
             // odeljenjeBtn
             // 

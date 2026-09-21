@@ -90,6 +90,7 @@
             dodajNastavnikaBtn.TabIndex = 9;
             dodajNastavnikaBtn.Text = "dodaj nastavnika";
             dodajNastavnikaBtn.UseVisualStyleBackColor = true;
+            dodajNastavnikaBtn.Click += dodajNastavnikaBtn_Click;
             // 
             // izmaniNastavnikaBtn
             // 
