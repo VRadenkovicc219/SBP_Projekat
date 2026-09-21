@@ -43,6 +43,7 @@
             uceniciBtn.TabIndex = 0;
             uceniciBtn.Text = "Ucenici";
             uceniciBtn.UseVisualStyleBackColor = true;
+            uceniciBtn.Click += uceniciBtn_Click;
             // 
             // nastavniciBtn
             // 

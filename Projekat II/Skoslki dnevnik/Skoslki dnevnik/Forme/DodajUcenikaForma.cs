@@ -5,14 +5,22 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.TaskbarClock;
 
 namespace Skoslki_dnevnik.Forme
 {
     public partial class DodajUcenikaForma : Form
     {
+
+        private Ucenik? _ucenik;
         public DodajUcenikaForma()
         {
             InitializeComponent();
+        }
+
+        public DodajUcenikaForma(Ucenik ucenik) : this()
+        {
+            _ucenik = ucenik;
         }
 
         public bool ValidanJmbg(string jmbg)
@@ -46,7 +54,9 @@ namespace Skoslki_dnevnik.Forme
                String.IsNullOrWhiteSpace(jmbgTb.Text) ||
                String.IsNullOrWhiteSpace(emailTb.Text) ||
                String.IsNullOrWhiteSpace(adresaTb.Text) ||
-               (polMCk.Checked ^ !polZCk.Checked))
+               (polMCk.Checked ^ !polZCk.Checked) ||
+               statusCb.SelectedItem == null
+               )
             {
                 MessageBox.Show("Morate popuniti sva polja");
                 return false;
@@ -63,32 +73,57 @@ namespace Skoslki_dnevnik.Forme
         {
             if (validirajPodatke())
             {
-                string godina = jmbgTb.Text.Substring(4, 3);
-                char charToInsert = godina.StartsWith("0") ? '2' : '1';
-                godina = charToInsert + godina;
-                string mesec = jmbgTb.Text.Substring(2, 2);
-                string dan = jmbgTb.Text.Substring(0, 2);
+                //string godina = jmbgTb.Text.Substring(4, 3);
+                //char charToInsert = godina.StartsWith("0") ? '2' : '1';
+                //godina = charToInsert + godina;
+                //string mesec = jmbgTb.Text.Substring(2, 2);
+                //string dan = jmbgTb.Text.Substring(0, 2);
                 Ucenik u = new Ucenik
                 {
                     Ime = imeTb.Text,
                     Prezime = prezimeTb.Text,
                     JMBG = jmbgTb.Text,
                     Adresa = adresaTb.Text,
-                    DatumRodjenja = new DateTime(int.Parse(godina), int.Parse(mesec), int.Parse(dan)),
+                    DatumRodjenja = datumRodjenjaDtp.Value,
                     Komentar = komentarTb.Text,
                     Email = emailTb.Text,
                     Pol = polMCk.Checked ? 'M' : 'Z',
-                    GodinaUpisa = "2023/2024",
-                    Status = StatusUcenika.AKTIVAN
+                    GodinaUpisa = skolskaGodinaTb.Text,
+                    Status = (StatusUcenika)statusCb.SelectedItem
                 };
                 DTOManager.dodajUcenika(u);
             }
 
         }
 
-        private void datumRodjenjaDtp_ValueChanged(object sender, EventArgs e)
-        {
 
+        private void DodajUcenikaForma_Load(object sender, EventArgs e)
+        {
+            statusCb.DataSource = Enum.GetValues(typeof(StatusUcenika));
+            if (_ucenik != null)
+            {
+                imeTb.Text = _ucenik.Ime;
+                prezimeTb.Text = _ucenik.Prezime;
+                jmbgTb.Text = _ucenik.JMBG;
+                datumRodjenjaDtp.Value = _ucenik.DatumRodjenja;
+                if (_ucenik.Pol == 'M')
+                    polMCk.Checked = true;
+                else
+                    polZCk.Checked = true;
+                adresaTb.Text = _ucenik.Adresa;
+                komentarTb.Text = _ucenik.Komentar ?? "";
+                statusCb.SelectedItem = _ucenik.Status;
+                emailTb.Text = _ucenik.Email;
+                skolskaGodinaTb.Text = _ucenik.GodinaUpisa;
+                datumRodjenjaDtp.Value = _ucenik.DatumRodjenja;
+            }
+        }
+
+        private void telefoniBtn_Click(object sender, EventArgs e)
+        {
+            DodajTelefonForm nf = new DodajTelefonForm();
+            nf.ShowDialog();
+            if(nf.)
         }
     }
 }

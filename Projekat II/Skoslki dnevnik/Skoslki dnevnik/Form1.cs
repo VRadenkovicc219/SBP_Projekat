@@ -1,3 +1,4 @@
+using NHibernate.Hql;
 using Skoslki_dnevnik.Forme;
 
 namespace Skoslki_dnevnik
@@ -18,6 +19,12 @@ namespace Skoslki_dnevnik
         private void nastavniciBtn_Click(object sender, EventArgs e)
         {
             NastavnikPocetna nf = new NastavnikPocetna();
+            nf.Show();
+        }
+
+        private void uceniciBtn_Click(object sender, EventArgs e)
+        {
+            UcenikPocetna nf = new UcenikPocetna();
             nf.Show();
         }
     }

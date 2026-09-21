@@ -28,6 +28,7 @@ namespace Skoslki_dnevnik.Forme
             ucenici = DTOManager.vratiUcenike();
             MessageBox.Show($"Broj ucenika: {ucenici.Count}");
             dataGridView1.DataSource = ucenici;
+            
         }
 
         private void dodajUcenikaBtn_Click(object sender, EventArgs e)

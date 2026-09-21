@@ -96,14 +96,14 @@
             komentarTb.Location = new Point(140, 167);
             komentarTb.Name = "komentarTb";
             komentarTb.Size = new Size(264, 23);
-            komentarTb.TabIndex = 5;
+            komentarTb.TabIndex = 6;
             // 
             // emailTb
             // 
             emailTb.Location = new Point(140, 138);
             emailTb.Name = "emailTb";
             emailTb.Size = new Size(264, 23);
-            emailTb.TabIndex = 6;
+            emailTb.TabIndex = 5;
             // 
             // polMCk
             // 
@@ -209,9 +209,9 @@
             label1.AutoSize = true;
             label1.Location = new Point(15, 199);
             label1.Name = "label1";
-            label1.Size = new Size(86, 15);
+            label1.Size = new Size(76, 15);
             label1.TabIndex = 19;
-            label1.Text = "Skolska godina";
+            label1.Text = "Godina upisa";
             // 
             // label8
             // 
@@ -230,6 +230,7 @@
             telefoniBtn.TabIndex = 22;
             telefoniBtn.Text = "Dodaj Telefon";
             telefoniBtn.UseVisualStyleBackColor = true;
+            telefoniBtn.Click += telefoniBtn_Click;
             // 
             // datumRodjenjaDtp
             // 
@@ -239,7 +240,6 @@
             datumRodjenjaDtp.RightToLeft = RightToLeft.No;
             datumRodjenjaDtp.Size = new Size(264, 23);
             datumRodjenjaDtp.TabIndex = 23;
-            datumRodjenjaDtp.ValueChanged += datumRodjenjaDtp_ValueChanged;
             // 
             // label7
             // 
@@ -280,6 +280,7 @@
             Controls.Add(dodajBtn);
             Name = "DodajUcenikaForma";
             Text = "DodajUcenikaForma";
+            Load += DodajUcenikaForma_Load;
             ResumeLayout(false);
             PerformLayout();
         }
