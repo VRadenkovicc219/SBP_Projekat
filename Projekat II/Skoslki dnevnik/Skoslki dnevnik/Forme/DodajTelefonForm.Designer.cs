@@ -92,6 +92,7 @@
             Controls.Add(acceptBtn);
             Name = "DodajTelefonForm";
             Text = "DodajTelefonForm";
+            Load += DodajTelefonForm_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
         }

@@ -49,6 +49,12 @@ namespace Skoslki_dnevnik
         {
             izvrsiUpit(s => s.Save(o), "Greska prilikom dodavanja osobe");
         }
+
+        public static List<OsobaTelefon> vratiTelefone(Osoba o) { 
+            return izvrsiUpit(s=>s.Query<OsobaTelefon>().Where(t=>t.Id.OsobaTelefon.Id == o.Id).ToList(), 
+                                                        "Greska pri pribavljanju telefona iz baze podataka")
+                                                        ?? new List<OsobaTelefon>();
+        }
         #endregion
 
         #region Ucenik

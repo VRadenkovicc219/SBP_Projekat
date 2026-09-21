@@ -121,7 +121,7 @@ namespace Skoslki_dnevnik.Forme
 
         private void telefoniBtn_Click(object sender, EventArgs e)
         {
-            DodajTelefonForm nf = new DodajTelefonForm();
+            DodajTelefonForm nf = new DodajTelefonForm(_ucenik);
             nf.ShowDialog();
             if(nf.)
         }
