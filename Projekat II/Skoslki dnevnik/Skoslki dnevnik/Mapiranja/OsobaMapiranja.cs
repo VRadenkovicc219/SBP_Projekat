@@ -15,7 +15,7 @@ namespace Skoslki_dnevnik.Mapiranja
             Map(x => x.DatumRodjenja, "DATUM_RODJENJA").Not.Nullable();
             Map(x => x.Email, "EMAIL").Not.Nullable();
             Map(x => x.Komentar, "KOMENTAR");
-            HasMany(x => x.Telefoni).KeyColumn("ID_OSOBA").Inverse().Cascade.AllDeleteOrphan();
+            Map(x => x.Telefon, "TELEFON1");
         }
     }
 }

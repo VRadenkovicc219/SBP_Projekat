@@ -17,9 +17,8 @@ namespace Skoslki_dnevnik.Entiteti
         public virtual char Pol { get; set; }
         public virtual DateTime DatumRodjenja { get; set; }
         public virtual required String Email { get; set; }
+        public virtual required String Telefon { get; set; } 
         public virtual String? Komentar { get; set; }
-        public virtual ISet<OsobaTelefon> Telefoni { get; set; } = new HashSet<OsobaTelefon>();
-
         public Osoba(){}
     }
 }

@@ -22,7 +22,8 @@ namespace Skoslki_dnevnik.Forme
 
         private void dodajBtn_Click(object sender, EventArgs e)
         {
-            Nastavnik n = new Nastavnik {
+            Nastavnik n = new Nastavnik
+            {
                 Ime = imeTb.Text,
                 Prezime = prezimeTb.Text,
                 JMBG = jmbgTb.Text,
@@ -32,7 +33,8 @@ namespace Skoslki_dnevnik.Forme
                 DatumZaposlenja = DateOnly.FromDateTime(dZaposljenjaDtp.Value),
                 Email = emailTb.Text,
                 StrucnaSprema = sSpremaTxt.Text,
-                Zvanje = zvanjeTxt.Text
+                Zvanje = zvanjeTxt.Text,
+                Telefon = zvanjeTxt.Text
             };
             DTOManager.dodajNastavnika(n);
         }

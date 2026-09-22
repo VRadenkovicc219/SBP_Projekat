@@ -1,4 +1,6 @@
-﻿using NHibernate.Linq;
+﻿using FluentNHibernate.Conventions.Inspections;
+using NHibernate.Linq;
+using NHibernate.Util;
 using Skoslki_dnevnik.Entiteti.KompozitniKljucevi;
 using System;
 using System.Collections.Generic;
@@ -50,11 +52,8 @@ namespace Skoslki_dnevnik
             izvrsiUpit(s => s.Save(o), "Greska prilikom dodavanja osobe");
         }
 
-        public static List<OsobaTelefon> vratiTelefone(Osoba o) { 
-            return izvrsiUpit(s=>s.Query<OsobaTelefon>().Where(t=>t.Id.OsobaTelefon.Id == o.Id).ToList(), 
-                                                        "Greska pri pribavljanju telefona iz baze podataka")
-                                                        ?? new List<OsobaTelefon>();
-        }
+
+
         #endregion
 
         #region Ucenik
@@ -62,18 +61,29 @@ namespace Skoslki_dnevnik
             izvrsiUpit(s => s.Save(u), "Greska prilikom dodavanja ucenika");
         }
 
-        public static List<UcenikDTO> vratiUcenike() {
+        public static List<Ucenik> vratiUcenike() {
             return izvrsiUpit(s => s.Query<Ucenik>()
-                             .ToList()
-                             .Select(x=> new UcenikDTO(x.Id, 
-                                                       x.Ime, 
-                                                       x.Prezime, 
-                                                       x.JMBG,  
-                                                       x.Adresa, 
-                                                       x.Status.ToString()
-                                                       )
-                             )
-                             .ToList(), "Greska pri preuzimanju ucenika iz baze") ?? new List<UcenikDTO>();
+                             .ToList(), "Greska pri preuzimanju ucenika iz baze") ?? new List<Ucenik>();
+        }
+
+        public static void izmeniUcenika(int id, Ucenik u) {
+            izvrsiUpit(s =>
+            {
+                Ucenik? uc = s.Query<Ucenik>().Where(x => x.Id == id).FirstOrDefault();
+                if (uc is null) throw new Exception("Ucenik sa unetim idjem ne postoji u bazi");
+                uc.Ime = u.Ime;
+                uc.Prezime = u.Prezime;
+                uc.JMBG = u.JMBG;
+                uc.Adresa = u.Adresa;
+                uc.Pol = u.Pol;
+                uc.DatumRodjenja = u.DatumRodjenja;
+                uc.Email = u.Email;
+                uc.Komentar = u.Komentar;
+                uc.Status = u.Status;
+                uc.GodinaUpisa = u.GodinaUpisa;
+                uc.Telefon = u.Telefon;
+                s.Update(uc);
+            }, "Greska prilikom izmene podataka ucenika");
         }
         #endregion
         #region Nastavnik
@@ -93,7 +103,6 @@ namespace Skoslki_dnevnik
             izvrsiUpit(n => n.Delete(nastavnik), "Greska pri brisanju nastavnika iz baze");
         }
 
-        //public static void azurirajPodatke(Nastavnik n, Nastavnik )
     }
 }
 

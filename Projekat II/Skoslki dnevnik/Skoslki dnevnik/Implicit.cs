@@ -7,3 +7,5 @@ global using FluentNHibernate.Cfg;
 global using FluentNHibernate.Cfg.Db;
 global using NHibernate;
 global using Skoslki_dnevnik.Mapiranja;
+global using Skoslki_dnevnik.Entiteti.KompozitniKljucevi;
+

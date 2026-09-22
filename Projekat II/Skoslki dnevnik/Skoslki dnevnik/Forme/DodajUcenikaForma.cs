@@ -54,7 +54,7 @@ namespace Skoslki_dnevnik.Forme
                String.IsNullOrWhiteSpace(jmbgTb.Text) ||
                String.IsNullOrWhiteSpace(emailTb.Text) ||
                String.IsNullOrWhiteSpace(adresaTb.Text) ||
-               (polMCk.Checked ^ !polZCk.Checked) ||
+               !(polMCk.Checked ^ polZCk.Checked) ||
                statusCb.SelectedItem == null
                )
             {
@@ -78,20 +78,27 @@ namespace Skoslki_dnevnik.Forme
                 //godina = charToInsert + godina;
                 //string mesec = jmbgTb.Text.Substring(2, 2);
                 //string dan = jmbgTb.Text.Substring(0, 2);
-                Ucenik u = new Ucenik
+                if (_ucenik == null)
                 {
-                    Ime = imeTb.Text,
-                    Prezime = prezimeTb.Text,
-                    JMBG = jmbgTb.Text,
-                    Adresa = adresaTb.Text,
-                    DatumRodjenja = datumRodjenjaDtp.Value,
-                    Komentar = komentarTb.Text,
-                    Email = emailTb.Text,
-                    Pol = polMCk.Checked ? 'M' : 'Z',
-                    GodinaUpisa = skolskaGodinaTb.Text,
-                    Status = (StatusUcenika)statusCb.SelectedItem
-                };
-                DTOManager.dodajUcenika(u);
+                    Ucenik u = new Ucenik
+                    {
+                        Ime = imeTb.Text,
+                        Prezime = prezimeTb.Text,
+                        JMBG = jmbgTb.Text,
+                        Adresa = adresaTb.Text,
+                        DatumRodjenja = datumRodjenjaDtp.Value,
+                        Komentar = godinaUpisatxt.Text,
+                        Email = emailTb.Text,
+                        Pol = polMCk.Checked ? 'M' : 'Z',
+                        GodinaUpisa = skolskaGodinaTb.Text,
+                        Telefon = telefontxt.Text,
+                        Status = (StatusUcenika)statusCb.SelectedItem
+                    };
+                    DTOManager.dodajUcenika(u);
+                }
+                else {
+                    DTOManager.izmeniUcenika(_ucenik.Id, _ucenik);
+                }
             }
 
         }
@@ -111,7 +118,7 @@ namespace Skoslki_dnevnik.Forme
                 else
                     polZCk.Checked = true;
                 adresaTb.Text = _ucenik.Adresa;
-                komentarTb.Text = _ucenik.Komentar ?? "";
+                godinaUpisatxt.Text = _ucenik.Komentar ?? "";
                 statusCb.SelectedItem = _ucenik.Status;
                 emailTb.Text = _ucenik.Email;
                 skolskaGodinaTb.Text = _ucenik.GodinaUpisa;
@@ -119,11 +126,17 @@ namespace Skoslki_dnevnik.Forme
             }
         }
 
-        private void telefoniBtn_Click(object sender, EventArgs e)
+        private void polMCk_CheckedChanged(object sender, EventArgs e)
         {
-            DodajTelefonForm nf = new DodajTelefonForm(_ucenik);
-            nf.ShowDialog();
-            if(nf.)
+            if (polMCk.Checked) polZCk.Checked = false;
+        }
+
+        private void polZCk_CheckedChanged(object sender, EventArgs e)
+        {
+            if (polZCk.Checked) polMCk.Checked = false;
         }
     }
 }
+
+
+

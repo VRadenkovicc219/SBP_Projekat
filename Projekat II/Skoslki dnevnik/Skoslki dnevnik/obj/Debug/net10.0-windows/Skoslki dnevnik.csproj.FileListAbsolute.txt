@@ -77,6 +77,5 @@ C:\Users\desko\Desktop\Baza\GIT\SBP_Projekat\Projekat II\Skoslki dnevnik\Skoslki
 C:\Users\desko\Desktop\Baza\GIT\SBP_Projekat\Projekat II\Skoslki dnevnik\Skoslki dnevnik\bin\Debug\net10.0-windows\NHibernate.Extensions.Npgsql.dll
 C:\Users\desko\Desktop\Baza\GIT\SBP_Projekat\Projekat II\Skoslki dnevnik\Skoslki dnevnik\bin\Debug\net10.0-windows\Npgsql.dll
 C:\Users\desko\Desktop\Baza\GIT\SBP_Projekat\Projekat II\Skoslki dnevnik\Skoslki dnevnik\obj\Debug\net10.0-windows\Skoslki_dnevnik.Forme.DodajNastavnikaForm.resources
-C:\Users\desko\Desktop\Baza\GIT\SBP_Projekat\Projekat II\Skoslki dnevnik\Skoslki dnevnik\obj\Debug\net10.0-windows\Skoslki_dnevnik.Forme.DodajTelefonForm.resources
 C:\Users\desko\Desktop\Baza\GIT\SBP_Projekat\Projekat II\Skoslki dnevnik\Skoslki dnevnik\obj\Debug\net10.0-windows\Skoslki_dnevnik.Forme.NastavnikPocetna.resources
 C:\Users\desko\Desktop\Baza\GIT\SBP_Projekat\Projekat II\Skoslki dnevnik\Skoslki dnevnik\obj\Debug\net10.0-windows\Skoslki_dnevnik.Forme.PregledUcenikaForm.resources

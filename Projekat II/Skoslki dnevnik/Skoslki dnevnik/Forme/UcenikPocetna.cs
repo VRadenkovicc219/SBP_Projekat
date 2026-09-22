@@ -10,7 +10,7 @@ namespace Skoslki_dnevnik.Forme
 {
     public partial class UcenikPocetna : Form
     {
-        private List<UcenikDTO> ucenici = [];
+        private List<Ucenik> ucenici = [];
 
         public UcenikPocetna()
         {
@@ -25,16 +25,37 @@ namespace Skoslki_dnevnik.Forme
 
         private void UcenikPocetna_Load(object sender, EventArgs e)
         {
-            ucenici = DTOManager.vratiUcenike();
-            MessageBox.Show($"Broj ucenika: {ucenici.Count}");
-            dataGridView1.DataSource = ucenici;
-            
+            ucitajUcenike();
+
         }
 
         private void dodajUcenikaBtn_Click(object sender, EventArgs e)
         {
             DodajUcenikaForma df = new DodajUcenikaForma();
-            df.Show();
+            if (df.ShowDialog() == DialogResult.OK)
+            {
+                ucitajUcenike();
+            }
+        }
+
+        private void ucitajUcenike()
+        {
+            ucenici.Clear();
+            ucenici = DTOManager.vratiUcenike();
+            dataGridView1.DataSource = ucenici;
+        }
+
+        private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                DataGridViewRow red = dataGridView1.Rows[e.RowIndex];
+                Ucenik ucenik = (Ucenik)dataGridView1.Rows[e.RowIndex].DataBoundItem;
+                DodajUcenikaForma df = new DodajUcenikaForma(ucenik);
+                if (df.ShowDialog() == DialogResult.OK) {
+                    ucitajUcenike();
+                }
+            }
         }
     }
 }
