@@ -19,5 +19,8 @@
     <Compile Update="Forme\UcenikPocetna.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Forme\UcenikPodaci.cs">
+      <SubType>Form</SubType>
+    </Compile>
   </ItemGroup>
 </Project>

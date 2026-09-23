@@ -71,36 +71,34 @@ namespace Skoslki_dnevnik.Forme
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (validirajPodatke())
+            if (!validirajPodatke())
+                return;
+
+            Ucenik u = new Ucenik
             {
-                //string godina = jmbgTb.Text.Substring(4, 3);
-                //char charToInsert = godina.StartsWith("0") ? '2' : '1';
-                //godina = charToInsert + godina;
-                //string mesec = jmbgTb.Text.Substring(2, 2);
-                //string dan = jmbgTb.Text.Substring(0, 2);
-                if (_ucenik == null)
-                {
-                    Ucenik u = new Ucenik
-                    {
-                        Ime = imeTb.Text,
-                        Prezime = prezimeTb.Text,
-                        JMBG = jmbgTb.Text,
-                        Adresa = adresaTb.Text,
-                        DatumRodjenja = datumRodjenjaDtp.Value,
-                        Komentar = godinaUpisatxt.Text,
-                        Email = emailTb.Text,
-                        Pol = polMCk.Checked ? 'M' : 'Z',
-                        GodinaUpisa = skolskaGodinaTb.Text,
-                        Telefon = telefontxt.Text,
-                        Status = (StatusUcenika)statusCb.SelectedItem
-                    };
-                    DTOManager.dodajUcenika(u);
-                }
-                else {
-                    DTOManager.izmeniUcenika(_ucenik.Id, _ucenik);
-                }
+                Ime = imeTb.Text,
+                Prezime = prezimeTb.Text,
+                JMBG = jmbgTb.Text,
+                Adresa = adresaTb.Text,
+                DatumRodjenja = datumRodjenjaDtp.Value,
+                Komentar = godinaUpisatxt.Text,
+                Email = emailTb.Text,
+                Pol = polMCk.Checked ? 'M' : 'Z',
+                GodinaUpisa = skolskaGodinaTb.Text,
+                Telefon = telefontxt.Text,
+                Status = (StatusUcenika)statusCb.SelectedItem
+            };
+
+            if (_ucenik == null)
+            {
+                DTOManager.dodajUcenika(u);
+            }
+            else
+            {
+                DTOManager.izmeniUcenika(_ucenik.Id, u);
             }
 
+            DialogResult = DialogResult.OK;
         }
 
 

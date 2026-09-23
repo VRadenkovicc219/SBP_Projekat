@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NHibernate.Engine.Query;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -25,6 +26,8 @@ namespace Skoslki_dnevnik.Forme
 
         private void UcenikPocetna_Load(object sender, EventArgs e)
         {
+            obrisiUcenikaBtn.Enabled = false;
+            izmeniUcenikaBtn.Enabled = false;
             ucitajUcenike();
 
         }
@@ -51,10 +54,35 @@ namespace Skoslki_dnevnik.Forme
             {
                 DataGridViewRow red = dataGridView1.Rows[e.RowIndex];
                 Ucenik ucenik = (Ucenik)dataGridView1.Rows[e.RowIndex].DataBoundItem;
-                DodajUcenikaForma df = new DodajUcenikaForma(ucenik);
-                if (df.ShowDialog() == DialogResult.OK) {
-                    ucitajUcenike();
-                }
+                UcenikPodaci df = new UcenikPodaci(ucenik);
+                df.Show();
+            }
+        }
+
+        private void obrisiUcenikaBtn_Click(object sender, EventArgs e)
+        {
+            if (dataGridView1.SelectedRows.Count == 0) { return; }
+            Ucenik ucenik = (Ucenik)dataGridView1.SelectedRows[0].DataBoundItem;
+            DTOManager.obrisiUcenika(ucenik);
+            ucitajUcenike();
+        }
+
+        private void dataGridView1_SelectionChanged(object sender, EventArgs e)
+        {
+            bool selektovan = dataGridView1.SelectedRows.Count > 0;
+            izmeniUcenikaBtn.Enabled = selektovan;
+            obrisiUcenikaBtn.Enabled = selektovan;
+        }
+
+        private void izmeniUcenikaBtn_Click(object sender, EventArgs e)
+        {
+            if (dataGridView1.SelectedRows.Count == 0) { return; }
+            Ucenik ucenik = (Ucenik)dataGridView1.SelectedRows[0].DataBoundItem;
+            DodajUcenikaForma df = new DodajUcenikaForma(ucenik);
+            if (df.ShowDialog() == DialogResult.OK)
+            {
+                MessageBox.Show("Uspesno ste izmenili podatke o uceniku");
+                ucitajUcenike();
             }
         }
     }

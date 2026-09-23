@@ -123,6 +123,24 @@ namespace Skoslki_dnevnik
             }, "Greska prilikom dobavljanja iz baze podataka");
         }
 
+        public static string vratiRazred(int id)
+        {
+            return izvrsiUpit(s =>
+            {
+                bool postoji = s.Query<Ucenik>().Any(x => x.Id == id);
+                if (!postoji)
+                    throw new Exception("Ucenik sa unetim ID-jem ne postoji u bazi podataka");
+
+                var rezultat = s.Query<Odeljenje>()
+                    .Where(o => o.Ucenici.Any(u => u.Id == id))
+                    .OrderByDescending(o => o.SkolskaGodina)
+                    .Select(o => (int?)o.Razred)
+                    .FirstOrDefault();
+
+                return rezultat?.ToString() ?? "Nema podataka o odeljenju";
+            }, "Greska prilikom dobavljanja podataka iz baze");
+        }
+
         #endregion
 
         #region Odeljenje
