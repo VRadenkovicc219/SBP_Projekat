@@ -10,7 +10,7 @@ namespace Skoslki_dnevnik.Entiteti
         public virtual required string Oznaka { get; set; }
         public virtual required string SkolskaGodina { get; set; }
         public virtual required int Razred { get; set; }
-        public virtual IList<Nastava> Predmeti { get; set; } = new List<Nastava>();
+        public virtual IList<Nastava> Nastava { get; set; } = new List<Nastava>();
         public virtual IList<Ucenik> Ucenici { get; set; } = new List<Ucenik>();
 
     }

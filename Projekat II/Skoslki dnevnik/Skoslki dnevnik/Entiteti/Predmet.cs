@@ -10,7 +10,7 @@
         public virtual TipPredmeta Tip { get; set; }
         public virtual string? Opis { get; set; }
         public virtual string? Komentar { get; set; }
-        public virtual IList<Nastava> PredajeSe { get; set; } = new List<Nastava>();
+        public virtual List<Nastavnik> Predaje { get; set; } = new List<Nastavnik>();
         public virtual IList<Ucenik> Polaznici { get; set; } = new List<Ucenik>();
     }
 }

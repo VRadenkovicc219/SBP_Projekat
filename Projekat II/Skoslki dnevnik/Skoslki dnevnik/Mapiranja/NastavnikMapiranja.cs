@@ -14,7 +14,7 @@ namespace Skoslki_dnevnik.Mapiranja
             Map(x => x.Zvanje, "ZVANJE");
             Map(x => x.StrucnaSprema, "STRUCNA_SPREMA");
             Map(x => x.DatumZaposlenja, "DATUM_ZAPOSLENJA");
-
+            HasManyToMany(x => x.Predmeti).Table("PREDAJE").ParentKeyColumn("ID_NASTAVNIK").ChildKeyColumn("ID_PREDMET");
         }
     }
 }

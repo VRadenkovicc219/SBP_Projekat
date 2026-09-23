@@ -13,7 +13,13 @@
             Map(x => x.NedeljniFond, "NEDELJNI_FOND").Not.Nullable();
             Map(x => x.Opis, "OPIS");
             Map(x => x.Komentar, "KOMENTAR");
-            HasMany(x => x.PredajeSe).KeyColumn("ID_PREDMET").Inverse().Cascade.All();
+
+            HasManyToMany(x => x.Predaje)
+                .Table("PREDAJE")
+                .ParentKeyColumn("ID_PREDMET")
+                .ChildKeyColumn("ID_NASTAVNIK")
+                .Inverse();
+
             HasManyToMany(x => x.Polaznici)
                 .Table("SLUSA_PREDMET")
                 .ParentKeyColumn("ID_PREDMET")

@@ -14,7 +14,7 @@ namespace Skoslki_dnevnik.Mapiranja
             Map(x=>x.Razred, "RAZRED").Not.Nullable();
             Map(x => x.SkolskaGodina, "SKOLSKA_GODINA").Not.Nullable();
             Map(x => x.Oznaka, "OZNAKA").Not.Nullable();
-            HasMany(x => x.Predmeti).KeyColumn("ID_PREDMET").Inverse().Cascade.All();
+            HasMany(x => x.Nastava).KeyColumn("ID_ODELJENJE").Inverse().Cascade.All();
             HasManyToMany(x => x.Ucenici)
                 .Table("UCENIK_ODELJENJE")
                 .ParentKeyColumn("ID_ODELJENJE")
