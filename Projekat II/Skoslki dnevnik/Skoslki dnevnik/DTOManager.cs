@@ -1,5 +1,6 @@
 ﻿using FluentNHibernate.Conventions.Inspections;
 using NHibernate.Linq;
+using NHibernate.Proxy;
 using NHibernate.Util;
 using Skoslki_dnevnik.Entiteti.KompozitniKljucevi;
 using System;
@@ -217,10 +218,36 @@ namespace Skoslki_dnevnik
             }, "Greska prilikom azuriranja odeljenja");
         }
 
-        public static void dodeliPredmetOdeljenju()
+        public static void dodeliPredmetOdeljenju(int oId, int pId)
         {
-           
+            izvrsiUpit(s =>
+            {
+                Predaje? predaje = s.Get<Predaje>(pId);
+                if (predaje is null)
+                    throw new Exception("Predaje zapis ne postoji u bazi podataka");
+
+                Odeljenje? odeljenje = s.Get<Odeljenje>(oId);
+                if (odeljenje is null)
+                    throw new Exception("Odeljenje sa zadatim id-jem ne postoji u bazi");
+
+                bool vecPostoji = s.Query<Nastava>()
+                    .Any(x => x.predajePredmet.Id == pId && x.Odeljenje.Id == oId);
+
+                if (vecPostoji)
+                    throw new Exception("Ovaj predmet/nastavnik je vec dodeljen ovom odeljenju");
+
+                Nastava n = new Nastava
+                {
+                    predajePredmet = predaje,
+                    Odeljenje = odeljenje
+                };
+
+                s.Save(n);
+            }, "Greska prilikom dodavanja predmeta odeljenju");
         }
+
+        
+
         #endregion
         #region Nastavnik
 
@@ -236,9 +263,16 @@ namespace Skoslki_dnevnik
         }
 
         public static void obrisiNastavnika(Nastavnik nastavnik) {
-            izvrsiUpit(n => n.Delete(nastavnik), "Greska pri brisanju nastavnika iz baze");
+          izvrsiUpit(n => n.Delete(nastavnik), "Greska pri brisanju nastavnika iz baze");
         }
 
+
+        public static RazredniStaresina? vratiRazrednogStaresinu(int odeljenjeId) {
+            return izvrsiUpit<RazredniStaresina?>(s =>
+            {
+                return s.Query<RazredniStaresina>().Where(x => x.Odeljenje.Id == odeljenjeId).FirstOrDefault();
+            }, "Greska prilikom pribavljanja razrednog staresine za odeljenje");
+        }
     }
 }
 
