@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Security.Principal;
-using System.Text;
-
-namespace Skoslki_dnevnik.Mapiranja
+﻿namespace Skoslki_dnevnik.Mapiranja
 {
     public class OdeljenjeMapiranja : ClassMap<Odeljenje>
     {
@@ -11,7 +6,7 @@ namespace Skoslki_dnevnik.Mapiranja
         {
             Table("ODELJENJE");
             Id(x => x.Id, "ID").GeneratedBy.TriggerIdentity();
-            Map(x=>x.Razred, "RAZRED").Not.Nullable();
+            Map(x => x.Razred, "RAZRED").Not.Nullable();
             Map(x => x.SkolskaGodina, "SKOLSKA_GODINA").Not.Nullable();
             Map(x => x.Oznaka, "OZNAKA").Not.Nullable();
             HasMany(x => x.Nastava).KeyColumn("ID_ODELJENJE").Inverse().Cascade.All();

@@ -1,4 +1,3 @@
-using NHibernate.Hql;
 using Skoslki_dnevnik.Forme;
 
 namespace Skoslki_dnevnik

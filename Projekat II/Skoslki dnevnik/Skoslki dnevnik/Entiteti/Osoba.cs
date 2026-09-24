@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Runtime.InteropServices;
-using System.Security;
-using System.Text;
-
-namespace Skoslki_dnevnik.Entiteti
+﻿namespace Skoslki_dnevnik.Entiteti
 {
     public class Osoba
     {
@@ -17,8 +10,8 @@ namespace Skoslki_dnevnik.Entiteti
         public virtual char Pol { get; set; }
         public virtual DateTime DatumRodjenja { get; set; }
         public virtual required String Email { get; set; }
-        public virtual required String Telefon { get; set; } 
+        public virtual required String Telefon { get; set; }
         public virtual String? Komentar { get; set; }
-        public Osoba(){}
+        public Osoba() { }
     }
 }

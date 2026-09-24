@@ -1,10 +1,4 @@
-﻿using NHibernate.Linq.Visitors.ResultOperatorProcessors;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
-using System.Text;
-
-namespace Skoslki_dnevnik.Entiteti.KompozitniKljucevi
+﻿namespace Skoslki_dnevnik.Entiteti.KompozitniKljucevi
 {
     public class IzostanakId
     {
@@ -13,10 +7,10 @@ namespace Skoslki_dnevnik.Entiteti.KompozitniKljucevi
         public virtual int RedniBrojCasa { get; set; }
         public override bool Equals(object? obj)
         {
-            if (obj is null) 
+            if (obj is null)
                 return false;
-            
-            if (Object.ReferenceEquals(this, obj)) 
+
+            if (Object.ReferenceEquals(this, obj))
                 return true;
 
             if (obj.GetType() != typeof(IzostanakId))

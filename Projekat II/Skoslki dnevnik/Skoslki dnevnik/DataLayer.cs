@@ -6,10 +6,14 @@ namespace Skoslki_dnevnik
     {
         private static ISessionFactory _factory = null;
         private static object _lockObj = new();
-        public static ISession GetSession() {
-            if (_factory is null) {
-                lock (_lockObj) {
-                    if (_factory is null) {
+        public static ISession GetSession()
+        {
+            if (_factory is null)
+            {
+                lock (_lockObj)
+                {
+                    if (_factory is null)
+                    {
                         _factory = CreateSessionFactory();
                     }
                 }
@@ -17,7 +21,8 @@ namespace Skoslki_dnevnik
             return _factory.OpenSession();
         }
 
-        private static ISessionFactory CreateSessionFactory() {
+        private static ISessionFactory CreateSessionFactory()
+        {
             try
             {
 
@@ -42,7 +47,8 @@ namespace Skoslki_dnevnik
                                                                          .AddFromAssemblyOf<OsobaMapiranja>())
                                                                          .BuildSessionFactory();
             }
-            catch (Exception ex) {
+            catch (Exception ex)
+            {
                 MessageBox.Show(ex.ToString());
                 return null;
             }

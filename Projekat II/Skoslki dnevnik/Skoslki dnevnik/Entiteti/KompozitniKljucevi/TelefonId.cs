@@ -10,14 +10,15 @@
         {
             if (obj is null) return false;
             if (Object.ReferenceEquals(this, obj)) return true;
-            if (obj is not TelefonId other) return false; 
+            if (obj is not TelefonId other) return false;
 
             if (OsobaTelefon?.Id == null || other.OsobaTelefon?.Id == null) return false;
 
             return OsobaTelefon.Id.Equals(other.OsobaTelefon.Id) && BrojTelefona == other.BrojTelefona;
         }
 
-        public override int GetHashCode() {
+        public override int GetHashCode()
+        {
             unchecked
             {
                 int hash = 17;

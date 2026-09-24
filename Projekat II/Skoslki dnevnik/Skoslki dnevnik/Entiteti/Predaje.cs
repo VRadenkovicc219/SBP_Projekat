@@ -1,9 +1,4 @@
-﻿using Npgsql.PostgresTypes;
-using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Skoslki_dnevnik.Entiteti
+﻿namespace Skoslki_dnevnik.Entiteti
 {
     public class Predaje
     {

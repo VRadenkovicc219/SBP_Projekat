@@ -1,19 +1,26 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
-using System.Windows.Forms;
-
-namespace Skoslki_dnevnik.Forme
+﻿namespace Skoslki_dnevnik.Forme
 {
     public partial class DodajPredmetForm : Form
     {
+        Predmet p = null;
         public DodajPredmetForm()
         {
             InitializeComponent();
         }
+
+        public DodajPredmetForm(Predmet p)
+        {
+            InitializeComponent();
+            this.p = p;
+            nazivTxt.Text = p.Naziv;
+            skolskaGodinaTxt.Text = p.SkolskaGodina;
+            tipCb.SelectedItem = p.Tip;
+            razredTxt.Text = p.Razred.ToString();
+            fondTxt.Text = p.NedeljniFond.ToString();
+            OpisTxt.Text = p.Opis;
+            komentarTxt.Text = p.Komentar;
+        }
+
 
         private void DodajPredmetForm_Load(object sender, EventArgs e)
         {
@@ -36,20 +43,28 @@ namespace Skoslki_dnevnik.Forme
 
         private void dodajBtn_Click(object sender, EventArgs e)
         {
-            if (!validacijaPodataka())
-            {
-                MessageBox.Show("Sva polja koja nisu opciona moraju biti popunjena");
-            }
-            DTOManager.dodajPredmet(new Predmet
+            Predmet noviPredmet = new Predmet
             {
                 Naziv = nazivTxt.Text,
                 SkolskaGodina = skolskaGodinaTxt.Text,
-                Razred = long.Parse(razredTxt.Text),
-                NedeljniFond = long.Parse(fondTxt.Text),
+                Razred = int.Parse(razredTxt.Text),
+                NedeljniFond = int.Parse(fondTxt.Text),
                 Opis = OpisTxt.Text,
                 Komentar = komentarTxt.Text,
-                Tip = (TipPredmeta)tipCb.SelectedIndex,
-            });
+                Tip = (TipPredmeta)tipCb.SelectedItem
+            };
+
+            if (p is null)
+            {
+                if (!validacijaPodataka())
+                {
+                    MessageBox.Show("Sva polja koja nisu opciona moraju biti popunjena");
+                }
+                DTOManager.dodajPredmet(noviPredmet);
+            }
+            else {
+                DTOManager.izmeniPredmet(p.Id, noviPredmet);
+            }
         }
 
         private void razredTxt_KeyPress(object sender, KeyPressEventArgs e)

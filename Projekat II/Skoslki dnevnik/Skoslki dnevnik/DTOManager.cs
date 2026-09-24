@@ -1,19 +1,12 @@
-﻿using FluentNHibernate.Conventions.Inspections;
-using NHibernate.Linq;
-using NHibernate.Proxy;
-using NHibernate.Util;
-using Skoslki_dnevnik.Entiteti.KompozitniKljucevi;
-using System;
-using System.Collections.Generic;
-using System.Runtime.InteropServices.Marshalling;
-using System.Text;
+﻿using NHibernate.Util;
 
 namespace Skoslki_dnevnik
 {
     public static class DTOManager
     {
-        
-        private static void izvrsiUpit(Action<ISession> upit, string porukaGreske) {
+
+        private static void izvrsiUpit(Action<ISession> upit, string porukaGreske)
+        {
             try
             {
                 using (ISession s = DataLayer.GetSession())
@@ -23,7 +16,8 @@ namespace Skoslki_dnevnik
                     t.Commit();
                 }
             }
-            catch (Exception ex){
+            catch (Exception ex)
+            {
                 MessageBox.Show($"{porukaGreske}: {ex.Message}");
             }
         }
@@ -58,19 +52,23 @@ namespace Skoslki_dnevnik
         #endregion
 
         #region Ucenik
-        public static void dodajUcenika(Ucenik u) {
+        public static void dodajUcenika(Ucenik u)
+        {
             izvrsiUpit(s => s.Save(u), "Greska prilikom dodavanja ucenika");
         }
 
-        public static List<Ucenik> vratiUcenike() {
+        public static List<Ucenik> vratiUcenike()
+        {
             return izvrsiUpit(s => s.Query<Ucenik>()
                              .ToList(), "Greska pri preuzimanju ucenika iz baze") ?? new List<Ucenik>();
         }
 
-        public static Ucenik? vratiUcenika(int id) {
+        public static Ucenik? vratiUcenika(int id)
+        {
             return izvrsiUpit(s => s.Query<Ucenik>().Where(x => x.Id == id).FirstOrDefault(), "Greska prilikom pribavljanja ucenika iz baze");
         }
-        public static void izmeniUcenika(int id, Ucenik u) {
+        public static void izmeniUcenika(int id, Ucenik u)
+        {
             izvrsiUpit(s =>
             {
                 Ucenik? uc = s.Query<Ucenik>().Where(x => x.Id == id).FirstOrDefault();
@@ -90,17 +88,19 @@ namespace Skoslki_dnevnik
             }, "Greska prilikom izmene podataka ucenika");
         }
 
-        public static void obrisiUcenika(Ucenik u) {
+        public static void obrisiUcenika(Ucenik u)
+        {
             izvrsiUpit(s => s.Delete(u), "Greska prilikom brisanja ucenika iz baze podataka");
         }
 
-        public static void dodeliPredmetUceniku(int uId, int pId) {
+        public static void dodeliPredmetUceniku(int uId, int pId)
+        {
             izvrsiUpit(s =>
             {
                 Ucenik? u = s.Get<Ucenik>(uId);
-                
+
                 Predmet? p = s.Get<Predmet>(pId);
-               
+
                 if (u is null && p is null)
                     throw new Exception("Ucenik i predmet ne postoje u bazi podataka");
 
@@ -108,7 +108,8 @@ namespace Skoslki_dnevnik
                 {
                     throw new Exception("Ucenik ne postoji u bazi podataka");
                 }
-                if (p is null) {
+                if (p is null)
+                {
                     throw new Exception("Predmet ne postoji u bazi podataka");
                 }
                 bool vecPostoji = s.Query<Ucenik>()
@@ -156,9 +157,12 @@ namespace Skoslki_dnevnik
         #endregion
 
         #region Odeljenje
-        public static void kreirajOdeljenje(Odeljenje o) {
-            izvrsiUpit(s => {
-                if (s.Query<Odeljenje>().Any(x => x.Oznaka == o.Oznaka && x.Razred == o.Razred && x.SkolskaGodina == o.SkolskaGodina)) {
+        public static void kreirajOdeljenje(Odeljenje o)
+        {
+            izvrsiUpit(s =>
+            {
+                if (s.Query<Odeljenje>().Any(x => x.Oznaka == o.Oznaka && x.Razred == o.Razred && x.SkolskaGodina == o.SkolskaGodina))
+                {
                     throw new Exception("Odeljenje vec postoji u bazi podataka");
                 }
 
@@ -166,15 +170,18 @@ namespace Skoslki_dnevnik
             }, "Greska prilikom kreiranja novog odeljenja");
         }
 
-        public static Odeljenje vratiOdeljenje(int id) {
-            return izvrsiUpit(s => {
+        public static Odeljenje vratiOdeljenje(int id)
+        {
+            return izvrsiUpit(s =>
+            {
                 Odeljenje o = s.Get<Odeljenje>(id);
                 if (o is null) throw new Exception("Odeljenje ne postoji u bazi podataka");
                 return o;
             }, "Greska prilikom dobavljanja odeljenja iz baze podataka");
         }
 
-        public static List<Odeljenje> vratiOdeljenja(String? oznaka = null, String? skolskaGodina = null, int razred = 0) {
+        public static List<Odeljenje> vratiOdeljenja(String? oznaka = null, String? skolskaGodina = null, int razred = 0)
+        {
             return izvrsiUpit(s =>
             {
                 var upit = s.Query<Odeljenje>();
@@ -202,7 +209,8 @@ namespace Skoslki_dnevnik
             }, "Greska prilikom brisanja odeljenja");
         }
 
-        public static void dodajUcenikaUOdeljenje(int oId, int uId) {
+        public static void dodajUcenikaUOdeljenje(int oId, int uId)
+        {
             izvrsiUpit(s =>
             {
                 Ucenik? u = s.Get<Ucenik>(uId);
@@ -276,7 +284,7 @@ namespace Skoslki_dnevnik
             }, "Greska prilikom dodavanja predmeta odeljenju");
         }
 
-        
+
 
         #endregion
         #region Nastavnik
@@ -286,18 +294,21 @@ namespace Skoslki_dnevnik
             return izvrsiUpit(s => s.Query<Nastavnik>().ToList(), "Greska pri preuzimanju nastavnika iz baze")
                 ?? new List<Nastavnik>();
         }
-        
 
-        public static void dodajNastavnika(Nastavnik nastavnik) {
+
+        public static void dodajNastavnika(Nastavnik nastavnik)
+        {
             izvrsiUpit(n => n.Save(nastavnik), "Greska pri dodavanju novog nastavnika");
         }
 
-        public static void obrisiNastavnika(Nastavnik nastavnik) {
-          izvrsiUpit(n => n.Delete(nastavnik), "Greska pri brisanju nastavnika iz baze");
+        public static void obrisiNastavnika(Nastavnik nastavnik)
+        {
+            izvrsiUpit(n => n.Delete(nastavnik), "Greska pri brisanju nastavnika iz baze");
         }
 
 
-        public static RazredniStaresina? vratiRazrednogStaresinu(int odeljenjeId) {
+        public static RazredniStaresina? vratiRazrednogStaresinu(int odeljenjeId)
+        {
             return izvrsiUpit<RazredniStaresina?>(s =>
             {
                 return s.Query<RazredniStaresina>().Where(x => x.Odeljenje.Id == odeljenjeId).FirstOrDefault();
@@ -306,56 +317,74 @@ namespace Skoslki_dnevnik
         #endregion
 
         #region Predmet
-        public static List<Predmet> vratiPredmete(string skolskaGodina = null) {
-            return izvrsiUpit<List<Predmet>>(s => { 
+        public static List<Predmet> vratiPredmete(string skolskaGodina = null)
+        {
+            return izvrsiUpit<List<Predmet>>(s =>
+            {
                 List<Predmet> predmeti = s.Query<Predmet>().ToList();
-                if (!String.IsNullOrWhiteSpace(skolskaGodina)) {
+                if (!String.IsNullOrWhiteSpace(skolskaGodina))
+                {
                     predmeti = predmeti.Where(x => x.SkolskaGodina == skolskaGodina).ToList();
                 }
                 return predmeti;
-            } , "Greska prilikom pribavljanja podataka iz baze") ?? new List<Predmet>();
+            }, "Greska prilikom pribavljanja podataka iz baze") ?? new List<Predmet>();
         }
 
-        public static Predmet vratiPredmet(int id) {
+        public static Predmet vratiPredmet(int id)
+        {
             return izvrsiUpit<Predmet>(s => s.Get<Predmet>(id), "Greska prilikom pribavljanja iz baze podataka");
         }
-        public static void dodajPredmet(Predmet p) {
+        public static void dodajPredmet(Predmet p)
+        {
             izvrsiUpit(s => s.Save(p), "Greska prilikom dodavanja predmeta u bazu podataka");
         }
 
-        public static void obrisiPredmet(Predmet p) {
+        public static void obrisiPredmet(Predmet p)
+        {
             izvrsiUpit(s => s.Delete(p), "Greska prilikom brisanja predmeta iz baze podataka");
         }
 
-        public static void izmeniPredmet(int id, Predmet predmet) {
+        public static void izmeniPredmet(int id, Predmet predmet)
+        {
             izvrsiUpit(s =>
             {
-                if (predmet is null) {
+                if (predmet is null)
+                {
                     throw new Exception("Greska prilikom izmene predmeta");
                 }
                 Predmet p = s.Get<Predmet>(id);
+                p.Naziv = predmet.Naziv;
+                p.SkolskaGodina = predmet.SkolskaGodina;
+                p.Opis = predmet.Opis;
+                p.Komentar = predmet.Komentar;
+                p.NedeljniFond = predmet.NedeljniFond;
+                p.Razred = predmet.Razred;
+                p.Tip = predmet.Tip;
                 if (p is null) throw new Exception("Predmet sa unetim Idjem ne postoji u bazi podataka");
 
 
             }, "Greska prilikom izmene predmeta iz baze podataka");
         }
 
-        public static List<Ucenik> vratiUcenikeKojiSlusajuPredmet(int idPredmeta) {
+        public static List<Ucenik> vratiUcenikeKojiSlusajuPredmet(int idPredmeta)
+        {
             return izvrsiUpit<List<Ucenik>>(s => s.Query<Ucenik>().Where(x => x.Predmeti.Any(x => x.Id == idPredmeta)).ToList(),
                 "Nijedan ucenik ne slusa dati predmet");
         }
 
-        public static List<Ocena> vratiOceneUcenikaNaPredmetu(int ucenikId, int predmetId) {
+        public static List<Ocena> vratiOceneUcenikaNaPredmetu(int ucenikId, int predmetId)
+        {
             return izvrsiUpit<List<Ocena>>(s =>
                 s.Query<Ocena>()
-                .Where(x=>x.Ucenik.Id == ucenikId && x.Nastava.predajePredmet.Nastavnik.Id == predmetId)
+                .Where(x => x.Ucenik.Id == ucenikId && x.Nastava.predajePredmet.Nastavnik.Id == predmetId)
                 .ToList(), "Greska prilikom pribavljanja podataka iz baze") ?? new List<Ocena>();
         }
 
         public static List<Ocena> vratiOcenePoTipu(TipOcene tip)
         {
-            return izvrsiUpit<List<Ocena>>(s => {
-                 return s.Query<Ocena>().Where(x=>x.Tip == tip).ToList();
+            return izvrsiUpit<List<Ocena>>(s =>
+            {
+                return s.Query<Ocena>().Where(x => x.Tip == tip).ToList();
             }, "Greska prilikom dobavljanja ocena iz baze") ?? new List<Ocena>();
         }
         #endregion

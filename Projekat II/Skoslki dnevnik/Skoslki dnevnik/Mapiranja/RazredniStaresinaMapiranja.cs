@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Skoslki_dnevnik.Mapiranja
+﻿namespace Skoslki_dnevnik.Mapiranja
 {
     public class RazredniStaresinaMapiranja : SubclassMap<RazredniStaresina>
     {

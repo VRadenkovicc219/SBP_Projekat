@@ -1,43 +1,50 @@
 ﻿
-public enum StatusUcenika { 
+public enum StatusUcenika
+{
     AKTIVAN,
     PONAVLJA,
     ZAVRSIO,
     ISPISAN
 }
 
-public enum StatusNastavnika { 
+public enum StatusNastavnika
+{
     AKTIVAN,
     NA_BOLOVANJU,
     ODSUTAN,
     PENZIONISAN
 }
 
-public enum TipOcene { 
+public enum TipOcene
+{
     USMENI_ODGOVOR,
     PISANA_PROVERA,
     AKTIVNOST,
     ZAKLJUCNA
 }
 
-public enum TipPredmeta { 
+public enum TipPredmeta
+{
     OBAVEZNI,
     IZBORNI,
     FAKULTATIVNI
 }
 
-public enum TipIzostanka { 
+public enum TipIzostanka
+{
     OPRAVDAN,
     NEOPRAVDAN
 }
 
-public enum Opravdao { 
+public enum Opravdao
+{
     STARATELJ,
     LEKAR
 }
 
-public enum RukovodecaPozicija { 
-    DIREKTOR, 
+public enum RukovodecaPozicija
+{
+    DIREKTOR,
     ZAMENIK_DIREKTORA,
     POMOCNIK_DIREKTORA
 }
@@ -49,7 +56,8 @@ public enum OblastOdgovornosti
     TEHNICKA_SLUZBA
 }
 
-public enum StrucnaOblast { 
+public enum StrucnaOblast
+{
     PEDAGOGIJA,
     SKOLSKA_PSIHOLOGIJA,
     LOGOPEDIJA

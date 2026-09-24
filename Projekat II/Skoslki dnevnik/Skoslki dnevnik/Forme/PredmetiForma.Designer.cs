@@ -44,6 +44,7 @@
             predmeti_dgv.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             predmeti_dgv.Size = new Size(280, 370);
             predmeti_dgv.TabIndex = 0;
+            predmeti_dgv.SelectionChanged += predmeti_dgv_SelectionChanged;
             // 
             // dodajPredmetBtn
             // 
@@ -63,6 +64,7 @@
             izmeniPredmetBtn.TabIndex = 2;
             izmeniPredmetBtn.Text = "izmeni predmet";
             izmeniPredmetBtn.UseVisualStyleBackColor = true;
+            izmeniPredmetBtn.Click += izmeniPredmetBtn_Click;
             // 
             // obrisiPredmetBtn
             // 
@@ -72,6 +74,7 @@
             obrisiPredmetBtn.TabIndex = 3;
             obrisiPredmetBtn.Text = "obrisi predmet";
             obrisiPredmetBtn.UseVisualStyleBackColor = true;
+            obrisiPredmetBtn.Click += obrisiPredmetBtn_Click;
             // 
             // PredmetiForma
             // 
