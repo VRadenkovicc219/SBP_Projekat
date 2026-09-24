@@ -27,5 +27,11 @@ namespace Skoslki_dnevnik
             UcenikPocetna nf = new UcenikPocetna();
             nf.Show();
         }
+
+        private void predmetiBtn_Click(object sender, EventArgs e)
+        {
+            PredmetiForma nf = new PredmetiForma();
+            nf.Show();
+        }
     }
 }

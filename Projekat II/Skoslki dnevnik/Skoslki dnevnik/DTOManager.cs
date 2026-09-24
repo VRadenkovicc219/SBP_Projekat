@@ -141,6 +141,18 @@ namespace Skoslki_dnevnik
             }, "Greska prilikom dobavljanja podataka iz baze");
         }
 
+        public static List<Predmet> vratiPredmeteUcenika(int ucenikId)
+        {
+            return izvrsiUpit(s =>
+            {
+                Ucenik? u = s.Get<Ucenik>(ucenikId);
+                if (u is null)
+                    throw new Exception("Ucenik sa unetim id-jem ne postoji u bazi podataka");
+
+                return u.Predmeti.ToList();
+            }, "Greska prilikom pribavljanja podataka iz baze") ?? new List<Predmet>();
+        }
+
         #endregion
 
         #region Odeljenje
@@ -274,7 +286,7 @@ namespace Skoslki_dnevnik
             return izvrsiUpit(s => s.Query<Nastavnik>().ToList(), "Greska pri preuzimanju nastavnika iz baze")
                 ?? new List<Nastavnik>();
         }
-        #endregion
+        
 
         public static void dodajNastavnika(Nastavnik nastavnik) {
             izvrsiUpit(n => n.Save(nastavnik), "Greska pri dodavanju novog nastavnika");
@@ -291,6 +303,62 @@ namespace Skoslki_dnevnik
                 return s.Query<RazredniStaresina>().Where(x => x.Odeljenje.Id == odeljenjeId).FirstOrDefault();
             }, "Greska prilikom pribavljanja razrednog staresine za odeljenje");
         }
+        #endregion
+
+        #region Predmet
+        public static List<Predmet> vratiPredmete(string skolskaGodina = null) {
+            return izvrsiUpit<List<Predmet>>(s => { 
+                List<Predmet> predmeti = s.Query<Predmet>().ToList();
+                if (!String.IsNullOrWhiteSpace(skolskaGodina)) {
+                    predmeti = predmeti.Where(x => x.SkolskaGodina == skolskaGodina).ToList();
+                }
+                return predmeti;
+            } , "Greska prilikom pribavljanja podataka iz baze") ?? new List<Predmet>();
+        }
+
+        public static Predmet vratiPredmet(int id) {
+            return izvrsiUpit<Predmet>(s => s.Get<Predmet>(id), "Greska prilikom pribavljanja iz baze podataka");
+        }
+        public static void dodajPredmet(Predmet p) {
+            izvrsiUpit(s => s.Save(p), "Greska prilikom dodavanja predmeta u bazu podataka");
+        }
+
+        public static void obrisiPredmet(Predmet p) {
+            izvrsiUpit(s => s.Delete(p), "Greska prilikom brisanja predmeta iz baze podataka");
+        }
+
+        public static void izmeniPredmet(int id, Predmet predmet) {
+            izvrsiUpit(s =>
+            {
+                if (predmet is null) {
+                    throw new Exception("Greska prilikom izmene predmeta");
+                }
+                Predmet p = s.Get<Predmet>(id);
+                if (p is null) throw new Exception("Predmet sa unetim Idjem ne postoji u bazi podataka");
+
+
+            }, "Greska prilikom izmene predmeta iz baze podataka");
+        }
+
+        public static List<Ucenik> vratiUcenikeKojiSlusajuPredmet(int idPredmeta) {
+            return izvrsiUpit<List<Ucenik>>(s => s.Query<Ucenik>().Where(x => x.Predmeti.Any(x => x.Id == idPredmeta)).ToList(),
+                "Nijedan ucenik ne slusa dati predmet");
+        }
+
+        public static List<Ocena> vratiOceneUcenikaNaPredmetu(int ucenikId, int predmetId) {
+            return izvrsiUpit<List<Ocena>>(s =>
+                s.Query<Ocena>()
+                .Where(x=>x.Ucenik.Id == ucenikId && x.Nastava.predajePredmet.Nastavnik.Id == predmetId)
+                .ToList(), "Greska prilikom pribavljanja podataka iz baze") ?? new List<Ocena>();
+        }
+
+        public static List<Ocena> vratiOcenePoTipu(TipOcene tip)
+        {
+            return izvrsiUpit<List<Ocena>>(s => {
+                 return s.Query<Ocena>().Where(x=>x.Tip == tip).ToList();
+            }, "Greska prilikom dobavljanja ocena iz baze") ?? new List<Ocena>();
+        }
+        #endregion
     }
 }
 

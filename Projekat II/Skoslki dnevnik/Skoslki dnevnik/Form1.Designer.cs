@@ -72,6 +72,7 @@
             predmetiBtn.TabIndex = 3;
             predmetiBtn.Text = "Predmeti";
             predmetiBtn.UseVisualStyleBackColor = true;
+            predmetiBtn.Click += predmetiBtn_Click;
             // 
             // roditeljiBtn
             // 
