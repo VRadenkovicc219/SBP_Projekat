@@ -44,7 +44,7 @@
             label5 = new Label();
             label6 = new Label();
             polCk = new Label();
-            skolskaGodinaTb = new TextBox();
+            komentarTb = new TextBox();
             statusCb = new ComboBox();
             label1 = new Label();
             label8 = new Label();
@@ -192,12 +192,12 @@
             polCk.TabIndex = 28;
             polCk.Text = "Pol";
             // 
-            // skolskaGodinaTb
+            // komentarTb
             // 
-            skolskaGodinaTb.Location = new Point(140, 283);
-            skolskaGodinaTb.Name = "skolskaGodinaTb";
-            skolskaGodinaTb.Size = new Size(264, 23);
-            skolskaGodinaTb.TabIndex = 10;
+            komentarTb.Location = new Point(140, 283);
+            komentarTb.Name = "komentarTb";
+            komentarTb.Size = new Size(264, 23);
+            komentarTb.TabIndex = 10;
             // 
             // statusCb
             // 
@@ -271,7 +271,7 @@
             Controls.Add(label8);
             Controls.Add(label1);
             Controls.Add(statusCb);
-            Controls.Add(skolskaGodinaTb);
+            Controls.Add(komentarTb);
             Controls.Add(polCk);
             Controls.Add(label6);
             Controls.Add(label5);
@@ -313,7 +313,7 @@
         private Label label5;
         private Label label6;
         private Label polCk;
-        private TextBox skolskaGodinaTb;
+        private TextBox komentarTb;
         private ComboBox statusCb;
         private Label label1;
         private Label label8;

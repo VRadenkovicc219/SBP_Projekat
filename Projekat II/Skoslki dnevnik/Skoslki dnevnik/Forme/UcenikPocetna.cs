@@ -63,8 +63,13 @@ namespace Skoslki_dnevnik.Forme
         {
             if (dataGridView1.SelectedRows.Count == 0) { return; }
             Ucenik ucenik = (Ucenik)dataGridView1.SelectedRows[0].DataBoundItem;
-            DTOManager.obrisiUcenika(ucenik);
-            ucitajUcenike();
+            if (MessageBox.Show($"Da li ste sigurni da zelite da obrisete ucenika {ucenik.Ime}", "Potvrda brisanja",
+                MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                DTOManager.obrisiUcenika(ucenik);
+                ucitajUcenike();
+            }
+
         }
 
         private void dataGridView1_SelectionChanged(object sender, EventArgs e)

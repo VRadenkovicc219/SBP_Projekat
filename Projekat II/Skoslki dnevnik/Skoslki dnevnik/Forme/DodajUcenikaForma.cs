@@ -81,10 +81,10 @@ namespace Skoslki_dnevnik.Forme
                 JMBG = jmbgTb.Text,
                 Adresa = adresaTb.Text,
                 DatumRodjenja = datumRodjenjaDtp.Value,
-                Komentar = godinaUpisatxt.Text,
+                Komentar = komentarTb.Text,
                 Email = emailTb.Text,
                 Pol = polMCk.Checked ? 'M' : 'Z',
-                GodinaUpisa = skolskaGodinaTb.Text,
+                GodinaUpisa = godinaUpisatxt.Text,
                 Telefon = telefontxt.Text,
                 Status = (StatusUcenika)statusCb.SelectedItem
             };
@@ -119,7 +119,7 @@ namespace Skoslki_dnevnik.Forme
                 godinaUpisatxt.Text = _ucenik.Komentar ?? "";
                 statusCb.SelectedItem = _ucenik.Status;
                 emailTb.Text = _ucenik.Email;
-                skolskaGodinaTb.Text = _ucenik.GodinaUpisa;
+                komentarTb.Text = _ucenik.GodinaUpisa;
                 datumRodjenjaDtp.Value = _ucenik.DatumRodjenja;
             }
         }

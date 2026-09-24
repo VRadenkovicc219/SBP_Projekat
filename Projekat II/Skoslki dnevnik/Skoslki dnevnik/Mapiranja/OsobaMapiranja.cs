@@ -15,7 +15,7 @@ namespace Skoslki_dnevnik.Mapiranja
             Map(x => x.DatumRodjenja, "DATUM_RODJENJA").Not.Nullable();
             Map(x => x.Email, "EMAIL").Not.Nullable();
             Map(x => x.Komentar, "KOMENTAR");
-            Map(x => x.Telefon, "TELEFON1");
+            Map(x => x.Telefon, "TELEFON1").Not.Nullable();
         }
     }
 }
