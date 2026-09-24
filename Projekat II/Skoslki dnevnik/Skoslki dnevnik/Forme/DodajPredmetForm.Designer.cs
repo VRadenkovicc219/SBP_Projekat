@@ -40,9 +40,8 @@
             label6 = new Label();
             label7 = new Label();
             tipCb = new ComboBox();
-            button1 = new Button();
-            button2 = new Button();
-            button3 = new Button();
+            dodajBtn = new Button();
+            dodajNastavnikeBtn = new Button();
             komentarTxt = new RichTextBox();
             OpisTxt = new RichTextBox();
             SuspendLayout();
@@ -66,9 +65,11 @@
             // skolskaGodinaTxt
             // 
             skolskaGodinaTxt.Location = new Point(130, 35);
+            skolskaGodinaTxt.MaxLength = 9;
             skolskaGodinaTxt.Name = "skolskaGodinaTxt";
             skolskaGodinaTxt.Size = new Size(197, 23);
-            skolskaGodinaTxt.TabIndex = 3;
+            skolskaGodinaTxt.TabIndex = 2;
+            skolskaGodinaTxt.KeyUp += skolskaGodinaTxt_KeyUp;
             // 
             // label2
             // 
@@ -82,9 +83,11 @@
             // razredTxt
             // 
             razredTxt.Location = new Point(130, 64);
+            razredTxt.MaxLength = 1;
             razredTxt.Name = "razredTxt";
             razredTxt.Size = new Size(197, 23);
-            razredTxt.TabIndex = 5;
+            razredTxt.TabIndex = 3;
+            razredTxt.KeyPress += razredTxt_KeyPress;
             // 
             // label3
             // 
@@ -98,9 +101,11 @@
             // fondTxt
             // 
             fondTxt.Location = new Point(130, 93);
+            fondTxt.MaxLength = 2;
             fondTxt.Name = "fondTxt";
             fondTxt.Size = new Size(197, 23);
-            fondTxt.TabIndex = 7;
+            fondTxt.TabIndex = 4;
+            fondTxt.KeyPress += fondTxt_KeyPress;
             // 
             // label4
             // 
@@ -144,41 +149,33 @@
             tipCb.Location = new Point(130, 180);
             tipCb.Name = "tipCb";
             tipCb.Size = new Size(197, 23);
-            tipCb.TabIndex = 13;
+            tipCb.TabIndex = 7;
             // 
-            // button1
+            // dodajBtn
             // 
-            button1.Location = new Point(97, 249);
-            button1.Name = "button1";
-            button1.Size = new Size(152, 35);
-            button1.TabIndex = 14;
-            button1.Text = "button1";
-            button1.UseVisualStyleBackColor = true;
+            dodajBtn.Location = new Point(97, 249);
+            dodajBtn.Name = "dodajBtn";
+            dodajBtn.Size = new Size(152, 35);
+            dodajBtn.TabIndex = 9;
+            dodajBtn.Text = "Dodaj predmet";
+            dodajBtn.UseVisualStyleBackColor = true;
+            dodajBtn.Click += dodajBtn_Click;
             // 
-            // button2
+            // dodajNastavnikeBtn
             // 
-            button2.Location = new Point(130, 209);
-            button2.Name = "button2";
-            button2.Size = new Size(75, 23);
-            button2.TabIndex = 15;
-            button2.Text = "button2";
-            button2.UseVisualStyleBackColor = true;
-            // 
-            // button3
-            // 
-            button3.Location = new Point(249, 208);
-            button3.Name = "button3";
-            button3.Size = new Size(78, 24);
-            button3.TabIndex = 16;
-            button3.Text = "button3";
-            button3.UseVisualStyleBackColor = true;
+            dodajNastavnikeBtn.Location = new Point(130, 209);
+            dodajNastavnikeBtn.Name = "dodajNastavnikeBtn";
+            dodajNastavnikeBtn.Size = new Size(197, 23);
+            dodajNastavnikeBtn.TabIndex = 8;
+            dodajNastavnikeBtn.Text = "Dodaj nastvnike";
+            dodajNastavnikeBtn.UseVisualStyleBackColor = true;
             // 
             // komentarTxt
             // 
             komentarTxt.Location = new Point(130, 151);
             komentarTxt.Name = "komentarTxt";
             komentarTxt.Size = new Size(197, 23);
-            komentarTxt.TabIndex = 17;
+            komentarTxt.TabIndex = 6;
             komentarTxt.Text = "";
             // 
             // OpisTxt
@@ -186,7 +183,7 @@
             OpisTxt.Location = new Point(130, 122);
             OpisTxt.Name = "OpisTxt";
             OpisTxt.Size = new Size(197, 23);
-            OpisTxt.TabIndex = 18;
+            OpisTxt.TabIndex = 5;
             OpisTxt.Text = "";
             // 
             // DodajPredmetForm
@@ -196,9 +193,8 @@
             ClientSize = new Size(339, 296);
             Controls.Add(OpisTxt);
             Controls.Add(komentarTxt);
-            Controls.Add(button3);
-            Controls.Add(button2);
-            Controls.Add(button1);
+            Controls.Add(dodajNastavnikeBtn);
+            Controls.Add(dodajBtn);
             Controls.Add(tipCb);
             Controls.Add(label7);
             Controls.Add(label6);
@@ -232,9 +228,8 @@
         private Label label6;
         private Label label7;
         private ComboBox tipCb;
-        private Button button1;
-        private Button button2;
-        private Button button3;
+        private Button dodajBtn;
+        private Button dodajNastavnikeBtn;
         private RichTextBox komentarTxt;
         private RichTextBox OpisTxt;
     }
