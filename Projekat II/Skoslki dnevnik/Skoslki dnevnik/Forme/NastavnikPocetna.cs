@@ -20,8 +20,26 @@
             df.Show();
         }
 
-        private void vratiNastavnike() { 
-            
+
+        private void dodeliPredmetBtn_Click(object sender, EventArgs e)
+        {
+            int id = ((Nastavnik)nastavnici_dgv.SelectedRows[0].DataBoundItem!).Id;
+            DodelaPredmetaFrom df = new DodelaPredmetaFrom(id);
+            df.Show();
+        }
+
+        private void predmetiBtn_Click(object sender, EventArgs e)
+        {
+            int id = ((Nastavnik)nastavnici_dgv.SelectedRows[0].DataBoundItem!).Id;
+            DodelaPredmetaFrom df = new DodelaPredmetaFrom(id, true);
+            df.Show();
+        }
+
+        private void dodeliOcenuBtn_Click(object sender, EventArgs e)
+        {
+            Nastavnik nastavnik = (Nastavnik)nastavnici_dgv.SelectedRows[0].DataBoundItem!;
+            PregledUcenikaForm pf = new PregledUcenikaForm(nastavnik);
+            pf.Show();
         }
     }
 }

@@ -96,7 +96,7 @@
             // polCk
             // 
             polCk.AutoSize = true;
-            polCk.Location = new Point(209, 396);
+            polCk.Location = new Point(206, 396);
             polCk.Name = "polCk";
             polCk.Size = new Size(24, 15);
             polCk.TabIndex = 40;

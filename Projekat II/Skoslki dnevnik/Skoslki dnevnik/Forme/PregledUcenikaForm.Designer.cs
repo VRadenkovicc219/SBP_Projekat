@@ -28,24 +28,25 @@
         /// </summary>
         private void InitializeComponent()
         {
-            nastavniciDGV = new DataGridView();
+            uceniciDgv = new DataGridView();
             dodeliOcenuBtn = new Button();
             dodeliIzostanakBtn = new Button();
             izostanciBtn = new Button();
             oceneBtn = new Button();
-            comboBox1 = new ComboBox();
+            predmetiCB = new ComboBox();
             label1 = new Label();
             izbaciUcenikaBtn = new Button();
-            ((System.ComponentModel.ISupportInitialize)nastavniciDGV).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)uceniciDgv).BeginInit();
             SuspendLayout();
             // 
-            // nastavniciDGV
+            // uceniciDgv
             // 
-            nastavniciDGV.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            nastavniciDGV.Location = new Point(12, 46);
-            nastavniciDGV.Name = "nastavniciDGV";
-            nastavniciDGV.Size = new Size(364, 426);
-            nastavniciDGV.TabIndex = 0;
+            uceniciDgv.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            uceniciDgv.Location = new Point(12, 46);
+            uceniciDgv.Name = "uceniciDgv";
+            uceniciDgv.ReadOnly = true;
+            uceniciDgv.Size = new Size(364, 426);
+            uceniciDgv.TabIndex = 0;
             // 
             // dodeliOcenuBtn
             // 
@@ -83,13 +84,15 @@
             oceneBtn.Text = "Pregledaj ocene";
             oceneBtn.UseVisualStyleBackColor = true;
             // 
-            // comboBox1
+            // predmetiCB
             // 
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(70, 12);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(306, 23);
-            comboBox1.TabIndex = 25;
+            predmetiCB.FormattingEnabled = true;
+            predmetiCB.Location = new Point(70, 12);
+            predmetiCB.Name = "predmetiCB";
+            predmetiCB.Size = new Size(306, 23);
+            predmetiCB.TabIndex = 25;
+            predmetiCB.SelectedIndexChanged += predmetiCB_SelectedIndexChanged;
+            predmetiCB.SelectionChangeCommitted += predmetiCB_SelectionChangeCommitted;
             // 
             // label1
             // 
@@ -116,27 +119,28 @@
             ClientSize = new Size(503, 484);
             Controls.Add(izbaciUcenikaBtn);
             Controls.Add(label1);
-            Controls.Add(comboBox1);
+            Controls.Add(predmetiCB);
             Controls.Add(dodeliOcenuBtn);
             Controls.Add(dodeliIzostanakBtn);
             Controls.Add(izostanciBtn);
             Controls.Add(oceneBtn);
-            Controls.Add(nastavniciDGV);
+            Controls.Add(uceniciDgv);
             Name = "PregledUcenikaForm";
             Text = "PregledUcenikaForm";
-            ((System.ComponentModel.ISupportInitialize)nastavniciDGV).EndInit();
+            Load += PregledUcenikaForm_Load;
+            ((System.ComponentModel.ISupportInitialize)uceniciDgv).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
 
-        private DataGridView nastavniciDGV;
+        private DataGridView uceniciDgv;
         private Button dodeliOcenuBtn;
         private Button dodeliIzostanakBtn;
         private Button izostanciBtn;
         private Button oceneBtn;
-        private ComboBox comboBox1;
+        private ComboBox predmetiCB;
         private Label label1;
         private Button izbaciUcenikaBtn;
     }

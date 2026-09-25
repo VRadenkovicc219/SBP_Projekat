@@ -13,8 +13,8 @@
 
             HasManyToMany(x => x.Predmeti)
                 .Table("SLUSA_PREDMET")
-                .ParentKeyColumn("ID_PREDMET")
-                .ChildKeyColumn("ID_UCENIK");
+                .ParentKeyColumn("ID_UCENIK")
+                .ChildKeyColumn("ID_PREDMET");
 
             HasManyToMany(x => x.Odeljenja)
                 .Table("UCENIK_ODELJENJE")

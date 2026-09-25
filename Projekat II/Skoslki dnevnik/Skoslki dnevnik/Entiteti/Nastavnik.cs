@@ -6,6 +6,6 @@
         public virtual required string Zvanje { get; set; }
         public virtual required string StrucnaSprema { get; set; }
         public virtual DateTime DatumZaposlenja { get; set; }
-        public virtual IList<Predmet> Predmeti { get; set; } = new List<Predmet>();
+        public virtual IList<Predaje> Predaje { get; set; } = new List<Predaje>();
     }
 }

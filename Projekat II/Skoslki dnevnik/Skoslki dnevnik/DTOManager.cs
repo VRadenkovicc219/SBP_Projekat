@@ -18,7 +18,7 @@ namespace Skoslki_dnevnik
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"{porukaGreske}: {ex.Message}");
+                MessageBox.Show($"{porukaGreske}: {ex.ToString()}");
             }
         }
 
@@ -37,7 +37,7 @@ namespace Skoslki_dnevnik
             catch (Exception ex)
             {
                 MessageBox.Show($"{porukaGreske}: {ex.Message}");
-                return default;
+                return default!;
             }
         }
 
@@ -352,14 +352,14 @@ namespace Skoslki_dnevnik
             }, "Greska prilikom izmene podataka o nastavniku");
         }
 
-        public static List<Predmet> vratiPredmeteNastavnika(int id, String? SkolskaGodina = null) {
+        public static List<PredmetiDTO> vratiPredmeteNastavnika(int id, String? SkolskaGodina = null) {
             return izvrsiUpit(s =>
             {
                 return s.Query<Predaje>()
                 .Where(n => n.Nastavnik.Id == id &&
                             (SkolskaGodina == null ||
                             n.Predmet.SkolskaGodina == SkolskaGodina))
-                .Select(n => n.Predmet)
+                .Select(n => new PredmetiDTO(n.Predmet.Id, n.Predmet.Naziv, n.Predmet.SkolskaGodina, n.Predmet.Razred))
                 .Distinct()
                 .ToList();
             }, "Greska prilikom dobavljanja podataka iz baze podataka");
@@ -390,10 +390,25 @@ namespace Skoslki_dnevnik
                         .ToList();
             }, "Greska prilikom pribavljanja podataka iz baze");
         }
+
+        public static void dodeliPredmetNastavniku(int idNastavnik, List<PredmetiDTO> predmeti) {
+            izvrsiUpit(s =>
+            {
+                Nastavnik n = s.Load<Nastavnik>(idNastavnik);
+                predmeti.ForEach(p =>
+                {
+                    s.Save(new Predaje
+                    {
+                        Nastavnik = n,
+                        Predmet = s.Load<Predmet>(p.id)
+                    });
+                });
+            }, "Greska prilikom azuriranja podataka u bazi");
+        }
         #endregion
 
         #region Predmet
-        public static List<Predmet> vratiPredmete(string skolskaGodina = null)
+        public static List<Predmet> vratiPredmete(String? skolskaGodina = null)
         {
             return izvrsiUpit<List<Predmet>>(s =>
             {
@@ -442,9 +457,13 @@ namespace Skoslki_dnevnik
             }, "Greska prilikom izmene predmeta iz baze podataka");
         }
 
-        public static List<Ucenik> vratiUcenikeKojiSlusajuPredmet(int idPredmeta)
+        public static List<UcenikDTO> vratiUcenikeKojiSlusajuPredmet(int idPredmeta)
         {
-            return izvrsiUpit<List<Ucenik>>(s => s.Query<Ucenik>().Where(x => x.Predmeti.Any(x => x.Id == idPredmeta)).ToList(),
+            return izvrsiUpit(s => s.Query<Ucenik>()
+                                                  .Where(x => x.Predmeti    
+                                                  .Any(p => p.Id == idPredmeta))
+                                                  .Select(u=>new UcenikDTO(u.Id, u.Ime, u.Prezime, u.JMBG, u.Adresa, u.Status.ToString()))
+                                                  .ToList(),
                 "Nijedan ucenik ne slusa dati predmet");
         }
 
@@ -462,6 +481,18 @@ namespace Skoslki_dnevnik
             {
                 return s.Query<Ocena>().Where(x => x.Tip == tip).ToList();
             }, "Greska prilikom dobavljanja ocena iz baze") ?? new List<Ocena>();
+        }
+
+        public static List<PredmetiDTO> vratiPredmeteZaOdabir(int nastavnikId) {
+            return izvrsiUpit(s =>
+            {
+                return s.Query<Predmet>()
+                        .Where(x => !x.Predaje.Any(p => p.Nastavnik.Id == nastavnikId))
+                        .OrderByDescending(x => x.SkolskaGodina)
+                        .ThenBy(x => x.Razred)
+                        .Select(x => new PredmetiDTO(x.Id, x.Naziv, x.SkolskaGodina, x.Razred))
+                        .ToList();
+            }, "Greska prilikom pribavljanja podataka iz baze");
         }
         #endregion
     }

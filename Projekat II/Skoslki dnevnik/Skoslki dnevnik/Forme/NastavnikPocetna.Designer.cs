@@ -30,11 +30,11 @@
         {
             nastavnici_dgv = new DataGridView();
             predmetiBtn = new Button();
-            dodajTelefonBtn = new Button();
             dodeliPredmetBtn = new Button();
             obrisiNastavnikaBtn = new Button();
             dodajNastavnikaBtn = new Button();
             izmaniNastavnikaBtn = new Button();
+            dodeliOcenuBtn = new Button();
             ((System.ComponentModel.ISupportInitialize)nastavnici_dgv).BeginInit();
             SuspendLayout();
             // 
@@ -42,7 +42,10 @@
             // 
             nastavnici_dgv.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             nastavnici_dgv.Location = new Point(6, 10);
+            nastavnici_dgv.MultiSelect = false;
             nastavnici_dgv.Name = "nastavnici_dgv";
+            nastavnici_dgv.ReadOnly = true;
+            nastavnici_dgv.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             nastavnici_dgv.Size = new Size(394, 430);
             nastavnici_dgv.TabIndex = 14;
             // 
@@ -54,15 +57,7 @@
             predmetiBtn.TabIndex = 13;
             predmetiBtn.Text = "Pregledaj predmete";
             predmetiBtn.UseVisualStyleBackColor = true;
-            // 
-            // dodajTelefonBtn
-            // 
-            dodajTelefonBtn.Location = new Point(406, 114);
-            dodajTelefonBtn.Name = "dodajTelefonBtn";
-            dodajTelefonBtn.Size = new Size(117, 39);
-            dodajTelefonBtn.TabIndex = 12;
-            dodajTelefonBtn.Text = "dodaj broj telefona";
-            dodajTelefonBtn.UseVisualStyleBackColor = true;
+            predmetiBtn.Click += predmetiBtn_Click;
             // 
             // dodeliPredmetBtn
             // 
@@ -72,6 +67,7 @@
             dodeliPredmetBtn.TabIndex = 11;
             dodeliPredmetBtn.Text = "dodeli predmet";
             dodeliPredmetBtn.UseVisualStyleBackColor = true;
+            dodeliPredmetBtn.Click += dodeliPredmetBtn_Click;
             // 
             // obrisiNastavnikaBtn
             // 
@@ -101,15 +97,25 @@
             izmaniNastavnikaBtn.Text = "izmeni nastavnika";
             izmaniNastavnikaBtn.UseVisualStyleBackColor = true;
             // 
+            // dodeliOcenuBtn
+            // 
+            dodeliOcenuBtn.Location = new Point(406, 239);
+            dodeliOcenuBtn.Name = "dodeliOcenuBtn";
+            dodeliOcenuBtn.Size = new Size(117, 23);
+            dodeliOcenuBtn.TabIndex = 19;
+            dodeliOcenuBtn.Text = "Dodeli ocenu";
+            dodeliOcenuBtn.UseVisualStyleBackColor = true;
+            dodeliOcenuBtn.Click += dodeliOcenuBtn_Click;
+            // 
             // NastavnikPocetna
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(557, 473);
+            Controls.Add(dodeliOcenuBtn);
             Controls.Add(izmaniNastavnikaBtn);
             Controls.Add(nastavnici_dgv);
             Controls.Add(predmetiBtn);
-            Controls.Add(dodajTelefonBtn);
             Controls.Add(dodeliPredmetBtn);
             Controls.Add(obrisiNastavnikaBtn);
             Controls.Add(dodajNastavnikaBtn);
@@ -123,10 +129,10 @@
         #endregion
         private DataGridView nastavnici_dgv;
         private Button predmetiBtn;
-        private Button dodajTelefonBtn;
         private Button dodeliPredmetBtn;
         private Button obrisiNastavnikaBtn;
         private Button dodajNastavnikaBtn;
         private Button izmaniNastavnikaBtn;
+        private Button dodeliOcenuBtn;
     }
 }
