@@ -28,23 +28,23 @@
         /// </summary>
         private void InitializeComponent()
         {
-            dataGridView1 = new DataGridView();
+            nastavnici_dgv = new DataGridView();
             predmetiBtn = new Button();
             dodajTelefonBtn = new Button();
             dodeliPredmetBtn = new Button();
             obrisiNastavnikaBtn = new Button();
             dodajNastavnikaBtn = new Button();
             izmaniNastavnikaBtn = new Button();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)nastavnici_dgv).BeginInit();
             SuspendLayout();
             // 
-            // dataGridView1
+            // nastavnici_dgv
             // 
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(6, 10);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.Size = new Size(394, 430);
-            dataGridView1.TabIndex = 14;
+            nastavnici_dgv.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            nastavnici_dgv.Location = new Point(6, 10);
+            nastavnici_dgv.Name = "nastavnici_dgv";
+            nastavnici_dgv.Size = new Size(394, 430);
+            nastavnici_dgv.TabIndex = 14;
             // 
             // predmetiBtn
             // 
@@ -107,7 +107,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(557, 473);
             Controls.Add(izmaniNastavnikaBtn);
-            Controls.Add(dataGridView1);
+            Controls.Add(nastavnici_dgv);
             Controls.Add(predmetiBtn);
             Controls.Add(dodajTelefonBtn);
             Controls.Add(dodeliPredmetBtn);
@@ -116,12 +116,12 @@
             Name = "NastavnikPocetna";
             Text = "NastavnikPocetna";
             Load += NastavnikPocetna_Load;
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)nastavnici_dgv).EndInit();
             ResumeLayout(false);
         }
 
         #endregion
-        private DataGridView dataGridView1;
+        private DataGridView nastavnici_dgv;
         private Button predmetiBtn;
         private Button dodajTelefonBtn;
         private Button dodeliPredmetBtn;

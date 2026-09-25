@@ -291,10 +291,20 @@ namespace Skoslki_dnevnik
 
         public static List<Nastavnik> vratiNastavnike()
         {
-            return izvrsiUpit(s => s.Query<Nastavnik>().ToList(), "Greska pri preuzimanju nastavnika iz baze")
-                ?? new List<Nastavnik>();
+            return izvrsiUpit(
+                s => s.Query<Nastavnik>().ToList(),
+                "Greska pri preuzimanju nastavnika iz baze"
+            );
         }
 
+        public static Nastavnik vratiNastavnika(int id)
+        {
+            return izvrsiUpit<Nastavnik>(s => {
+                Nastavnik n = s.Get<Nastavnik>(id);
+                if (n is null) throw new Exception("Nastavnik ne postoji u bazi podataka");
+                return n;
+            }, "Greska prilikom dobavljanja podataka o nastavniku iz baze");
+        }
 
         public static void dodajNastavnika(Nastavnik nastavnik)
         {
@@ -313,6 +323,72 @@ namespace Skoslki_dnevnik
             {
                 return s.Query<RazredniStaresina>().Where(x => x.Odeljenje.Id == odeljenjeId).FirstOrDefault();
             }, "Greska prilikom pribavljanja razrednog staresine za odeljenje");
+        }
+
+        public static void izmeniNastavnika(int id, Nastavnik nastavnik)
+        {
+            izvrsiUpit(s =>
+            {
+                if (s.Query<Nastavnik>().Any(x => x.Email == nastavnik.Email && x.Id != nastavnik.Id))
+                {
+                    throw new Exception("Korisnik sa ovim emailom vec postoji u bazi podataka");
+                }
+                Nastavnik n = s.Get<Nastavnik>(id);
+                n.Ime = nastavnik.Ime;
+                n.Prezime = nastavnik.Prezime;
+                n.JMBG = nastavnik.JMBG;
+                n.Adresa = nastavnik.Adresa;
+                n.Pol = nastavnik.Pol;
+                n.Status = nastavnik.Status;
+                n.DatumRodjenja = nastavnik.DatumRodjenja;
+                n.Telefon = nastavnik.Telefon;
+                n.Email = nastavnik.Email;
+                n.Komentar = nastavnik.Komentar;
+                n.Zvanje = nastavnik.Zvanje;
+                n.StrucnaSprema = nastavnik.StrucnaSprema;
+                n.Status = nastavnik.Status;
+                n.DatumZaposlenja = nastavnik.DatumZaposlenja;
+
+            }, "Greska prilikom izmene podataka o nastavniku");
+        }
+
+        public static List<Predmet> vratiPredmeteNastavnika(int id, String? SkolskaGodina = null) {
+            return izvrsiUpit(s =>
+            {
+                return s.Query<Predaje>()
+                .Where(n => n.Nastavnik.Id == id &&
+                            (SkolskaGodina == null ||
+                            n.Predmet.SkolskaGodina == SkolskaGodina))
+                .Select(n => n.Predmet)
+                .Distinct()
+                .ToList();
+            }, "Greska prilikom dobavljanja podataka iz baze podataka");
+        }
+
+        public static List<Ucenik> vratiUcenikeZaPredmet(int odeljenjeId, int predmetId, int nastavnikId)
+        {
+            return izvrsiUpit<List<Ucenik>>(s =>
+            {
+                return s.Query<Nastava>()
+                    .Where(x => x.Odeljenje.Id == odeljenjeId && x.predajePredmet.Predmet.Id == predmetId && x.predajePredmet.Nastavnik.Id == nastavnikId)
+                    .SelectMany(x => x.Odeljenje.Ucenici)
+                    .ToList();
+            }, "Greska pri pribavljanju podataka iz baze") ?? new List<Ucenik>();
+        }
+
+        public static void dodeliOcenu(Ocena ocena) {
+            izvrsiUpit(s => s.Save(ocena), "Greska prilikom dodele ocene");
+        }
+
+        public static List<OcenaDTO> pregledajOceneUcenikaZaPredmet(int ucenikId, int predmetId) {
+            return izvrsiUpit<List<OcenaDTO>>(s =>
+            {
+                return s.Query<Ocena>()
+                        .Where(x => x.Ucenik.Id == ucenikId && x.Ucenik.Predmeti.Any(x => x.Id == predmetId))
+                        .Select(x => new OcenaDTO(x.Vrednost, x.DatumOcenjivanja, x.Polugodje))
+                        .OrderByDescending(x=>x.datumOcenjivanja)
+                        .ToList();
+            }, "Greska prilikom pribavljanja podataka iz baze");
         }
         #endregion
 

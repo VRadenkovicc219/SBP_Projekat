@@ -11,7 +11,6 @@
         private void PredmetiForma_Load(object sender, EventArgs e)
         {
             ucitajPredmete();
-            predmeti_dgv.DataSource = predmeti;
         }
 
         private void ucitajPredmete()
@@ -19,6 +18,9 @@
             predmeti.Clear();
             predmeti = DTOManager.vratiPredmete();
             predmeti_dgv.DataSource = predmeti;
+            predmeti_dgv.Columns["ID"].Visible = false;
+            predmeti_dgv.Columns["Polaznici"].Visible = false;
+            predmeti_dgv.Columns["Predaje"].Visible = false;
         }
 
         private void dodajPredmetBtn_Click(object sender, EventArgs e)
@@ -26,13 +28,9 @@
             DodajPredmetForm df = new DodajPredmetForm();
             if (df.ShowDialog() == DialogResult.OK)
             {
-                MessageBox.Show("Uspesno dodavanje predmeta");
+                MessageBox.Show("Uspesno ste izmenili podatke o predmetu");
+                ucitajPredmete();
             }
-            else
-            {
-                MessageBox.Show("Neuspesno dodavanje predmeta");
-            }
-
         }
 
         private void izmeniPredmetBtn_Click(object sender, EventArgs e)
@@ -71,11 +69,18 @@
                     MessageBoxButtons.YesNo,
                     MessageBoxIcon.Question
                 )
-                == DialogResult.Yes) {
+                == DialogResult.Yes)
+            {
                 DTOManager.obrisiPredmet(p);
                 ucitajPredmete();
             }
 
+        }
+
+        private void predmeti_dgv_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            PredmetPodaci pp = new PredmetPodaci((Predmet)predmeti_dgv.SelectedRows[e.RowIndex].DataBoundItem);
+            pp.Show();
         }
     }
 }

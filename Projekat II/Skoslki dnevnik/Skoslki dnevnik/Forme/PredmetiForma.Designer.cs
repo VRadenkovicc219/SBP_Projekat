@@ -44,6 +44,7 @@
             predmeti_dgv.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             predmeti_dgv.Size = new Size(280, 370);
             predmeti_dgv.TabIndex = 0;
+            predmeti_dgv.CellDoubleClick += predmeti_dgv_CellDoubleClick;
             predmeti_dgv.SelectionChanged += predmeti_dgv_SelectionChanged;
             // 
             // dodajPredmetBtn

@@ -12,19 +12,21 @@
         {
             InitializeComponent();
             this.p = p;
-            nazivTxt.Text = p.Naziv;
-            skolskaGodinaTxt.Text = p.SkolskaGodina;
-            tipCb.SelectedItem = p.Tip;
-            razredTxt.Text = p.Razred.ToString();
-            fondTxt.Text = p.NedeljniFond.ToString();
-            OpisTxt.Text = p.Opis;
-            komentarTxt.Text = p.Komentar;
         }
 
 
         private void DodajPredmetForm_Load(object sender, EventArgs e)
         {
             tipCb.DataSource = Enum.GetValues(typeof(TipPredmeta));
+            if (p != null) {
+                nazivTxt.Text = p.Naziv;
+                skolskaGodinaTxt.Text = p.SkolskaGodina;
+                tipCb.SelectedItem = p.Tip;
+                razredTxt.Text = p.Razred.ToString();
+                fondTxt.Text = p.NedeljniFond.ToString();
+                OpisTxt.Text = p.Opis;
+                komentarTxt.Text = p.Komentar;
+            }
         }
 
         private bool validacijaPodataka()
@@ -53,17 +55,30 @@
                 Komentar = komentarTxt.Text,
                 Tip = (TipPredmeta)tipCb.SelectedItem
             };
-
-            if (p is null)
+            try
             {
-                if (!validacijaPodataka())
+
+                if (p is null)
                 {
-                    MessageBox.Show("Sva polja koja nisu opciona moraju biti popunjena");
+                    if (!validacijaPodataka())
+                    {
+                        MessageBox.Show("Sva polja koja nisu opciona moraju biti popunjena");
+                    }
+                    DTOManager.dodajPredmet(noviPredmet);
                 }
-                DTOManager.dodajPredmet(noviPredmet);
+                else
+                {
+                    DTOManager.izmeniPredmet(p.Id, noviPredmet);
+                }
+                this.DialogResult = DialogResult.OK;
             }
-            else {
-                DTOManager.izmeniPredmet(p.Id, noviPredmet);
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Greska prilikom izvodjenja akcije: {ex.Message}");
+            }
+            finally
+            {
+                this.Close();
             }
         }
 

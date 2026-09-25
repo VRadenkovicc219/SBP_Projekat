@@ -84,3 +84,4 @@ C:\Users\desko\Desktop\Baza\GIT\SBP_Projekat\Projekat II\Skoslki dnevnik\Skoslki
 C:\Users\desko\Desktop\Baza\GIT\SBP_Projekat\Projekat II\Skoslki dnevnik\Skoslki dnevnik\obj\Debug\net10.0-windows\Skoslki_dnevnik.Forme.DodajPredmetForm.resources
 D:\faks\RII\III godina\VI semestar\Sistemi baza podataka\SBP_Projekat\SBP_Projekat\Projekat II\Skoslki dnevnik\Skoslki dnevnik\obj\Debug\net10.0-windows\Skoslki_dnevnik.Forme.DodajPredmetForm.resources
 D:\faks\RII\III godina\VI semestar\Sistemi baza podataka\SBP_Projekat\SBP_Projekat\Projekat II\Skoslki dnevnik\Skoslki dnevnik\obj\Debug\net10.0-windows\Skoslki_dnevnik.Forme.PredmetiForma.resources
+C:\Users\desko\Desktop\Baza\GIT\SBP_Projekat\Projekat II\Skoslki dnevnik\Skoslki dnevnik\obj\Debug\net10.0-windows\Skoslki_dnevnik.Forme.PredmetPodaci.resources

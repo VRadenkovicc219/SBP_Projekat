@@ -30,7 +30,6 @@
         {
             label7 = new Label();
             datumRodjenjaDtp = new DateTimePicker();
-            telefoniBtn = new Button();
             label8 = new Label();
             statusCb = new ComboBox();
             polCk = new Label();
@@ -43,7 +42,6 @@
             polZCk = new CheckBox();
             polMCk = new CheckBox();
             emailTb = new TextBox();
-            komentarTb = new TextBox();
             adresaTb = new TextBox();
             jmbgTb = new TextBox();
             prezimeTb = new TextBox();
@@ -55,12 +53,15 @@
             sSpremaTxt = new TextBox();
             label12 = new Label();
             dZaposljenjaDtp = new DateTimePicker();
+            komentarTb = new RichTextBox();
+            telefon = new Label();
+            telefonTb = new TextBox();
             SuspendLayout();
             // 
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(206, 256);
+            label7.Location = new Point(206, 285);
             label7.Name = "label7";
             label7.Size = new Size(89, 15);
             label7.TabIndex = 47;
@@ -69,25 +70,16 @@
             // datumRodjenjaDtp
             // 
             datumRodjenjaDtp.Format = DateTimePickerFormat.Short;
-            datumRodjenjaDtp.Location = new Point(331, 250);
+            datumRodjenjaDtp.Location = new Point(331, 279);
             datumRodjenjaDtp.Name = "datumRodjenjaDtp";
             datumRodjenjaDtp.RightToLeft = RightToLeft.No;
             datumRodjenjaDtp.Size = new Size(264, 23);
             datumRodjenjaDtp.TabIndex = 46;
             // 
-            // telefoniBtn
-            // 
-            telefoniBtn.Location = new Point(486, 276);
-            telefoniBtn.Name = "telefoniBtn";
-            telefoniBtn.Size = new Size(109, 23);
-            telefoniBtn.TabIndex = 45;
-            telefoniBtn.Text = "Dodaj Telefon";
-            telefoniBtn.UseVisualStyleBackColor = true;
-            // 
             // label8
             // 
             label8.AutoSize = true;
-            label8.Location = new Point(206, 224);
+            label8.Location = new Point(206, 253);
             label8.Name = "label8";
             label8.Size = new Size(39, 15);
             label8.TabIndex = 44;
@@ -96,7 +88,7 @@
             // statusCb
             // 
             statusCb.FormattingEnabled = true;
-            statusCb.Location = new Point(331, 221);
+            statusCb.Location = new Point(331, 250);
             statusCb.Name = "statusCb";
             statusCb.Size = new Size(264, 23);
             statusCb.TabIndex = 42;
@@ -104,7 +96,7 @@
             // polCk
             // 
             polCk.AutoSize = true;
-            polCk.Location = new Point(206, 280);
+            polCk.Location = new Point(209, 396);
             polCk.Name = "polCk";
             polCk.Size = new Size(24, 15);
             polCk.TabIndex = 40;
@@ -113,7 +105,7 @@
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(206, 195);
+            label6.Location = new Point(206, 224);
             label6.Name = "label6";
             label6.Size = new Size(103, 15);
             label6.TabIndex = 39;
@@ -161,29 +153,31 @@
             Imel.AutoSize = true;
             Imel.Location = new Point(206, 50);
             Imel.Name = "Imel";
-            Imel.Size = new Size(30, 15);
+            Imel.Size = new Size(27, 15);
             Imel.TabIndex = 34;
-            Imel.Text = "Ime:";
+            Imel.Text = "Ime";
             // 
             // polZCk
             // 
             polZCk.AutoSize = true;
-            polZCk.Location = new Point(374, 279);
+            polZCk.Location = new Point(374, 395);
             polZCk.Name = "polZCk";
             polZCk.Size = new Size(33, 19);
             polZCk.TabIndex = 33;
             polZCk.Text = "Z";
             polZCk.UseVisualStyleBackColor = true;
+            polZCk.CheckedChanged += polZCk_CheckedChanged;
             // 
             // polMCk
             // 
             polMCk.AutoSize = true;
-            polMCk.Location = new Point(331, 279);
+            polMCk.Location = new Point(331, 395);
             polMCk.Name = "polMCk";
             polMCk.Size = new Size(37, 19);
             polMCk.TabIndex = 32;
             polMCk.Text = "M";
             polMCk.UseVisualStyleBackColor = true;
+            polMCk.CheckedChanged += polMCk_CheckedChanged;
             // 
             // emailTb
             // 
@@ -191,13 +185,6 @@
             emailTb.Name = "emailTb";
             emailTb.Size = new Size(264, 23);
             emailTb.TabIndex = 31;
-            // 
-            // komentarTb
-            // 
-            komentarTb.Location = new Point(331, 192);
-            komentarTb.Name = "komentarTb";
-            komentarTb.Size = new Size(264, 23);
-            komentarTb.TabIndex = 30;
             // 
             // adresaTb
             // 
@@ -209,9 +196,11 @@
             // jmbgTb
             // 
             jmbgTb.Location = new Point(331, 105);
+            jmbgTb.MaxLength = 13;
             jmbgTb.Name = "jmbgTb";
             jmbgTb.Size = new Size(264, 23);
             jmbgTb.TabIndex = 28;
+            jmbgTb.KeyPress += jmbgTb_KeyPress;
             // 
             // prezimeTb
             // 
@@ -240,7 +229,7 @@
             // label9
             // 
             label9.AutoSize = true;
-            label9.Location = new Point(206, 307);
+            label9.Location = new Point(206, 311);
             label9.Name = "label9";
             label9.Size = new Size(42, 15);
             label9.TabIndex = 49;
@@ -248,7 +237,7 @@
             // 
             // zvanjeTxt
             // 
-            zvanjeTxt.Location = new Point(331, 304);
+            zvanjeTxt.Location = new Point(331, 308);
             zvanjeTxt.Name = "zvanjeTxt";
             zvanjeTxt.Size = new Size(264, 23);
             zvanjeTxt.TabIndex = 48;
@@ -256,7 +245,7 @@
             // label10
             // 
             label10.AutoSize = true;
-            label10.Location = new Point(206, 336);
+            label10.Location = new Point(206, 340);
             label10.Name = "label10";
             label10.Size = new Size(89, 15);
             label10.TabIndex = 51;
@@ -264,7 +253,7 @@
             // 
             // sSpremaTxt
             // 
-            sSpremaTxt.Location = new Point(331, 333);
+            sSpremaTxt.Location = new Point(331, 337);
             sSpremaTxt.Name = "sSpremaTxt";
             sSpremaTxt.Size = new Size(264, 23);
             sSpremaTxt.TabIndex = 50;
@@ -272,7 +261,7 @@
             // label12
             // 
             label12.AutoSize = true;
-            label12.Location = new Point(206, 368);
+            label12.Location = new Point(206, 372);
             label12.Name = "label12";
             label12.Size = new Size(101, 15);
             label12.TabIndex = 55;
@@ -281,17 +270,45 @@
             // dZaposljenjaDtp
             // 
             dZaposljenjaDtp.Format = DateTimePickerFormat.Short;
-            dZaposljenjaDtp.Location = new Point(331, 362);
+            dZaposljenjaDtp.Location = new Point(331, 366);
             dZaposljenjaDtp.Name = "dZaposljenjaDtp";
             dZaposljenjaDtp.RightToLeft = RightToLeft.No;
             dZaposljenjaDtp.Size = new Size(264, 23);
             dZaposljenjaDtp.TabIndex = 54;
+            // 
+            // komentarTb
+            // 
+            komentarTb.Location = new Point(331, 221);
+            komentarTb.Name = "komentarTb";
+            komentarTb.Size = new Size(264, 23);
+            komentarTb.TabIndex = 56;
+            komentarTb.Text = "";
+            // 
+            // telefon
+            // 
+            telefon.AutoSize = true;
+            telefon.Location = new Point(206, 195);
+            telefon.Name = "telefon";
+            telefon.Size = new Size(46, 15);
+            telefon.TabIndex = 58;
+            telefon.Text = "Telefon";
+            // 
+            // telefonTb
+            // 
+            telefonTb.Location = new Point(331, 192);
+            telefonTb.Name = "telefonTb";
+            telefonTb.Size = new Size(264, 23);
+            telefonTb.TabIndex = 57;
+            telefonTb.KeyPress += telefonTb_KeyPress;
             // 
             // DodajNastavnikaForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 606);
+            Controls.Add(telefon);
+            Controls.Add(telefonTb);
+            Controls.Add(komentarTb);
             Controls.Add(label12);
             Controls.Add(dZaposljenjaDtp);
             Controls.Add(label10);
@@ -300,7 +317,6 @@
             Controls.Add(zvanjeTxt);
             Controls.Add(label7);
             Controls.Add(datumRodjenjaDtp);
-            Controls.Add(telefoniBtn);
             Controls.Add(label8);
             Controls.Add(statusCb);
             Controls.Add(polCk);
@@ -313,7 +329,6 @@
             Controls.Add(polZCk);
             Controls.Add(polMCk);
             Controls.Add(emailTb);
-            Controls.Add(komentarTb);
             Controls.Add(adresaTb);
             Controls.Add(jmbgTb);
             Controls.Add(prezimeTb);
@@ -330,7 +345,6 @@
 
         private Label label7;
         private DateTimePicker datumRodjenjaDtp;
-        private Button telefoniBtn;
         private Label label8;
         private ComboBox statusCb;
         private Label polCk;
@@ -343,7 +357,6 @@
         private CheckBox polZCk;
         private CheckBox polMCk;
         private TextBox emailTb;
-        private TextBox komentarTb;
         private TextBox adresaTb;
         private TextBox jmbgTb;
         private TextBox prezimeTb;
@@ -355,5 +368,8 @@
         private TextBox sSpremaTxt;
         private Label label12;
         private DateTimePicker dZaposljenjaDtp;
+        private RichTextBox komentarTb;
+        private Label telefon;
+        private TextBox telefonTb;
     }
 }
