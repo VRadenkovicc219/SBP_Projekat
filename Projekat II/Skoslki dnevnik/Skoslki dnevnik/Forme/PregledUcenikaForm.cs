@@ -36,9 +36,20 @@
         {
             int id = ((PredmetiDTO)predmetiCB.SelectedItem!).id;
             ucenici = DTOManager.vratiUcenikeKojiSlusajuPredmet(id);
-            ucenici.ForEach(u => MessageBox.Show($"{u.id}"));
-            uceniciDgv.DataSource = null;
             uceniciDgv.DataSource = ucenici;
+        }
+
+        private void oceneBtn_Click(object sender, EventArgs e)
+        {
+            if(uceniciDgv.Rows.Count != 1)
+            {
+                MessageBox.Show("Greska");
+            }
+
+            Ucenik u = (Ucenik)uceniciDgv.SelectedRows[0].DataBoundItem!;
+            int id = ((PredmetiDTO)predmetiCB.SelectedItem!).id;
+            List<Ocena> ocene = DTOManager.vratiOceneUcenikaNaPredmetu(u.Id, id).OrderBy(x => x.DatumOcenjivanja).ThenBy(x => x.Tip).ToList();
+            
         }
     }
 }

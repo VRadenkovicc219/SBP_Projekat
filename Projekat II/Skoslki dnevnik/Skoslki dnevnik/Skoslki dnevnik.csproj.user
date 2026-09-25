@@ -25,6 +25,9 @@
     <Compile Update="Forme\PredmetPodaci.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Forme\PregledOcena.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Forme\PregledUcenikaForm.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -83,6 +83,7 @@
             oceneBtn.TabIndex = 21;
             oceneBtn.Text = "Pregledaj ocene";
             oceneBtn.UseVisualStyleBackColor = true;
+            oceneBtn.Click += oceneBtn_Click;
             // 
             // predmetiCB
             // 
