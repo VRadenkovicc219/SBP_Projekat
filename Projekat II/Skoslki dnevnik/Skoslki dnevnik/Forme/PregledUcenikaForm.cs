@@ -41,15 +41,31 @@
 
         private void oceneBtn_Click(object sender, EventArgs e)
         {
-            if(uceniciDgv.Rows.Count != 1)
+            if (uceniciDgv.Rows.Count != 1)
             {
                 MessageBox.Show("Greska");
             }
 
-            Ucenik u = (Ucenik)uceniciDgv.SelectedRows[0].DataBoundItem!;
-            int id = ((PredmetiDTO)predmetiCB.SelectedItem!).id;
+            int idPredmet = ((PredmetiDTO)predmetiCB.SelectedItem!).id;
+            int idNastavnik = nastavnik.Id;
+            int idUcenik = ((UcenikDTO)uceniciDgv.SelectedRows[0].DataBoundItem!).id;
             List<Ocena> ocene = DTOManager.vratiOceneUcenikaNaPredmetu(u.Id, id).OrderBy(x => x.DatumOcenjivanja).ThenBy(x => x.Tip).ToList();
-            
+            PregledOcena pf = new PregledOcena(ocene, idUcenik, idNastavnik, idPredmet);
+        }
+
+        private void dodeliOcenuBtn_Click(object sender, EventArgs e)
+        {
+            int idPredmet = ((PredmetiDTO)predmetiCB.SelectedItem!).id;
+            int idNastavnik = nastavnik.Id;
+            int idUcenik = ((UcenikDTO)uceniciDgv.SelectedRows[0].DataBoundItem!).id;
+
+        }
+
+        private void izbaciUcenikaBtn_Click(object sender, EventArgs e)
+        {
+            int idUcenik = ((UcenikDTO)uceniciDgv.SelectedRows[0].DataBoundItem!).id;
+            int idPredmet = ((PredmetiDTO)predmetiCB.SelectedItem!).id;
+            DTOManager.izbaciUcenikaSaPredmeta(idUcenik, idPredmet);
         }
     }
 }

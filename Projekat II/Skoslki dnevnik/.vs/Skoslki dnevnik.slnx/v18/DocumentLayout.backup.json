@@ -3,12 +3,108 @@
   "WorkspaceRootPath": "C:\\Users\\desko\\Desktop\\Baza\\GIT\\SBP_Projekat\\Projekat II\\Skoslki dnevnik\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{130C447F-866D-7A60-753E-67738ABBFEC1}|Skoslki dnevnik\\Skoslki dnevnik.csproj|C:\\Users\\desko\\Desktop\\Baza\\GIT\\SBP_Projekat\\Projekat II\\Skoslki dnevnik\\skoslki dnevnik\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{130C447F-866D-7A60-753E-67738ABBFEC1}|Skoslki dnevnik\\Skoslki dnevnik.csproj|solutionrelative:skoslki dnevnik\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{130C447F-866D-7A60-753E-67738ABBFEC1}|Skoslki dnevnik\\Skoslki dnevnik.csproj|C:\\Users\\desko\\Desktop\\Baza\\GIT\\SBP_Projekat\\Projekat II\\Skoslki dnevnik\\skoslki dnevnik\\forme\\dodajucenikaforma.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{130C447F-866D-7A60-753E-67738ABBFEC1}|Skoslki dnevnik\\Skoslki dnevnik.csproj|solutionrelative:skoslki dnevnik\\forme\\dodajucenikaforma.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{130C447F-866D-7A60-753E-67738ABBFEC1}|Skoslki dnevnik\\Skoslki dnevnik.csproj|c:\\users\\desko\\desktop\\baza\\git\\sbp_projekat\\projekat ii\\skoslki dnevnik\\skoslki dnevnik\\entiteti\\izostanak.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{130C447F-866D-7A60-753E-67738ABBFEC1}|Skoslki dnevnik\\Skoslki dnevnik.csproj|solutionrelative:skoslki dnevnik\\entiteti\\izostanak.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{130C447F-866D-7A60-753E-67738ABBFEC1}|Skoslki dnevnik\\Skoslki dnevnik.csproj|c:\\users\\desko\\desktop\\baza\\git\\sbp_projekat\\projekat ii\\skoslki dnevnik\\skoslki dnevnik\\entiteti\\ucenik.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{130C447F-866D-7A60-753E-67738ABBFEC1}|Skoslki dnevnik\\Skoslki dnevnik.csproj|solutionrelative:skoslki dnevnik\\entiteti\\ucenik.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{130C447F-866D-7A60-753E-67738ABBFEC1}|Skoslki dnevnik\\Skoslki dnevnik.csproj|c:\\users\\desko\\desktop\\baza\\git\\sbp_projekat\\projekat ii\\skoslki dnevnik\\skoslki dnevnik\\entiteti\\nastavnik.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{130C447F-866D-7A60-753E-67738ABBFEC1}|Skoslki dnevnik\\Skoslki dnevnik.csproj|solutionrelative:skoslki dnevnik\\entiteti\\nastavnik.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{130C447F-866D-7A60-753E-67738ABBFEC1}|Skoslki dnevnik\\Skoslki dnevnik.csproj|c:\\users\\desko\\desktop\\baza\\git\\sbp_projekat\\projekat ii\\skoslki dnevnik\\skoslki dnevnik\\entiteti\\ocena.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{130C447F-866D-7A60-753E-67738ABBFEC1}|Skoslki dnevnik\\Skoslki dnevnik.csproj|solutionrelative:skoslki dnevnik\\entiteti\\ocena.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{130C447F-866D-7A60-753E-67738ABBFEC1}|Skoslki dnevnik\\Skoslki dnevnik.csproj|c:\\users\\desko\\desktop\\baza\\git\\sbp_projekat\\projekat ii\\skoslki dnevnik\\skoslki dnevnik\\entiteti\\nastava.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{130C447F-866D-7A60-753E-67738ABBFEC1}|Skoslki dnevnik\\Skoslki dnevnik.csproj|solutionrelative:skoslki dnevnik\\entiteti\\nastava.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{130C447F-866D-7A60-753E-67738ABBFEC1}|Skoslki dnevnik\\Skoslki dnevnik.csproj|c:\\users\\desko\\desktop\\baza\\git\\sbp_projekat\\projekat ii\\skoslki dnevnik\\skoslki dnevnik\\entiteti\\osoba.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{130C447F-866D-7A60-753E-67738ABBFEC1}|Skoslki dnevnik\\Skoslki dnevnik.csproj|solutionrelative:skoslki dnevnik\\entiteti\\osoba.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{130C447F-866D-7A60-753E-67738ABBFEC1}|Skoslki dnevnik\\Skoslki dnevnik.csproj|c:\\users\\desko\\desktop\\baza\\git\\sbp_projekat\\projekat ii\\skoslki dnevnik\\skoslki dnevnik\\forme\\dodajocenuform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{130C447F-866D-7A60-753E-67738ABBFEC1}|Skoslki dnevnik\\Skoslki dnevnik.csproj|solutionrelative:skoslki dnevnik\\forme\\dodajocenuform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{130C447F-866D-7A60-753E-67738ABBFEC1}|Skoslki dnevnik\\Skoslki dnevnik.csproj|c:\\users\\desko\\desktop\\baza\\git\\sbp_projekat\\projekat ii\\skoslki dnevnik\\skoslki dnevnik\\forme\\pregledocena.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{130C447F-866D-7A60-753E-67738ABBFEC1}|Skoslki dnevnik\\Skoslki dnevnik.csproj|solutionrelative:skoslki dnevnik\\forme\\pregledocena.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{130C447F-866D-7A60-753E-67738ABBFEC1}|Skoslki dnevnik\\Skoslki dnevnik.csproj|c:\\users\\desko\\desktop\\baza\\git\\sbp_projekat\\projekat ii\\skoslki dnevnik\\skoslki dnevnik\\forme\\pregleducenikaform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{130C447F-866D-7A60-753E-67738ABBFEC1}|Skoslki dnevnik\\Skoslki dnevnik.csproj|solutionrelative:skoslki dnevnik\\forme\\pregleducenikaform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{130C447F-866D-7A60-753E-67738ABBFEC1}|Skoslki dnevnik\\Skoslki dnevnik.csproj|C:\\Users\\desko\\Desktop\\Baza\\GIT\\SBP_Projekat\\Projekat II\\Skoslki dnevnik\\skoslki dnevnik\\forme\\pregleducenikaform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{130C447F-866D-7A60-753E-67738ABBFEC1}|Skoslki dnevnik\\Skoslki dnevnik.csproj|solutionrelative:skoslki dnevnik\\forme\\pregleducenikaform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{130C447F-866D-7A60-753E-67738ABBFEC1}|Skoslki dnevnik\\Skoslki dnevnik.csproj|c:\\users\\desko\\desktop\\baza\\git\\sbp_projekat\\projekat ii\\skoslki dnevnik\\skoslki dnevnik\\dtomanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{130C447F-866D-7A60-753E-67738ABBFEC1}|Skoslki dnevnik\\Skoslki dnevnik.csproj|solutionrelative:skoslki dnevnik\\dtomanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{130C447F-866D-7A60-753E-67738ABBFEC1}|Skoslki dnevnik\\Skoslki dnevnik.csproj|c:\\users\\desko\\desktop\\baza\\git\\sbp_projekat\\projekat ii\\skoslki dnevnik\\skoslki dnevnik\\forme\\pregledocena.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{130C447F-866D-7A60-753E-67738ABBFEC1}|Skoslki dnevnik\\Skoslki dnevnik.csproj|solutionrelative:skoslki dnevnik\\forme\\pregledocena.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{130C447F-866D-7A60-753E-67738ABBFEC1}|Skoslki dnevnik\\Skoslki dnevnik.csproj|c:\\users\\desko\\desktop\\baza\\git\\sbp_projekat\\projekat ii\\skoslki dnevnik\\skoslki dnevnik\\forme\\dodajocenuform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{130C447F-866D-7A60-753E-67738ABBFEC1}|Skoslki dnevnik\\Skoslki dnevnik.csproj|solutionrelative:skoslki dnevnik\\forme\\dodajocenuform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{130C447F-866D-7A60-753E-67738ABBFEC1}|Skoslki dnevnik\\Skoslki dnevnik.csproj|C:\\Users\\desko\\Desktop\\Baza\\GIT\\SBP_Projekat\\Projekat II\\Skoslki dnevnik\\skoslki dnevnik\\forme\\nastavnikpocetna.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{130C447F-866D-7A60-753E-67738ABBFEC1}|Skoslki dnevnik\\Skoslki dnevnik.csproj|solutionrelative:skoslki dnevnik\\forme\\nastavnikpocetna.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{130C447F-866D-7A60-753E-67738ABBFEC1}|Skoslki dnevnik\\Skoslki dnevnik.csproj|c:\\users\\desko\\desktop\\baza\\git\\sbp_projekat\\projekat ii\\skoslki dnevnik\\skoslki dnevnik\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{130C447F-866D-7A60-753E-67738ABBFEC1}|Skoslki dnevnik\\Skoslki dnevnik.csproj|solutionrelative:skoslki dnevnik\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{130C447F-866D-7A60-753E-67738ABBFEC1}|Skoslki dnevnik\\Skoslki dnevnik.csproj|c:\\users\\desko\\desktop\\baza\\git\\sbp_projekat\\projekat ii\\skoslki dnevnik\\skoslki dnevnik\\dtos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{130C447F-866D-7A60-753E-67738ABBFEC1}|Skoslki dnevnik\\Skoslki dnevnik.csproj|solutionrelative:skoslki dnevnik\\dtos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{130C447F-866D-7A60-753E-67738ABBFEC1}|Skoslki dnevnik\\Skoslki dnevnik.csproj|c:\\users\\desko\\desktop\\baza\\git\\sbp_projekat\\projekat ii\\skoslki dnevnik\\skoslki dnevnik\\forme\\pregledocena.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{130C447F-866D-7A60-753E-67738ABBFEC1}|Skoslki dnevnik\\Skoslki dnevnik.csproj|solutionrelative:skoslki dnevnik\\forme\\pregledocena.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{130C447F-866D-7A60-753E-67738ABBFEC1}|Skoslki dnevnik\\Skoslki dnevnik.csproj|C:\\Users\\desko\\Desktop\\Baza\\GIT\\SBP_Projekat\\Projekat II\\Skoslki dnevnik\\skoslki dnevnik\\forme\\ucenikpocetna.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{130C447F-866D-7A60-753E-67738ABBFEC1}|Skoslki dnevnik\\Skoslki dnevnik.csproj|solutionrelative:skoslki dnevnik\\forme\\ucenikpocetna.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{130C447F-866D-7A60-753E-67738ABBFEC1}|Skoslki dnevnik\\Skoslki dnevnik.csproj|C:\\Users\\desko\\Desktop\\Baza\\GIT\\SBP_Projekat\\Projekat II\\Skoslki dnevnik\\skoslki dnevnik\\forme\\ucenikpodaci.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{130C447F-866D-7A60-753E-67738ABBFEC1}|Skoslki dnevnik\\Skoslki dnevnik.csproj|solutionrelative:skoslki dnevnik\\forme\\ucenikpodaci.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{130C447F-866D-7A60-753E-67738ABBFEC1}|Skoslki dnevnik\\Skoslki dnevnik.csproj|C:\\Users\\desko\\Desktop\\Baza\\GIT\\SBP_Projekat\\Projekat II\\Skoslki dnevnik\\skoslki dnevnik\\forme\\dodajnastavnikaform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{130C447F-866D-7A60-753E-67738ABBFEC1}|Skoslki dnevnik\\Skoslki dnevnik.csproj|solutionrelative:skoslki dnevnik\\forme\\dodajnastavnikaform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{130C447F-866D-7A60-753E-67738ABBFEC1}|Skoslki dnevnik\\Skoslki dnevnik.csproj|C:\\Users\\desko\\Desktop\\Baza\\GIT\\SBP_Projekat\\Projekat II\\Skoslki dnevnik\\skoslki dnevnik\\forme\\dodajpredmetform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{130C447F-866D-7A60-753E-67738ABBFEC1}|Skoslki dnevnik\\Skoslki dnevnik.csproj|solutionrelative:skoslki dnevnik\\forme\\dodajpredmetform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{130C447F-866D-7A60-753E-67738ABBFEC1}|Skoslki dnevnik\\Skoslki dnevnik.csproj|C:\\Users\\desko\\Desktop\\Baza\\GIT\\SBP_Projekat\\Projekat II\\Skoslki dnevnik\\skoslki dnevnik\\forme\\dodelapredmetafrom.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{130C447F-866D-7A60-753E-67738ABBFEC1}|Skoslki dnevnik\\Skoslki dnevnik.csproj|solutionrelative:skoslki dnevnik\\forme\\dodelapredmetafrom.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{130C447F-866D-7A60-753E-67738ABBFEC1}|Skoslki dnevnik\\Skoslki dnevnik.csproj|C:\\Users\\desko\\Desktop\\Baza\\GIT\\SBP_Projekat\\Projekat II\\Skoslki dnevnik\\skoslki dnevnik\\forme\\predmetiforma.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{130C447F-866D-7A60-753E-67738ABBFEC1}|Skoslki dnevnik\\Skoslki dnevnik.csproj|solutionrelative:skoslki dnevnik\\forme\\predmetiforma.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{130C447F-866D-7A60-753E-67738ABBFEC1}|Skoslki dnevnik\\Skoslki dnevnik.csproj|C:\\Users\\desko\\Desktop\\Baza\\GIT\\SBP_Projekat\\Projekat II\\Skoslki dnevnik\\skoslki dnevnik\\forme\\predmetpodaci.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{130C447F-866D-7A60-753E-67738ABBFEC1}|Skoslki dnevnik\\Skoslki dnevnik.csproj|solutionrelative:skoslki dnevnik\\forme\\predmetpodaci.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{130C447F-866D-7A60-753E-67738ABBFEC1}|Skoslki dnevnik\\Skoslki dnevnik.csproj|C:\\Users\\desko\\Desktop\\Baza\\GIT\\SBP_Projekat\\Projekat II\\Skoslki dnevnik\\skoslki dnevnik\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{130C447F-866D-7A60-753E-67738ABBFEC1}|Skoslki dnevnik\\Skoslki dnevnik.csproj|solutionrelative:skoslki dnevnik\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
       "AbsoluteMoniker": "D:0:0:{130C447F-866D-7A60-753E-67738ABBFEC1}|Skoslki dnevnik\\Skoslki dnevnik.csproj|c:\\users\\desko\\desktop\\baza\\git\\sbp_projekat\\projekat ii\\skoslki dnevnik\\skoslki dnevnik\\entiteti\\predmet.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -23,40 +119,12 @@
       "RelativeMoniker": "D:0:0:{130C447F-866D-7A60-753E-67738ABBFEC1}|Skoslki dnevnik\\Skoslki dnevnik.csproj|solutionrelative:skoslki dnevnik\\mapiranja\\predmetmapiranja.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{130C447F-866D-7A60-753E-67738ABBFEC1}|Skoslki dnevnik\\Skoslki dnevnik.csproj|c:\\users\\desko\\desktop\\baza\\git\\sbp_projekat\\projekat ii\\skoslki dnevnik\\skoslki dnevnik\\dtomanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{130C447F-866D-7A60-753E-67738ABBFEC1}|Skoslki dnevnik\\Skoslki dnevnik.csproj|solutionrelative:skoslki dnevnik\\dtomanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{130C447F-866D-7A60-753E-67738ABBFEC1}|Skoslki dnevnik\\Skoslki dnevnik.csproj|C:\\Users\\desko\\Desktop\\Baza\\GIT\\SBP_Projekat\\Projekat II\\Skoslki dnevnik\\skoslki dnevnik\\forme\\pregleducenikaform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{130C447F-866D-7A60-753E-67738ABBFEC1}|Skoslki dnevnik\\Skoslki dnevnik.csproj|solutionrelative:skoslki dnevnik\\forme\\pregleducenikaform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{130C447F-866D-7A60-753E-67738ABBFEC1}|Skoslki dnevnik\\Skoslki dnevnik.csproj|c:\\users\\desko\\desktop\\baza\\git\\sbp_projekat\\projekat ii\\skoslki dnevnik\\skoslki dnevnik\\forme\\pregleducenikaform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{130C447F-866D-7A60-753E-67738ABBFEC1}|Skoslki dnevnik\\Skoslki dnevnik.csproj|solutionrelative:skoslki dnevnik\\forme\\pregleducenikaform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{130C447F-866D-7A60-753E-67738ABBFEC1}|Skoslki dnevnik\\Skoslki dnevnik.csproj|c:\\users\\desko\\desktop\\baza\\git\\sbp_projekat\\projekat ii\\skoslki dnevnik\\skoslki dnevnik\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{130C447F-866D-7A60-753E-67738ABBFEC1}|Skoslki dnevnik\\Skoslki dnevnik.csproj|solutionrelative:skoslki dnevnik\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{130C447F-866D-7A60-753E-67738ABBFEC1}|Skoslki dnevnik\\Skoslki dnevnik.csproj|c:\\users\\desko\\desktop\\baza\\git\\sbp_projekat\\projekat ii\\skoslki dnevnik\\skoslki dnevnik\\forme\\nastavnikpocetna.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{130C447F-866D-7A60-753E-67738ABBFEC1}|Skoslki dnevnik\\Skoslki dnevnik.csproj|solutionrelative:skoslki dnevnik\\forme\\nastavnikpocetna.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{130C447F-866D-7A60-753E-67738ABBFEC1}|Skoslki dnevnik\\Skoslki dnevnik.csproj|c:\\users\\desko\\desktop\\baza\\git\\sbp_projekat\\projekat ii\\skoslki dnevnik\\skoslki dnevnik\\dtos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{130C447F-866D-7A60-753E-67738ABBFEC1}|Skoslki dnevnik\\Skoslki dnevnik.csproj|solutionrelative:skoslki dnevnik\\dtos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{130C447F-866D-7A60-753E-67738ABBFEC1}|Skoslki dnevnik\\Skoslki dnevnik.csproj|C:\\Users\\desko\\Desktop\\Baza\\GIT\\SBP_Projekat\\Projekat II\\Skoslki dnevnik\\skoslki dnevnik\\forme\\nastavnikpocetna.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{130C447F-866D-7A60-753E-67738ABBFEC1}|Skoslki dnevnik\\Skoslki dnevnik.csproj|solutionrelative:skoslki dnevnik\\forme\\nastavnikpocetna.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{130C447F-866D-7A60-753E-67738ABBFEC1}|Skoslki dnevnik\\Skoslki dnevnik.csproj|c:\\users\\desko\\desktop\\baza\\git\\sbp_projekat\\projekat ii\\skoslki dnevnik\\skoslki dnevnik\\forme\\dodelapredmetafrom.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{130C447F-866D-7A60-753E-67738ABBFEC1}|Skoslki dnevnik\\Skoslki dnevnik.csproj|solutionrelative:skoslki dnevnik\\forme\\dodelapredmetafrom.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{130C447F-866D-7A60-753E-67738ABBFEC1}|Skoslki dnevnik\\Skoslki dnevnik.csproj|C:\\Users\\desko\\Desktop\\Baza\\GIT\\SBP_Projekat\\Projekat II\\Skoslki dnevnik\\skoslki dnevnik\\forme\\dodelapredmetafrom.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{130C447F-866D-7A60-753E-67738ABBFEC1}|Skoslki dnevnik\\Skoslki dnevnik.csproj|solutionrelative:skoslki dnevnik\\forme\\dodelapredmetafrom.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
       "AbsoluteMoniker": "D:0:0:{130C447F-866D-7A60-753E-67738ABBFEC1}|Skoslki dnevnik\\Skoslki dnevnik.csproj|c:\\users\\desko\\desktop\\baza\\git\\sbp_projekat\\projekat ii\\skoslki dnevnik\\skoslki dnevnik\\entiteti\\strucnisaradnik.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -79,28 +147,8 @@
       "RelativeMoniker": "D:0:0:{130C447F-866D-7A60-753E-67738ABBFEC1}|Skoslki dnevnik\\Skoslki dnevnik.csproj|solutionrelative:skoslki dnevnik\\entiteti\\predaje.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{130C447F-866D-7A60-753E-67738ABBFEC1}|Skoslki dnevnik\\Skoslki dnevnik.csproj|c:\\users\\desko\\desktop\\baza\\git\\sbp_projekat\\projekat ii\\skoslki dnevnik\\skoslki dnevnik\\entiteti\\osoba.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{130C447F-866D-7A60-753E-67738ABBFEC1}|Skoslki dnevnik\\Skoslki dnevnik.csproj|solutionrelative:skoslki dnevnik\\entiteti\\osoba.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{130C447F-866D-7A60-753E-67738ABBFEC1}|Skoslki dnevnik\\Skoslki dnevnik.csproj|c:\\users\\desko\\desktop\\baza\\git\\sbp_projekat\\projekat ii\\skoslki dnevnik\\skoslki dnevnik\\entiteti\\odeljenje.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{130C447F-866D-7A60-753E-67738ABBFEC1}|Skoslki dnevnik\\Skoslki dnevnik.csproj|solutionrelative:skoslki dnevnik\\entiteti\\odeljenje.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{130C447F-866D-7A60-753E-67738ABBFEC1}|Skoslki dnevnik\\Skoslki dnevnik.csproj|c:\\users\\desko\\desktop\\baza\\git\\sbp_projekat\\projekat ii\\skoslki dnevnik\\skoslki dnevnik\\entiteti\\ocena.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{130C447F-866D-7A60-753E-67738ABBFEC1}|Skoslki dnevnik\\Skoslki dnevnik.csproj|solutionrelative:skoslki dnevnik\\entiteti\\ocena.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{130C447F-866D-7A60-753E-67738ABBFEC1}|Skoslki dnevnik\\Skoslki dnevnik.csproj|c:\\users\\desko\\desktop\\baza\\git\\sbp_projekat\\projekat ii\\skoslki dnevnik\\skoslki dnevnik\\entiteti\\nastavnik.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{130C447F-866D-7A60-753E-67738ABBFEC1}|Skoslki dnevnik\\Skoslki dnevnik.csproj|solutionrelative:skoslki dnevnik\\entiteti\\nastavnik.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{130C447F-866D-7A60-753E-67738ABBFEC1}|Skoslki dnevnik\\Skoslki dnevnik.csproj|c:\\users\\desko\\desktop\\baza\\git\\sbp_projekat\\projekat ii\\skoslki dnevnik\\skoslki dnevnik\\entiteti\\nastava.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{130C447F-866D-7A60-753E-67738ABBFEC1}|Skoslki dnevnik\\Skoslki dnevnik.csproj|solutionrelative:skoslki dnevnik\\entiteti\\nastava.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{130C447F-866D-7A60-753E-67738ABBFEC1}|Skoslki dnevnik\\Skoslki dnevnik.csproj|c:\\users\\desko\\desktop\\baza\\git\\sbp_projekat\\projekat ii\\skoslki dnevnik\\skoslki dnevnik\\entiteti\\izostanak.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{130C447F-866D-7A60-753E-67738ABBFEC1}|Skoslki dnevnik\\Skoslki dnevnik.csproj|solutionrelative:skoslki dnevnik\\entiteti\\izostanak.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{130C447F-866D-7A60-753E-67738ABBFEC1}|Skoslki dnevnik\\Skoslki dnevnik.csproj|c:\\users\\desko\\desktop\\baza\\git\\sbp_projekat\\projekat ii\\skoslki dnevnik\\skoslki dnevnik\\mapiranja\\nastavnikmapiranja.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -123,28 +171,12 @@
       "RelativeMoniker": "D:0:0:{130C447F-866D-7A60-753E-67738ABBFEC1}|Skoslki dnevnik\\Skoslki dnevnik.csproj|solutionrelative:skoslki dnevnik\\mapiranja\\osobamapiranja.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{130C447F-866D-7A60-753E-67738ABBFEC1}|Skoslki dnevnik\\Skoslki dnevnik.csproj|C:\\Users\\desko\\Desktop\\Baza\\GIT\\SBP_Projekat\\Projekat II\\Skoslki dnevnik\\skoslki dnevnik\\forme\\dodajpredmetform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{130C447F-866D-7A60-753E-67738ABBFEC1}|Skoslki dnevnik\\Skoslki dnevnik.csproj|solutionrelative:skoslki dnevnik\\forme\\dodajpredmetform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{130C447F-866D-7A60-753E-67738ABBFEC1}|Skoslki dnevnik\\Skoslki dnevnik.csproj|c:\\users\\desko\\desktop\\baza\\git\\sbp_projekat\\projekat ii\\skoslki dnevnik\\skoslki dnevnik\\mapiranja\\razrednistaresinamapiranja.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{130C447F-866D-7A60-753E-67738ABBFEC1}|Skoslki dnevnik\\Skoslki dnevnik.csproj|solutionrelative:skoslki dnevnik\\mapiranja\\razrednistaresinamapiranja.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{130C447F-866D-7A60-753E-67738ABBFEC1}|Skoslki dnevnik\\Skoslki dnevnik.csproj|c:\\users\\desko\\desktop\\baza\\git\\sbp_projekat\\projekat ii\\skoslki dnevnik\\skoslki dnevnik\\forme\\predmetiforma.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{130C447F-866D-7A60-753E-67738ABBFEC1}|Skoslki dnevnik\\Skoslki dnevnik.csproj|solutionrelative:skoslki dnevnik\\forme\\predmetiforma.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{130C447F-866D-7A60-753E-67738ABBFEC1}|Skoslki dnevnik\\Skoslki dnevnik.csproj|C:\\Users\\desko\\Desktop\\Baza\\GIT\\SBP_Projekat\\Projekat II\\Skoslki dnevnik\\skoslki dnevnik\\forme\\predmetiforma.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{130C447F-866D-7A60-753E-67738ABBFEC1}|Skoslki dnevnik\\Skoslki dnevnik.csproj|solutionrelative:skoslki dnevnik\\forme\\predmetiforma.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{130C447F-866D-7A60-753E-67738ABBFEC1}|Skoslki dnevnik\\Skoslki dnevnik.csproj|C:\\Users\\desko\\Desktop\\Baza\\GIT\\SBP_Projekat\\Projekat II\\Skoslki dnevnik\\skoslki dnevnik\\forme\\predmetpodaci.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{130C447F-866D-7A60-753E-67738ABBFEC1}|Skoslki dnevnik\\Skoslki dnevnik.csproj|solutionrelative:skoslki dnevnik\\forme\\predmetpodaci.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{130C447F-866D-7A60-753E-67738ABBFEC1}|Skoslki dnevnik\\Skoslki dnevnik.csproj|C:\\Users\\desko\\Desktop\\Baza\\GIT\\SBP_Projekat\\Projekat II\\Skoslki dnevnik\\skoslki dnevnik\\forme\\dodajnastavnikaform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{130C447F-866D-7A60-753E-67738ABBFEC1}|Skoslki dnevnik\\Skoslki dnevnik.csproj|solutionrelative:skoslki dnevnik\\forme\\dodajnastavnikaform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
       "AbsoluteMoniker": "D:0:0:{130C447F-866D-7A60-753E-67738ABBFEC1}|Skoslki dnevnik\\Skoslki dnevnik.csproj|c:\\users\\desko\\desktop\\baza\\git\\sbp_projekat\\projekat ii\\skoslki dnevnik\\skoslki dnevnik\\mapiranja\\rukovodeceosobljemapiranja.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -159,10 +191,6 @@
       "RelativeMoniker": "D:0:0:{130C447F-866D-7A60-753E-67738ABBFEC1}|Skoslki dnevnik\\Skoslki dnevnik.csproj|solutionrelative:skoslki dnevnik\\forme\\dodajnastavnikaform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{130C447F-866D-7A60-753E-67738ABBFEC1}|Skoslki dnevnik\\Skoslki dnevnik.csproj|C:\\Users\\desko\\Desktop\\Baza\\GIT\\SBP_Projekat\\Projekat II\\Skoslki dnevnik\\skoslki dnevnik\\forme\\dodajucenikaforma.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{130C447F-866D-7A60-753E-67738ABBFEC1}|Skoslki dnevnik\\Skoslki dnevnik.csproj|solutionrelative:skoslki dnevnik\\forme\\dodajucenikaforma.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{130C447F-866D-7A60-753E-67738ABBFEC1}|Skoslki dnevnik\\Skoslki dnevnik.csproj|c:\\users\\desko\\desktop\\baza\\git\\sbp_projekat\\projekat ii\\skoslki dnevnik\\skoslki dnevnik\\forme\\dodajucenikaforma.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{130C447F-866D-7A60-753E-67738ABBFEC1}|Skoslki dnevnik\\Skoslki dnevnik.csproj|solutionrelative:skoslki dnevnik\\forme\\dodajucenikaforma.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -173,10 +201,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{130C447F-866D-7A60-753E-67738ABBFEC1}|Skoslki dnevnik\\Skoslki dnevnik.csproj|c:\\users\\desko\\desktop\\baza\\git\\sbp_projekat\\projekat ii\\skoslki dnevnik\\skoslki dnevnik\\forme\\predmetpodaci.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{130C447F-866D-7A60-753E-67738ABBFEC1}|Skoslki dnevnik\\Skoslki dnevnik.csproj|solutionrelative:skoslki dnevnik\\forme\\predmetpodaci.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{130C447F-866D-7A60-753E-67738ABBFEC1}|Skoslki dnevnik\\Skoslki dnevnik.csproj|C:\\Users\\desko\\Desktop\\Baza\\GIT\\SBP_Projekat\\Projekat II\\Skoslki dnevnik\\skoslki dnevnik\\forme\\ucenikpodaci.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{130C447F-866D-7A60-753E-67738ABBFEC1}|Skoslki dnevnik\\Skoslki dnevnik.csproj|solutionrelative:skoslki dnevnik\\forme\\ucenikpodaci.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
       "AbsoluteMoniker": "D:0:0:{130C447F-866D-7A60-753E-67738ABBFEC1}|Skoslki dnevnik\\Skoslki dnevnik.csproj|c:\\users\\desko\\desktop\\baza\\git\\sbp_projekat\\projekat ii\\skoslki dnevnik\\skoslki dnevnik\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -201,10 +225,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{130C447F-866D-7A60-753E-67738ABBFEC1}|Skoslki dnevnik\\Skoslki dnevnik.csproj|c:\\users\\desko\\desktop\\baza\\git\\sbp_projekat\\projekat ii\\skoslki dnevnik\\skoslki dnevnik\\forme\\ucenikpocetna.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{130C447F-866D-7A60-753E-67738ABBFEC1}|Skoslki dnevnik\\Skoslki dnevnik.csproj|solutionrelative:skoslki dnevnik\\forme\\ucenikpocetna.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{130C447F-866D-7A60-753E-67738ABBFEC1}|Skoslki dnevnik\\Skoslki dnevnik.csproj|C:\\Users\\desko\\Desktop\\Baza\\GIT\\SBP_Projekat\\Projekat II\\Skoslki dnevnik\\skoslki dnevnik\\forme\\ucenikpocetna.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{130C447F-866D-7A60-753E-67738ABBFEC1}|Skoslki dnevnik\\Skoslki dnevnik.csproj|solutionrelative:skoslki dnevnik\\forme\\ucenikpocetna.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
       "AbsoluteMoniker": "D:0:0:{130C447F-866D-7A60-753E-67738ABBFEC1}|Skoslki dnevnik\\Skoslki dnevnik.csproj|c:\\users\\desko\\desktop\\baza\\git\\sbp_projekat\\projekat ii\\skoslki dnevnik\\skoslki dnevnik\\forme\\ucenikpodaci.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -238,11 +258,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 6,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 25,
               "Title": "Form1.cs [Design]",
               "DocumentMoniker": "C:\\Users\\desko\\Desktop\\Baza\\GIT\\SBP_Projekat\\Projekat II\\Skoslki dnevnik\\Skoslki dnevnik\\Form1.cs",
               "RelativeDocumentMoniker": "Skoslki dnevnik\\Form1.cs",
@@ -255,20 +275,21 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 11,
               "Title": "DTOManager.cs",
               "DocumentMoniker": "C:\\Users\\desko\\Desktop\\Baza\\GIT\\SBP_Projekat\\Projekat II\\Skoslki dnevnik\\Skoslki dnevnik\\DTOManager.cs",
               "RelativeDocumentMoniker": "Skoslki dnevnik\\DTOManager.cs",
               "ToolTip": "C:\\Users\\desko\\Desktop\\Baza\\GIT\\SBP_Projekat\\Projekat II\\Skoslki dnevnik\\Skoslki dnevnik\\DTOManager.cs",
               "RelativeToolTip": "Skoslki dnevnik\\DTOManager.cs",
-              "ViewState": "AgIAALwBAAAAAAAAAAAkwM0BAAAdAAAAAAAAAA==",
+              "ViewState": "AgIAAPIBAAAAAAAAAAAowBoCAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-09-17T12:40:55.348Z",
-              "IsPinned": true
+              "IsPinned": true,
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 16,
               "Title": "DTOs.cs",
               "DocumentMoniker": "C:\\Users\\desko\\Desktop\\Baza\\GIT\\SBP_Projekat\\Projekat II\\Skoslki dnevnik\\Skoslki dnevnik\\DTOs.cs",
               "RelativeDocumentMoniker": "Skoslki dnevnik\\DTOs.cs",
@@ -277,11 +298,12 @@
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-09-18T04:33:38.516Z",
-              "IsPinned": true
+              "IsPinned": true,
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 15,
               "Title": "Form1.cs",
               "DocumentMoniker": "C:\\Users\\desko\\Desktop\\Baza\\GIT\\SBP_Projekat\\Projekat II\\Skoslki dnevnik\\Skoslki dnevnik\\Form1.cs",
               "RelativeDocumentMoniker": "Skoslki dnevnik\\Form1.cs",
@@ -290,11 +312,63 @@
               "ViewState": "AgIAAAAAAAAAAAAAAAAuwBMAAAA2AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-09-21T18:05:57.701Z",
-              "IsPinned": true
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Nastavnik.cs",
+              "DocumentMoniker": "C:\\Users\\desko\\Desktop\\Baza\\GIT\\SBP_Projekat\\Projekat II\\Skoslki dnevnik\\Skoslki dnevnik\\Entiteti\\Nastavnik.cs",
+              "RelativeDocumentMoniker": "Skoslki dnevnik\\Entiteti\\Nastavnik.cs",
+              "ToolTip": "C:\\Users\\desko\\Desktop\\Baza\\GIT\\SBP_Projekat\\Projekat II\\Skoslki dnevnik\\Skoslki dnevnik\\Entiteti\\Nastavnik.cs",
+              "RelativeToolTip": "Skoslki dnevnik\\Entiteti\\Nastavnik.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-23T11:22:07.013Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
+              "Title": "Izostanak.cs",
+              "DocumentMoniker": "C:\\Users\\desko\\Desktop\\Baza\\GIT\\SBP_Projekat\\Projekat II\\Skoslki dnevnik\\Skoslki dnevnik\\Entiteti\\Izostanak.cs",
+              "RelativeDocumentMoniker": "Skoslki dnevnik\\Entiteti\\Izostanak.cs",
+              "ToolTip": "C:\\Users\\desko\\Desktop\\Baza\\GIT\\SBP_Projekat\\Projekat II\\Skoslki dnevnik\\Skoslki dnevnik\\Entiteti\\Izostanak.cs",
+              "RelativeToolTip": "Skoslki dnevnik\\Entiteti\\Izostanak.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-23T11:23:30.961Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "DodajUcenikaForma.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\desko\\Desktop\\Baza\\GIT\\SBP_Projekat\\Projekat II\\Skoslki dnevnik\\Skoslki dnevnik\\Forme\\DodajUcenikaForma.cs",
+              "RelativeDocumentMoniker": "Skoslki dnevnik\\Forme\\DodajUcenikaForma.cs",
+              "ToolTip": "C:\\Users\\desko\\Desktop\\Baza\\GIT\\SBP_Projekat\\Projekat II\\Skoslki dnevnik\\Skoslki dnevnik\\Forme\\DodajUcenikaForma.cs [Design]",
+              "RelativeToolTip": "Skoslki dnevnik\\Forme\\DodajUcenikaForma.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-18T04:11:56.578Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Ocena.cs",
+              "DocumentMoniker": "C:\\Users\\desko\\Desktop\\Baza\\GIT\\SBP_Projekat\\Projekat II\\Skoslki dnevnik\\Skoslki dnevnik\\Entiteti\\Ocena.cs",
+              "RelativeDocumentMoniker": "Skoslki dnevnik\\Entiteti\\Ocena.cs",
+              "ToolTip": "C:\\Users\\desko\\Desktop\\Baza\\GIT\\SBP_Projekat\\Projekat II\\Skoslki dnevnik\\Skoslki dnevnik\\Entiteti\\Ocena.cs",
+              "RelativeToolTip": "Skoslki dnevnik\\Entiteti\\Ocena.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAqwAgAAAAbAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-23T11:42:39.764Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "Ucenik.cs",
               "DocumentMoniker": "C:\\Users\\desko\\Desktop\\Baza\\GIT\\SBP_Projekat\\Projekat II\\Skoslki dnevnik\\Skoslki dnevnik\\Entiteti\\Ucenik.cs",
               "RelativeDocumentMoniker": "Skoslki dnevnik\\Entiteti\\Ucenik.cs",
@@ -307,31 +381,217 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Predmet.cs",
-              "DocumentMoniker": "C:\\Users\\desko\\Desktop\\Baza\\GIT\\SBP_Projekat\\Projekat II\\Skoslki dnevnik\\Skoslki dnevnik\\Entiteti\\Predmet.cs",
-              "RelativeDocumentMoniker": "Skoslki dnevnik\\Entiteti\\Predmet.cs",
-              "ToolTip": "C:\\Users\\desko\\Desktop\\Baza\\GIT\\SBP_Projekat\\Projekat II\\Skoslki dnevnik\\Skoslki dnevnik\\Entiteti\\Predmet.cs",
-              "RelativeToolTip": "Skoslki dnevnik\\Entiteti\\Predmet.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 5,
+              "Title": "Nastava.cs",
+              "DocumentMoniker": "C:\\Users\\desko\\Desktop\\Baza\\GIT\\SBP_Projekat\\Projekat II\\Skoslki dnevnik\\Skoslki dnevnik\\Entiteti\\Nastava.cs",
+              "RelativeDocumentMoniker": "Skoslki dnevnik\\Entiteti\\Nastava.cs",
+              "ToolTip": "C:\\Users\\desko\\Desktop\\Baza\\GIT\\SBP_Projekat\\Projekat II\\Skoslki dnevnik\\Skoslki dnevnik\\Entiteti\\Nastava.cs",
+              "RelativeToolTip": "Skoslki dnevnik\\Entiteti\\Nastava.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-09-23T11:21:07.185Z"
+              "WhenOpened": "2026-09-23T11:22:32.171Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "PredmetMapiranja.cs",
-              "DocumentMoniker": "C:\\Users\\desko\\Desktop\\Baza\\GIT\\SBP_Projekat\\Projekat II\\Skoslki dnevnik\\Skoslki dnevnik\\Mapiranja\\PredmetMapiranja.cs",
-              "RelativeDocumentMoniker": "Skoslki dnevnik\\Mapiranja\\PredmetMapiranja.cs",
-              "ToolTip": "C:\\Users\\desko\\Desktop\\Baza\\GIT\\SBP_Projekat\\Projekat II\\Skoslki dnevnik\\Skoslki dnevnik\\Mapiranja\\PredmetMapiranja.cs",
-              "RelativeToolTip": "Skoslki dnevnik\\Mapiranja\\PredmetMapiranja.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAABAAAAAAAAAA==",
+              "DocumentIndex": 6,
+              "Title": "Osoba.cs",
+              "DocumentMoniker": "C:\\Users\\desko\\Desktop\\Baza\\GIT\\SBP_Projekat\\Projekat II\\Skoslki dnevnik\\Skoslki dnevnik\\Entiteti\\Osoba.cs",
+              "RelativeDocumentMoniker": "Skoslki dnevnik\\Entiteti\\Osoba.cs",
+              "ToolTip": "C:\\Users\\desko\\Desktop\\Baza\\GIT\\SBP_Projekat\\Projekat II\\Skoslki dnevnik\\Skoslki dnevnik\\Entiteti\\Osoba.cs",
+              "RelativeToolTip": "Skoslki dnevnik\\Entiteti\\Osoba.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-09-23T11:27:51.765Z"
+              "WhenOpened": "2026-09-22T09:47:33.265Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 7,
+              "Title": "DodajOcenuForm.cs",
+              "DocumentMoniker": "C:\\Users\\desko\\Desktop\\Baza\\GIT\\SBP_Projekat\\Projekat II\\Skoslki dnevnik\\Skoslki dnevnik\\Forme\\DodajOcenuForm.cs",
+              "RelativeDocumentMoniker": "Skoslki dnevnik\\Forme\\DodajOcenuForm.cs",
+              "ToolTip": "C:\\Users\\desko\\Desktop\\Baza\\GIT\\SBP_Projekat\\Projekat II\\Skoslki dnevnik\\Skoslki dnevnik\\Forme\\DodajOcenuForm.cs",
+              "RelativeToolTip": "Skoslki dnevnik\\Forme\\DodajOcenuForm.cs",
+              "ViewState": "AgIAAAQAAAAAAAAAAAAUwEgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-26T11:59:02.25Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "PregledOcena.cs",
+              "DocumentMoniker": "C:\\Users\\desko\\Desktop\\Baza\\GIT\\SBP_Projekat\\Projekat II\\Skoslki dnevnik\\Skoslki dnevnik\\Forme\\PregledOcena.cs",
+              "RelativeDocumentMoniker": "Skoslki dnevnik\\Forme\\PregledOcena.cs",
+              "ToolTip": "C:\\Users\\desko\\Desktop\\Baza\\GIT\\SBP_Projekat\\Projekat II\\Skoslki dnevnik\\Skoslki dnevnik\\Forme\\PregledOcena.cs",
+              "RelativeToolTip": "Skoslki dnevnik\\Forme\\PregledOcena.cs",
+              "ViewState": "AgIAAFMAAAAAAAAAAAAQwHQAAAAyAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-26T11:46:28.605Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "PregledUcenikaForm.cs",
+              "DocumentMoniker": "C:\\Users\\desko\\Desktop\\Baza\\GIT\\SBP_Projekat\\Projekat II\\Skoslki dnevnik\\Skoslki dnevnik\\Forme\\PregledUcenikaForm.cs",
+              "RelativeDocumentMoniker": "Skoslki dnevnik\\Forme\\PregledUcenikaForm.cs",
+              "ToolTip": "C:\\Users\\desko\\Desktop\\Baza\\GIT\\SBP_Projekat\\Projekat II\\Skoslki dnevnik\\Skoslki dnevnik\\Forme\\PregledUcenikaForm.cs",
+              "RelativeToolTip": "Skoslki dnevnik\\Forme\\PregledUcenikaForm.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAEQAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-25T13:29:22.497Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "PregledUcenikaForm.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\desko\\Desktop\\Baza\\GIT\\SBP_Projekat\\Projekat II\\Skoslki dnevnik\\Skoslki dnevnik\\Forme\\PregledUcenikaForm.cs",
+              "RelativeDocumentMoniker": "Skoslki dnevnik\\Forme\\PregledUcenikaForm.cs",
+              "ToolTip": "C:\\Users\\desko\\Desktop\\Baza\\GIT\\SBP_Projekat\\Projekat II\\Skoslki dnevnik\\Skoslki dnevnik\\Forme\\PregledUcenikaForm.cs [Design]",
+              "RelativeToolTip": "Skoslki dnevnik\\Forme\\PregledUcenikaForm.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-25T14:38:36.074Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "PregledOcena.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\desko\\Desktop\\Baza\\GIT\\SBP_Projekat\\Projekat II\\Skoslki dnevnik\\Skoslki dnevnik\\Forme\\PregledOcena.cs",
+              "RelativeDocumentMoniker": "Skoslki dnevnik\\Forme\\PregledOcena.cs",
+              "ToolTip": "C:\\Users\\desko\\Desktop\\Baza\\GIT\\SBP_Projekat\\Projekat II\\Skoslki dnevnik\\Skoslki dnevnik\\Forme\\PregledOcena.cs [Design]",
+              "RelativeToolTip": "Skoslki dnevnik\\Forme\\PregledOcena.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-26T10:38:09.381Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "DodajOcenuForm.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\desko\\Desktop\\Baza\\GIT\\SBP_Projekat\\Projekat II\\Skoslki dnevnik\\Skoslki dnevnik\\Forme\\DodajOcenuForm.cs",
+              "RelativeDocumentMoniker": "Skoslki dnevnik\\Forme\\DodajOcenuForm.cs",
+              "ToolTip": "C:\\Users\\desko\\Desktop\\Baza\\GIT\\SBP_Projekat\\Projekat II\\Skoslki dnevnik\\Skoslki dnevnik\\Forme\\DodajOcenuForm.cs [Design]",
+              "RelativeToolTip": "Skoslki dnevnik\\Forme\\DodajOcenuForm.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-26T11:47:49.826Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "NastavnikPocetna.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\desko\\Desktop\\Baza\\GIT\\SBP_Projekat\\Projekat II\\Skoslki dnevnik\\Skoslki dnevnik\\Forme\\NastavnikPocetna.cs",
+              "RelativeDocumentMoniker": "Skoslki dnevnik\\Forme\\NastavnikPocetna.cs",
+              "ToolTip": "C:\\Users\\desko\\Desktop\\Baza\\GIT\\SBP_Projekat\\Projekat II\\Skoslki dnevnik\\Skoslki dnevnik\\Forme\\NastavnikPocetna.cs [Design]",
+              "RelativeToolTip": "Skoslki dnevnik\\Forme\\NastavnikPocetna.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-21T21:01:11.573Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "PregledOcena.Designer.cs",
+              "DocumentMoniker": "C:\\Users\\desko\\Desktop\\Baza\\GIT\\SBP_Projekat\\Projekat II\\Skoslki dnevnik\\Skoslki dnevnik\\Forme\\PregledOcena.Designer.cs",
+              "RelativeDocumentMoniker": "Skoslki dnevnik\\Forme\\PregledOcena.Designer.cs",
+              "ToolTip": "C:\\Users\\desko\\Desktop\\Baza\\GIT\\SBP_Projekat\\Projekat II\\Skoslki dnevnik\\Skoslki dnevnik\\Forme\\PregledOcena.Designer.cs",
+              "RelativeToolTip": "Skoslki dnevnik\\Forme\\PregledOcena.Designer.cs",
+              "ViewState": "AgIAAL4AAAAAAAAAAAAWwMkAAAAlAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-26T10:37:02.886Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "UcenikPocetna.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\desko\\Desktop\\Baza\\GIT\\SBP_Projekat\\Projekat II\\Skoslki dnevnik\\Skoslki dnevnik\\Forme\\UcenikPocetna.cs",
+              "RelativeDocumentMoniker": "Skoslki dnevnik\\Forme\\UcenikPocetna.cs",
+              "ToolTip": "C:\\Users\\desko\\Desktop\\Baza\\GIT\\SBP_Projekat\\Projekat II\\Skoslki dnevnik\\Skoslki dnevnik\\Forme\\UcenikPocetna.cs [Design]",
+              "RelativeToolTip": "Skoslki dnevnik\\Forme\\UcenikPocetna.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-22T12:52:19.592Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "UcenikPodaci.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\desko\\Desktop\\Baza\\GIT\\SBP_Projekat\\Projekat II\\Skoslki dnevnik\\Skoslki dnevnik\\Forme\\UcenikPodaci.cs",
+              "RelativeDocumentMoniker": "Skoslki dnevnik\\Forme\\UcenikPodaci.cs",
+              "ToolTip": "C:\\Users\\desko\\Desktop\\Baza\\GIT\\SBP_Projekat\\Projekat II\\Skoslki dnevnik\\Skoslki dnevnik\\Forme\\UcenikPodaci.cs [Design]",
+              "RelativeToolTip": "Skoslki dnevnik\\Forme\\UcenikPodaci.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-23T19:51:03.7Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "DodajNastavnikaForm.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\desko\\Desktop\\Baza\\GIT\\SBP_Projekat\\Projekat II\\Skoslki dnevnik\\Skoslki dnevnik\\Forme\\DodajNastavnikaForm.cs",
+              "RelativeDocumentMoniker": "Skoslki dnevnik\\Forme\\DodajNastavnikaForm.cs",
+              "ToolTip": "C:\\Users\\desko\\Desktop\\Baza\\GIT\\SBP_Projekat\\Projekat II\\Skoslki dnevnik\\Skoslki dnevnik\\Forme\\DodajNastavnikaForm.cs [Design]",
+              "RelativeToolTip": "Skoslki dnevnik\\Forme\\DodajNastavnikaForm.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-23T19:43:52.92Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "DodajPredmetForm.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\desko\\Desktop\\Baza\\GIT\\SBP_Projekat\\Projekat II\\Skoslki dnevnik\\Skoslki dnevnik\\Forme\\DodajPredmetForm.cs",
+              "RelativeDocumentMoniker": "Skoslki dnevnik\\Forme\\DodajPredmetForm.cs",
+              "ToolTip": "C:\\Users\\desko\\Desktop\\Baza\\GIT\\SBP_Projekat\\Projekat II\\Skoslki dnevnik\\Skoslki dnevnik\\Forme\\DodajPredmetForm.cs [Design]",
+              "RelativeToolTip": "Skoslki dnevnik\\Forme\\DodajPredmetForm.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-24T17:34:30.31Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "DodelaPredmetaFrom.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\desko\\Desktop\\Baza\\GIT\\SBP_Projekat\\Projekat II\\Skoslki dnevnik\\Skoslki dnevnik\\Forme\\DodelaPredmetaFrom.cs",
+              "RelativeDocumentMoniker": "Skoslki dnevnik\\Forme\\DodelaPredmetaFrom.cs",
+              "ToolTip": "C:\\Users\\desko\\Desktop\\Baza\\GIT\\SBP_Projekat\\Projekat II\\Skoslki dnevnik\\Skoslki dnevnik\\Forme\\DodelaPredmetaFrom.cs [Design]",
+              "RelativeToolTip": "Skoslki dnevnik\\Forme\\DodelaPredmetaFrom.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-25T10:02:23.934Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "PredmetiForma.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\desko\\Desktop\\Baza\\GIT\\SBP_Projekat\\Projekat II\\Skoslki dnevnik\\Skoslki dnevnik\\Forme\\PredmetiForma.cs",
+              "RelativeDocumentMoniker": "Skoslki dnevnik\\Forme\\PredmetiForma.cs",
+              "ToolTip": "C:\\Users\\desko\\Desktop\\Baza\\GIT\\SBP_Projekat\\Projekat II\\Skoslki dnevnik\\Skoslki dnevnik\\Forme\\PredmetiForma.cs [Design]",
+              "RelativeToolTip": "Skoslki dnevnik\\Forme\\PredmetiForma.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-24T14:05:50.083Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "PredmetPodaci.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\desko\\Desktop\\Baza\\GIT\\SBP_Projekat\\Projekat II\\Skoslki dnevnik\\Skoslki dnevnik\\Forme\\PredmetPodaci.cs",
+              "RelativeDocumentMoniker": "Skoslki dnevnik\\Forme\\PredmetPodaci.cs",
+              "ToolTip": "C:\\Users\\desko\\Desktop\\Baza\\GIT\\SBP_Projekat\\Projekat II\\Skoslki dnevnik\\Skoslki dnevnik\\Forme\\PredmetPodaci.cs [Design]",
+              "RelativeToolTip": "Skoslki dnevnik\\Forme\\PredmetPodaci.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-24T21:45:49.965Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 27,
               "Title": "UcenikMapiranja.cs",
               "DocumentMoniker": "C:\\Users\\desko\\Desktop\\Baza\\GIT\\SBP_Projekat\\Projekat II\\Skoslki dnevnik\\Skoslki dnevnik\\Mapiranja\\UcenikMapiranja.cs",
               "RelativeDocumentMoniker": "Skoslki dnevnik\\Mapiranja\\UcenikMapiranja.cs",
@@ -343,42 +603,31 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "PregledUcenikaForm.cs",
-              "DocumentMoniker": "C:\\Users\\desko\\Desktop\\Baza\\GIT\\SBP_Projekat\\Projekat II\\Skoslki dnevnik\\Skoslki dnevnik\\Forme\\PregledUcenikaForm.cs",
-              "RelativeDocumentMoniker": "Skoslki dnevnik\\Forme\\PregledUcenikaForm.cs",
-              "ToolTip": "C:\\Users\\desko\\Desktop\\Baza\\GIT\\SBP_Projekat\\Projekat II\\Skoslki dnevnik\\Skoslki dnevnik\\Forme\\PregledUcenikaForm.cs",
-              "RelativeToolTip": "Skoslki dnevnik\\Forme\\PregledUcenikaForm.cs",
-              "ViewState": "AgIAAA0AAAAAAAAAAAAcwCUAAAA/AAAAAAAAAA==",
+              "DocumentIndex": 28,
+              "Title": "PredmetMapiranja.cs",
+              "DocumentMoniker": "C:\\Users\\desko\\Desktop\\Baza\\GIT\\SBP_Projekat\\Projekat II\\Skoslki dnevnik\\Skoslki dnevnik\\Mapiranja\\PredmetMapiranja.cs",
+              "RelativeDocumentMoniker": "Skoslki dnevnik\\Mapiranja\\PredmetMapiranja.cs",
+              "ToolTip": "C:\\Users\\desko\\Desktop\\Baza\\GIT\\SBP_Projekat\\Projekat II\\Skoslki dnevnik\\Skoslki dnevnik\\Mapiranja\\PredmetMapiranja.cs",
+              "RelativeToolTip": "Skoslki dnevnik\\Mapiranja\\PredmetMapiranja.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-09-25T13:29:22.497Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-09-23T11:27:51.765Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "PregledUcenikaForm.cs [Design]",
-              "DocumentMoniker": "C:\\Users\\desko\\Desktop\\Baza\\GIT\\SBP_Projekat\\Projekat II\\Skoslki dnevnik\\Skoslki dnevnik\\Forme\\PregledUcenikaForm.cs",
-              "RelativeDocumentMoniker": "Skoslki dnevnik\\Forme\\PregledUcenikaForm.cs",
-              "ToolTip": "C:\\Users\\desko\\Desktop\\Baza\\GIT\\SBP_Projekat\\Projekat II\\Skoslki dnevnik\\Skoslki dnevnik\\Forme\\PregledUcenikaForm.cs [Design]",
-              "RelativeToolTip": "Skoslki dnevnik\\Forme\\PregledUcenikaForm.cs [Design]",
+              "DocumentIndex": 26,
+              "Title": "Predmet.cs",
+              "DocumentMoniker": "C:\\Users\\desko\\Desktop\\Baza\\GIT\\SBP_Projekat\\Projekat II\\Skoslki dnevnik\\Skoslki dnevnik\\Entiteti\\Predmet.cs",
+              "RelativeDocumentMoniker": "Skoslki dnevnik\\Entiteti\\Predmet.cs",
+              "ToolTip": "C:\\Users\\desko\\Desktop\\Baza\\GIT\\SBP_Projekat\\Projekat II\\Skoslki dnevnik\\Skoslki dnevnik\\Entiteti\\Predmet.cs",
+              "RelativeToolTip": "Skoslki dnevnik\\Entiteti\\Predmet.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-09-25T14:38:36.074Z"
+              "WhenOpened": "2026-09-23T11:21:07.185Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "NastavnikPocetna.cs [Design]",
-              "DocumentMoniker": "C:\\Users\\desko\\Desktop\\Baza\\GIT\\SBP_Projekat\\Projekat II\\Skoslki dnevnik\\Skoslki dnevnik\\Forme\\NastavnikPocetna.cs",
-              "RelativeDocumentMoniker": "Skoslki dnevnik\\Forme\\NastavnikPocetna.cs",
-              "ToolTip": "C:\\Users\\desko\\Desktop\\Baza\\GIT\\SBP_Projekat\\Projekat II\\Skoslki dnevnik\\Skoslki dnevnik\\Forme\\NastavnikPocetna.cs [Design]",
-              "RelativeToolTip": "Skoslki dnevnik\\Forme\\NastavnikPocetna.cs [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-09-21T21:01:11.573Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 29,
               "Title": "NastavnikPocetna.cs",
               "DocumentMoniker": "C:\\Users\\desko\\Desktop\\Baza\\GIT\\SBP_Projekat\\Projekat II\\Skoslki dnevnik\\Skoslki dnevnik\\Forme\\NastavnikPocetna.cs",
               "RelativeDocumentMoniker": "Skoslki dnevnik\\Forme\\NastavnikPocetna.cs",
@@ -390,7 +639,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 30,
               "Title": "DodelaPredmetaFrom.cs",
               "DocumentMoniker": "C:\\Users\\desko\\Desktop\\Baza\\GIT\\SBP_Projekat\\Projekat II\\Skoslki dnevnik\\Skoslki dnevnik\\Forme\\DodelaPredmetaFrom.cs",
               "RelativeDocumentMoniker": "Skoslki dnevnik\\Forme\\DodelaPredmetaFrom.cs",
@@ -403,18 +652,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "DodelaPredmetaFrom.cs [Design]",
-              "DocumentMoniker": "C:\\Users\\desko\\Desktop\\Baza\\GIT\\SBP_Projekat\\Projekat II\\Skoslki dnevnik\\Skoslki dnevnik\\Forme\\DodelaPredmetaFrom.cs",
-              "RelativeDocumentMoniker": "Skoslki dnevnik\\Forme\\DodelaPredmetaFrom.cs",
-              "ToolTip": "C:\\Users\\desko\\Desktop\\Baza\\GIT\\SBP_Projekat\\Projekat II\\Skoslki dnevnik\\Skoslki dnevnik\\Forme\\DodelaPredmetaFrom.cs [Design]",
-              "RelativeToolTip": "Skoslki dnevnik\\Forme\\DodelaPredmetaFrom.cs [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-09-25T10:02:23.934Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 31,
               "Title": "StrucniSaradnik.cs",
               "DocumentMoniker": "C:\\Users\\desko\\Desktop\\Baza\\GIT\\SBP_Projekat\\Projekat II\\Skoslki dnevnik\\Skoslki dnevnik\\Entiteti\\StrucniSaradnik.cs",
               "RelativeDocumentMoniker": "Skoslki dnevnik\\Entiteti\\StrucniSaradnik.cs",
@@ -426,7 +664,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 33,
               "Title": "RoditeljStaratelj.cs",
               "DocumentMoniker": "C:\\Users\\desko\\Desktop\\Baza\\GIT\\SBP_Projekat\\Projekat II\\Skoslki dnevnik\\Skoslki dnevnik\\Entiteti\\RoditeljStaratelj.cs",
               "RelativeDocumentMoniker": "Skoslki dnevnik\\Entiteti\\RoditeljStaratelj.cs",
@@ -438,7 +676,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 34,
               "Title": "RazredniStaresina.cs",
               "DocumentMoniker": "C:\\Users\\desko\\Desktop\\Baza\\GIT\\SBP_Projekat\\Projekat II\\Skoslki dnevnik\\Skoslki dnevnik\\Entiteti\\RazredniStaresina.cs",
               "RelativeDocumentMoniker": "Skoslki dnevnik\\Entiteti\\RazredniStaresina.cs",
@@ -450,7 +688,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
+              "DocumentIndex": 35,
               "Title": "Predaje.cs",
               "DocumentMoniker": "C:\\Users\\desko\\Desktop\\Baza\\GIT\\SBP_Projekat\\Projekat II\\Skoslki dnevnik\\Skoslki dnevnik\\Entiteti\\Predaje.cs",
               "RelativeDocumentMoniker": "Skoslki dnevnik\\Entiteti\\Predaje.cs",
@@ -462,7 +700,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 32,
               "Title": "RukovodeceOsoblje.cs",
               "DocumentMoniker": "C:\\Users\\desko\\Desktop\\Baza\\GIT\\SBP_Projekat\\Projekat II\\Skoslki dnevnik\\Skoslki dnevnik\\Entiteti\\RukovodeceOsoblje.cs",
               "RelativeDocumentMoniker": "Skoslki dnevnik\\Entiteti\\RukovodeceOsoblje.cs",
@@ -474,19 +712,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
-              "Title": "Osoba.cs",
-              "DocumentMoniker": "C:\\Users\\desko\\Desktop\\Baza\\GIT\\SBP_Projekat\\Projekat II\\Skoslki dnevnik\\Skoslki dnevnik\\Entiteti\\Osoba.cs",
-              "RelativeDocumentMoniker": "Skoslki dnevnik\\Entiteti\\Osoba.cs",
-              "ToolTip": "C:\\Users\\desko\\Desktop\\Baza\\GIT\\SBP_Projekat\\Projekat II\\Skoslki dnevnik\\Skoslki dnevnik\\Entiteti\\Osoba.cs",
-              "RelativeToolTip": "Skoslki dnevnik\\Entiteti\\Osoba.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-09-22T09:47:33.265Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 20,
+              "DocumentIndex": 36,
               "Title": "Odeljenje.cs",
               "DocumentMoniker": "C:\\Users\\desko\\Desktop\\Baza\\GIT\\SBP_Projekat\\Projekat II\\Skoslki dnevnik\\Skoslki dnevnik\\Entiteti\\Odeljenje.cs",
               "RelativeDocumentMoniker": "Skoslki dnevnik\\Entiteti\\Odeljenje.cs",
@@ -498,55 +724,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 21,
-              "Title": "Ocena.cs",
-              "DocumentMoniker": "C:\\Users\\desko\\Desktop\\Baza\\GIT\\SBP_Projekat\\Projekat II\\Skoslki dnevnik\\Skoslki dnevnik\\Entiteti\\Ocena.cs",
-              "RelativeDocumentMoniker": "Skoslki dnevnik\\Entiteti\\Ocena.cs",
-              "ToolTip": "C:\\Users\\desko\\Desktop\\Baza\\GIT\\SBP_Projekat\\Projekat II\\Skoslki dnevnik\\Skoslki dnevnik\\Entiteti\\Ocena.cs",
-              "RelativeToolTip": "Skoslki dnevnik\\Entiteti\\Ocena.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAqwAgAAAAbAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-09-23T11:42:39.764Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 22,
-              "Title": "Nastavnik.cs",
-              "DocumentMoniker": "C:\\Users\\desko\\Desktop\\Baza\\GIT\\SBP_Projekat\\Projekat II\\Skoslki dnevnik\\Skoslki dnevnik\\Entiteti\\Nastavnik.cs",
-              "RelativeDocumentMoniker": "Skoslki dnevnik\\Entiteti\\Nastavnik.cs",
-              "ToolTip": "C:\\Users\\desko\\Desktop\\Baza\\GIT\\SBP_Projekat\\Projekat II\\Skoslki dnevnik\\Skoslki dnevnik\\Entiteti\\Nastavnik.cs",
-              "RelativeToolTip": "Skoslki dnevnik\\Entiteti\\Nastavnik.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-09-23T11:22:07.013Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 23,
-              "Title": "Nastava.cs",
-              "DocumentMoniker": "C:\\Users\\desko\\Desktop\\Baza\\GIT\\SBP_Projekat\\Projekat II\\Skoslki dnevnik\\Skoslki dnevnik\\Entiteti\\Nastava.cs",
-              "RelativeDocumentMoniker": "Skoslki dnevnik\\Entiteti\\Nastava.cs",
-              "ToolTip": "C:\\Users\\desko\\Desktop\\Baza\\GIT\\SBP_Projekat\\Projekat II\\Skoslki dnevnik\\Skoslki dnevnik\\Entiteti\\Nastava.cs",
-              "RelativeToolTip": "Skoslki dnevnik\\Entiteti\\Nastava.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-09-23T11:22:32.171Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 24,
-              "Title": "Izostanak.cs",
-              "DocumentMoniker": "C:\\Users\\desko\\Desktop\\Baza\\GIT\\SBP_Projekat\\Projekat II\\Skoslki dnevnik\\Skoslki dnevnik\\Entiteti\\Izostanak.cs",
-              "RelativeDocumentMoniker": "Skoslki dnevnik\\Entiteti\\Izostanak.cs",
-              "ToolTip": "C:\\Users\\desko\\Desktop\\Baza\\GIT\\SBP_Projekat\\Projekat II\\Skoslki dnevnik\\Skoslki dnevnik\\Entiteti\\Izostanak.cs",
-              "RelativeToolTip": "Skoslki dnevnik\\Entiteti\\Izostanak.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-09-23T11:23:30.961Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 25,
+              "DocumentIndex": 37,
               "Title": "NastavnikMapiranja.cs",
               "DocumentMoniker": "C:\\Users\\desko\\Desktop\\Baza\\GIT\\SBP_Projekat\\Projekat II\\Skoslki dnevnik\\Skoslki dnevnik\\Mapiranja\\NastavnikMapiranja.cs",
               "RelativeDocumentMoniker": "Skoslki dnevnik\\Mapiranja\\NastavnikMapiranja.cs",
@@ -558,7 +736,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 26,
+              "DocumentIndex": 38,
               "Title": "PredajeMapiranja.cs",
               "DocumentMoniker": "C:\\Users\\desko\\Desktop\\Baza\\GIT\\SBP_Projekat\\Projekat II\\Skoslki dnevnik\\Skoslki dnevnik\\Mapiranja\\PredajeMapiranja.cs",
               "RelativeDocumentMoniker": "Skoslki dnevnik\\Mapiranja\\PredajeMapiranja.cs",
@@ -570,7 +748,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 28,
+              "DocumentIndex": 40,
               "Title": "OcenaMapiranja.cs",
               "DocumentMoniker": "C:\\Users\\desko\\Desktop\\Baza\\GIT\\SBP_Projekat\\Projekat II\\Skoslki dnevnik\\Skoslki dnevnik\\Mapiranja\\OcenaMapiranja.cs",
               "RelativeDocumentMoniker": "Skoslki dnevnik\\Mapiranja\\OcenaMapiranja.cs",
@@ -582,7 +760,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 27,
+              "DocumentIndex": 39,
               "Title": "OdeljenjeMapiranja.cs",
               "DocumentMoniker": "C:\\Users\\desko\\Desktop\\Baza\\GIT\\SBP_Projekat\\Projekat II\\Skoslki dnevnik\\Skoslki dnevnik\\Mapiranja\\OdeljenjeMapiranja.cs",
               "RelativeDocumentMoniker": "Skoslki dnevnik\\Mapiranja\\OdeljenjeMapiranja.cs",
@@ -594,7 +772,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 29,
+              "DocumentIndex": 41,
               "Title": "OsobaMapiranja.cs",
               "DocumentMoniker": "C:\\Users\\desko\\Desktop\\Baza\\GIT\\SBP_Projekat\\Projekat II\\Skoslki dnevnik\\Skoslki dnevnik\\Mapiranja\\OsobaMapiranja.cs",
               "RelativeDocumentMoniker": "Skoslki dnevnik\\Mapiranja\\OsobaMapiranja.cs",
@@ -606,18 +784,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 30,
-              "Title": "DodajPredmetForm.cs [Design]",
-              "DocumentMoniker": "C:\\Users\\desko\\Desktop\\Baza\\GIT\\SBP_Projekat\\Projekat II\\Skoslki dnevnik\\Skoslki dnevnik\\Forme\\DodajPredmetForm.cs",
-              "RelativeDocumentMoniker": "Skoslki dnevnik\\Forme\\DodajPredmetForm.cs",
-              "ToolTip": "C:\\Users\\desko\\Desktop\\Baza\\GIT\\SBP_Projekat\\Projekat II\\Skoslki dnevnik\\Skoslki dnevnik\\Forme\\DodajPredmetForm.cs [Design]",
-              "RelativeToolTip": "Skoslki dnevnik\\Forme\\DodajPredmetForm.cs [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-09-24T17:34:30.31Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 31,
+              "DocumentIndex": 42,
               "Title": "RazredniStaresinaMapiranja.cs",
               "DocumentMoniker": "C:\\Users\\desko\\Desktop\\Baza\\GIT\\SBP_Projekat\\Projekat II\\Skoslki dnevnik\\Skoslki dnevnik\\Mapiranja\\RazredniStaresinaMapiranja.cs",
               "RelativeDocumentMoniker": "Skoslki dnevnik\\Mapiranja\\RazredniStaresinaMapiranja.cs",
@@ -629,7 +796,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 32,
+              "DocumentIndex": 43,
               "Title": "PredmetiForma.cs",
               "DocumentMoniker": "C:\\Users\\desko\\Desktop\\Baza\\GIT\\SBP_Projekat\\Projekat II\\Skoslki dnevnik\\Skoslki dnevnik\\Forme\\PredmetiForma.cs",
               "RelativeDocumentMoniker": "Skoslki dnevnik\\Forme\\PredmetiForma.cs",
@@ -642,40 +809,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 33,
-              "Title": "PredmetiForma.cs [Design]",
-              "DocumentMoniker": "C:\\Users\\desko\\Desktop\\Baza\\GIT\\SBP_Projekat\\Projekat II\\Skoslki dnevnik\\Skoslki dnevnik\\Forme\\PredmetiForma.cs",
-              "RelativeDocumentMoniker": "Skoslki dnevnik\\Forme\\PredmetiForma.cs",
-              "ToolTip": "C:\\Users\\desko\\Desktop\\Baza\\GIT\\SBP_Projekat\\Projekat II\\Skoslki dnevnik\\Skoslki dnevnik\\Forme\\PredmetiForma.cs [Design]",
-              "RelativeToolTip": "Skoslki dnevnik\\Forme\\PredmetiForma.cs [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-09-24T14:05:50.083Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 34,
-              "Title": "PredmetPodaci.cs [Design]",
-              "DocumentMoniker": "C:\\Users\\desko\\Desktop\\Baza\\GIT\\SBP_Projekat\\Projekat II\\Skoslki dnevnik\\Skoslki dnevnik\\Forme\\PredmetPodaci.cs",
-              "RelativeDocumentMoniker": "Skoslki dnevnik\\Forme\\PredmetPodaci.cs",
-              "ToolTip": "C:\\Users\\desko\\Desktop\\Baza\\GIT\\SBP_Projekat\\Projekat II\\Skoslki dnevnik\\Skoslki dnevnik\\Forme\\PredmetPodaci.cs [Design]",
-              "RelativeToolTip": "Skoslki dnevnik\\Forme\\PredmetPodaci.cs [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-09-24T21:45:49.965Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 35,
-              "Title": "DodajNastavnikaForm.cs [Design]",
-              "DocumentMoniker": "C:\\Users\\desko\\Desktop\\Baza\\GIT\\SBP_Projekat\\Projekat II\\Skoslki dnevnik\\Skoslki dnevnik\\Forme\\DodajNastavnikaForm.cs",
-              "RelativeDocumentMoniker": "Skoslki dnevnik\\Forme\\DodajNastavnikaForm.cs",
-              "ToolTip": "C:\\Users\\desko\\Desktop\\Baza\\GIT\\SBP_Projekat\\Projekat II\\Skoslki dnevnik\\Skoslki dnevnik\\Forme\\DodajNastavnikaForm.cs [Design]",
-              "RelativeToolTip": "Skoslki dnevnik\\Forme\\DodajNastavnikaForm.cs [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-09-23T19:43:52.92Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 36,
+              "DocumentIndex": 44,
               "Title": "RukovodeceOsobljeMapiranja.cs",
               "DocumentMoniker": "C:\\Users\\desko\\Desktop\\Baza\\GIT\\SBP_Projekat\\Projekat II\\Skoslki dnevnik\\Skoslki dnevnik\\Mapiranja\\RukovodeceOsobljeMapiranja.cs",
               "RelativeDocumentMoniker": "Skoslki dnevnik\\Mapiranja\\RukovodeceOsobljeMapiranja.cs",
@@ -687,7 +821,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 37,
+              "DocumentIndex": 45,
               "Title": "StrucniSaradnikMapiranja.cs",
               "DocumentMoniker": "C:\\Users\\desko\\Desktop\\Baza\\GIT\\SBP_Projekat\\Projekat II\\Skoslki dnevnik\\Skoslki dnevnik\\Mapiranja\\StrucniSaradnikMapiranja.cs",
               "RelativeDocumentMoniker": "Skoslki dnevnik\\Mapiranja\\StrucniSaradnikMapiranja.cs",
@@ -699,7 +833,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 38,
+              "DocumentIndex": 46,
               "Title": "DodajNastavnikaForm.cs",
               "DocumentMoniker": "C:\\Users\\desko\\Desktop\\Baza\\GIT\\SBP_Projekat\\Projekat II\\Skoslki dnevnik\\Skoslki dnevnik\\Forme\\DodajNastavnikaForm.cs",
               "RelativeDocumentMoniker": "Skoslki dnevnik\\Forme\\DodajNastavnikaForm.cs",
@@ -711,18 +845,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 39,
-              "Title": "DodajUcenikaForma.cs [Design]",
-              "DocumentMoniker": "C:\\Users\\desko\\Desktop\\Baza\\GIT\\SBP_Projekat\\Projekat II\\Skoslki dnevnik\\Skoslki dnevnik\\Forme\\DodajUcenikaForma.cs",
-              "RelativeDocumentMoniker": "Skoslki dnevnik\\Forme\\DodajUcenikaForma.cs",
-              "ToolTip": "C:\\Users\\desko\\Desktop\\Baza\\GIT\\SBP_Projekat\\Projekat II\\Skoslki dnevnik\\Skoslki dnevnik\\Forme\\DodajUcenikaForma.cs [Design]",
-              "RelativeToolTip": "Skoslki dnevnik\\Forme\\DodajUcenikaForma.cs [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-09-18T04:11:56.578Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 40,
+              "DocumentIndex": 47,
               "Title": "DodajUcenikaForma.cs",
               "DocumentMoniker": "C:\\Users\\desko\\Desktop\\Baza\\GIT\\SBP_Projekat\\Projekat II\\Skoslki dnevnik\\Skoslki dnevnik\\Forme\\DodajUcenikaForma.cs",
               "RelativeDocumentMoniker": "Skoslki dnevnik\\Forme\\DodajUcenikaForma.cs",
@@ -734,7 +857,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 41,
+              "DocumentIndex": 48,
               "Title": "DodajPredmetForm.cs",
               "DocumentMoniker": "C:\\Users\\desko\\Desktop\\Baza\\GIT\\SBP_Projekat\\Projekat II\\Skoslki dnevnik\\Skoslki dnevnik\\Forme\\DodajPredmetForm.cs",
               "RelativeDocumentMoniker": "Skoslki dnevnik\\Forme\\DodajPredmetForm.cs",
@@ -746,7 +869,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 42,
+              "DocumentIndex": 49,
               "Title": "PredmetPodaci.cs",
               "DocumentMoniker": "C:\\Users\\desko\\Desktop\\Baza\\GIT\\SBP_Projekat\\Projekat II\\Skoslki dnevnik\\Skoslki dnevnik\\Forme\\PredmetPodaci.cs",
               "RelativeDocumentMoniker": "Skoslki dnevnik\\Forme\\PredmetPodaci.cs",
@@ -758,18 +881,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 43,
-              "Title": "UcenikPodaci.cs [Design]",
-              "DocumentMoniker": "C:\\Users\\desko\\Desktop\\Baza\\GIT\\SBP_Projekat\\Projekat II\\Skoslki dnevnik\\Skoslki dnevnik\\Forme\\UcenikPodaci.cs",
-              "RelativeDocumentMoniker": "Skoslki dnevnik\\Forme\\UcenikPodaci.cs",
-              "ToolTip": "C:\\Users\\desko\\Desktop\\Baza\\GIT\\SBP_Projekat\\Projekat II\\Skoslki dnevnik\\Skoslki dnevnik\\Forme\\UcenikPodaci.cs [Design]",
-              "RelativeToolTip": "Skoslki dnevnik\\Forme\\UcenikPodaci.cs [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-09-23T19:51:03.7Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 44,
+              "DocumentIndex": 50,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\desko\\Desktop\\Baza\\GIT\\SBP_Projekat\\Projekat II\\Skoslki dnevnik\\Skoslki dnevnik\\Program.cs",
               "RelativeDocumentMoniker": "Skoslki dnevnik\\Program.cs",
@@ -781,7 +893,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 45,
+              "DocumentIndex": 51,
               "Title": "Skoslki dnevnik",
               "DocumentMoniker": "C:\\Users\\desko\\Desktop\\Baza\\GIT\\SBP_Projekat\\Projekat II\\Skoslki dnevnik\\Skoslki dnevnik\\Skoslki dnevnik.csproj",
               "RelativeDocumentMoniker": "Skoslki dnevnik\\Skoslki dnevnik.csproj",
@@ -792,7 +904,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 46,
+              "DocumentIndex": 52,
               "Title": "Enumeracije.cs",
               "DocumentMoniker": "C:\\Users\\desko\\Desktop\\Baza\\GIT\\SBP_Projekat\\Projekat II\\Skoslki dnevnik\\Skoslki dnevnik\\Enumeracije.cs",
               "RelativeDocumentMoniker": "Skoslki dnevnik\\Enumeracije.cs",
@@ -804,7 +916,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 47,
+              "DocumentIndex": 53,
               "Title": "DodajPredmetForm.Designer.cs",
               "DocumentMoniker": "C:\\Users\\desko\\Desktop\\Baza\\GIT\\SBP_Projekat\\Projekat II\\Skoslki dnevnik\\Skoslki dnevnik\\Forme\\DodajPredmetForm.Designer.cs",
               "RelativeDocumentMoniker": "Skoslki dnevnik\\Forme\\DodajPredmetForm.Designer.cs",
@@ -812,11 +924,12 @@
               "RelativeToolTip": "Skoslki dnevnik\\Forme\\DodajPredmetForm.Designer.cs",
               "ViewState": "AgIAANQAAAAAAAAAAAAswEcAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-09-24T16:56:13.703Z"
+              "WhenOpened": "2026-09-24T16:56:13.703Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 48,
+              "DocumentIndex": 54,
               "Title": "PredmetiForma.Designer.cs",
               "DocumentMoniker": "C:\\Users\\desko\\Desktop\\Baza\\GIT\\SBP_Projekat\\Projekat II\\Skoslki dnevnik\\Skoslki dnevnik\\Forme\\PredmetiForma.Designer.cs",
               "RelativeDocumentMoniker": "Skoslki dnevnik\\Forme\\PredmetiForma.Designer.cs",
@@ -824,11 +937,12 @@
               "RelativeToolTip": "Skoslki dnevnik\\Forme\\PredmetiForma.Designer.cs",
               "ViewState": "AgIAABYAAAAAAAAAAAAkwBYAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-09-24T14:05:34.334Z"
+              "WhenOpened": "2026-09-24T14:05:34.334Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 49,
+              "DocumentIndex": 55,
               "Title": "UcenikPocetna.cs",
               "DocumentMoniker": "C:\\Users\\desko\\Desktop\\Baza\\GIT\\SBP_Projekat\\Projekat II\\Skoslki dnevnik\\Skoslki dnevnik\\Forme\\UcenikPocetna.cs",
               "RelativeDocumentMoniker": "Skoslki dnevnik\\Forme\\UcenikPocetna.cs",
@@ -841,17 +955,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 50,
-              "Title": "UcenikPocetna.cs [Design]",
-              "DocumentMoniker": "C:\\Users\\desko\\Desktop\\Baza\\GIT\\SBP_Projekat\\Projekat II\\Skoslki dnevnik\\Skoslki dnevnik\\Forme\\UcenikPocetna.cs",
-              "RelativeDocumentMoniker": "Skoslki dnevnik\\Forme\\UcenikPocetna.cs",
-              "ToolTip": "D:\\faks\\RII\\III godina\\VI semestar\\Sistemi baza podataka\\SBP_Projekat\\SBP_Projekat\\Projekat II\\Skoslki dnevnik\\Skoslki dnevnik\\Forme\\UcenikPocetna.cs [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-09-22T12:52:19.592Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 51,
+              "DocumentIndex": 56,
               "Title": "UcenikPodaci.cs",
               "DocumentMoniker": "C:\\Users\\desko\\Desktop\\Baza\\GIT\\SBP_Projekat\\Projekat II\\Skoslki dnevnik\\Skoslki dnevnik\\Forme\\UcenikPodaci.cs",
               "RelativeDocumentMoniker": "Skoslki dnevnik\\Forme\\UcenikPodaci.cs",
@@ -863,7 +967,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 52,
+              "DocumentIndex": 57,
               "Title": "IzostanakMapiranja.cs",
               "DocumentMoniker": "C:\\Users\\desko\\Desktop\\Baza\\GIT\\SBP_Projekat\\Projekat II\\Skoslki dnevnik\\Skoslki dnevnik\\Mapiranja\\IzostanakMapiranja.cs",
               "RelativeDocumentMoniker": "Skoslki dnevnik\\Mapiranja\\IzostanakMapiranja.cs",
@@ -875,7 +979,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 53,
+              "DocumentIndex": 58,
               "Title": "NastavaMapiranja.cs",
               "DocumentMoniker": "C:\\Users\\desko\\Desktop\\Baza\\GIT\\SBP_Projekat\\Projekat II\\Skoslki dnevnik\\Skoslki dnevnik\\Mapiranja\\NastavaMapiranja.cs",
               "RelativeDocumentMoniker": "Skoslki dnevnik\\Mapiranja\\NastavaMapiranja.cs",
@@ -887,7 +991,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 56,
+              "DocumentIndex": 61,
               "Title": "UcenikPocetna.Designer.cs",
               "DocumentMoniker": "C:\\Users\\desko\\Desktop\\Baza\\GIT\\SBP_Projekat\\Projekat II\\Skoslki dnevnik\\Skoslki dnevnik\\Forme\\UcenikPocetna.Designer.cs",
               "RelativeDocumentMoniker": "Skoslki dnevnik\\Forme\\UcenikPocetna.Designer.cs",
@@ -895,11 +999,12 @@
               "RelativeToolTip": "Skoslki dnevnik\\Forme\\UcenikPocetna.Designer.cs",
               "ViewState": "AgIAABYAAAAAAAAAAAAswBYAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-09-22T12:51:42.998Z"
+              "WhenOpened": "2026-09-22T12:51:42.998Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 54,
+              "DocumentIndex": 59,
               "Title": "DodajUcenikaForma.Designer.cs",
               "DocumentMoniker": "C:\\Users\\desko\\Desktop\\Baza\\GIT\\SBP_Projekat\\Projekat II\\Skoslki dnevnik\\Skoslki dnevnik\\Forme\\DodajUcenikaForma.Designer.cs",
               "RelativeDocumentMoniker": "Skoslki dnevnik\\Forme\\DodajUcenikaForma.Designer.cs",
@@ -907,11 +1012,12 @@
               "RelativeToolTip": "Skoslki dnevnik\\Forme\\DodajUcenikaForma.Designer.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAASAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-09-21T18:15:19.397Z"
+              "WhenOpened": "2026-09-21T18:15:19.397Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 55,
+              "DocumentIndex": 60,
               "Title": "Implicit.cs",
               "DocumentMoniker": "C:\\Users\\desko\\Desktop\\Baza\\GIT\\SBP_Projekat\\Projekat II\\Skoslki dnevnik\\Skoslki dnevnik\\Implicit.cs",
               "RelativeDocumentMoniker": "Skoslki dnevnik\\Implicit.cs",

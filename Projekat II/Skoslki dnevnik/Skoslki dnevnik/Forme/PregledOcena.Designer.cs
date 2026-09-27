@@ -28,58 +28,61 @@
         /// </summary>
         private void InitializeComponent()
         {
-            dataGridView1 = new DataGridView();
+            oceneDgv = new DataGridView();
             button1 = new Button();
             button2 = new Button();
             filterGroupBox = new GroupBox();
-            radioButton1 = new RadioButton();
-            radioButton2 = new RadioButton();
-            radioButton3 = new RadioButton();
-            radioButton4 = new RadioButton();
-            prvoPRB = new RadioButton();
-            drugoPRB = new RadioButton();
+            usmeniCB = new CheckBox();
+            pisanaCB = new CheckBox();
+            zakljucnaCB = new CheckBox();
+            aktivnostCB = new CheckBox();
             polugodjeGB = new GroupBox();
-            dateTimePicker1 = new DateTimePicker();
-            dateTimePicker2 = new DateTimePicker();
+            drugoCB = new CheckBox();
+            prvoCB = new CheckBox();
+            datumOdDtp = new DateTimePicker();
+            datumDoDtp = new DateTimePicker();
             label1 = new Label();
             label2 = new Label();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            dodajOcenuBtn = new Button();
+            ((System.ComponentModel.ISupportInitialize)oceneDgv).BeginInit();
             filterGroupBox.SuspendLayout();
             polugodjeGB.SuspendLayout();
             SuspendLayout();
             // 
-            // dataGridView1
+            // oceneDgv
             // 
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(12, 141);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.Size = new Size(285, 367);
-            dataGridView1.TabIndex = 0;
+            oceneDgv.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            oceneDgv.Location = new Point(12, 141);
+            oceneDgv.Name = "oceneDgv";
+            oceneDgv.Size = new Size(285, 367);
+            oceneDgv.TabIndex = 0;
             // 
             // button1
             // 
-            button1.Location = new Point(309, 141);
+            button1.Location = new Point(309, 170);
             button1.Name = "button1";
             button1.Size = new Size(127, 23);
             button1.TabIndex = 1;
             button1.Text = "Obrisi";
             button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
             // 
             // button2
             // 
-            button2.Location = new Point(309, 170);
+            button2.Location = new Point(309, 199);
             button2.Name = "button2";
             button2.Size = new Size(127, 23);
             button2.TabIndex = 2;
             button2.Text = "Izmeni ";
             button2.UseVisualStyleBackColor = true;
+            button2.Click += button2_Click;
             // 
             // filterGroupBox
             // 
-            filterGroupBox.Controls.Add(radioButton4);
-            filterGroupBox.Controls.Add(radioButton3);
-            filterGroupBox.Controls.Add(radioButton2);
-            filterGroupBox.Controls.Add(radioButton1);
+            filterGroupBox.Controls.Add(usmeniCB);
+            filterGroupBox.Controls.Add(pisanaCB);
+            filterGroupBox.Controls.Add(zakljucnaCB);
+            filterGroupBox.Controls.Add(aktivnostCB);
             filterGroupBox.Location = new Point(12, 6);
             filterGroupBox.Name = "filterGroupBox";
             filterGroupBox.Size = new Size(285, 71);
@@ -87,76 +90,54 @@
             filterGroupBox.TabStop = false;
             filterGroupBox.Text = "Tip ocene";
             // 
-            // radioButton1
+            // usmeniCB
             // 
-            radioButton1.AutoSize = true;
-            radioButton1.Location = new Point(6, 19);
-            radioButton1.Name = "radioButton1";
-            radioButton1.Size = new Size(75, 19);
-            radioButton1.TabIndex = 0;
-            radioButton1.TabStop = true;
-            radioButton1.Text = "Aktivnost";
-            radioButton1.UseVisualStyleBackColor = true;
+            usmeniCB.AutoSize = true;
+            usmeniCB.Location = new Point(165, 44);
+            usmeniCB.Name = "usmeniCB";
+            usmeniCB.Size = new Size(114, 19);
+            usmeniCB.TabIndex = 3;
+            usmeniCB.Text = "Usmeni odgovor";
+            usmeniCB.UseVisualStyleBackColor = true;
+            usmeniCB.CheckedChanged += usmeniCB_CheckedChanged;
             // 
-            // radioButton2
+            // pisanaCB
             // 
-            radioButton2.AutoSize = true;
-            radioButton2.Location = new Point(166, 19);
-            radioButton2.Name = "radioButton2";
-            radioButton2.Size = new Size(113, 19);
-            radioButton2.TabIndex = 1;
-            radioButton2.TabStop = true;
-            radioButton2.Text = "Usmeni odgovor";
-            radioButton2.UseVisualStyleBackColor = true;
+            pisanaCB.AutoSize = true;
+            pisanaCB.Location = new Point(165, 19);
+            pisanaCB.Name = "pisanaCB";
+            pisanaCB.Size = new Size(103, 19);
+            pisanaCB.TabIndex = 2;
+            pisanaCB.Text = "Pisana provera";
+            pisanaCB.UseVisualStyleBackColor = true;
+            pisanaCB.CheckedChanged += pisanaCB_CheckedChanged;
             // 
-            // radioButton3
+            // zakljucnaCB
             // 
-            radioButton3.AutoSize = true;
-            radioButton3.Location = new Point(6, 44);
-            radioButton3.Name = "radioButton3";
-            radioButton3.Size = new Size(102, 19);
-            radioButton3.TabIndex = 2;
-            radioButton3.TabStop = true;
-            radioButton3.Text = "Pisana provera";
-            radioButton3.UseVisualStyleBackColor = true;
+            zakljucnaCB.AutoSize = true;
+            zakljucnaCB.Location = new Point(6, 44);
+            zakljucnaCB.Name = "zakljucnaCB";
+            zakljucnaCB.Size = new Size(77, 19);
+            zakljucnaCB.TabIndex = 1;
+            zakljucnaCB.Text = "Zakljucna";
+            zakljucnaCB.UseVisualStyleBackColor = true;
+            zakljucnaCB.CheckedChanged += zakljucnaCB_CheckedChanged;
             // 
-            // radioButton4
+            // aktivnostCB
             // 
-            radioButton4.AutoSize = true;
-            radioButton4.Location = new Point(166, 44);
-            radioButton4.Name = "radioButton4";
-            radioButton4.Size = new Size(79, 19);
-            radioButton4.TabIndex = 3;
-            radioButton4.TabStop = true;
-            radioButton4.Text = "Zakljucna ";
-            radioButton4.UseVisualStyleBackColor = true;
-            // 
-            // prvoPRB
-            // 
-            prvoPRB.AutoSize = true;
-            prvoPRB.Location = new Point(12, 19);
-            prvoPRB.Name = "prvoPRB";
-            prvoPRB.Size = new Size(49, 19);
-            prvoPRB.TabIndex = 4;
-            prvoPRB.TabStop = true;
-            prvoPRB.Text = "Prvo";
-            prvoPRB.UseVisualStyleBackColor = true;
-            // 
-            // drugoPRB
-            // 
-            drugoPRB.AutoSize = true;
-            drugoPRB.Location = new Point(12, 44);
-            drugoPRB.Name = "drugoPRB";
-            drugoPRB.Size = new Size(58, 19);
-            drugoPRB.TabIndex = 5;
-            drugoPRB.TabStop = true;
-            drugoPRB.Text = "Drugo";
-            drugoPRB.UseVisualStyleBackColor = true;
+            aktivnostCB.AutoSize = true;
+            aktivnostCB.Location = new Point(6, 20);
+            aktivnostCB.Name = "aktivnostCB";
+            aktivnostCB.Size = new Size(76, 19);
+            aktivnostCB.TabIndex = 0;
+            aktivnostCB.Text = "Aktivnost";
+            aktivnostCB.UseVisualStyleBackColor = true;
+            aktivnostCB.CheckedChanged += aktivnostCB_CheckedChanged;
             // 
             // polugodjeGB
             // 
-            polugodjeGB.Controls.Add(drugoPRB);
-            polugodjeGB.Controls.Add(prvoPRB);
+            polugodjeGB.Controls.Add(drugoCB);
+            polugodjeGB.Controls.Add(prvoCB);
             polugodjeGB.Location = new Point(309, 6);
             polugodjeGB.Name = "polugodjeGB";
             polugodjeGB.Size = new Size(121, 71);
@@ -164,19 +145,43 @@
             polugodjeGB.TabStop = false;
             polugodjeGB.Text = "Polugodje";
             // 
-            // dateTimePicker1
+            // drugoCB
             // 
-            dateTimePicker1.Location = new Point(97, 83);
-            dateTimePicker1.Name = "dateTimePicker1";
-            dateTimePicker1.Size = new Size(200, 23);
-            dateTimePicker1.TabIndex = 7;
+            drugoCB.AutoSize = true;
+            drugoCB.Location = new Point(6, 44);
+            drugoCB.Name = "drugoCB";
+            drugoCB.Size = new Size(59, 19);
+            drugoCB.TabIndex = 2;
+            drugoCB.Text = "Drugo";
+            drugoCB.UseVisualStyleBackColor = true;
+            drugoCB.CheckedChanged += drugoCB_CheckedChanged;
             // 
-            // dateTimePicker2
+            // prvoCB
             // 
-            dateTimePicker2.Location = new Point(97, 112);
-            dateTimePicker2.Name = "dateTimePicker2";
-            dateTimePicker2.Size = new Size(200, 23);
-            dateTimePicker2.TabIndex = 8;
+            prvoCB.AutoSize = true;
+            prvoCB.Location = new Point(6, 19);
+            prvoCB.Name = "prvoCB";
+            prvoCB.Size = new Size(50, 19);
+            prvoCB.TabIndex = 1;
+            prvoCB.Text = "Prvo";
+            prvoCB.UseVisualStyleBackColor = true;
+            prvoCB.CheckedChanged += prvoCB_CheckedChanged;
+            // 
+            // datumOdDtp
+            // 
+            datumOdDtp.Location = new Point(97, 83);
+            datumOdDtp.Name = "datumOdDtp";
+            datumOdDtp.Size = new Size(200, 23);
+            datumOdDtp.TabIndex = 7;
+            datumOdDtp.ValueChanged += datumOdDtp_ValueChanged;
+            // 
+            // datumDoDtp
+            // 
+            datumDoDtp.Location = new Point(97, 112);
+            datumDoDtp.Name = "datumDoDtp";
+            datumDoDtp.Size = new Size(200, 23);
+            datumDoDtp.TabIndex = 8;
+            datumDoDtp.ValueChanged += datumDoDtp_ValueChanged;
             // 
             // label1
             // 
@@ -196,23 +201,35 @@
             label2.TabIndex = 10;
             label2.Text = "Datum do:";
             // 
+            // dodajOcenuBtn
+            // 
+            dodajOcenuBtn.Location = new Point(309, 141);
+            dodajOcenuBtn.Name = "dodajOcenuBtn";
+            dodajOcenuBtn.Size = new Size(127, 23);
+            dodajOcenuBtn.TabIndex = 11;
+            dodajOcenuBtn.Text = "Dodaj";
+            dodajOcenuBtn.UseVisualStyleBackColor = true;
+            dodajOcenuBtn.Click += dodajOcenuBtn_Click;
+            // 
             // PregledOcena
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(448, 520);
+            Controls.Add(dodajOcenuBtn);
             Controls.Add(label2);
             Controls.Add(label1);
-            Controls.Add(dateTimePicker2);
-            Controls.Add(dateTimePicker1);
+            Controls.Add(datumDoDtp);
+            Controls.Add(datumOdDtp);
             Controls.Add(polugodjeGB);
             Controls.Add(filterGroupBox);
             Controls.Add(button2);
             Controls.Add(button1);
-            Controls.Add(dataGridView1);
+            Controls.Add(oceneDgv);
             Name = "PregledOcena";
             Text = "PregledOcena";
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            Load += PregledOcena_Load;
+            ((System.ComponentModel.ISupportInitialize)oceneDgv).EndInit();
             filterGroupBox.ResumeLayout(false);
             filterGroupBox.PerformLayout();
             polugodjeGB.ResumeLayout(false);
@@ -223,20 +240,26 @@
 
         #endregion
 
-        private DataGridView dataGridView1;
+        private DataGridView oceneDgv;
         private Button button1;
         private Button button2;
         private GroupBox filterGroupBox;
-        private RadioButton radioButton4;
-        private RadioButton radioButton3;
-        private RadioButton radioButton2;
-        private RadioButton radioButton1;
         private RadioButton prvoPRB;
         private RadioButton drugoPRB;
         private GroupBox polugodjeGB;
-        private DateTimePicker dateTimePicker1;
-        private DateTimePicker dateTimePicker2;
+        private DateTimePicker datumOdDtp;
+        private DateTimePicker datumDoDtp;
         private Label label1;
         private Label label2;
+        private CheckBox checkBox4;
+        private CheckBox checkBox3;
+        private CheckBox checkBox2;
+        private CheckBox aktivnostCB;
+        private CheckBox drugoCB;
+        private CheckBox prvoCB;
+        private CheckBox usmeniCB;
+        private CheckBox pisanaCB;
+        private CheckBox zakljucnaCB;
+        private Button dodajOcenuBtn;
     }
 }

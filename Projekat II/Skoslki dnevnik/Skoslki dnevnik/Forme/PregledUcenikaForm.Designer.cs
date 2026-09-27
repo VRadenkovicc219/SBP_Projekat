@@ -29,8 +29,6 @@
         private void InitializeComponent()
         {
             uceniciDgv = new DataGridView();
-            dodeliOcenuBtn = new Button();
-            dodeliIzostanakBtn = new Button();
             izostanciBtn = new Button();
             oceneBtn = new Button();
             predmetiCB = new ComboBox();
@@ -47,24 +45,6 @@
             uceniciDgv.ReadOnly = true;
             uceniciDgv.Size = new Size(364, 426);
             uceniciDgv.TabIndex = 0;
-            // 
-            // dodeliOcenuBtn
-            // 
-            dodeliOcenuBtn.Location = new Point(382, 151);
-            dodeliOcenuBtn.Name = "dodeliOcenuBtn";
-            dodeliOcenuBtn.Size = new Size(117, 29);
-            dodeliOcenuBtn.TabIndex = 24;
-            dodeliOcenuBtn.Text = "dodeli ocenu";
-            dodeliOcenuBtn.UseVisualStyleBackColor = true;
-            // 
-            // dodeliIzostanakBtn
-            // 
-            dodeliIzostanakBtn.Location = new Point(382, 116);
-            dodeliIzostanakBtn.Name = "dodeliIzostanakBtn";
-            dodeliIzostanakBtn.Size = new Size(117, 29);
-            dodeliIzostanakBtn.TabIndex = 23;
-            dodeliIzostanakBtn.Text = "dodeli izostanak";
-            dodeliIzostanakBtn.UseVisualStyleBackColor = true;
             // 
             // izostanciBtn
             // 
@@ -106,12 +86,13 @@
             // 
             // izbaciUcenikaBtn
             // 
-            izbaciUcenikaBtn.Location = new Point(382, 186);
+            izbaciUcenikaBtn.Location = new Point(382, 116);
             izbaciUcenikaBtn.Name = "izbaciUcenikaBtn";
             izbaciUcenikaBtn.Size = new Size(117, 29);
             izbaciUcenikaBtn.TabIndex = 27;
-            izbaciUcenikaBtn.Text = "izbaci ucenika";
+            izbaciUcenikaBtn.Text = "Izbaci ucenika";
             izbaciUcenikaBtn.UseVisualStyleBackColor = true;
+            izbaciUcenikaBtn.Click += izbaciUcenikaBtn_Click;
             // 
             // PregledUcenikaForm
             // 
@@ -121,8 +102,6 @@
             Controls.Add(izbaciUcenikaBtn);
             Controls.Add(label1);
             Controls.Add(predmetiCB);
-            Controls.Add(dodeliOcenuBtn);
-            Controls.Add(dodeliIzostanakBtn);
             Controls.Add(izostanciBtn);
             Controls.Add(oceneBtn);
             Controls.Add(uceniciDgv);
@@ -137,8 +116,6 @@
         #endregion
 
         private DataGridView uceniciDgv;
-        private Button dodeliOcenuBtn;
-        private Button dodeliIzostanakBtn;
         private Button izostanciBtn;
         private Button oceneBtn;
         private ComboBox predmetiCB;

@@ -1,4 +1,5 @@
 ﻿using NHibernate.Util;
+using System.Security.Permissions;
 
 namespace Skoslki_dnevnik
 {
@@ -493,6 +494,43 @@ namespace Skoslki_dnevnik
                         .Select(x => new PredmetiDTO(x.Id, x.Naziv, x.SkolskaGodina, x.Razred))
                         .ToList();
             }, "Greska prilikom pribavljanja podataka iz baze");
+        }
+
+        public static Nastava vratiNastavu(int nastavnikId, int predmetId) {
+            return izvrsiUpit(s =>
+                s.Query<Nastava>().Where(x => x.predajePredmet.Nastavnik.Id == nastavnikId && x.predajePredmet.Predmet.Id == predmetId).FirstOrDefault()
+                , "Greska prilikom dobavljanaj nastave");
+        }
+
+        public static void izmeniOcenu(int id, Ocena novaOcena)
+        {
+            izvrsiUpit(s =>
+            {
+                Ocena o = s.Get<Ocena>(id);
+                o.Tip = novaOcena.Tip;
+                o.Vrednost = novaOcena.Vrednost;
+                o.DatumOcenjivanja = novaOcena.DatumOcenjivanja;
+                o.Komentar = novaOcena.Komentar;
+                o.Polugodje = novaOcena.Polugodje;
+                s.Update(o);
+            }, "Greska prilikom izmene ocene");
+        }
+
+        public static void obrisiOcenu(Ocena ocena) => izvrsiUpit(s => s.Delete(ocena), "Greska prilikom brisanja ocene");
+
+        public static void izbaciUcenikaSaPredmeta(int idUcenik, int idPredmet)
+        {
+            izvrsiUpit(s =>
+            {
+                Ucenik u = s.Get<Ucenik>(idUcenik);
+                Predmet p = s.Get<Predmet>(idPredmet);
+                if (u is null) throw new Exception("Nepostojeci ucenik");
+                if (p is null) throw new Exception("Nepostojeci predmet");
+                if (!u.Predmeti.Any(x => x.Id == p.Id))
+                    throw new Exception("Ucenik ne slusa predmet");
+                u.Predmeti.Remove(p);
+                s.Update(u);
+            } ,"Greska prilikom izbacivanja ucenika sa predmeta");
         }
         #endregion
     }
