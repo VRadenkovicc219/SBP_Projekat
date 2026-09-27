@@ -64,9 +64,9 @@ namespace Skoslki_dnevnik
                              .ToList(), "Greska pri preuzimanju ucenika iz baze") ?? new List<Ucenik>();
         }
 
-        public static Ucenik? vratiUcenika(int id)
+        public static Ucenik vratiUcenika(int id)
         {
-            return izvrsiUpit(s => s.Query<Ucenik>().Where(x => x.Id == id).FirstOrDefault(), "Greska prilikom pribavljanja ucenika iz baze");
+            return izvrsiUpit(s => s.Query<Ucenik>().Where(x => x.Id == id).FirstOrDefault(), "Greska prilikom pribavljanja ucenika iz baze")!;
         }
         public static void izmeniUcenika(int id, Ucenik u)
         {
@@ -496,9 +496,9 @@ namespace Skoslki_dnevnik
             }, "Greska prilikom pribavljanja podataka iz baze");
         }
 
-        public static Nastava? vratiNastavu(int nastavnikId, int predmetId) {
+        public static Nastava vratiNastavu(int nastavnikId, int predmetId) {
             return izvrsiUpit(s =>
-                s.Query<Nastava>().Where(x => x.predajePredmet.Nastavnik.Id == nastavnikId && x.predajePredmet.Predmet.Id == predmetId).FirstOrDefault()
+                s.Query<Nastava>().Where(x => x.predajePredmet.Nastavnik.Id == nastavnikId && x.predajePredmet.Predmet.Id == predmetId).FirstOrDefault()!
                 , "Greska prilikom dobavljanaj nastave");
         }
 
@@ -570,6 +570,33 @@ namespace Skoslki_dnevnik
         public static void obrisiIzostanak(Izostanak izostanak) =>
             izvrsiUpit(s => s.Delete(izostanak), "Greska prilikom brisanja izostanka");
         #endregion
-    } 
+
+        #region Predmeti
+        public static List<PredmetiDTO> vratiPredmeteKojeUcenikNeSlusa(Ucenik u)
+        {
+            return izvrsiUpit(s =>
+            {
+                return s.Query<Predmet>()
+                        .Where(x => !x.Polaznici.Contains(u))
+                        .Select(x => new PredmetiDTO(x.Id, x.Naziv, x.SkolskaGodina, x.Razred))
+                        .ToList();
+            }, "Greska prilikom dobavljanja podataka");
+        }
+
+        public static List<IzostanakDTO> vratiSveIzostankeUcenika(int ucenikId) {
+            return izvrsiUpit(s => s.Query<Izostanak>()
+                                                 .Where(x => x.Id.Ucenik.Id == ucenikId)
+                                                 .OrderByDescending(x => x.Id.Datum)
+                                                 .ThenByDescending(x => x.Id.RedniBrojCasa)
+                                                 .Select(x => new IzostanakDTO(x.Nastava.predajePredmet.Predmet.Naziv,
+                                                                               x.Id.RedniBrojCasa,
+                                                                               x.Id.Datum,
+                                                                               x.TipIzostanka.ToString(),
+                                                                               x.Opravdao.ToString()))
+                                                 .ToList()
+           , "Greska pilikom dobavljanja podataka iz baze");
+        }
+        #endregion
+    }
 }
 

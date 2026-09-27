@@ -68,6 +68,7 @@
             dodeliPredmetBtn.TabIndex = 2;
             dodeliPredmetBtn.Text = "dodeli predmet";
             dodeliPredmetBtn.UseVisualStyleBackColor = true;
+            dodeliPredmetBtn.Click += dodeliPredmetBtn_Click;
             // 
             // predmetiBtn
             // 
@@ -77,6 +78,7 @@
             predmetiBtn.TabIndex = 4;
             predmetiBtn.Text = "Pregledaj predmete";
             predmetiBtn.UseVisualStyleBackColor = true;
+            predmetiBtn.Click += predmetiBtn_Click;
             // 
             // dataGridView1
             // 

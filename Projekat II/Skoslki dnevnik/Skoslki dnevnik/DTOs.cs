@@ -7,4 +7,5 @@
     public record PredmetiDTO(int id, string naziv, string skolskaGodina, int razred) {
         public override string ToString() => $"{naziv} ({razred}. razred, {skolskaGodina})";
     };
+    public record IzostanakDTO(string predmet, int cas, DateTime datum, string tip, string opravdao);
 }

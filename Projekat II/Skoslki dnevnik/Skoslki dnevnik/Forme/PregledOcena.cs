@@ -12,7 +12,7 @@ namespace Skoslki_dnevnik.Forme
 {
     public partial class PregledOcena : Form
     {
-        private readonly List<Ocena> sveOcene = new List<Ocena>();
+        private List<Ocena> sveOcene = new List<Ocena>();
         int idNastavnik = -1;
         int idPredmet = -1;
         int idUcenik = -1;
@@ -113,7 +113,7 @@ namespace Skoslki_dnevnik.Forme
 
         private void button2_Click(object sender, EventArgs e)
         {
-            Ocena o = (Ocena)oceneDgv.SelectedRows[0].DataBoundItem;
+            Ocena o = (Ocena)oceneDgv.SelectedRows[0].DataBoundItem!;
             DodajOcenuForm df = new DodajOcenuForm(o);
             df.Show();
         }

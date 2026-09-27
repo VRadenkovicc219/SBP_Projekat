@@ -55,6 +55,7 @@
             izostanciBtn.TabIndex = 22;
             izostanciBtn.Text = "Pregledaj izostanke";
             izostanciBtn.UseVisualStyleBackColor = true;
+            izostanciBtn.Click += izostanciBtn_Click;
             // 
             // oceneBtn
             // 

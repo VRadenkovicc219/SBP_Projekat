@@ -40,8 +40,8 @@ namespace Skoslki_dnevnik.Forme
                 DatumOcenjivanja = datumDTP.Value,
                 Polugodje = (prvoRB.Checked) ? 1 : 2,
                 Komentar = komentarTxt.Text,
-                Ucenik = (ocena == null) ? DTOManager.vratiUcenika(idUcenik) : ocena.Ucenik,
-                Nastava = (ocena == null) ? DTOManager.vratiNastavu(idProfesor, idPredmet) : ocena.Nastava
+                Ucenik = (ocena == null) ? DTOManager.vratiUcenika(idUcenik)! : ocena.Ucenik,
+                Nastava = (ocena == null) ? DTOManager.vratiNastavu(idProfesor, idPredmet)! : ocena.Nastava
             };
 
             if (ocena == null)

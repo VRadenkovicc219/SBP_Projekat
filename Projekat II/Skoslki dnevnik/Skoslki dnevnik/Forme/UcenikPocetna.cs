@@ -81,5 +81,19 @@
                 ucitajUcenike();
             }
         }
+
+        private void dodeliPredmetBtn_Click(object sender, EventArgs e)
+        {
+            Ucenik u = (Ucenik)dataGridView1.SelectedRows[0].DataBoundItem!;
+            DodeliPredmetUceniku df = new DodeliPredmetUceniku(u, false);
+            df.Show();
+        }
+
+        private void predmetiBtn_Click(object sender, EventArgs e)
+        {
+            Ucenik u = (Ucenik)dataGridView1.SelectedRows[0].DataBoundItem!;
+            DodeliPredmetUceniku df = new DodeliPredmetUceniku(u, true);
+            df.Show();
+        }
     }
 }

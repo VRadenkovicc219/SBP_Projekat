@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Skoslki dnevnik")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8a4c973fb22a2ea5308447ee3f88dcb849debd4e")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+1157d62f2be9b74e5286009a1c4d0aa6c20eede3")]
 [assembly: System.Reflection.AssemblyProductAttribute("Skoslki dnevnik")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Skoslki dnevnik")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
