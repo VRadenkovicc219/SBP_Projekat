@@ -3,7 +3,7 @@
     public class IzostanakId
     {
         public virtual required Ucenik Ucenik { get; set; }
-        public virtual DateOnly Datum { get; set; } = DateOnly.FromDateTime(DateTime.Now);
+        public virtual DateTime Datum { get; set; } =DateTime.Now;
         public virtual int RedniBrojCasa { get; set; }
         public override bool Equals(object? obj)
         {

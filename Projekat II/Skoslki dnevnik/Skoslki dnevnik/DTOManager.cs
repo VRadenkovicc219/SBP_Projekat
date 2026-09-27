@@ -349,7 +349,7 @@ namespace Skoslki_dnevnik
                 n.StrucnaSprema = nastavnik.StrucnaSprema;
                 n.Status = nastavnik.Status;
                 n.DatumZaposlenja = nastavnik.DatumZaposlenja;
-
+                s.Update(n);
             }, "Greska prilikom izmene podataka o nastavniku");
         }
 
@@ -387,7 +387,7 @@ namespace Skoslki_dnevnik
                 return s.Query<Ocena>()
                         .Where(x => x.Ucenik.Id == ucenikId && x.Ucenik.Predmeti.Any(x => x.Id == predmetId))
                         .Select(x => new OcenaDTO(x.Vrednost, x.DatumOcenjivanja, x.Polugodje))
-                        .OrderByDescending(x=>x.datumOcenjivanja)
+                        .OrderByDescending(x => x.datumOcenjivanja)
                         .ToList();
             }, "Greska prilikom pribavljanja podataka iz baze");
         }
@@ -461,9 +461,9 @@ namespace Skoslki_dnevnik
         public static List<UcenikDTO> vratiUcenikeKojiSlusajuPredmet(int idPredmeta)
         {
             return izvrsiUpit(s => s.Query<Ucenik>()
-                                                  .Where(x => x.Predmeti    
+                                                  .Where(x => x.Predmeti
                                                   .Any(p => p.Id == idPredmeta))
-                                                  .Select(u=>new UcenikDTO(u.Id, u.Ime, u.Prezime, u.JMBG, u.Adresa, u.Status.ToString()))
+                                                  .Select(u => new UcenikDTO(u.Id, u.Ime, u.Prezime, u.JMBG, u.Adresa, u.Status.ToString()))
                                                   .ToList(),
                 "Nijedan ucenik ne slusa dati predmet");
         }
@@ -472,7 +472,7 @@ namespace Skoslki_dnevnik
         {
             return izvrsiUpit<List<Ocena>>(s =>
                 s.Query<Ocena>()
-                .Where(x => x.Ucenik.Id == ucenikId && x.Nastava.predajePredmet.Nastavnik.Id == predmetId)
+                .Where(x => x.Ucenik.Id == ucenikId && x.Nastava.predajePredmet.Predmet.Id == predmetId)
                 .ToList(), "Greska prilikom pribavljanja podataka iz baze") ?? new List<Ocena>();
         }
 
@@ -496,7 +496,7 @@ namespace Skoslki_dnevnik
             }, "Greska prilikom pribavljanja podataka iz baze");
         }
 
-        public static Nastava vratiNastavu(int nastavnikId, int predmetId) {
+        public static Nastava? vratiNastavu(int nastavnikId, int predmetId) {
             return izvrsiUpit(s =>
                 s.Query<Nastava>().Where(x => x.predajePredmet.Nastavnik.Id == nastavnikId && x.predajePredmet.Predmet.Id == predmetId).FirstOrDefault()
                 , "Greska prilikom dobavljanaj nastave");
@@ -530,9 +530,46 @@ namespace Skoslki_dnevnik
                     throw new Exception("Ucenik ne slusa predmet");
                 u.Predmeti.Remove(p);
                 s.Update(u);
-            } ,"Greska prilikom izbacivanja ucenika sa predmeta");
+            }, "Greska prilikom izbacivanja ucenika sa predmeta");
         }
         #endregion
     }
+
+    #region Izostanak
+        
+        public static void dodajIzostanak(Izostanak izostanak)
+        {
+            izvrsiUpit(s => s.Save(izostanak), "Greska prilikom dodavanja izostanka");
+        }
+
+        public static List<Izostanak> vratiIzostankeUcenikaNaPredmetu(int ucenikId, int predmetId)
+        {
+            return izvrsiUpit<List<Izostanak>>(s =>
+                s.Query<Izostanak>()
+                .Where(x => x.Id.Ucenik.Id == ucenikId && x.Nastava.predajePredmet.Predmet.Id == predmetId)
+                .ToList(), "Greska prilikom pribavljanja izostanaka iz baze") ?? new List<Izostanak>();
+        }
+
+        public static void izmeniIzostanak(IzostanakId id, Izostanak noviIzostanak)
+        {
+            izvrsiUpit(s =>
+            {
+                Izostanak izostanak = s.Get<Izostanak>(id);
+                if (izostanak is null)
+                    throw new Exception("Izostanak sa unetim podacima ne postoji u bazi");
+
+                izostanak.TipIzostanka = noviIzostanak.TipIzostanka;
+                izostanak.Opravdao = noviIzostanak.Opravdao;
+                izostanak.RazlogIzostanka = noviIzostanak.RazlogIzostanka;
+                izostanak.Komentar = noviIzostanak.Komentar;
+
+                s.Update(izostanak);
+            }, "Greska prilikom izmene izostanka");
+        }
+
+        public static void obrisiIzostanak(Izostanak izostanak) =>
+            izvrsiUpit(s => s.Delete(izostanak), "Greska prilikom brisanja izostanka");
+        #endregion
+    } 
 }
 
