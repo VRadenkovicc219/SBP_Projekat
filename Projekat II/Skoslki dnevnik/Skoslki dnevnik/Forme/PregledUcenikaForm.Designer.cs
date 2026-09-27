@@ -43,6 +43,7 @@
             uceniciDgv.Location = new Point(12, 46);
             uceniciDgv.Name = "uceniciDgv";
             uceniciDgv.ReadOnly = true;
+            uceniciDgv.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             uceniciDgv.Size = new Size(364, 426);
             uceniciDgv.TabIndex = 0;
             // 

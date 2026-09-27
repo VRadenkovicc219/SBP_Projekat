@@ -42,7 +42,7 @@ namespace Skoslki_dnevnik.Forme
         {
             var izabraniTipovi = new List<TipIzostanka>();
             if (opravdaniCB.Checked) izabraniTipovi.Add(TipIzostanka.OPRAVDAN);
-            if (neopravdaniCB.Checked) izabraniTipovi.Add(TipIzostanka.OPRAVDAN);
+            if (neopravdaniCB.Checked) izabraniTipovi.Add(TipIzostanka.NEOPRAVDAN);
 
             var rezultat = sviIzostanci.Where(x =>
                 x.Id.Datum.Date >= datumOdDtp.Value.Date &&
@@ -50,9 +50,55 @@ namespace Skoslki_dnevnik.Forme
 
             rezultat = izabraniTipovi.Count > 0
                 ? rezultat.Where(x => izabraniTipovi.Contains(x.TipIzostanka))
-                : Enumerable.Empty<Izostanak>();
+                : rezultat;
 
-            oceneDgv.DataSource = rezultat.ToList();
+            izostanciDgv.DataSource = rezultat.ToList();
+        }
+
+        private void dodajOcenuBtn_Click(object sender, EventArgs e)
+        {
+            DodajIzostanakForm df = new DodajIzostanakForm(idUcenik, idPredmet, idNastavnik);
+            df.ShowDialog();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if (izostanciDgv.SelectedRows.Count != 1) return;
+
+            Izostanak izabrani = (Izostanak)izostanciDgv.SelectedRows[0].DataBoundItem!;
+            DodajIzostanakForm df = new DodajIzostanakForm(izabrani);
+            df.ShowDialog();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (izostanciDgv.SelectedRows.Count == 0) return;
+
+            foreach (DataGridViewRow red in izostanciDgv.SelectedRows)
+            {
+                if (red.DataBoundItem is Izostanak izostanak)
+                    DTOManager.obrisiIzostanak(izostanak);
+            }
+        }
+
+        private void datumOdDtp_ValueChanged(object sender, EventArgs e)
+        {
+            PrimeniFiltere();
+        }
+
+        private void datumDoDtp_ValueChanged(object sender, EventArgs e)
+        {
+            PrimeniFiltere();
+        }
+
+        private void opravdaniCB_CheckedChanged(object sender, EventArgs e)
+        {
+            PrimeniFiltere();
+        }
+
+        private void neopravdaniCB_CheckedChanged(object sender, EventArgs e)
+        {
+            PrimeniFiltere();
         }
     }
 }

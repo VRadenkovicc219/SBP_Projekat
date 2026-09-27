@@ -244,16 +244,11 @@
         private Button button1;
         private Button button2;
         private GroupBox filterGroupBox;
-        private RadioButton prvoPRB;
-        private RadioButton drugoPRB;
         private GroupBox polugodjeGB;
         private DateTimePicker datumOdDtp;
         private DateTimePicker datumDoDtp;
         private Label label1;
         private Label label2;
-        private CheckBox checkBox4;
-        private CheckBox checkBox3;
-        private CheckBox checkBox2;
         private CheckBox aktivnostCB;
         private CheckBox drugoCB;
         private CheckBox prvoCB;

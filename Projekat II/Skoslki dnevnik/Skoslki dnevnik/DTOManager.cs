@@ -533,7 +533,7 @@ namespace Skoslki_dnevnik
             }, "Greska prilikom izbacivanja ucenika sa predmeta");
         }
         #endregion
-    }
+
 
     #region Izostanak
         

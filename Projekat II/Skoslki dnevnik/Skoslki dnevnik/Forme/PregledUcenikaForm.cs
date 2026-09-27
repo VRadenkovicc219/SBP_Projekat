@@ -49,7 +49,7 @@
             int idPredmet = ((PredmetiDTO)predmetiCB.SelectedItem!).id;
             int idNastavnik = nastavnik.Id;
             int idUcenik = ((UcenikDTO)uceniciDgv.SelectedRows[0].DataBoundItem!).id;
-            List<Ocena> ocene = DTOManager.vratiOceneUcenikaNaPredmetu(u.Id, id).OrderBy(x => x.DatumOcenjivanja).ThenBy(x => x.Tip).ToList();
+            List<Ocena> ocene = DTOManager.vratiOceneUcenikaNaPredmetu(idUcenik, idNastavnik).OrderBy(x => x.DatumOcenjivanja).ThenBy(x => x.Tip).ToList();
             PregledOcena pf = new PregledOcena(ocene, idUcenik, idNastavnik, idPredmet);
         }
 

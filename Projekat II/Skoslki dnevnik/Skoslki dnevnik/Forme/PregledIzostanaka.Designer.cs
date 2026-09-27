@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            button2 = new Button();
-            button1 = new Button();
-            oceneDgv = new DataGridView();
-            dodajOcenuBtn = new Button();
+            izmeniBtn = new Button();
+            obrisiBtn = new Button();
+            izostanciDgv = new DataGridView();
+            dodajIzostanakBtn = new Button();
             label2 = new Label();
             label1 = new Label();
             datumDoDtp = new DateTimePicker();
@@ -39,44 +39,47 @@
             opravdaniCB = new CheckBox();
             neopravdaniCB = new CheckBox();
             tipCheckedListBox = new GroupBox();
-            ((System.ComponentModel.ISupportInitialize)oceneDgv).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)izostanciDgv).BeginInit();
             tipCheckedListBox.SuspendLayout();
             SuspendLayout();
             // 
-            // button2
+            // izmeniBtn
             // 
-            button2.Location = new Point(392, 114);
-            button2.Name = "button2";
-            button2.Size = new Size(130, 23);
-            button2.TabIndex = 14;
-            button2.Text = "Izmeni ";
-            button2.UseVisualStyleBackColor = true;
+            izmeniBtn.Location = new Point(392, 114);
+            izmeniBtn.Name = "izmeniBtn";
+            izmeniBtn.Size = new Size(130, 23);
+            izmeniBtn.TabIndex = 14;
+            izmeniBtn.Text = "Izmeni ";
+            izmeniBtn.UseVisualStyleBackColor = true;
+            izmeniBtn.Click += button2_Click;
             // 
-            // button1
+            // obrisiBtn
             // 
-            button1.Location = new Point(392, 143);
-            button1.Name = "button1";
-            button1.Size = new Size(130, 23);
-            button1.TabIndex = 13;
-            button1.Text = "Obrisi";
-            button1.UseVisualStyleBackColor = true;
+            obrisiBtn.Location = new Point(392, 143);
+            obrisiBtn.Name = "obrisiBtn";
+            obrisiBtn.Size = new Size(130, 23);
+            obrisiBtn.TabIndex = 13;
+            obrisiBtn.Text = "Obrisi";
+            obrisiBtn.UseVisualStyleBackColor = true;
+            obrisiBtn.Click += button1_Click;
             // 
-            // oceneDgv
+            // izostanciDgv
             // 
-            oceneDgv.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            oceneDgv.Location = new Point(12, 85);
-            oceneDgv.Name = "oceneDgv";
-            oceneDgv.Size = new Size(374, 428);
-            oceneDgv.TabIndex = 12;
+            izostanciDgv.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            izostanciDgv.Location = new Point(12, 85);
+            izostanciDgv.Name = "izostanciDgv";
+            izostanciDgv.Size = new Size(374, 428);
+            izostanciDgv.TabIndex = 12;
             // 
-            // dodajOcenuBtn
+            // dodajIzostanakBtn
             // 
-            dodajOcenuBtn.Location = new Point(392, 85);
-            dodajOcenuBtn.Name = "dodajOcenuBtn";
-            dodajOcenuBtn.Size = new Size(130, 23);
-            dodajOcenuBtn.TabIndex = 21;
-            dodajOcenuBtn.Text = "Dodaj";
-            dodajOcenuBtn.UseVisualStyleBackColor = true;
+            dodajIzostanakBtn.Location = new Point(392, 85);
+            dodajIzostanakBtn.Name = "dodajIzostanakBtn";
+            dodajIzostanakBtn.Size = new Size(130, 23);
+            dodajIzostanakBtn.TabIndex = 21;
+            dodajIzostanakBtn.Text = "Dodaj";
+            dodajIzostanakBtn.UseVisualStyleBackColor = true;
+            dodajIzostanakBtn.Click += dodajOcenuBtn_Click;
             // 
             // label2
             // 
@@ -103,6 +106,7 @@
             datumDoDtp.Name = "datumDoDtp";
             datumDoDtp.Size = new Size(162, 23);
             datumDoDtp.TabIndex = 18;
+            datumDoDtp.ValueChanged += datumDoDtp_ValueChanged;
             // 
             // datumOdDtp
             // 
@@ -111,6 +115,7 @@
             datumOdDtp.Name = "datumOdDtp";
             datumOdDtp.Size = new Size(162, 23);
             datumOdDtp.TabIndex = 17;
+            datumOdDtp.ValueChanged += datumOdDtp_ValueChanged;
             // 
             // opravdaniCB
             // 
@@ -121,6 +126,7 @@
             opravdaniCB.TabIndex = 0;
             opravdaniCB.Text = "Opravdani";
             opravdaniCB.UseVisualStyleBackColor = true;
+            opravdaniCB.CheckedChanged += opravdaniCB_CheckedChanged;
             // 
             // neopravdaniCB
             // 
@@ -131,6 +137,7 @@
             neopravdaniCB.TabIndex = 1;
             neopravdaniCB.Text = "Neopravdani";
             neopravdaniCB.UseVisualStyleBackColor = true;
+            neopravdaniCB.CheckedChanged += neopravdaniCB_CheckedChanged;
             // 
             // tipCheckedListBox
             // 
@@ -149,10 +156,10 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(531, 530);
             Controls.Add(tipCheckedListBox);
-            Controls.Add(button2);
-            Controls.Add(button1);
-            Controls.Add(oceneDgv);
-            Controls.Add(dodajOcenuBtn);
+            Controls.Add(izmeniBtn);
+            Controls.Add(obrisiBtn);
+            Controls.Add(izostanciDgv);
+            Controls.Add(dodajIzostanakBtn);
             Controls.Add(label2);
             Controls.Add(label1);
             Controls.Add(datumDoDtp);
@@ -160,7 +167,7 @@
             Name = "PregledIzostanaka";
             Text = "PregledIzostanaka";
             Load += PregledIzostanaka_Load;
-            ((System.ComponentModel.ISupportInitialize)oceneDgv).EndInit();
+            ((System.ComponentModel.ISupportInitialize)izostanciDgv).EndInit();
             tipCheckedListBox.ResumeLayout(false);
             tipCheckedListBox.PerformLayout();
             ResumeLayout(false);
@@ -168,10 +175,10 @@
         }
 
         #endregion
-        private Button button2;
-        private Button button1;
-        private DataGridView oceneDgv;
-        private Button dodajOcenuBtn;
+        private Button izmeniBtn;
+        private Button obrisiBtn;
+        private DataGridView izostanciDgv;
+        private Button dodajIzostanakBtn;
         private Label label2;
         private Label label1;
         private DateTimePicker datumDoDtp;
