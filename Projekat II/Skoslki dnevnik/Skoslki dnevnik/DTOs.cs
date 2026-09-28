@@ -8,4 +8,7 @@
         public override string ToString() => $"{naziv} ({razred}. razred, {skolskaGodina})";
     };
     public record IzostanakDTO(string predmet, int cas, DateTime datum, string tip, string opravdao);
+
+    public record RoditeljDTO(int id, string ime, string prezime, string jmbg, string adresa,
+                           string email, string telefon, string zanimanje, string? radnoMesto);
 }

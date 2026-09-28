@@ -100,3 +100,9 @@ D:\faks\RII\III godina\VI semestar\Sistemi baza podataka\SBP_Projekat\SBP_Projek
 D:\faks\RII\III godina\VI semestar\Sistemi baza podataka\SBP_Projekat\SBP_Projekat\Projekat II\Skoslki dnevnik\Skoslki dnevnik\obj\Debug\net10.0-windows\Skoslki_dnevnik.Forme.PregledIzostanakaKaoUcenik.resources
 C:\Users\desko\Desktop\Baza\GIT\SBP_Projekat\Projekat II\Skoslki dnevnik\Skoslki dnevnik\obj\Debug\net10.0-windows\Skoslki_dnevnik.Forme.DodeliPredmetUceniku.resources
 C:\Users\desko\Desktop\Baza\GIT\SBP_Projekat\Projekat II\Skoslki dnevnik\Skoslki dnevnik\obj\Debug\net10.0-windows\Skoslki_dnevnik.Forme.PregledIzostanakaKaoUcenik.resources
+C:\Users\desko\Desktop\Baza\GIT\SBP_Projekat\Projekat II\Skoslki dnevnik\Skoslki dnevnik\obj\Debug\net10.0-windows\Skoslki_dnevnik.Forme.DodajNastavu.resources
+C:\Users\desko\Desktop\Baza\GIT\SBP_Projekat\Projekat II\Skoslki dnevnik\Skoslki dnevnik\obj\Debug\net10.0-windows\Skoslki_dnevnik.Forme.DodajOdeljenjeForm.resources
+C:\Users\desko\Desktop\Baza\GIT\SBP_Projekat\Projekat II\Skoslki dnevnik\Skoslki dnevnik\obj\Debug\net10.0-windows\Skoslki_dnevnik.Forme.DodajRoditeljaForm.resources
+C:\Users\desko\Desktop\Baza\GIT\SBP_Projekat\Projekat II\Skoslki dnevnik\Skoslki dnevnik\obj\Debug\net10.0-windows\Skoslki_dnevnik.Forme.DodajUcenika.resources
+C:\Users\desko\Desktop\Baza\GIT\SBP_Projekat\Projekat II\Skoslki dnevnik\Skoslki dnevnik\obj\Debug\net10.0-windows\Skoslki_dnevnik.Forme.KreirajOdeljenjeForm.resources
+C:\Users\desko\Desktop\Baza\GIT\SBP_Projekat\Projekat II\Skoslki dnevnik\Skoslki dnevnik\obj\Debug\net10.0-windows\Skoslki_dnevnik.Forme.RoditeljPocetna.resources

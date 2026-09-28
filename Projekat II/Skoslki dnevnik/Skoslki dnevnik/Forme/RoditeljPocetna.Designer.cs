@@ -32,8 +32,8 @@
             decaCmb = new ComboBox();
             oceneBtn = new Button();
             izostanciBtn = new Button();
-            button3 = new Button();
-            button4 = new Button();
+            dodajBtn = new Button();
+            obrisiBtn = new Button();
             izmeniBtn = new Button();
             dodajVezuBtn = new Button();
             raskiniVezuBtn = new Button();
@@ -77,23 +77,23 @@
             izostanciBtn.Text = "Pogledaj izostanke";
             izostanciBtn.UseVisualStyleBackColor = true;
             // 
-            // button3
+            // dodajBtn
             // 
-            button3.Location = new Point(295, 12);
-            button3.Name = "button3";
-            button3.Size = new Size(200, 23);
-            button3.TabIndex = 4;
-            button3.Text = "Dodaj roditelja";
-            button3.UseVisualStyleBackColor = true;
+            dodajBtn.Location = new Point(295, 12);
+            dodajBtn.Name = "dodajBtn";
+            dodajBtn.Size = new Size(200, 23);
+            dodajBtn.TabIndex = 4;
+            dodajBtn.Text = "Dodaj roditelja";
+            dodajBtn.UseVisualStyleBackColor = true;
             // 
-            // button4
+            // obrisiBtn
             // 
-            button4.Location = new Point(295, 41);
-            button4.Name = "button4";
-            button4.Size = new Size(200, 23);
-            button4.TabIndex = 5;
-            button4.Text = "Obrisi roditelja";
-            button4.UseVisualStyleBackColor = true;
+            obrisiBtn.Location = new Point(295, 41);
+            obrisiBtn.Name = "obrisiBtn";
+            obrisiBtn.Size = new Size(200, 23);
+            obrisiBtn.TabIndex = 5;
+            obrisiBtn.Text = "Obrisi roditelja";
+            obrisiBtn.UseVisualStyleBackColor = true;
             // 
             // izmeniBtn
             // 
@@ -141,14 +141,15 @@
             Controls.Add(raskiniVezuBtn);
             Controls.Add(dodajVezuBtn);
             Controls.Add(izmeniBtn);
-            Controls.Add(button4);
-            Controls.Add(button3);
+            Controls.Add(obrisiBtn);
+            Controls.Add(dodajBtn);
             Controls.Add(izostanciBtn);
             Controls.Add(oceneBtn);
             Controls.Add(decaCmb);
             Controls.Add(roditeljiDgv);
             Name = "RoditeljPocetna";
             Text = "RoditeljPocetna";
+            Load += RoditeljPocetna_Load;
             ((System.ComponentModel.ISupportInitialize)roditeljiDgv).EndInit();
             ResumeLayout(false);
             PerformLayout();
@@ -160,8 +161,8 @@
         private ComboBox decaCmb;
         private Button oceneBtn;
         private Button izostanciBtn;
-        private Button button3;
-        private Button button4;
+        private Button dodajBtn;
+        private Button obrisiBtn;
         private Button izmeniBtn;
         private Button dodajVezuBtn;
         private Button raskiniVezuBtn;

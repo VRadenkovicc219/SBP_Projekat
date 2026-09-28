@@ -43,12 +43,28 @@ namespace Skoslki_dnevnik
         }
 
         #region Osoba
-        public static void dodajOsobu(Osoba o)
+
+        private static int? idOsobePoJmbg(ISession s, string jmbg)
         {
-            izvrsiUpit(s => s.Save(o), "Greska prilikom dodavanja osobe");
+            object? r = s.CreateSQLQuery("SELECT ID FROM OSOBA WHERE JMBG = :j")
+                         .SetParameter("j", jmbg)
+                         .UniqueResult();
+            return r is null ? null : Convert.ToInt32(r);
         }
 
-
+        private static bool imaUlogu(ISession s, string tabela, int idOsobe)
+        {
+            object r = s.CreateSQLQuery($"SELECT COUNT(*) FROM {tabela} WHERE ID_OSOBA = :id")
+                        .SetParameter("id", idOsobe)
+                        .UniqueResult();
+            return Convert.ToInt32(r) > 0;
+        }
+        public static Osoba? vratiOsobuPoJmbg(string jmbg)
+        {
+            return izvrsiUpit<Osoba?>(s =>
+                s.Query<Osoba>().FirstOrDefault(x => x.JMBG == jmbg),
+                "Greska prilikom pretrage osobe po JMBG-u");
+        }
 
         #endregion
 
@@ -309,12 +325,54 @@ namespace Skoslki_dnevnik
 
         public static void dodajNastavnika(Nastavnik nastavnik)
         {
-            izvrsiUpit(n => n.Save(nastavnik), "Greska pri dodavanju novog nastavnika");
+            izvrsiUpit(s =>
+            {
+                int? idOsobe = idOsobePoJmbg(s, nastavnik.JMBG);
+
+                if (idOsobe is null)
+                {
+                    s.Save(nastavnik);
+                    return;
+                }
+
+                if (imaUlogu(s, "UCENIK", idOsobe.Value))
+                    throw new Exception("Osoba sa ovim JMBG-om je ucenik i ne moze biti nastavnik");
+                if (imaUlogu(s, "NASTAVNIK", idOsobe.Value))
+                    throw new Exception("Nastavnik sa ovim JMBG-om vec postoji");
+
+                s.CreateSQLQuery(
+                    "INSERT INTO NASTAVNIK (ID_OSOBA, STRUCNA_SPREMA, STATUS, ZVANJE, DATUM_ZAPOSLENJA) " +
+                    "VALUES (:id, :sprema, :status, :zvanje, :datum)")
+                 .SetParameter("id", idOsobe.Value)
+                 .SetParameter("sprema", nastavnik.StrucnaSprema)
+                 .SetParameter("status", nastavnik.Status.ToString())
+                 .SetParameter("zvanje", nastavnik.Zvanje)
+                 .SetParameter("datum", nastavnik.DatumZaposlenja)
+                 .ExecuteUpdate();
+            }, "Greska pri dodavanju novog nastavnika");
         }
 
         public static void obrisiNastavnika(Nastavnik nastavnik)
         {
-            izvrsiUpit(n => n.Delete(nastavnik), "Greska pri brisanju nastavnika iz baze");
+            izvrsiUpit(s =>
+            {
+                if (!imaUlogu(s, "RODITELJ_STARATELJ", nastavnik.Id))
+                {
+                    s.Delete(nastavnik);  
+                    return;
+                }
+
+                Nastavnik n = s.Get<Nastavnik>(nastavnik.Id);
+                foreach (var p in n.Predaje.ToList())
+                    s.Delete(p);
+                s.Flush();
+                s.Evict(n);  
+
+                s.CreateSQLQuery("DELETE FROM RAZREDNI_STARESINA WHERE ID_NASTAVNIK = :id")
+                 .SetParameter("id", nastavnik.Id).ExecuteUpdate();
+                s.CreateSQLQuery("DELETE FROM NASTAVNIK WHERE ID_OSOBA = :id")
+                 .SetParameter("id", nastavnik.Id).ExecuteUpdate();
+            }, "Greska pri brisanju nastavnika iz baze");
         }
 
 
@@ -330,26 +388,28 @@ namespace Skoslki_dnevnik
         {
             izvrsiUpit(s =>
             {
-                if (s.Query<Nastavnik>().Any(x => x.Email == nastavnik.Email && x.Id != nastavnik.Id))
-                {
-                    throw new Exception("Korisnik sa ovim emailom vec postoji u bazi podataka");
-                }
-                Nastavnik n = s.Get<Nastavnik>(id);
+                if (s.Query<Osoba>().Any(x => x.Email == nastavnik.Email && x.Id != id))
+                    throw new Exception("Osoba sa ovim emailom vec postoji u bazi podataka");
+                if (s.Query<Osoba>().Any(x => x.JMBG == nastavnik.JMBG && x.Id != id))
+                    throw new Exception("Osoba sa ovim JMBG-om vec postoji u bazi podataka");
+
+                Nastavnik? n = s.Get<Nastavnik>(id);
+                if (n is null)
+                    throw new Exception("Nastavnik ne postoji u bazi podataka");
+
                 n.Ime = nastavnik.Ime;
                 n.Prezime = nastavnik.Prezime;
                 n.JMBG = nastavnik.JMBG;
                 n.Adresa = nastavnik.Adresa;
                 n.Pol = nastavnik.Pol;
-                n.Status = nastavnik.Status;
                 n.DatumRodjenja = nastavnik.DatumRodjenja;
                 n.Telefon = nastavnik.Telefon;
                 n.Email = nastavnik.Email;
                 n.Komentar = nastavnik.Komentar;
+                n.Status = nastavnik.Status;
                 n.Zvanje = nastavnik.Zvanje;
                 n.StrucnaSprema = nastavnik.StrucnaSprema;
-                n.Status = nastavnik.Status;
                 n.DatumZaposlenja = nastavnik.DatumZaposlenja;
-                s.Update(n);
             }, "Greska prilikom izmene podataka o nastavniku");
         }
 
@@ -596,6 +656,171 @@ namespace Skoslki_dnevnik
                                                  .ToList()
            , "Greska pilikom dobavljanja podataka iz baze");
         }
+        #endregion
+
+        #region Roditelj
+        public static void dodajRoditelja(RoditeljStaratelj r)
+        {
+            izvrsiUpit(s =>
+            {
+                if (r is null)
+                    throw new Exception("Roditelj nije prosledjen");
+
+                Osoba? postojeca = s.Query<Osoba>().FirstOrDefault(x => x.JMBG == r.JMBG);
+
+                if (postojeca is null)
+                {
+                    s.Save(r);
+                }
+                else if (postojeca is Ucenik)
+                {
+                    throw new Exception("Osoba sa ovim JMBG-om je ucenik i ne moze biti roditelj");
+                }
+                else if (postojeca is RoditeljStaratelj)
+                {
+                    throw new Exception("Roditelj sa ovim JMBG-om vec postoji");
+                }
+                else if (postojeca is Nastavnik)
+                {
+                    // overlap: red u OSOBA vec postoji, dodaje se samo red u RODITELJ_STARATELJ
+                    s.CreateSQLQuery(
+                            "INSERT INTO RODITELJ_STARATELJ (ID_OSOBA, ZANIMANJE, RADNO_MESTO) " +
+                            "VALUES (:id, :zanimanje, :radnoMesto)")
+                     .SetParameter("id", postojeca.Id)
+                     .SetParameter("zanimanje", r.Zanimanje)
+                     .SetParameter("radnoMesto", r.RadnoMesto)
+                     .ExecuteUpdate();
+                }
+            }, "Greska prilikom dodavanja roditelja");
+        }
+
+        public static void izmeniRoditelja(int id, RoditeljStaratelj roditelj)
+        {
+            izvrsiUpit(s =>
+            {
+                if (s.Query<Osoba>().Any(x => x.Email == roditelj.Email && x.Id != id))
+                    throw new Exception("Osoba sa ovim emailom vec postoji u bazi podataka");
+                if (s.Query<Osoba>().Any(x => x.JMBG == roditelj.JMBG && x.Id != id))
+                    throw new Exception("Osoba sa ovim JMBG-om vec postoji u bazi podataka");
+
+                Osoba? osoba = s.Query<Osoba>().FirstOrDefault(x => x.Id == id);
+                if (osoba is null)
+                    throw new Exception("Roditelj ne postoji u bazi podataka");
+
+                osoba.Ime = roditelj.Ime;
+                osoba.Prezime = roditelj.Prezime;
+                osoba.JMBG = roditelj.JMBG;
+                osoba.Adresa = roditelj.Adresa;
+                osoba.Pol = roditelj.Pol;
+                osoba.DatumRodjenja = roditelj.DatumRodjenja;
+                osoba.Email = roditelj.Email;
+                osoba.Telefon = roditelj.Telefon;
+                osoba.Komentar = roditelj.Komentar;
+
+                s.CreateSQLQuery(
+                    "UPDATE RODITELJ_STARATELJ SET ZANIMANJE = :z, RADNO_MESTO = :r WHERE ID_OSOBA = :id")
+                 .SetParameter("z", roditelj.Zanimanje)
+                 .SetParameter("r", roditelj.RadnoMesto)
+                 .SetParameter("id", id)
+                 .ExecuteUpdate();
+
+            }, "Greska prilikom izmene podataka o roditelju");
+        }
+
+        public static void obrisiRoditelja(RoditeljStaratelj roditelj)
+        {
+            izvrsiUpit(s =>
+            {
+                s.CreateSQLQuery("DELETE FROM STARATELJSTVO WHERE ID_STARATELJ = :id")
+                 .SetParameter("id", roditelj.Id)
+                 .ExecuteUpdate();
+
+                if (!imaUlogu(s, "NASTAVNIK", roditelj.Id))
+                {
+                    RoditeljStaratelj? r = s.Get<RoditeljStaratelj>(roditelj.Id);
+                    if (r is null)
+                        throw new Exception("Roditelj ne postoji u bazi podataka");
+
+                    s.Delete(r);
+                }
+                else
+                {
+                    s.CreateSQLQuery("DELETE FROM RODITELJ_STARATELJ WHERE ID_OSOBA = :id")
+                     .SetParameter("id", roditelj.Id)
+                     .ExecuteUpdate();
+                }
+            }, "Greska prilikom brisanja roditelja iz baze");
+        }
+
+        public static RoditeljStaratelj? vratiRoditelja(int id)
+        {
+            return izvrsiUpit<RoditeljStaratelj?>(s => s.Get<RoditeljStaratelj>(id),
+                "Greska prilikom pribavljanja roditelja iz baze");
+        }
+
+        public static List<RoditeljDTO> vratiRoditelje()
+        {
+            return izvrsiUpit(s => s.Query<RoditeljStaratelj>()
+                    .Select(r => new RoditeljDTO(r.Id, r.Ime, r.Prezime, r.JMBG, r.Adresa,
+                                                  r.Email, r.Telefon, r.Zanimanje, r.RadnoMesto))
+                    .ToList(),
+                "Greska prilikom pribavljanja roditelja iz baze") ?? new List<RoditeljDTO>();
+        }
+
+        public static List<UcenikDTO> vratiDecuRoditelja(int roditeljId)
+        {
+            return izvrsiUpit(s => s.Query<RoditeljStaratelj>()
+                    .Where(r => r.Id == roditeljId)
+                    .SelectMany(r => r.Deca)
+                    .Select(u => new UcenikDTO(u.Id, u.Ime, u.Prezime, u.JMBG, u.Adresa, u.Status.ToString()))
+                    .ToList(),
+                "Greska prilikom pribavljanja dece roditelja") ?? new List<UcenikDTO>();
+        }
+
+        public static List<UcenikDTO> vratiUcenikeKojiNisuDeteRoditelja(int roditeljId)
+        {
+            return izvrsiUpit(s =>
+            {
+                var decaIds = s.Query<RoditeljStaratelj>()
+                               .Where(r => r.Id == roditeljId)
+                               .SelectMany(r => r.Deca)
+                               .Select(u => u.Id);
+
+                return s.Query<Ucenik>()
+                        .Where(u => !decaIds.Contains(u.Id))
+                        .Select(u => new UcenikDTO(u.Id, u.Ime, u.Prezime, u.JMBG, u.Adresa, u.Status.ToString()))
+                        .ToList();
+            }, "Greska prilikom pribavljanja ucenika za dodavanje veze") ?? new List<UcenikDTO>();
+        }
+
+        public static void dodajVezuRoditeljUcenik(int roditeljId, int ucenikId)
+        {
+            izvrsiUpit(s =>
+            {
+                Ucenik? u = s.Get<Ucenik>(ucenikId);
+                RoditeljStaratelj? r = s.Get<RoditeljStaratelj>(roditeljId);
+                if (u is null) throw new Exception("Ucenik ne postoji u bazi");
+                if (r is null) throw new Exception("Roditelj ne postoji u bazi");
+
+                if (!u.Roditelji.Any(x => x.Id == roditeljId))
+                    u.Roditelji.Add(r);
+            }, "Greska prilikom dodavanja veze roditelj-ucenik");
+        }
+
+        public static void raskiniVezuRoditeljUcenik(int roditeljId, int ucenikId)
+        {
+            izvrsiUpit(s =>
+            {
+                Ucenik? u = s.Get<Ucenik>(ucenikId);
+                if (u is null) throw new Exception("Ucenik ne postoji u bazi");
+
+                RoditeljStaratelj? r = u.Roditelji.FirstOrDefault(x => x.Id == roditeljId);
+                if (r is null) throw new Exception("Ova veza ne postoji u bazi");
+
+                u.Roditelji.Remove(r);
+            }, "Greska prilikom raskidanja veze roditelj-ucenik");
+        }
+
         #endregion
     }
 }

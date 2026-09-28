@@ -37,6 +37,9 @@
     <Compile Update="Forme\DodeliPredmetUceniku.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Forme\PregledStatistikeDeteta.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Forme\KreirajOdeljenjeForm.cs">
       <SubType>Form</SubType>
     </Compile>

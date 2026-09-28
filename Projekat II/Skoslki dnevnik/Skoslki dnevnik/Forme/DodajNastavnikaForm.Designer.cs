@@ -201,6 +201,7 @@
             jmbgTb.Size = new Size(264, 23);
             jmbgTb.TabIndex = 28;
             jmbgTb.KeyPress += jmbgTb_KeyPress;
+            jmbgTb.Leave += jmbgTb_Leave;
             // 
             // prezimeTb
             // 

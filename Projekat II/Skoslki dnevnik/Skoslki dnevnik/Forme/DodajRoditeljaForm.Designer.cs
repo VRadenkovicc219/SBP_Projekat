@@ -51,7 +51,7 @@
             prezimeTb = new TextBox();
             imeTb = new TextBox();
             dodajBtn = new Button();
-            radnoMesto = new TextBox();
+            radnoMestoTxt = new TextBox();
             SuspendLayout();
             // 
             // label9
@@ -69,6 +69,7 @@
             telefontxt.Name = "telefontxt";
             telefontxt.Size = new Size(264, 23);
             telefontxt.TabIndex = 39;
+            telefontxt.KeyPress += telefonTb_KeyPress;
             // 
             // label7
             // 
@@ -186,6 +187,7 @@
             polZCk.TabIndex = 45;
             polZCk.Text = "Z";
             polZCk.UseVisualStyleBackColor = true;
+            polZCk.CheckedChanged += polZCk_CheckedChanged;
             // 
             // polMCk
             // 
@@ -196,6 +198,7 @@
             polMCk.TabIndex = 44;
             polMCk.Text = "M";
             polMCk.UseVisualStyleBackColor = true;
+            polMCk.CheckedChanged += polMCk_CheckedChanged;
             // 
             // emailTb
             // 
@@ -225,6 +228,8 @@
             jmbgTb.Name = "jmbgTb";
             jmbgTb.Size = new Size(264, 23);
             jmbgTb.TabIndex = 36;
+            jmbgTb.KeyPress += jmbgTb_KeyPress;
+            jmbgTb.Leave += jmbgTb_Leave;
             // 
             // prezimeTb
             // 
@@ -248,20 +253,21 @@
             dodajBtn.TabIndex = 46;
             dodajBtn.Text = "Dodaj";
             dodajBtn.UseVisualStyleBackColor = true;
+            dodajBtn.Click += dodajBtn_Click;
             // 
-            // radnoMesto
+            // radnoMestoTxt
             // 
-            radnoMesto.Location = new Point(137, 209);
-            radnoMesto.Name = "radnoMesto";
-            radnoMesto.Size = new Size(264, 23);
-            radnoMesto.TabIndex = 41;
+            radnoMestoTxt.Location = new Point(137, 209);
+            radnoMestoTxt.Name = "radnoMestoTxt";
+            radnoMestoTxt.Size = new Size(264, 23);
+            radnoMestoTxt.TabIndex = 41;
             // 
             // DodajRoditeljaForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(410, 394);
-            Controls.Add(radnoMesto);
+            Controls.Add(radnoMestoTxt);
             Controls.Add(label9);
             Controls.Add(telefontxt);
             Controls.Add(label7);
@@ -287,6 +293,7 @@
             Controls.Add(dodajBtn);
             Name = "DodajRoditeljaForm";
             Text = "DodajRoditeljaForm";
+            Load += DodajRoditeljaForm_Load;
             ResumeLayout(false);
             PerformLayout();
         }
@@ -317,6 +324,6 @@
         private TextBox prezimeTb;
         private TextBox imeTb;
         private Button dodajBtn;
-        private TextBox radnoMesto;
+        private TextBox radnoMestoTxt;
     }
 }
