@@ -10,10 +10,22 @@
     <Compile Update="Forme\DodajNastavnikaForm.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Forme\DodajNastavu.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Forme\DodajOcenuForm.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Forme\DodajOdeljenjeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Forme\DodajPredmetForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forme\DodajRoditeljaForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forme\DodajUcenika.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Forme\DodajUcenikaForma.cs">
@@ -23,6 +35,9 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Forme\DodeliPredmetUceniku.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forme\KreirajOdeljenjeForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Forme\NastavnikPocetna.cs">
@@ -44,6 +59,9 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Forme\PregledUcenikaForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forme\RoditeljPocetna.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Forme\UcenikPocetna.cs">
