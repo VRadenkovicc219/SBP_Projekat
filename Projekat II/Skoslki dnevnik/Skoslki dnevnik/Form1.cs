@@ -32,5 +32,11 @@ namespace Skoslki_dnevnik
             PredmetiForma nf = new PredmetiForma();
             nf.Show();
         }
+
+        private void roditeljiBtn_Click(object sender, EventArgs e)
+        {
+            RoditeljPocetna rp = new RoditeljPocetna();
+            rp.Show();
+        }
     }
 }

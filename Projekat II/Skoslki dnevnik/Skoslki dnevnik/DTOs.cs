@@ -11,4 +11,7 @@
 
     public record RoditeljDTO(int id, string ime, string prezime, string jmbg, string adresa,
                            string email, string telefon, string zanimanje, string? radnoMesto);
+
+    public record OcenaStatistikaDTO(string ucenik, string predmet, int vrednost, DateTime datum, TipOcene tip, int polugodje);
+    public record IzostanakStatistikaDTO(string ucenik, string predmet, string skolskaGodina, DateTime datum, int redniBrojCasa, TipIzostanka tip);
 }

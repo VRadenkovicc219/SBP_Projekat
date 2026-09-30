@@ -4,73 +4,76 @@
     <Compile Update="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Forme\DodajIzostanakForm.cs">
+    <Compile Update="Forme\nastavnici\DodajIzostanakForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Forme\DodajNastavnikaForm.cs">
+    <Compile Update="Forme\nastavnici\DodajNastavnikaForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Forme\DodajNastavu.cs">
+    <Compile Update="Forme\odeljenja\DodajNastavu.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Forme\DodajOcenuForm.cs">
+    <Compile Update="Forme\nastavnici\DodajOcenuForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Forme\DodajOdeljenjeForm.cs">
+    <Compile Update="Forme\odeljenja\DodajOdeljenjeForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Forme\DodajPredmetForm.cs">
+    <Compile Update="Forme\predmeti\DodajPredmetForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Forme\DodajRoditeljaForm.cs">
+    <Compile Update="Forme\roditelji\DodajRoditeljaForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Forme\DodajUcenika.cs">
+    <Compile Update="Forme\odeljenja\DodajUcenika.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Forme\DodajUcenikaForma.cs">
+    <Compile Update="Forme\ucenici\DodajUcenikaForma.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Forme\DodelaPredmetaFrom.cs">
+    <Compile Update="Forme\nastavnici\DodelaPredmetaFrom.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Forme\DodeliPredmetUceniku.cs">
+    <Compile Update="Forme\ucenici\DodeliPredmetUceniku.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Forme\PregledStatistikeDeteta.cs">
+    <Compile Update="Forme\PregledStatistikaIzostanak.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Forme\KreirajOdeljenjeForm.cs">
+    <Compile Update="Forme\roditelji\PregledStatistikaOcena.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Forme\NastavnikPocetna.cs">
+    <Compile Update="Forme\odeljenja\KreirajOdeljenjeForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Forme\PredmetiForma.cs">
+    <Compile Update="Forme\nastavnici\NastavnikPocetna.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Forme\PredmetPodaci.cs">
+    <Compile Update="Forme\predmeti\PredmetiForma.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Forme\PregledIzostanaka.cs">
+    <Compile Update="Forme\predmeti\PredmetPodaci.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Forme\PregledIzostanakaKaoUcenik.cs">
+    <Compile Update="Forme\nastavnici\PregledIzostanaka.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Forme\PregledOcena.cs">
+    <Compile Update="Forme\ucenici\PregledIzostanakaKaoUcenik.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Forme\PregledUcenikaForm.cs">
+    <Compile Update="Forme\nastavnici\PregledOcena.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Forme\RoditeljPocetna.cs">
+    <Compile Update="Forme\nastavnici\PregledUcenikaForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Forme\UcenikPocetna.cs">
+    <Compile Update="Forme\roditelji\RoditeljPocetna.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Forme\UcenikPodaci.cs">
+    <Compile Update="Forme\ucenici\UcenikPocetna.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forme\ucenici\UcenikPodaci.cs">
       <SubType>Form</SubType>
     </Compile>
   </ItemGroup>

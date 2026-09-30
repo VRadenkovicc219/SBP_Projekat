@@ -820,6 +820,57 @@ namespace Skoslki_dnevnik
                 u.Roditelji.Remove(r);
             }, "Greska prilikom raskidanja veze roditelj-ucenik");
         }
+        #endregion
+
+        #region Statistika
+
+        public static List<OcenaStatistikaDTO> vratiSveOceneZaStatistiku(int? idPredmeta = null)
+        {
+            return izvrsiUpit(s =>
+            {
+                var upit = s.Query<Ocena>();
+                if (idPredmeta.HasValue)
+                    upit = upit.Where(x => x.Nastava.predajePredmet.Predmet.Id == idPredmeta.Value);
+
+                return upit.Select(x => new OcenaStatistikaDTO(
+                        x.Ucenik.Ime + " " + x.Ucenik.Prezime,
+                        x.Nastava.predajePredmet.Predmet.Naziv,
+                        x.Vrednost,
+                        x.DatumOcenjivanja,
+                        x.Tip,
+                        x.Polugodje))
+                    .ToList();
+            }, "Greska prilikom pribavljanja ocena za statistiku") ?? new List<OcenaStatistikaDTO>();
+        }
+
+        public static List<IzostanakStatistikaDTO> vratiSveIzostankeZaStatistiku(string? skolskaGodina = null)
+        {
+            return izvrsiUpit(s =>
+            {
+                var upit = s.Query<Izostanak>();
+                if (!string.IsNullOrWhiteSpace(skolskaGodina))
+                    upit = upit.Where(x => x.Nastava.Odeljenje.SkolskaGodina == skolskaGodina);
+
+                return upit.Select(x => new IzostanakStatistikaDTO(
+                        x.Id.Ucenik.Ime + " " + x.Id.Ucenik.Prezime,
+                        x.Nastava.predajePredmet.Predmet.Naziv,
+                        x.Nastava.Odeljenje.SkolskaGodina,
+                        x.Id.Datum,
+                        x.Id.RedniBrojCasa,
+                        x.TipIzostanka))
+                    .ToList();
+            }, "Greska prilikom pribavljanja izostanaka za statistiku") ?? new List<IzostanakStatistikaDTO>();
+        }
+
+        public static List<string> vratiSkolskeGodine()
+        {
+            return izvrsiUpit(s => s.Query<Odeljenje>()
+                    .Select(o => o.SkolskaGodina)
+                    .Distinct()
+                    .OrderByDescending(g => g)
+                    .ToList(),
+                "Greska prilikom pribavljanja skolskih godina") ?? new List<string>();
+        }
 
         #endregion
     }

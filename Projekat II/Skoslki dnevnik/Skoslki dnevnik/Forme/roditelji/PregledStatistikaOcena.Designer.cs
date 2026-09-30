@@ -1,6 +1,6 @@
 ﻿namespace Skoslki_dnevnik.Forme
 {
-    partial class PregledStatistikeDeteta
+    partial class PregledStatistikaOcena
     {
         /// <summary>
         /// Required designer variable.
@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             tipCheckedListBox = new GroupBox();
+            zakljucnaCb = new CheckBox();
+            pisanaProveraCb = new CheckBox();
             usmeniOdgovorCB = new CheckBox();
             aktivnostCB = new CheckBox();
             statistikaDgv = new DataGridView();
@@ -37,8 +39,6 @@
             datumDoDtp = new DateTimePicker();
             datumOdDtp = new DateTimePicker();
             predmetCmb = new ComboBox();
-            pisanaProveraCb = new CheckBox();
-            zakljucnaCb = new CheckBox();
             tipCheckedListBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)statistikaDgv).BeginInit();
             SuspendLayout();
@@ -56,6 +56,28 @@
             tipCheckedListBox.TabStop = false;
             tipCheckedListBox.Text = "Tip ocene";
             // 
+            // zakljucnaCb
+            // 
+            zakljucnaCb.AutoSize = true;
+            zakljucnaCb.Location = new Point(118, 41);
+            zakljucnaCb.Name = "zakljucnaCb";
+            zakljucnaCb.Size = new Size(77, 19);
+            zakljucnaCb.TabIndex = 3;
+            zakljucnaCb.Text = "Zakljucna";
+            zakljucnaCb.UseVisualStyleBackColor = true;
+            zakljucnaCb.CheckedChanged += zakljucnaCb_CheckedChanged;
+            // 
+            // pisanaProveraCb
+            // 
+            pisanaProveraCb.AutoSize = true;
+            pisanaProveraCb.Location = new Point(118, 16);
+            pisanaProveraCb.Name = "pisanaProveraCb";
+            pisanaProveraCb.Size = new Size(103, 19);
+            pisanaProveraCb.TabIndex = 2;
+            pisanaProveraCb.Text = "Pisana provera";
+            pisanaProveraCb.UseVisualStyleBackColor = true;
+            pisanaProveraCb.CheckedChanged += pisanaProveraCb_CheckedChanged;
+            // 
             // usmeniOdgovorCB
             // 
             usmeniOdgovorCB.AutoSize = true;
@@ -65,6 +87,7 @@
             usmeniOdgovorCB.TabIndex = 1;
             usmeniOdgovorCB.Text = "Usmeni odgovor";
             usmeniOdgovorCB.UseVisualStyleBackColor = true;
+            usmeniOdgovorCB.CheckedChanged += usmeniOdgovorCb_CheckedChanged;
             // 
             // aktivnostCB
             // 
@@ -75,6 +98,7 @@
             aktivnostCB.TabIndex = 0;
             aktivnostCB.Text = "Aktivnost";
             aktivnostCB.UseVisualStyleBackColor = true;
+            aktivnostCB.CheckedChanged += aktivnostCb_CheckedChanged;
             // 
             // statistikaDgv
             // 
@@ -109,6 +133,7 @@
             datumDoDtp.Name = "datumDoDtp";
             datumDoDtp.Size = new Size(99, 23);
             datumDoDtp.TabIndex = 24;
+            datumDoDtp.ValueChanged += datumDoDtp_ValueChanged;
             // 
             // datumOdDtp
             // 
@@ -117,6 +142,7 @@
             datumOdDtp.Name = "datumOdDtp";
             datumOdDtp.Size = new Size(99, 23);
             datumOdDtp.TabIndex = 23;
+            datumOdDtp.ValueChanged += datumOdDtp_ValueChanged;
             // 
             // predmetCmb
             // 
@@ -126,31 +152,11 @@
             predmetCmb.Size = new Size(401, 23);
             predmetCmb.TabIndex = 27;
             // 
-            // pisanaProveraCb
-            // 
-            pisanaProveraCb.AutoSize = true;
-            pisanaProveraCb.Location = new Point(118, 16);
-            pisanaProveraCb.Name = "pisanaProveraCb";
-            pisanaProveraCb.Size = new Size(103, 19);
-            pisanaProveraCb.TabIndex = 2;
-            pisanaProveraCb.Text = "Pisana provera";
-            pisanaProveraCb.UseVisualStyleBackColor = true;
-            // 
-            // zakljucnaCb
-            // 
-            zakljucnaCb.AutoSize = true;
-            zakljucnaCb.Location = new Point(118, 41);
-            zakljucnaCb.Name = "zakljucnaCb";
-            zakljucnaCb.Size = new Size(77, 19);
-            zakljucnaCb.TabIndex = 3;
-            zakljucnaCb.Text = "Zakljucna";
-            zakljucnaCb.UseVisualStyleBackColor = true;
-            // 
-            // PregledStatistikeDeteta
+            // PregledStatistikaOcena
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(423, 596);
+            ClientSize = new Size(432, 596);
             Controls.Add(predmetCmb);
             Controls.Add(tipCheckedListBox);
             Controls.Add(statistikaDgv);
@@ -158,8 +164,9 @@
             Controls.Add(label1);
             Controls.Add(datumDoDtp);
             Controls.Add(datumOdDtp);
-            Name = "PregledStatistikeDeteta";
+            Name = "PregledStatistikaOcena";
             Text = "Pregled ocena";
+            Load += zakljucnaCb_CheckedChanged;
             tipCheckedListBox.ResumeLayout(false);
             tipCheckedListBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)statistikaDgv).EndInit();

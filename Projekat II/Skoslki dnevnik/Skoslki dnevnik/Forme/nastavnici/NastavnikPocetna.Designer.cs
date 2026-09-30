@@ -30,7 +30,6 @@
         {
             nastavnici_dgv = new DataGridView();
             predmetiBtn = new Button();
-            dodeliPredmetBtn = new Button();
             obrisiNastavnikaBtn = new Button();
             dodajNastavnikaBtn = new Button();
             izmaniNastavnikaBtn = new Button();
@@ -58,16 +57,6 @@
             predmetiBtn.Text = "Pregledaj predmete";
             predmetiBtn.UseVisualStyleBackColor = true;
             predmetiBtn.Click += predmetiBtn_Click;
-            // 
-            // dodeliPredmetBtn
-            // 
-            dodeliPredmetBtn.Location = new Point(406, 159);
-            dodeliPredmetBtn.Name = "dodeliPredmetBtn";
-            dodeliPredmetBtn.Size = new Size(117, 30);
-            dodeliPredmetBtn.TabIndex = 11;
-            dodeliPredmetBtn.Text = "dodeli predmet";
-            dodeliPredmetBtn.UseVisualStyleBackColor = true;
-            dodeliPredmetBtn.Click += dodeliPredmetBtn_Click;
             // 
             // obrisiNastavnikaBtn
             // 
@@ -116,7 +105,6 @@
             Controls.Add(izmaniNastavnikaBtn);
             Controls.Add(nastavnici_dgv);
             Controls.Add(predmetiBtn);
-            Controls.Add(dodeliPredmetBtn);
             Controls.Add(obrisiNastavnikaBtn);
             Controls.Add(dodajNastavnikaBtn);
             Name = "NastavnikPocetna";
@@ -129,7 +117,6 @@
         #endregion
         private DataGridView nastavnici_dgv;
         private Button predmetiBtn;
-        private Button dodeliPredmetBtn;
         private Button obrisiNastavnikaBtn;
         private Button dodajNastavnikaBtn;
         private Button izmaniNastavnikaBtn;

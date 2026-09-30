@@ -8,9 +8,9 @@ using System.Windows.Forms;
 
 namespace Skoslki_dnevnik.Forme
 {
-    public partial class PregledStatistikeDeteta : Form
+    public partial class PregledStatistikaIzostanak : Form
     {
-        public PregledStatistikeDeteta()
+        public PregledStatistikaIzostanak()
         {
             InitializeComponent();
         }

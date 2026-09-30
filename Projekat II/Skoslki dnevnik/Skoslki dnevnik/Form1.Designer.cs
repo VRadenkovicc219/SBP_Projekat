@@ -82,6 +82,7 @@
             roditeljiBtn.TabIndex = 4;
             roditeljiBtn.Text = "Roditelji";
             roditeljiBtn.UseVisualStyleBackColor = true;
+            roditeljiBtn.Click += roditeljiBtn_Click;
             // 
             // login_form
             // 
