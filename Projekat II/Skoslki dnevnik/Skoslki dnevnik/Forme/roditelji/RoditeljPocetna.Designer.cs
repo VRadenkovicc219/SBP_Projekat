@@ -67,6 +67,7 @@
             oceneBtn.TabIndex = 2;
             oceneBtn.Text = "Pogledaj ocene";
             oceneBtn.UseVisualStyleBackColor = true;
+            oceneBtn.Click += oceneBtn_Click;
             // 
             // izostanciBtn
             // 
@@ -76,6 +77,7 @@
             izostanciBtn.TabIndex = 3;
             izostanciBtn.Text = "Pogledaj izostanke";
             izostanciBtn.UseVisualStyleBackColor = true;
+            izostanciBtn.Click += izostanciBtn_Click;
             // 
             // dodajBtn
             // 

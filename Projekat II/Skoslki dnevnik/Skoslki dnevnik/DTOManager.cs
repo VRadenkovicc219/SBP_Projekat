@@ -843,6 +843,25 @@ namespace Skoslki_dnevnik
             }, "Greska prilikom pribavljanja ocena za statistiku") ?? new List<OcenaStatistikaDTO>();
         }
 
+        public static List<OcenaStatistikaDTO> vratiSveOceneUcenika(int idUcenika)
+        {
+            return izvrsiUpit(s =>
+            {
+                var upit = s.Query<Ocena>().Where();
+                if (idUcenika.HasValue)
+                    upit = upit.Where(x => x.Nastava.predajePredmet.Predmet.Id == idPredmeta.Value);
+
+                return upit.Select(x => new OcenaStatistikaDTO(
+                        x.Ucenik.Ime + " " + x.Ucenik.Prezime,
+                        x.Nastava.predajePredmet.Predmet.Naziv,
+                        x.Vrednost,
+                        x.DatumOcenjivanja,
+                        x.Tip,
+                        x.Polugodje))
+                    .ToList();
+            }, "Greska prilikom pribavljanja ocena za statistiku") ?? new List<OcenaStatistikaDTO>();
+        }
+
         public static List<IzostanakStatistikaDTO> vratiSveIzostankeZaStatistiku(string? skolskaGodina = null)
         {
             return izvrsiUpit(s =>
@@ -871,6 +890,8 @@ namespace Skoslki_dnevnik
                     .ToList(),
                 "Greska prilikom pribavljanja skolskih godina") ?? new List<string>();
         }
+
+        
 
         #endregion
     }

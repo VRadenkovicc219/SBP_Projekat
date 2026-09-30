@@ -28,7 +28,7 @@ namespace Skoslki_dnevnik.Forme
             roditelji = DTOManager.vratiRoditelje();
             roditeljiDgv.DataSource = null;
             roditeljiDgv.DataSource = roditelji;
-            UcitajDecu(); 
+            UcitajDecu();
         }
 
         private RoditeljDTO? IzabraniRoditelj()
@@ -46,7 +46,7 @@ namespace Skoslki_dnevnik.Forme
 
             decaCmb.DataSource = null;
             decaCmb.DataSource = deca;
-            decaCmb.DisplayMember = nameof(UcenikDTO.ime); 
+            decaCmb.DisplayMember = nameof(UcenikDTO.ime);
 
             OsveziStanjeDugmadi();
         }
@@ -145,28 +145,29 @@ namespace Skoslki_dnevnik.Forme
             UcitajDecu();
         }
 
-        private void pogledajOceneBtn_Click(object sender, EventArgs e)
+        
+        private void oceneBtn_Click(object sender, EventArgs e)
         {
             var dete = IzabranoDete();
             if (dete is null) return;
 
-            List<Ocena> ocene = DTOManager.vratiSveOceneUcenika(dete.id)
+            List<OcenaStatistikaDTO> ocene = DTOManager.vratiSveOceneUcenika`(dete.id)
                                            .OrderBy(x => x.DatumOcenjivanja)
                                            .ToList();
 
-            new PregledOcenaKaoRoditelj(ocene, dete.id, -1, -1, readOnly: true).ShowDialog();
+            new PregledStatistikaOcena().ShowDialog();
         }
 
-        private void pogledajIzostankeBtn_Click(object sender, EventArgs e)
+        private void izostanciBtn_Click(object sender, EventArgs e)
         {
             var dete = IzabranoDete();
             if (dete is null) return;
 
-            List<Izostanak> izostanci = DTOManager.vratiSveIzostankeUcenika(dete.id)
-                                                   .OrderBy(x => x.Id.Datum)
+            List<IzostanakDTO> izostanci = DTOManager.vratiSveIzostankeUcenika(dete.id)
+                                                   .OrderBy(x => x.datum)
                                                    .ToList();
 
-            new PregledIzostanakaKaoRoditelj(izostanci, dete.id, -1, -1, readOnly: true).ShowDialog();
+            new PregledStatistikaIzostanak().ShowDialog();
         }
     }
 }
