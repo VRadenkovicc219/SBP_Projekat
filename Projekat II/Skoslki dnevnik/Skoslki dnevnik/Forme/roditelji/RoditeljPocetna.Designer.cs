@@ -77,7 +77,6 @@
             izostanciBtn.TabIndex = 3;
             izostanciBtn.Text = "Pogledaj izostanke";
             izostanciBtn.UseVisualStyleBackColor = true;
-            izostanciBtn.Click += izostanciBtn_Click;
             // 
             // dodajBtn
             // 
@@ -115,6 +114,7 @@
             dodajVezuBtn.TabIndex = 7;
             dodajVezuBtn.Text = "Dodaj vezu s detetom";
             dodajVezuBtn.UseVisualStyleBackColor = true;
+            dodajVezuBtn.Click += dodajVezuBtn_Click;
             // 
             // raskiniVezuBtn
             // 
@@ -124,6 +124,7 @@
             raskiniVezuBtn.TabIndex = 8;
             raskiniVezuBtn.Text = "Raskini vezu s detetom";
             raskiniVezuBtn.UseVisualStyleBackColor = true;
+            raskiniVezuBtn.Click += raskiniVezuBtn_Click;
             // 
             // Deca
             // 

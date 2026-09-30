@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            textBox1 = new TextBox();
-            textBox2 = new TextBox();
+            oznakaTxt = new TextBox();
+            godinaTxt = new TextBox();
             razredNum = new NumericUpDown();
             label1 = new Label();
             kreirajBtn = new Button();
@@ -38,19 +38,19 @@
             ((System.ComponentModel.ISupportInitialize)razredNum).BeginInit();
             SuspendLayout();
             // 
-            // textBox1
+            // oznakaTxt
             // 
-            textBox1.Location = new Point(123, 12);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(120, 23);
-            textBox1.TabIndex = 0;
+            oznakaTxt.Location = new Point(123, 12);
+            oznakaTxt.Name = "oznakaTxt";
+            oznakaTxt.Size = new Size(120, 23);
+            oznakaTxt.TabIndex = 0;
             // 
-            // textBox2
+            // godinaTxt
             // 
-            textBox2.Location = new Point(123, 41);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(120, 23);
-            textBox2.TabIndex = 1;
+            godinaTxt.Location = new Point(123, 41);
+            godinaTxt.Name = "godinaTxt";
+            godinaTxt.Size = new Size(120, 23);
+            godinaTxt.TabIndex = 1;
             // 
             // razredNum
             // 
@@ -81,6 +81,7 @@
             kreirajBtn.TabIndex = 4;
             kreirajBtn.Text = "Kreiraj ";
             kreirajBtn.UseVisualStyleBackColor = true;
+            kreirajBtn.Click += kreirajBtn_Click;
             // 
             // label2
             // 
@@ -110,8 +111,8 @@
             Controls.Add(kreirajBtn);
             Controls.Add(label1);
             Controls.Add(razredNum);
-            Controls.Add(textBox2);
-            Controls.Add(textBox1);
+            Controls.Add(godinaTxt);
+            Controls.Add(oznakaTxt);
             Name = "KreirajOdeljenjeForm";
             Text = "KreirajOdeljenjeForm";
             ((System.ComponentModel.ISupportInitialize)razredNum).EndInit();
@@ -121,8 +122,8 @@
 
         #endregion
 
-        private TextBox textBox1;
-        private TextBox textBox2;
+        private TextBox oznakaTxt;
+        private TextBox godinaTxt;
         private NumericUpDown razredNum;
         private Label label1;
         private Button kreirajBtn;

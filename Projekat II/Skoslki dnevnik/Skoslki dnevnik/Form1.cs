@@ -38,5 +38,11 @@ namespace Skoslki_dnevnik
             RoditeljPocetna rp = new RoditeljPocetna();
             rp.Show();
         }
+
+        private void odeljenjeBtn_Click(object sender, EventArgs e)
+        {
+            DodajOdeljenjeForm nf = new DodajOdeljenjeForm();
+            nf.Show();
+        }
     }
 }

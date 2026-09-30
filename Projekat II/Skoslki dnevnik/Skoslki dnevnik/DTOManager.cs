@@ -1,4 +1,5 @@
 ﻿using NHibernate.Util;
+using System.Runtime.CompilerServices;
 using System.Security.Permissions;
 
 namespace Skoslki_dnevnik
@@ -847,10 +848,7 @@ namespace Skoslki_dnevnik
         {
             return izvrsiUpit(s =>
             {
-                var upit = s.Query<Ocena>().Where();
-                if (idUcenika.HasValue)
-                    upit = upit.Where(x => x.Nastava.predajePredmet.Predmet.Id == idPredmeta.Value);
-
+                var upit = s.Query<Ocena>().Where(x=>x.Ucenik.Id == idUcenika);
                 return upit.Select(x => new OcenaStatistikaDTO(
                         x.Ucenik.Ime + " " + x.Ucenik.Prezime,
                         x.Nastava.predajePredmet.Predmet.Naziv,
@@ -889,6 +887,35 @@ namespace Skoslki_dnevnik
                     .OrderByDescending(g => g)
                     .ToList(),
                 "Greska prilikom pribavljanja skolskih godina") ?? new List<string>();
+        }
+
+        public static List<Ucenik> vratiUcenikeKojiNisuUOdeljenju(int idOdeljenja)
+        {
+            return izvrsiUpit(s =>
+            {
+                Odeljenje o = s.Load<Odeljenje>(idOdeljenja);
+                return s.Query<Ucenik>().Where(x => !x.Odeljenja.Any(x => x.Id == idOdeljenja) && 
+                (
+                        (x.Status == StatusUcenika.AKTIVAN 
+                        && 
+                        int.Parse(o.SkolskaGodina.Substring(0, 4)) - o.Razred + 1 == int.Parse(x.GodinaUpisa.Substring(0, 4)))
+                    ||
+                        (x.Status == StatusUcenika.PONAVLJA 
+                        && 
+                        int.Parse(o.SkolskaGodina.Substring(0, 4)) - o.Razred == int.Parse(x.GodinaUpisa.Substring(0, 4))
+
+                ))).ToList();
+            }, "Greska prilikom vracanja podataka iz baze");
+        }
+
+        public static void dodajUcenikeUOdeljenje(List<Ucenik> selektovano)
+        {
+            izvrsiUpit(s => {
+                foreach (var ucenik in selektovano)
+                {
+                    s.Save(ucenik);
+                }
+            }, "Greska prilikom upisivanja ucenika u bazu");
         }
 
         

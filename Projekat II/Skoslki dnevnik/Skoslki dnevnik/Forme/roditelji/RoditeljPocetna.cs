@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Skoslki_dnevnik.Forme.roditelji;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -112,62 +113,29 @@ namespace Skoslki_dnevnik.Forme
 
         private void dodajVezuBtn_Click(object sender, EventArgs e)
         {
-            var roditelj = IzabraniRoditelj();
-            if (roditelj is null) return;
-
-            List<UcenikDTO> kandidati = DTOManager.vratiUcenikeKojiNisuDeteRoditelja(roditelj.id);
-            if (kandidati.Count == 0)
+            if (roditeljiDgv.SelectedRows.Count != 0)
             {
-                MessageBox.Show("Nema dostupnih ucenika za dodavanje veze");
                 return;
             }
+            int id = IzabraniRoditelj()!.id;
+            IzborDece nf = new IzborDece(id);
 
-            using IzaberiUcenikaForma forma = new IzaberiUcenikaForma(kandidati);
-            if (forma.ShowDialog() != DialogResult.OK || forma.IzabraniUcenik is null) return;
-
-            DTOManager.dodajVezuRoditeljUcenik(roditelj.id, forma.IzabraniUcenik.id);
-            UcitajDecu();
         }
 
         private void raskiniVezuBtn_Click(object sender, EventArgs e)
         {
-            var roditelj = IzabraniRoditelj();
-            var dete = IzabranoDete();
-            if (roditelj is null || dete is null) return;
-
-            var potvrda = MessageBox.Show(
-                $"Raskinuti vezu sa ucenikom {dete.ime} {dete.prezime}?",
-                "Potvrda", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-
-            if (potvrda != DialogResult.Yes) return;
-
-            DTOManager.raskiniVezuRoditeljUcenik(roditelj.id, dete.id);
-            UcitajDecu();
+            if (roditeljiDgv.SelectedRows.Count != 0)
+            {
+                return;
+            }
+            int id = IzabraniRoditelj()!.id;
+            IzborDece nf = new IzborDece(id, false);
         }
 
-        
         private void oceneBtn_Click(object sender, EventArgs e)
         {
-            var dete = IzabranoDete();
-            if (dete is null) return;
-
-            List<OcenaStatistikaDTO> ocene = DTOManager.vratiSveOceneUcenika`(dete.id)
-                                           .OrderBy(x => x.DatumOcenjivanja)
-                                           .ToList();
-
-            new PregledStatistikaOcena().ShowDialog();
-        }
-
-        private void izostanciBtn_Click(object sender, EventArgs e)
-        {
-            var dete = IzabranoDete();
-            if (dete is null) return;
-
-            List<IzostanakDTO> izostanci = DTOManager.vratiSveIzostankeUcenika(dete.id)
-                                                   .OrderBy(x => x.datum)
-                                                   .ToList();
-
-            new PregledStatistikaIzostanak().ShowDialog();
+            Ucenik u = (Ucenik)decaCmb.SelectedItem!;
+            PregledStatistikaOcena nf = new PregledStatistikaOcena();
         }
     }
 }

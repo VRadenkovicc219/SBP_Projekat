@@ -1,6 +1,6 @@
-﻿namespace Skoslki_dnevnik.Forme
+﻿namespace Skoslki_dnevnik.Forme.roditelji
 {
-    partial class DodajUcenika
+    partial class IzborDece
     {
         /// <summary>
         /// Required designer variable.
@@ -29,48 +29,70 @@
         private void InitializeComponent()
         {
             uceniciDgv = new DataGridView();
-            button1 = new Button();
+            label3 = new Label();
+            jmbgTb = new TextBox();
+            dodajBtn = new Button();
             ((System.ComponentModel.ISupportInitialize)uceniciDgv).BeginInit();
             SuspendLayout();
             // 
             // uceniciDgv
             // 
             uceniciDgv.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            uceniciDgv.Location = new Point(12, 12);
-            uceniciDgv.MultiSelect = false;
+            uceniciDgv.Location = new Point(12, 35);
             uceniciDgv.Name = "uceniciDgv";
-            uceniciDgv.ReadOnly = true;
-            uceniciDgv.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            uceniciDgv.Size = new Size(423, 499);
+            uceniciDgv.Size = new Size(430, 604);
             uceniciDgv.TabIndex = 0;
             // 
-            // button1
+            // label3
             // 
-            button1.Location = new Point(187, 517);
-            button1.Name = "button1";
-            button1.Size = new Size(75, 23);
-            button1.TabIndex = 1;
-            button1.Text = "Dodaj";
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click;
+            label3.AutoSize = true;
+            label3.Location = new Point(12, 9);
+            label3.Name = "label3";
+            label3.RightToLeft = RightToLeft.No;
+            label3.Size = new Size(97, 15);
+            label3.TabIndex = 20;
+            label3.Text = "Pretrazi po jmbg:";
             // 
-            // DodajUcenika
+            // jmbgTb
+            // 
+            jmbgTb.Location = new Point(131, 6);
+            jmbgTb.Name = "jmbgTb";
+            jmbgTb.Size = new Size(311, 23);
+            jmbgTb.TabIndex = 19;
+            jmbgTb.Leave += jmbgTb_Leave;
+            // 
+            // dodajBtn
+            // 
+            dodajBtn.Location = new Point(186, 658);
+            dodajBtn.Name = "dodajBtn";
+            dodajBtn.Size = new Size(75, 23);
+            dodajBtn.TabIndex = 21;
+            dodajBtn.Text = "Dodaj";
+            dodajBtn.UseVisualStyleBackColor = true;
+            dodajBtn.Click += dodajBtn_Click;
+            // 
+            // IzborDece
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(447, 552);
-            Controls.Add(button1);
+            ClientSize = new Size(454, 693);
+            Controls.Add(dodajBtn);
+            Controls.Add(label3);
+            Controls.Add(jmbgTb);
             Controls.Add(uceniciDgv);
-            Name = "DodajUcenika";
-            Text = "DodajUcenika";
-            Load += DodajUcenika_Load;
+            Name = "IzborDece";
+            Text = "IzborDece";
+            Load += IzborDece_Load;
             ((System.ComponentModel.ISupportInitialize)uceniciDgv).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
 
         private DataGridView uceniciDgv;
-        private Button button1;
+        private Label label3;
+        private TextBox jmbgTb;
+        private Button dodajBtn;
     }
 }

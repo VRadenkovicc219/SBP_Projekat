@@ -28,6 +28,9 @@
     <Compile Update="Forme\odeljenja\DodajUcenika.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Forme\roditelji\IzborDece.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Forme\ucenici\DodajUcenikaForma.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -55,6 +55,7 @@
             kreirajBtn.TabIndex = 1;
             kreirajBtn.Text = "Kreiraj odeljenje";
             kreirajBtn.UseVisualStyleBackColor = true;
+            kreirajBtn.Click += kreirajBtn_Click;
             // 
             // obrisiBtn
             // 
@@ -64,6 +65,7 @@
             obrisiBtn.TabIndex = 2;
             obrisiBtn.Text = "Obrisi odeljenje";
             obrisiBtn.UseVisualStyleBackColor = true;
+            obrisiBtn.Click += obrisiBtn_Click;
             // 
             // azurirajBtn
             // 
@@ -73,6 +75,7 @@
             azurirajBtn.TabIndex = 3;
             azurirajBtn.Text = "Azuriraj odeljenje";
             azurirajBtn.UseVisualStyleBackColor = true;
+            azurirajBtn.Click += azurirajBtn_Click;
             // 
             // dodajUcenikaBtn
             // 
@@ -82,6 +85,7 @@
             dodajUcenikaBtn.TabIndex = 4;
             dodajUcenikaBtn.Text = "Dodaj ucenika";
             dodajUcenikaBtn.UseVisualStyleBackColor = true;
+            dodajUcenikaBtn.Click += dodajUcenikaBtn_Click;
             // 
             // dodajNastavuBtn
             // 
@@ -105,6 +109,7 @@
             Controls.Add(odeljenjaDgv);
             Name = "DodajOdeljenjeForm";
             Text = "DodajOdeljenjeForm";
+            Load += DodajOdeljenjeForm_Load;
             ((System.ComponentModel.ISupportInitialize)odeljenjaDgv).EndInit();
             ResumeLayout(false);
         }

@@ -12,6 +12,8 @@ namespace Skoslki_dnevnik.Forme
     {
         private List<OcenaStatistikaDTO> sveOcene = new List<OcenaStatistikaDTO>();
 
+        private Ucenik u = null;
+
         private class PredmetStavka
         {
             public int? Id { get; set; }
@@ -22,6 +24,11 @@ namespace Skoslki_dnevnik.Forme
         public PregledStatistikaOcena()
         {
             InitializeComponent();
+        }
+
+        public PregledStatistikaOcena(Ucenik u) {
+            InitializeComponent();
+            this.u = u;
         }
 
         private void PregledStatistikaOcena_Load(object sender, EventArgs e)
@@ -37,16 +44,7 @@ namespace Skoslki_dnevnik.Forme
 
         private void UcitajOcene()
         {
-            int? idPredmeta = (predmetCmb.SelectedItem as PredmetStavka)?.Id;
-            sveOcene = DTOManager.vratiSveOceneZaStatistiku(idPredmeta);
-
-            if (sveOcene.Count > 0)
-            {
-                datumOdDtp.Value = sveOcene.Min(x => x.datum);
-                datumDoDtp.Value = sveOcene.Max(x => x.datum);
-            }
-
-            PrimeniFiltere();
+            sveOcene = DTOManager.vratiSveOceneUcenika(u.Id);
         }
 
         private void datumOdDtp_ValueChanged(object sender, EventArgs e) => PrimeniFiltere();
@@ -67,6 +65,9 @@ namespace Skoslki_dnevnik.Forme
             var rezultat = sveOcene.Where(x =>
                 x.datum.Date >= datumOdDtp.Value.Date &&
                 x.datum.Date <= datumDoDtp.Value.Date);
+
+            PredmetStavka predmet = (PredmetStavka)predmetCmb.SelectedItem!;
+            rezultat = (predmet.Id is null) ? rezultat : rezultat.Where(x => x.predmet == predmet.Naziv).ToList(); 
 
             rezultat = izabraniTipovi.Count > 0
                 ? rezultat.Where(x => izabraniTipovi.Contains(x.tip))

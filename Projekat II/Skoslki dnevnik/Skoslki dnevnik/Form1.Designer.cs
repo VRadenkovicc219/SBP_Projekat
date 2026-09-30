@@ -63,6 +63,7 @@
             odeljenjeBtn.TabIndex = 2;
             odeljenjeBtn.Text = "Odeljenja";
             odeljenjeBtn.UseVisualStyleBackColor = true;
+            odeljenjeBtn.Click += odeljenjeBtn_Click;
             // 
             // predmetiBtn
             // 
