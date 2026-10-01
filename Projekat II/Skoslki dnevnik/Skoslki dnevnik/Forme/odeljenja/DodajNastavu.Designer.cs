@@ -38,27 +38,31 @@
             nastavaDgv.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             nastavaDgv.Location = new Point(12, 12);
             nastavaDgv.Name = "nastavaDgv";
-            nastavaDgv.Size = new Size(309, 368);
+            nastavaDgv.ReadOnly = true;
+            nastavaDgv.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            nastavaDgv.Size = new Size(379, 483);
             nastavaDgv.TabIndex = 0;
             // 
             // dodajBtn
             // 
-            dodajBtn.Location = new Point(127, 415);
+            dodajBtn.Location = new Point(159, 501);
             dodajBtn.Name = "dodajBtn";
             dodajBtn.Size = new Size(75, 23);
             dodajBtn.TabIndex = 1;
             dodajBtn.Text = "Dodaj";
             dodajBtn.UseVisualStyleBackColor = true;
+            dodajBtn.Click += dodajBtn_Click;
             // 
             // DodajNastavu
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(333, 450);
+            ClientSize = new Size(403, 536);
             Controls.Add(dodajBtn);
             Controls.Add(nastavaDgv);
             Name = "DodajNastavu";
             Text = "DodajNastavu";
+            Load += DodajNastavu_Load;
             ((System.ComponentModel.ISupportInitialize)nastavaDgv).EndInit();
             ResumeLayout(false);
         }

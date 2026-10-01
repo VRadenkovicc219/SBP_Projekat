@@ -38,7 +38,7 @@ namespace Skoslki_dnevnik
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"{porukaGreske}: {ex.Message}");
+                MessageBox.Show($"{porukaGreske}: {ex.ToString()}");
                 return default!;
             }
         }
@@ -307,12 +307,50 @@ namespace Skoslki_dnevnik
         #endregion
         #region Nastavnik
 
-        public static List<Nastavnik> vratiNastavnike()
+        private static bool imaDodatnuUlogu(ISession s, int idNastavnik)
         {
-            return izvrsiUpit(
-                s => s.Query<Nastavnik>().ToList(),
-                "Greska pri preuzimanju nastavnika iz baze"
-            );
+            return s.Query<RazredniStaresina>().Any(x => x.Id == idNastavnik)
+                || s.Query<RukovodeceOsoblje>().Any(x => x.Id == idNastavnik)
+                || s.Query<StrucniSaradnik>().Any(x => x.Id == idNastavnik);
+        }
+        public static List<NastavnikDTO> vratiNastavnike()
+        {
+            return izvrsiUpit(s =>
+            {
+                var rezultat = s.CreateSQLQuery(@"
+            SELECT 
+                o.ID,
+                o.IME,
+                o.PREZIME,
+                o.JMBG,
+                o.ADRESA,
+                o.EMAIL,
+                o.TELEFON,
+                n.STATUS,
+                n.ZVANJE,
+                n.STRUCNA_SPREMA,
+                n.DATUM_ZAPOSLENJA
+            FROM OSOBA o
+            JOIN NASTAVNIK n
+                ON o.ID = n.ID_OSOBA
+        ").List<object[]>();
+
+                return rezultat.Select(x => new NastavnikDTO(
+                Convert.ToInt32(x[0]),
+                Convert.ToString(x[1])!,
+                Convert.ToString(x[2])!,
+                Convert.ToString(x[3])!,
+                Convert.ToString(x[4])!,
+                Convert.ToString(x[5])!,
+                Convert.ToString(x[6])!,
+                Enum.Parse<StatusNastavnika>(Convert.ToString(x[7])!),
+                Convert.ToString(x[8])!,
+                Convert.ToString(x[9])!,
+                Convert.ToDateTime(x[10])
+            )).ToList();
+
+            }, "Greska pri preuzimanju nastavnika iz baze")
+    ?? new List<NastavnikDTO>();
         }
 
         public static Nastavnik vratiNastavnika(int id)
@@ -357,22 +395,44 @@ namespace Skoslki_dnevnik
         {
             izvrsiUpit(s =>
             {
+                s.CreateSQLQuery("DELETE FROM RAZREDNI_STARESINA WHERE ID_NASTAVNIK = :id")
+         .SetParameter("id", nastavnik.Id).ExecuteUpdate();
+                s.CreateSQLQuery("DELETE FROM RUKOVODECE_OSOBLJE WHERE ID_NASTAVNIK = :id")
+                 .SetParameter("id", nastavnik.Id).ExecuteUpdate();
+                s.CreateSQLQuery("DELETE FROM STRUCNI_SARADNIK WHERE ID_NASTAVNIK = :id")
+                 .SetParameter("id", nastavnik.Id).ExecuteUpdate();
+
+                Nastavnik? n = s.Get<Nastavnik>(nastavnik.Id);
+                if (n is null) return;
+
+                foreach (Predaje p in n.Predaje.ToList())
+                {
+                    List<Nastava> nastave = s.Query<Nastava>().Where(x => x.predajePredmet.Id == p.Id).ToList();
+                    foreach (Nastava nn in nastave)
+                    {
+                        s.CreateSQLQuery("DELETE FROM OCENA WHERE ID_NASTAVA = :id")
+                         .SetParameter("id", nn.Id).ExecuteUpdate();
+                        s.CreateSQLQuery("DELETE FROM IZOSTANAK WHERE ID_NASTAVA = :id")
+                         .SetParameter("id", nn.Id).ExecuteUpdate();
+                        s.Delete(nn);
+                    }
+                    s.Delete(p);
+                }
+                s.Flush();
+                s.Evict(n);
+
                 if (!imaUlogu(s, "RODITELJ_STARATELJ", nastavnik.Id))
                 {
-                    s.Delete(nastavnik);  
-                    return;
+                    s.CreateSQLQuery("DELETE FROM NASTAVNIK WHERE ID_OSOBA = :id")
+                     .SetParameter("id", nastavnik.Id).ExecuteUpdate();
+                    s.CreateSQLQuery("DELETE FROM OSOBA WHERE ID = :id")
+                     .SetParameter("id", nastavnik.Id).ExecuteUpdate();
                 }
-
-                Nastavnik n = s.Get<Nastavnik>(nastavnik.Id);
-                foreach (var p in n.Predaje.ToList())
-                    s.Delete(p);
-                s.Flush();
-                s.Evict(n);  
-
-                s.CreateSQLQuery("DELETE FROM RAZREDNI_STARESINA WHERE ID_NASTAVNIK = :id")
-                 .SetParameter("id", nastavnik.Id).ExecuteUpdate();
-                s.CreateSQLQuery("DELETE FROM NASTAVNIK WHERE ID_OSOBA = :id")
-                 .SetParameter("id", nastavnik.Id).ExecuteUpdate();
+                else
+                {
+                    s.CreateSQLQuery("DELETE FROM NASTAVNIK WHERE ID_OSOBA = :id")
+                     .SetParameter("id", nastavnik.Id).ExecuteUpdate();
+                }
             }, "Greska pri brisanju nastavnika iz baze");
         }
 
@@ -383,6 +443,90 @@ namespace Skoslki_dnevnik
             {
                 return s.Query<RazredniStaresina>().Where(x => x.Odeljenje.Id == odeljenjeId).FirstOrDefault();
             }, "Greska prilikom pribavljanja razrednog staresine za odeljenje");
+        }
+
+        public static void dodeliRazrednogStaresinu(int idNastavnik, int idOdeljenje, DateTime datumPreuzimanja, string? napomena)
+        {
+            izvrsiUpit(s =>
+            {
+                if (imaDodatnuUlogu(s, idNastavnik))
+                    throw new Exception("Nastavnik vec ima dodatnu ulogu (razredni staresina / rukovodece osoblje / strucni saradnik)");
+
+                if (s.Query<RazredniStaresina>().Any(x => x.Odeljenje.Id == idOdeljenje))
+                    throw new Exception("Ovo odeljenje vec ima razrednog staresinu");
+
+                Nastavnik? n = s.Get<Nastavnik>(idNastavnik);
+                if (n is null) throw new Exception("Nastavnik ne postoji u bazi");
+
+                Odeljenje? o = s.Get<Odeljenje>(idOdeljenje);
+                if (o is null) throw new Exception("Odeljenje ne postoji u bazi");
+
+                s.CreateSQLQuery(
+                    "INSERT INTO RAZREDNI_STARESINA (ID_NASTAVNIK, ID_ODELJENJE, DATUM_PREUZIMANJA_STARESINSTVA, BROJ_ODRZANIH_SASTANAKA, NAPOMENA) " +
+                    "VALUES (:idN, :idO, :datum, 0, :napomena)")
+                 .SetParameter("idN", idNastavnik)
+                 .SetParameter("idO", idOdeljenje)
+                 .SetParameter("datum", datumPreuzimanja)
+                 .SetParameter("napomena", napomena)
+                 .ExecuteUpdate();
+            }, "Greska prilikom dodele razrednog staresinstva");
+        }
+
+        public static void dodeliRukovodecuFunkciju(int idNastavnik, string pozicija, string oblastOdgovornosti, DateTime? datumPreuzimanja, int? godineStaza)
+        {
+            izvrsiUpit(s =>
+            {
+                if (imaDodatnuUlogu(s, idNastavnik))
+                    throw new Exception("Nastavnik vec ima dodatnu ulogu (razredni staresina / rukovodece osoblje / strucni saradnik)");
+
+                Nastavnik? n = s.Get<Nastavnik>(idNastavnik);
+                if (n is null) throw new Exception("Nastavnik ne postoji u bazi");
+
+                s.CreateSQLQuery(
+                    "INSERT INTO RUKOVODECE_OSOBLJE (ID_NASTAVNIK, POZICIJA, DATUM_PREUZIMANJA_FUNKCIJE, OBLAST_ODGOVORNOSTI, GODINE_STAZA) " +
+                    "VALUES (:idN, :pozicija, :datum, :oblast, :staz)")
+                 .SetParameter("idN", idNastavnik)
+                 .SetParameter("pozicija", pozicija)
+                 .SetParameter("datum", datumPreuzimanja)
+                 .SetParameter("oblast", oblastOdgovornosti)
+                 .SetParameter("staz", godineStaza)
+                 .ExecuteUpdate();
+            }, "Greska prilikom dodele rukovodece funkcije");
+        }
+
+        public static void dodeliStrucnogSaradnika(int idNastavnik, string licenca, string strucnaOblast, int brojRadionica, int? brojRazgovora)
+        {
+            izvrsiUpit(s =>
+            {
+                if (imaDodatnuUlogu(s, idNastavnik))
+                    throw new Exception("Nastavnik vec ima dodatnu ulogu (razredni staresina / rukovodece osoblje / strucni saradnik)");
+
+                Nastavnik? n = s.Get<Nastavnik>(idNastavnik);
+                if (n is null) throw new Exception("Nastavnik ne postoji u bazi");
+
+                s.CreateSQLQuery(
+                    "INSERT INTO STRUCNI_SARADNIK (ID_NASTAVNIK, LICENCA, STRUCNA_OBLAST, BROJ_ODRZANIH_RADIONICA, BROJ_SPROVEDENIH_RAZGOVORA) " +
+                    "VALUES (:idN, :licenca, :oblast, :radionice, :razgovori)")
+                 .SetParameter("idN", idNastavnik)
+                 .SetParameter("licenca", licenca)
+                 .SetParameter("oblast", strucnaOblast)
+                 .SetParameter("radionice", brojRadionica)
+                 .SetParameter("razgovori", brojRazgovora)
+                 .ExecuteUpdate();
+            }, "Greska prilikom dodele uloge strucnog saradnika");
+        }
+
+        public static void ukiniDodatnuUlogu(int idNastavnik)
+        {
+            izvrsiUpit(s =>
+            {
+                s.CreateSQLQuery("DELETE FROM RAZREDNI_STARESINA WHERE ID_NASTAVNIK = :id")
+                 .SetParameter("id", idNastavnik).ExecuteUpdate();
+                s.CreateSQLQuery("DELETE FROM RUKOVODECE_OSOBLJE WHERE ID_NASTAVNIK = :id")
+                 .SetParameter("id", idNastavnik).ExecuteUpdate();
+                s.CreateSQLQuery("DELETE FROM STRUCNI_SARADNIK WHERE ID_NASTAVNIK = :id")
+                 .SetParameter("id", idNastavnik).ExecuteUpdate();
+            }, "Greska prilikom ukidanja dodatne uloge");
         }
 
         public static void izmeniNastavnika(int id, Nastavnik nastavnik)
@@ -918,8 +1062,57 @@ namespace Skoslki_dnevnik
             }, "Greska prilikom upisivanja ucenika u bazu");
         }
 
-        
+        public static List<NastavaDTO> vratiNastavuZaDodavanjeOdeljenju(int odeljenjeID)
+        {
+            return izvrsiUpit(s =>
+            {
+                Odeljenje? o = s.Get<Odeljenje>(odeljenjeID);
+                if (o is null)
+                    throw new Exception("Odeljenje sa unetim id-jem ne postoji u bazi");
 
+                return s.Query<Predaje>()
+                .Where(p => p.Predmet.SkolskaGodina == o.SkolskaGodina
+                         && p.Predmet.Razred == o.Razred
+                         && !p.Nastave.Any(n => n.Odeljenje.Id == odeljenjeID))
+                .Select(p => new NastavaDTO(
+                    p.Id,
+                    p.Predmet.Naziv,
+                    p.Predmet.Razred,
+                    p.Predmet.SkolskaGodina,
+                    p.Nastavnik.Ime))
+                .ToList();
+            }, "Greska prilikom pribavljanja podataka iz baze") ?? new List<NastavaDTO>();
+        }
+
+        public static void dodeliNastavuOdeljenju(int odeljenjeID, List<NastavaDTO> nastave)
+        {
+            izvrsiUpit(s =>
+            {
+                Odeljenje o = s.Load<Odeljenje>(odeljenjeID);
+                nastave.ForEach(x =>
+                {
+                    Predaje? p = s.Get<Predaje>(x.id);
+                    if (p is null)
+                        throw new Exception("Predaje zapis sa unetim id-jem ne postoji u bazi");
+                    Nastava n = new Nastava
+                    {
+                        Odeljenje = o,
+                        predajePredmet = p
+                    };
+                    s.Save(n);
+                    foreach (Ucenik u in o.Ucenici)
+                    {
+                        if (!u.Predmeti.Any(pr => pr.Id == p.Predmet.Id))
+                            u.Predmeti.Add(p.Predmet);
+                    }
+                });
+            }, "Greska prilikom povezivanja predmeta i nastave");
+        }
+
+
+        private static Predaje vratiNastavu(int id) {
+            return izvrsiUpit(s => s.Get<Predaje>(id), "Greska prilikom dobavljanja podataka");
+        }
         #endregion
     }
 }

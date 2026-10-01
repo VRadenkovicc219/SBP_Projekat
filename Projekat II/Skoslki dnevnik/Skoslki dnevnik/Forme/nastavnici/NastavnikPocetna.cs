@@ -2,7 +2,7 @@
 {
     public partial class NastavnikPocetna : Form
     {
-        List<Nastavnik> nastavnici = new List<Nastavnik>();
+        List<NastavnikDTO> nastavnici = new List<NastavnikDTO>();
         public NastavnikPocetna()
         {
             InitializeComponent();
@@ -23,21 +23,21 @@
 
         private void dodeliPredmetBtn_Click(object sender, EventArgs e)
         {
-            int id = ((Nastavnik)nastavnici_dgv.SelectedRows[0].DataBoundItem!).Id;
+            int id = ((NastavnikDTO)nastavnici_dgv.SelectedRows[0].DataBoundItem!).id;
             DodelaPredmetaFrom df = new DodelaPredmetaFrom(id);
             df.Show();
         }
 
         private void predmetiBtn_Click(object sender, EventArgs e)
         {
-            int id = ((Nastavnik)nastavnici_dgv.SelectedRows[0].DataBoundItem!).Id;
+            int id = ((NastavnikDTO)nastavnici_dgv.SelectedRows[0].DataBoundItem!).id;
             DodelaPredmetaFrom df = new DodelaPredmetaFrom(id, true);
             df.Show();
         }
 
         private void dodeliOcenuBtn_Click(object sender, EventArgs e)
         {
-            Nastavnik nastavnik = (Nastavnik)nastavnici_dgv.SelectedRows[0].DataBoundItem!;
+            NastavnikDTO nastavnik = (NastavnikDTO)nastavnici_dgv.SelectedRows[0].DataBoundItem!;
             PregledUcenikaForm pf = new PregledUcenikaForm(nastavnik);
             pf.Show();
         }

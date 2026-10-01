@@ -84,5 +84,18 @@ namespace Skoslki_dnevnik.Forme
             DodajUcenika nf = new DodajUcenika(o.Id);
             nf.Show();
         }
+
+        private void dodajNastavuBtn_Click(object sender, EventArgs e)
+        {
+            if (odeljenjaDgv.SelectedRows.Count != 1)
+            {
+                MessageBox.Show("Morate selektovati jedno odeljenje");
+                return;
+            }
+
+            Odeljenje o = (Odeljenje)odeljenjaDgv.SelectedRows[0].DataBoundItem!;
+            DodajNastavu nf = new DodajNastavu(o.Id);
+            nf.Show();
+        }
     }
 }

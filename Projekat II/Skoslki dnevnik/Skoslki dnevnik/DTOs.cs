@@ -14,4 +14,8 @@
 
     public record OcenaStatistikaDTO(string ucenik, string predmet, int vrednost, DateTime datum, TipOcene tip, int polugodje);
     public record IzostanakStatistikaDTO(string ucenik, string predmet, string skolskaGodina, DateTime datum, int redniBrojCasa, TipIzostanka tip);
+    public record NastavaDTO(int id, string predmet, int razred, string skolskaGodina, string profesor);
+
+    public record NastavnikDTO(int id, string ime, string prezime, string jmbg, string adresa, string email, string telefon, StatusNastavnika status, string zvanje, string strucna_sprema, DateTime datum_zaposlenja);
+
 }

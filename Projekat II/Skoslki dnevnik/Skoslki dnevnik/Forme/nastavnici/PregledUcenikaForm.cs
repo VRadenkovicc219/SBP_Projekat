@@ -4,13 +4,13 @@
     {
         List<PredmetiDTO> predmeti = new List<PredmetiDTO>();
         List<UcenikDTO> ucenici = new List<UcenikDTO>();
-        Nastavnik nastavnik = null!;
+        NastavnikDTO nastavnik = null!;
         public PregledUcenikaForm()
         {
             InitializeComponent();
         }
 
-        public PregledUcenikaForm(Nastavnik n)
+        public PregledUcenikaForm(NastavnikDTO n)
         {
             InitializeComponent();
             nastavnik = n;
@@ -23,7 +23,7 @@
                 MessageBox.Show("Greska prilikom otvaranja forme");
                 this.Close();
             }
-            predmeti = DTOManager.vratiPredmeteNastavnika(nastavnik!.Id);
+            predmeti = DTOManager.vratiPredmeteNastavnika(nastavnik!.id);
             predmetiCB.DataSource = predmeti;
         }
 
@@ -47,7 +47,7 @@
             }
 
             int idPredmet = ((PredmetiDTO)predmetiCB.SelectedItem!).id;
-            int idNastavnik = nastavnik.Id;
+            int idNastavnik = nastavnik.id;
             int idUcenik = ((UcenikDTO)uceniciDgv.SelectedRows[0].DataBoundItem!).id;
             List<Ocena> ocene = DTOManager.vratiOceneUcenikaNaPredmetu(idUcenik, idNastavnik).OrderBy(x => x.DatumOcenjivanja).ThenBy(x => x.Tip).ToList();
             PregledOcena pf = new PregledOcena(ocene, idUcenik, idNastavnik, idPredmet);
@@ -57,7 +57,7 @@
         private void dodeliOcenuBtn_Click(object sender, EventArgs e)
         {
             int idPredmet = ((PredmetiDTO)predmetiCB.SelectedItem!).id;
-            int idNastavnik = nastavnik.Id;
+            int idNastavnik = nastavnik.id;
             int idUcenik = ((UcenikDTO)uceniciDgv.SelectedRows[0].DataBoundItem!).id;
 
         }
@@ -77,7 +77,7 @@
             }
 
             int idPredmet = ((PredmetiDTO)predmetiCB.SelectedItem!).id;
-            int idNastavnik = nastavnik.Id;
+            int idNastavnik = nastavnik.id;
             int idUcenik = ((UcenikDTO)uceniciDgv.SelectedRows[0].DataBoundItem!).id;
             List<Izostanak> ocene = DTOManager.vratiIzostankeUcenikaNaPredmetu(idUcenik, idNastavnik);
             PregledIzostanaka pf = new PregledIzostanaka(ocene, idUcenik, idNastavnik, idPredmet);

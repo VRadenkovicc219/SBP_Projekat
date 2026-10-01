@@ -10,7 +10,8 @@ namespace Skoslki_dnevnik.Forme
 {
     public partial class PregledIzostanaka : Form
     {
-        private readonly List<Izostanak> sviIzostanci = new List<Izostanak>();
+        private List<Izostanak> sviIzostanci = new List<Izostanak>();
+
         int idNastavnik = -1, idPredmet = -1, idUcenik = -1;
 
         public PregledIzostanaka()
@@ -21,7 +22,9 @@ namespace Skoslki_dnevnik.Forme
         public PregledIzostanaka(List<Izostanak> izostanci, int idUcenik, int idNastavnik, int idPredmet)
         {
             InitializeComponent();
+
             sviIzostanci = izostanci ?? new List<Izostanak>();
+
             this.idUcenik = idUcenik;
             this.idNastavnik = idNastavnik;
             this.idPredmet = idPredmet;
@@ -29,20 +32,33 @@ namespace Skoslki_dnevnik.Forme
 
         private void PregledIzostanaka_Load(object sender, EventArgs e)
         {
+            ucitajPodatke();
+        }
+
+        private void ucitajPodatke()
+        {
+            sviIzostanci = DTOManager.vratiIzostankeUcenikaNaPredmetu(
+                idUcenik,
+                idPredmet);
+
             if (sviIzostanci.Count > 0)
             {
                 datumOdDtp.Value = sviIzostanci.Min(x => x.Id.Datum);
                 datumDoDtp.Value = sviIzostanci.Max(x => x.Id.Datum);
             }
+
             PrimeniFiltere();
         }
-
 
         private void PrimeniFiltere()
         {
             var izabraniTipovi = new List<TipIzostanka>();
-            if (opravdaniCB.Checked) izabraniTipovi.Add(TipIzostanka.OPRAVDAN);
-            if (neopravdaniCB.Checked) izabraniTipovi.Add(TipIzostanka.NEOPRAVDAN);
+
+            if (opravdaniCB.Checked)
+                izabraniTipovi.Add(TipIzostanka.OPRAVDAN);
+
+            if (neopravdaniCB.Checked)
+                izabraniTipovi.Add(TipIzostanka.NEOPRAVDAN);
 
             var rezultat = sviIzostanci.Where(x =>
                 x.Id.Datum.Date >= datumOdDtp.Value.Date &&
@@ -52,33 +68,49 @@ namespace Skoslki_dnevnik.Forme
                 ? rezultat.Where(x => izabraniTipovi.Contains(x.TipIzostanka))
                 : rezultat;
 
+            izostanciDgv.DataSource = null;
             izostanciDgv.DataSource = rezultat.ToList();
         }
 
         private void dodajOcenuBtn_Click(object sender, EventArgs e)
         {
-            DodajIzostanakForm df = new DodajIzostanakForm(idUcenik, idPredmet, idNastavnik);
+            DodajIzostanakForm df = new DodajIzostanakForm(
+                idUcenik,
+                idPredmet,
+                idNastavnik);
+
             df.ShowDialog();
+
+            ucitajPodatke();
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            if (izostanciDgv.SelectedRows.Count != 1) return;
+            if (izostanciDgv.SelectedRows.Count != 1)
+                return;
 
-            Izostanak izabrani = (Izostanak)izostanciDgv.SelectedRows[0].DataBoundItem!;
+            Izostanak izabrani =
+                (Izostanak)izostanciDgv.SelectedRows[0].DataBoundItem!;
+
             DodajIzostanakForm df = new DodajIzostanakForm(izabrani);
+
             df.ShowDialog();
+
+            ucitajPodatke();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (izostanciDgv.SelectedRows.Count == 0) return;
+            if (izostanciDgv.SelectedRows.Count == 0)
+                return;
 
             foreach (DataGridViewRow red in izostanciDgv.SelectedRows)
             {
                 if (red.DataBoundItem is Izostanak izostanak)
                     DTOManager.obrisiIzostanak(izostanak);
             }
+
+            ucitajPodatke();
         }
 
         private void datumOdDtp_ValueChanged(object sender, EventArgs e)

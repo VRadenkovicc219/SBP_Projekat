@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             label2 = new Label();
-            razlogTxt = new RichTextBox();
+            komentarTxt = new RichTextBox();
             label3 = new Label();
             label1 = new Label();
             Vrednost = new Label();
@@ -39,25 +39,27 @@
             dodajBtn = new Button();
             opravdaoCmb = new ComboBox();
             opravdaoLbl = new Label();
+            Razlog = new Label();
+            razlogTxt = new TextBox();
             ((System.ComponentModel.ISupportInitialize)brojCasaNP).BeginInit();
             SuspendLayout();
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(12, 102);
+            label2.Location = new Point(12, 131);
             label2.Name = "label2";
             label2.Size = new Size(59, 15);
             label2.TabIndex = 18;
             label2.Text = "Komentar";
             // 
-            // razlogTxt
+            // komentarTxt
             // 
-            razlogTxt.Location = new Point(85, 99);
-            razlogTxt.Name = "razlogTxt";
-            razlogTxt.Size = new Size(218, 64);
-            razlogTxt.TabIndex = 17;
-            razlogTxt.Text = "";
+            komentarTxt.Location = new Point(85, 128);
+            komentarTxt.Name = "komentarTxt";
+            komentarTxt.Size = new Size(218, 64);
+            komentarTxt.TabIndex = 17;
+            komentarTxt.Text = "";
             // 
             // label3
             // 
@@ -117,12 +119,11 @@
             dodajBtn.TabIndex = 19;
             dodajBtn.Text = "Dodaj";
             dodajBtn.UseVisualStyleBackColor = true;
-            dodajBtn.Click += dodajBtn_Click;
             // 
             // opravdaoCmb
             // 
             opravdaoCmb.FormattingEnabled = true;
-            opravdaoCmb.Location = new Point(85, 169);
+            opravdaoCmb.Location = new Point(85, 198);
             opravdaoCmb.Name = "opravdaoCmb";
             opravdaoCmb.Size = new Size(218, 23);
             opravdaoCmb.TabIndex = 20;
@@ -130,22 +131,40 @@
             // opravdaoLbl
             // 
             opravdaoLbl.AutoSize = true;
-            opravdaoLbl.Location = new Point(12, 172);
+            opravdaoLbl.Location = new Point(12, 201);
             opravdaoLbl.Name = "opravdaoLbl";
             opravdaoLbl.Size = new Size(59, 15);
             opravdaoLbl.TabIndex = 21;
             opravdaoLbl.Text = "Opravdao";
+            // 
+            // Razlog
+            // 
+            Razlog.AutoSize = true;
+            Razlog.Location = new Point(12, 99);
+            Razlog.Name = "Razlog";
+            Razlog.Size = new Size(42, 15);
+            Razlog.TabIndex = 22;
+            Razlog.Text = "Razlog";
+            // 
+            // razlogTxt
+            // 
+            razlogTxt.Location = new Point(85, 99);
+            razlogTxt.Name = "razlogTxt";
+            razlogTxt.Size = new Size(218, 23);
+            razlogTxt.TabIndex = 23;
             // 
             // DodajIzostanakForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(329, 275);
+            Controls.Add(razlogTxt);
+            Controls.Add(Razlog);
             Controls.Add(opravdaoLbl);
             Controls.Add(opravdaoCmb);
             Controls.Add(dodajBtn);
             Controls.Add(label2);
-            Controls.Add(razlogTxt);
+            Controls.Add(komentarTxt);
             Controls.Add(label3);
             Controls.Add(label1);
             Controls.Add(Vrednost);
@@ -154,7 +173,6 @@
             Controls.Add(datumDTP);
             Name = "DodajIzostanakForm";
             Text = "DodajIzostanakForm";
-            Load += DodajIzostanakForm_Load;
             ((System.ComponentModel.ISupportInitialize)brojCasaNP).EndInit();
             ResumeLayout(false);
             PerformLayout();
@@ -163,7 +181,7 @@
         #endregion
 
         private Label label2;
-        private RichTextBox razlogTxt;
+        private RichTextBox komentarTxt;
         private Label label3;
         private Label label1;
         private Label Vrednost;
@@ -173,5 +191,7 @@
         private Button dodajBtn;
         private ComboBox opravdaoCmb;
         private Label opravdaoLbl;
+        private Label Razlog;
+        private TextBox razlogTxt;
     }
 }

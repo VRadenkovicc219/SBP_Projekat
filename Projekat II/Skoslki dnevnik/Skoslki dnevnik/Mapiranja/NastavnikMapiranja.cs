@@ -6,10 +6,10 @@
         {
             Table("NASTAVNIK");
             KeyColumn("ID_OSOBA");
-            Map(x => x.Status, "STATUS");
-            Map(x => x.Zvanje, "ZVANJE");
-            Map(x => x.StrucnaSprema, "STRUCNA_SPREMA");
-            Map(x => x.DatumZaposlenja, "DATUM_ZAPOSLENJA");
+            Map(x => x.Status, "STATUS").Not.Nullable();
+            Map(x => x.Zvanje, "ZVANJE").Not.Nullable();
+            Map(x => x.StrucnaSprema, "STRUCNA_SPREMA").Not.Nullable();
+            Map(x => x.DatumZaposlenja, "DATUM_ZAPOSLENJA").Not.Nullable();
             HasMany(x => x.Predaje).KeyColumn("ID_NASTAVNIK").Inverse().Cascade.AllDeleteOrphan();
         }
     }

@@ -95,6 +95,7 @@
             dodajNastavuBtn.TabIndex = 5;
             dodajNastavuBtn.Text = "Dodaj nastavu";
             dodajNastavuBtn.UseVisualStyleBackColor = true;
+            dodajNastavuBtn.Click += dodajNastavuBtn_Click;
             // 
             // DodajOdeljenjeForm
             // 
