@@ -10,6 +10,12 @@
     <Compile Update="Forme\nastavnici\DodajNastavnikaForm.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Forme\nastavnici\DodajRukovodeciOrganForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forme\nastavnici\DodajSaradnikaForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Forme\nastavnici\DodelaRazrednogOdeljenju.cs">
       <SubType>Form</SubType>
     </Compile>

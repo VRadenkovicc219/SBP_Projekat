@@ -1,4 +1,5 @@
 ﻿using NHibernate.Util;
+using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Security.Permissions;
 using System.Security.Policy;
@@ -1171,7 +1172,40 @@ namespace Skoslki_dnevnik
             }, "Greska prilikom vracanja podataka");
         }
 
-        
+        public static void dodajStrucnogSaradnika(int idNastavnik, string licenca, StrucnaOblast s, int brojSprovedenihRazgovora, int brojRadionica)
+        {
+            izvrsiUpit(s =>
+            {
+                Nastavnik? nastavnik = s.Get<Nastavnik>(idNastavnik);
+
+                if (nastavnik is null)
+                    throw new Exception("Nastavnik ne postoji u bazi");
+
+                int postoji = Convert.ToInt32(
+                    s.CreateSQLQuery(
+                        "SELECT COUNT(*) FROM STRUCNI_SARADNIK WHERE ID_NASTAVNIK = :id")
+                    .SetParameter("id", idNastavnik)
+                    .UniqueResult()
+                );
+
+                if (postoji > 0)
+                    throw new Exception("Nastavnik je vec strucni saradnik");
+
+                s.CreateSQLQuery(
+                    "INSERT INTO STRUCNI_SARADNIK " +
+                    "(ID_NASTAVNIK, LICENCA, STRUCNA_OBLAST, BROJ_ODRZANIH_RADIONICA, BROJ_SPROVEDENIH_RAZGOVORA) " +
+                    "VALUES (:id, :licenca, :oblast, :radionice, :razgovori)")
+                    .SetParameter("id", idNastavnik)
+                    .SetParameter("licenca", licenca)
+                    .SetParameter("oblast", s.ToString())
+                    .SetParameter("radionice", brojRadionica)
+                    .SetParameter("razgovori", brojSprovedenihRazgovora)
+                    .ExecuteUpdate();
+
+            }, "Greska prilikom dodavanja strucnog saradnika");
+        }
+
+
         #endregion
     }
 }

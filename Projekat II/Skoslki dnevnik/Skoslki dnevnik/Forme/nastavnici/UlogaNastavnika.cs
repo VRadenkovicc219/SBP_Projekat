@@ -31,7 +31,13 @@ namespace Skoslki_dnevnik.Forme.nastavnici
 
         private void dodajSSaradnika_Click(object sender, EventArgs e)
         {
+            DodajSaradnikaForm nf = new DodajSaradnikaForm(idNastavnik);
+            nf.Show();
+        }
 
+        private void button3_Click(object sender, EventArgs e)
+        {
+            
         }
     }
 }

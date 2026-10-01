@@ -30,7 +30,7 @@
         {
             razredniBtn = new Button();
             dodajSSaradnika = new Button();
-            button3 = new Button();
+            dodajRukovodecegBtn = new Button();
             SuspendLayout();
             // 
             // razredniBtn
@@ -53,21 +53,22 @@
             dodajSSaradnika.UseVisualStyleBackColor = true;
             dodajSSaradnika.Click += dodajSSaradnika_Click;
             // 
-            // button3
+            // dodajRukovodecegBtn
             // 
-            button3.Location = new Point(12, 70);
-            button3.Name = "button3";
-            button3.Size = new Size(480, 27);
-            button3.TabIndex = 2;
-            button3.Text = "dodaj rukovodeci organ";
-            button3.UseVisualStyleBackColor = true;
+            dodajRukovodecegBtn.Location = new Point(12, 70);
+            dodajRukovodecegBtn.Name = "dodajRukovodecegBtn";
+            dodajRukovodecegBtn.Size = new Size(480, 27);
+            dodajRukovodecegBtn.TabIndex = 2;
+            dodajRukovodecegBtn.Text = "dodaj rukovodeci organ";
+            dodajRukovodecegBtn.UseVisualStyleBackColor = true;
+            dodajRukovodecegBtn.Click += button3_Click;
             // 
             // UlogaNastavnika
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(504, 108);
-            Controls.Add(button3);
+            Controls.Add(dodajRukovodecegBtn);
             Controls.Add(dodajSSaradnika);
             Controls.Add(razredniBtn);
             Name = "UlogaNastavnika";
@@ -79,6 +80,6 @@
 
         private Button razredniBtn;
         private Button dodajSSaradnika;
-        private Button button3;
+        private Button dodajRukovodecegBtn;
     }
 }
