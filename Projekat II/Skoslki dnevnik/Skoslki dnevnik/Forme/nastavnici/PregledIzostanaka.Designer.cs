@@ -51,7 +51,7 @@
             izmeniBtn.TabIndex = 14;
             izmeniBtn.Text = "Izmeni ";
             izmeniBtn.UseVisualStyleBackColor = true;
-            izmeniBtn.Click += button2_Click;
+            izmeniBtn.Click += izmeniBtn_Click;
             // 
             // obrisiBtn
             // 
@@ -61,13 +61,16 @@
             obrisiBtn.TabIndex = 13;
             obrisiBtn.Text = "Obrisi";
             obrisiBtn.UseVisualStyleBackColor = true;
-            obrisiBtn.Click += button1_Click;
+            obrisiBtn.Click += obrisiBtn_Click;
             // 
             // izostanciDgv
             // 
             izostanciDgv.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             izostanciDgv.Location = new Point(12, 85);
+            izostanciDgv.MultiSelect = false;
             izostanciDgv.Name = "izostanciDgv";
+            izostanciDgv.ReadOnly = true;
+            izostanciDgv.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             izostanciDgv.Size = new Size(374, 428);
             izostanciDgv.TabIndex = 12;
             // 
@@ -79,7 +82,7 @@
             dodajIzostanakBtn.TabIndex = 21;
             dodajIzostanakBtn.Text = "Dodaj";
             dodajIzostanakBtn.UseVisualStyleBackColor = true;
-            dodajIzostanakBtn.Click += dodajOcenuBtn_Click;
+            dodajIzostanakBtn.Click += dodajIzostanakBtn_Click;
             // 
             // label2
             // 

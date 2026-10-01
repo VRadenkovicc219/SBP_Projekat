@@ -10,7 +10,7 @@ namespace Skoslki_dnevnik.Forme
 {
     public partial class DodajIzostanakForm : Form
     {
-        private Izostanak? izostanak = null;
+        private IzostanakDTO? izostanak = null;
 
         private int idPredmet = -1;
         private int idNastavnik = -1;
@@ -23,10 +23,11 @@ namespace Skoslki_dnevnik.Forme
             InitializeComponent();
         }
 
-        public DodajIzostanakForm(Izostanak i)
+        public DodajIzostanakForm(IzostanakDTO i, int idUcenik)
         {
             InitializeComponent();
             izostanak = i;
+            this.idUcenik = idUcenik;
         }
 
         public DodajIzostanakForm(int idUcenik, int idPredmet, int idNastavnik)
@@ -40,36 +41,15 @@ namespace Skoslki_dnevnik.Forme
 
         private void DodajIzostanakForm_Load(object sender, EventArgs e)
         {
-            tipCmb.DataSource = Enum.GetValues(typeof(TipIzostanka));
 
-            if (izostanak == null)
+            if (izostanak != null)
             {
-                tipCmb.SelectedItem = TipIzostanka.NEOPRAVDAN;
-                tipCmb.Enabled = false;
-
-                opravdaoCmb.Visible = false;
-                opravdaoLbl.Visible = false;
-            }
-            else
-            {
-                opravdaoCmb.DataSource = Enum.GetValues(typeof(Opravdao));
-
-                datumDTP.Value = izostanak.Id.Datum;
-                brojCasaNP.Value = izostanak.Id.RedniBrojCasa;
-
-                datumDTP.Enabled = false;
+                datumDTP.Value = izostanak.datum;
+                brojCasaNP.Value = izostanak.cas;
+                komentarTxt.Text = izostanak.komentar;
                 brojCasaNP.Enabled = false;
-
-                tipCmb.SelectedItem = izostanak.TipIzostanka;
-                opravdaoCmb.SelectedItem = izostanak.Opravdao;
-
-                razlogTxt.Text = izostanak.RazlogIzostanka;
-                komentarTxt.Text = izostanak.Komentar;
-
-                bool opravdan = izostanak.TipIzostanka == TipIzostanka.OPRAVDAN;
-
-                opravdaoCmb.Visible = opravdan;
-                opravdaoLbl.Visible = opravdan;
+                datumDTP.Enabled = false;
+                dodajBtn.Text = "Izmeni";
             }
 
             FormClosing += DodajIzostanakForm_FormClosing;
@@ -92,25 +72,11 @@ namespace Skoslki_dnevnik.Forme
             }
         }
 
-        private void tipCmb_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            bool opravdan = tipCmb.SelectedItem is TipIzostanka tip
-                            && tip == TipIzostanka.OPRAVDAN;
-
-            opravdaoCmb.Visible = opravdan;
-            opravdaoLbl.Visible = opravdan;
-
-            if (opravdan && opravdaoCmb.DataSource == null)
-                opravdaoCmb.DataSource = Enum.GetValues(typeof(Opravdao));
-        }
-
         private void dodajBtn_Click(object sender, EventArgs e)
         {
             try
             {
-                bool dodavanje = izostanak == null;
-
-                if (dodavanje)
+                if (izostanak == null)
                 {
                     dodajIzostanak();
                 }
@@ -121,9 +87,7 @@ namespace Skoslki_dnevnik.Forme
 
                 sacuvano = true;
 
-                MessageBox.Show(dodavanje
-                    ? "Izostanak je uspesno dodat."
-                    : "Izostanak je uspesno izmenjen.");
+                MessageBox.Show(izostanak == null ? "Izostanak je uspesno dodat." : "Izostanak je uspesno izmenjen.");
 
                 Close();
             }
@@ -145,12 +109,16 @@ namespace Skoslki_dnevnik.Forme
             Ucenik? ucenik = DTOManager.vratiUcenika(idUcenik);
 
             if (ucenik == null)
+            {
                 throw new Exception("Ucenik nije pronadjen u bazi.");
+            }
 
             Nastava? nastava = DTOManager.vratiNastavu(idNastavnik, idPredmet);
 
             if (nastava == null)
+            {
                 throw new Exception("Nastava za izabranog nastavnika i predmet ne postoji.");
+            }
 
             Izostanak novi = new Izostanak
             {
@@ -162,8 +130,6 @@ namespace Skoslki_dnevnik.Forme
                 },
 
                 TipIzostanka = TipIzostanka.NEOPRAVDAN,
-                Opravdao = null,
-                RazlogIzostanka = razlogTxt.Text,
                 Komentar = komentarTxt.Text,
                 Nastava = nastava
             };
@@ -176,32 +142,8 @@ namespace Skoslki_dnevnik.Forme
             if (izostanak == null)
                 throw new Exception("Izostanak nije prosledjen.");
 
-            if (tipCmb.SelectedItem == null)
-                throw new Exception("Morate izabrati tip izostanka.");
-
-            TipIzostanka tip = (TipIzostanka)tipCmb.SelectedItem;
-
-            if (tip == TipIzostanka.OPRAVDAN && opravdaoCmb.SelectedItem == null)
-                throw new Exception("Morate izabrati ko je opravdao izostanak.");
-
-            Izostanak izmenjen = new Izostanak
-            {
-                Id = izostanak.Id,
-
-                TipIzostanka = tip,
-
-                Opravdao = tip == TipIzostanka.OPRAVDAN
-                    ? (Opravdao)opravdaoCmb.SelectedItem!
-                    : null,
-
-                RazlogIzostanka = razlogTxt.Text,
-                Komentar = komentarTxt.Text,
-                Nastava = izostanak.Nastava
-            };
-
-            DTOManager.izmeniIzostanak(
-                izostanak.Id,
-                izmenjen);
+            DTOManager.izmeniIzostanak(izostanak, idUcenik, komentarTxt.Text);
+            
         }
     }
 }

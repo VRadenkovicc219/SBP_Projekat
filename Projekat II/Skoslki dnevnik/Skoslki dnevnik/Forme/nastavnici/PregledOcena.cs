@@ -113,6 +113,10 @@ namespace Skoslki_dnevnik.Forme
 
         private void button2_Click(object sender, EventArgs e)
         {
+            if (oceneDgv.SelectedRows.Count != 1) {
+                MessageBox.Show("Morate odabrati jedan red");
+                return;
+            }
             Ocena o = (Ocena)oceneDgv.SelectedRows[0].DataBoundItem!;
             DodajOcenuForm df = new DodajOcenuForm(o);
             df.Show();

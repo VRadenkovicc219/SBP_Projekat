@@ -33,9 +33,6 @@
             dodeliPredmetBtn = new Button();
             predmetiBtn = new Button();
             dataGridView1 = new DataGridView();
-            oceneBtn = new Button();
-            izostanciBtn = new Button();
-            roditeljiBtn = new Button();
             izmeniUcenikaBtn = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
@@ -93,33 +90,6 @@
             dataGridView1.CellDoubleClick += dataGridView1_CellDoubleClick;
             dataGridView1.SelectionChanged += dataGridView1_SelectionChanged;
             // 
-            // oceneBtn
-            // 
-            oceneBtn.Location = new Point(432, 245);
-            oceneBtn.Name = "oceneBtn";
-            oceneBtn.Size = new Size(100, 29);
-            oceneBtn.TabIndex = 6;
-            oceneBtn.Text = "Pregledaj ocene";
-            oceneBtn.UseVisualStyleBackColor = true;
-            // 
-            // izostanciBtn
-            // 
-            izostanciBtn.Location = new Point(432, 280);
-            izostanciBtn.Name = "izostanciBtn";
-            izostanciBtn.Size = new Size(100, 43);
-            izostanciBtn.TabIndex = 7;
-            izostanciBtn.Text = "Pregledaj izostanke";
-            izostanciBtn.UseVisualStyleBackColor = true;
-            // 
-            // roditeljiBtn
-            // 
-            roditeljiBtn.Location = new Point(432, 329);
-            roditeljiBtn.Name = "roditeljiBtn";
-            roditeljiBtn.Size = new Size(100, 43);
-            roditeljiBtn.TabIndex = 8;
-            roditeljiBtn.Text = "Pregledaj roditelje";
-            roditeljiBtn.UseVisualStyleBackColor = true;
-            // 
             // izmeniUcenikaBtn
             // 
             izmeniUcenikaBtn.Location = new Point(432, 80);
@@ -136,9 +106,6 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(553, 450);
             Controls.Add(izmeniUcenikaBtn);
-            Controls.Add(roditeljiBtn);
-            Controls.Add(izostanciBtn);
-            Controls.Add(oceneBtn);
             Controls.Add(dataGridView1);
             Controls.Add(predmetiBtn);
             Controls.Add(dodeliPredmetBtn);
@@ -161,9 +128,6 @@
         private Button dodeliPredmetBtn;
         private Button predmetiBtn;
         private DataGridView dataGridView1;
-        private Button oceneBtn;
-        private Button izostanciBtn;
-        private Button roditeljiBtn;
         private Button izmeniUcenikaBtn;
     }
 }

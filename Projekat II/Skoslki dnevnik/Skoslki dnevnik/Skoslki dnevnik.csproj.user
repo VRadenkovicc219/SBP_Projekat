@@ -10,6 +10,12 @@
     <Compile Update="Forme\nastavnici\DodajNastavnikaForm.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Forme\nastavnici\DodelaRazrednogOdeljenju.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forme\nastavnici\UlogaNastavnika.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Forme\odeljenja\DodajNastavu.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -59,9 +65,6 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Forme\nastavnici\PregledIzostanaka.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Update="Forme\ucenici\PregledIzostanakaKaoUcenik.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Forme\nastavnici\PregledOcena.cs">

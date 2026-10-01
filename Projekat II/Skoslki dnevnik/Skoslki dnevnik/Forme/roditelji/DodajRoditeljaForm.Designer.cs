@@ -306,7 +306,6 @@
         private DateTimePicker datumRodjenjaDtp;
         private Label label8;
         private Label label1;
-        private ComboBox statusCb;
         private TextBox komentarTb;
         private Label polCk;
         private Label label6;

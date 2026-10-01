@@ -44,6 +44,7 @@
             if (uceniciDgv.SelectedRows.Count != 1)
             {
                 MessageBox.Show("Greska");
+                return;
             }
 
             int idPredmet = ((PredmetiDTO)predmetiCB.SelectedItem!).id;
@@ -54,19 +55,25 @@
             pf.Show();
         }
 
-        private void dodeliOcenuBtn_Click(object sender, EventArgs e)
-        {
-            int idPredmet = ((PredmetiDTO)predmetiCB.SelectedItem!).id;
-            int idNastavnik = nastavnik.id;
-            int idUcenik = ((UcenikDTO)uceniciDgv.SelectedRows[0].DataBoundItem!).id;
-
-        }
 
         private void izbaciUcenikaBtn_Click(object sender, EventArgs e)
         {
+            if (uceniciDgv.SelectedRows.Count != 1)
+            {
+                MessageBox.Show("Greska");
+                return;
+            }
             int idUcenik = ((UcenikDTO)uceniciDgv.SelectedRows[0].DataBoundItem!).id;
             int idPredmet = ((PredmetiDTO)predmetiCB.SelectedItem!).id;
-            DTOManager.izbaciUcenikaSaPredmeta(idUcenik, idPredmet);
+            try {
+                DTOManager.izbaciUcenikaSaPredmeta(idUcenik, idPredmet);
+                int id = ((PredmetiDTO)predmetiCB.SelectedItem!).id;
+                ucenici = DTOManager.vratiUcenikeKojiSlusajuPredmet(id);
+                uceniciDgv.DataSource = ucenici;
+            }
+            catch(Exception ex){
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void izostanciBtn_Click(object sender, EventArgs e)
@@ -74,12 +81,13 @@
             if (uceniciDgv.SelectedRows.Count != 1)
             {
                 MessageBox.Show("Greska");
+                return;
             }
 
             int idPredmet = ((PredmetiDTO)predmetiCB.SelectedItem!).id;
             int idNastavnik = nastavnik.id;
             int idUcenik = ((UcenikDTO)uceniciDgv.SelectedRows[0].DataBoundItem!).id;
-            List<Izostanak> ocene = DTOManager.vratiIzostankeUcenikaNaPredmetu(idUcenik, idNastavnik);
+            List<IzostanakDTO> ocene = DTOManager.vratiIzostankeUcenikaNaPredmetu(idUcenik, idNastavnik);
             PregledIzostanaka pf = new PregledIzostanaka(ocene, idUcenik, idNastavnik, idPredmet);
             pf.Show();
         }

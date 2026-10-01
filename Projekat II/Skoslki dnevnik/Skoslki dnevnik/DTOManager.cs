@@ -1,6 +1,7 @@
 ﻿using NHibernate.Util;
 using System.Runtime.CompilerServices;
 using System.Security.Permissions;
+using System.Security.Policy;
 
 namespace Skoslki_dnevnik
 {
@@ -309,9 +310,22 @@ namespace Skoslki_dnevnik
 
         private static bool imaDodatnuUlogu(ISession s, int idNastavnik)
         {
-            return s.Query<RazredniStaresina>().Any(x => x.Id == idNastavnik)
-                || s.Query<RukovodeceOsoblje>().Any(x => x.Id == idNastavnik)
-                || s.Query<StrucniSaradnik>().Any(x => x.Id == idNastavnik);
+            int razredni = Convert.ToInt32(
+                s.CreateSQLQuery("SELECT COUNT(*) FROM RAZREDNI_STARESINA WHERE ID_NASTAVNIK = :id")
+                .SetParameter("id", idNastavnik)
+                .UniqueResult());
+
+            int rukovodeci = Convert.ToInt32(
+                s.CreateSQLQuery("SELECT COUNT(*) FROM RUKOVODECE_OSOBLJE WHERE ID_NASTAVNIK = :id")
+                .SetParameter("id", idNastavnik)
+                .UniqueResult());
+
+            int strucni = Convert.ToInt32(
+                s.CreateSQLQuery("SELECT COUNT(*) FROM STRUCNI_SARADNIK WHERE ID_NASTAVNIK = :id")
+                .SetParameter("id", idNastavnik)
+                .UniqueResult());
+
+            return razredni > 0 || rukovodeci > 0 || strucni > 0;
         }
         public static List<NastavnikDTO> vratiNastavnike()
         {
@@ -452,23 +466,36 @@ namespace Skoslki_dnevnik
                 if (imaDodatnuUlogu(s, idNastavnik))
                     throw new Exception("Nastavnik vec ima dodatnu ulogu (razredni staresina / rukovodece osoblje / strucni saradnik)");
 
-                if (s.Query<RazredniStaresina>().Any(x => x.Odeljenje.Id == idOdeljenje))
-                    throw new Exception("Ovo odeljenje vec ima razrednog staresinu");
-
                 Nastavnik? n = s.Get<Nastavnik>(idNastavnik);
-                if (n is null) throw new Exception("Nastavnik ne postoji u bazi");
+
+                if (n is null)
+                    throw new Exception("Nastavnik ne postoji u bazi");
 
                 Odeljenje? o = s.Get<Odeljenje>(idOdeljenje);
-                if (o is null) throw new Exception("Odeljenje ne postoji u bazi");
+
+                if (o is null)
+                    throw new Exception("Odeljenje ne postoji u bazi");
+
+                int postoji = Convert.ToInt32(
+                    s.CreateSQLQuery(
+                        "SELECT COUNT(*) FROM RAZREDNI_STARESINA WHERE ID_ODELJENJE = :id")
+                    .SetParameter("id", idOdeljenje)
+                    .UniqueResult()
+                );
+
+                if (postoji > 0)
+                    throw new Exception("Ovo odeljenje vec ima razrednog staresinu");
 
                 s.CreateSQLQuery(
-                    "INSERT INTO RAZREDNI_STARESINA (ID_NASTAVNIK, ID_ODELJENJE, DATUM_PREUZIMANJA_STARESINSTVA, BROJ_ODRZANIH_SASTANAKA, NAPOMENA) " +
+                    "INSERT INTO RAZREDNI_STARESINA " +
+                    "(ID_NASTAVNIK, ID_ODELJENJE, DATUM_PREUZIMANJA_STARESINSTVA, BROJ_ODRZANIH_SASTANAKA, NAPOMENA) " +
                     "VALUES (:idN, :idO, :datum, 0, :napomena)")
-                 .SetParameter("idN", idNastavnik)
-                 .SetParameter("idO", idOdeljenje)
-                 .SetParameter("datum", datumPreuzimanja)
-                 .SetParameter("napomena", napomena)
-                 .ExecuteUpdate();
+                    .SetParameter("idN", idNastavnik)
+                    .SetParameter("idO", idOdeljenje)
+                    .SetParameter("datum", datumPreuzimanja)
+                    .SetParameter("napomena", napomena)
+                    .ExecuteUpdate();
+
             }, "Greska prilikom dodele razrednog staresinstva");
         }
 
@@ -733,6 +760,7 @@ namespace Skoslki_dnevnik
                 if (p is null) throw new Exception("Nepostojeci predmet");
                 if (!u.Predmeti.Any(x => x.Id == p.Id))
                     throw new Exception("Ucenik ne slusa predmet");
+                if (p.Tip == TipPredmeta.OBAVEZNI) throw new Exception("Mozete izbaciti ucenika samo sa neobaveznih predmete");
                 u.Predmeti.Remove(p);
                 s.Update(u);
             }, "Greska prilikom izbacivanja ucenika sa predmeta");
@@ -747,33 +775,36 @@ namespace Skoslki_dnevnik
             izvrsiUpit(s => s.Save(izostanak), "Greska prilikom dodavanja izostanka");
         }
 
-        public static List<Izostanak> vratiIzostankeUcenikaNaPredmetu(int ucenikId, int predmetId)
+        public static List<IzostanakDTO> vratiIzostankeUcenikaNaPredmetu(int ucenikId, int predmetId)
         {
-            return izvrsiUpit<List<Izostanak>>(s =>
+            return izvrsiUpit<List<IzostanakDTO>>(s =>
                 s.Query<Izostanak>()
                 .Where(x => x.Id.Ucenik.Id == ucenikId && x.Nastava.predajePredmet.Predmet.Id == predmetId)
-                .ToList(), "Greska prilikom pribavljanja izostanaka iz baze") ?? new List<Izostanak>();
+                .Select(x=>new IzostanakDTO(x.Nastava.predajePredmet.Predmet.Naziv, x.Id.RedniBrojCasa, x.Id.Datum, 
+                                            x.TipIzostanka.ToString(), (x.Opravdao == null) ? " " : x.Opravdao.ToString()!, x.RazlogIzostanka, x.Komentar))
+                .ToList(), "Greska prilikom pribavljanja izostanaka iz baze") ?? new List<IzostanakDTO>();
         }
 
-        public static void izmeniIzostanak(IzostanakId id, Izostanak noviIzostanak)
+        public static void izmeniIzostanak(IzostanakDTO i, int idUcenik, string komentar)
         {
             izvrsiUpit(s =>
             {
-                Izostanak izostanak = s.Get<Izostanak>(id);
+                Izostanak? izostanak = s.Query<Izostanak>()
+                      .Where(x => x.Id.Datum.Date == i.datum.Date && x.Id.RedniBrojCasa == i.cas && x.Id.Ucenik.Id == idUcenik)
+                      .FirstOrDefault();
                 if (izostanak is null)
                     throw new Exception("Izostanak sa unetim podacima ne postoji u bazi");
-
-                izostanak.TipIzostanka = noviIzostanak.TipIzostanka;
-                izostanak.Opravdao = noviIzostanak.Opravdao;
-                izostanak.RazlogIzostanka = noviIzostanak.RazlogIzostanka;
-                izostanak.Komentar = noviIzostanak.Komentar;
-
+                izostanak.Komentar = komentar;
                 s.Update(izostanak);
             }, "Greska prilikom izmene izostanka");
         }
 
-        public static void obrisiIzostanak(Izostanak izostanak) =>
-            izvrsiUpit(s => s.Delete(izostanak), "Greska prilikom brisanja izostanka");
+        public static void obrisiIzostanak(IzostanakDTO izostanak, int idUcenik) =>
+            izvrsiUpit(s => {
+                s.Delete(s.Query<Izostanak>()
+                          .Where(x => x.Id.Datum == izostanak.datum && x.Id.RedniBrojCasa == izostanak.cas && x.Id.Ucenik.Id == idUcenik)
+                          .FirstOrDefault());
+            }, "Greska prilikom brisanja izostanka");
         #endregion
 
         #region Predmeti
@@ -797,7 +828,9 @@ namespace Skoslki_dnevnik
                                                                                x.Id.RedniBrojCasa,
                                                                                x.Id.Datum,
                                                                                x.TipIzostanka.ToString(),
-                                                                               x.Opravdao.ToString()))
+                                                                               x.Opravdao.ToString()!,
+                                                                               x.RazlogIzostanka,
+                                                                               x.Komentar))
                                                  .ToList()
            , "Greska pilikom dobavljanja podataka iz baze");
         }
@@ -1110,9 +1143,35 @@ namespace Skoslki_dnevnik
         }
 
 
-        private static Predaje vratiNastavu(int id) {
+        public static Predaje vratiNastavu(int id) {
             return izvrsiUpit(s => s.Get<Predaje>(id), "Greska prilikom dobavljanja podataka");
         }
+
+
+        public static Izostanak? vratiIzostanak(int idUcenik, DateTime datum, int cas)
+        {
+            return izvrsiUpit(s =>
+            {
+                Izostanak? i = s.Query<Izostanak>()
+                               .Where(x => x.Id.Ucenik.Id == idUcenik && x.Id.Datum.Date == datum.Date && x.Id.RedniBrojCasa == cas)
+                               .FirstOrDefault();
+                if (i is null) throw new Exception("Nepostojeci izostanak");
+                return i;
+            }, "Greska prilikom vracanja izostanka iz baze");
+        }
+
+        public static List<OdeljenjeDTO> vratiOdlejenjaBezRazrednog()
+        {
+            return izvrsiUpit(s =>
+            {
+                return s.Query<Odeljenje>()
+                        .Where(x => !(s.Query<RazredniStaresina>().Select(x => x.Odeljenje.Id).ToList()).Contains(x.Id))
+                       .Select(x => new OdeljenjeDTO(x.Id, x.Oznaka, x.SkolskaGodina, x.Razred))
+                       .ToList();
+            }, "Greska prilikom vracanja podataka");
+        }
+
+        
         #endregion
     }
 }

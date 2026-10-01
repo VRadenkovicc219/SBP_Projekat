@@ -34,6 +34,7 @@
             dodajNastavnikaBtn = new Button();
             izmaniNastavnikaBtn = new Button();
             dodeliOcenuBtn = new Button();
+            ulogaBtn = new Button();
             ((System.ComponentModel.ISupportInitialize)nastavnici_dgv).BeginInit();
             SuspendLayout();
             // 
@@ -96,11 +97,22 @@
             dodeliOcenuBtn.UseVisualStyleBackColor = true;
             dodeliOcenuBtn.Click += dodeliOcenuBtn_Click;
             // 
+            // ulogaBtn
+            // 
+            ulogaBtn.Location = new Point(406, 268);
+            ulogaBtn.Name = "ulogaBtn";
+            ulogaBtn.RightToLeft = RightToLeft.No;
+            ulogaBtn.Size = new Size(117, 33);
+            ulogaBtn.TabIndex = 20;
+            ulogaBtn.Text = "Dodaj Ulogu";
+            ulogaBtn.UseVisualStyleBackColor = true;
+            // 
             // NastavnikPocetna
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(557, 473);
+            Controls.Add(ulogaBtn);
             Controls.Add(dodeliOcenuBtn);
             Controls.Add(izmaniNastavnikaBtn);
             Controls.Add(nastavnici_dgv);
@@ -121,5 +133,6 @@
         private Button dodajNastavnikaBtn;
         private Button izmaniNastavnikaBtn;
         private Button dodeliOcenuBtn;
+        private Button ulogaBtn;
     }
 }

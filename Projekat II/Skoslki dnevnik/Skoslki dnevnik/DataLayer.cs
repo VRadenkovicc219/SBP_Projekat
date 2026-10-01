@@ -26,18 +26,6 @@ namespace Skoslki_dnevnik
             try
             {
 
-                //string constr = "Host=localhost;Port=5432;Database=Skolski_dnevnik;Username=postgres;Password=ZaPostgre;";
-
-                //return Fluently.Configure()
-                //    .Database(PostgreSQLConfiguration.Standard
-                //        .ConnectionString(constr)
-                //        .Driver<NHibernate.Driver.NpgsqlDriver>()      
-                //        .Dialect<NHibernate.Dialect.PostgreSQLDialect>()
-                //        .ShowSql())                                      
-                //    .Mappings(m => m.FluentMappings.AddFromAssemblyOf<OsobaMapiranja>()) 
-                //    .BuildSessionFactory();
-
-
                 var cfg = OracleManagedDataClientConfiguration.Oracle10
                         .ShowSql()
                         .ConnectionString(c =>

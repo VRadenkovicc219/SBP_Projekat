@@ -7,7 +7,7 @@
     public record PredmetiDTO(int id, string naziv, string skolskaGodina, int razred) {
         public override string ToString() => $"{naziv} ({razred}. razred, {skolskaGodina})";
     };
-    public record IzostanakDTO(string predmet, int cas, DateTime datum, string tip, string opravdao);
+    public record IzostanakDTO(string predmet, int cas, DateTime datum, string tip, string opravdao, string? razlog, string? komentar);
 
     public record RoditeljDTO(int id, string ime, string prezime, string jmbg, string adresa,
                            string email, string telefon, string zanimanje, string? radnoMesto);
@@ -17,5 +17,5 @@
     public record NastavaDTO(int id, string predmet, int razred, string skolskaGodina, string profesor);
 
     public record NastavnikDTO(int id, string ime, string prezime, string jmbg, string adresa, string email, string telefon, StatusNastavnika status, string zvanje, string strucna_sprema, DateTime datum_zaposlenja);
-
+    public record OdeljenjeDTO(int id, string oznaka, string skolskaGodina, int razred);
 }

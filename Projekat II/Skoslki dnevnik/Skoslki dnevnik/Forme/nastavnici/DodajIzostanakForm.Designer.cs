@@ -30,24 +30,18 @@
         {
             label2 = new Label();
             komentarTxt = new RichTextBox();
-            label3 = new Label();
             label1 = new Label();
             Vrednost = new Label();
-            tipCmb = new ComboBox();
             brojCasaNP = new NumericUpDown();
             datumDTP = new DateTimePicker();
             dodajBtn = new Button();
-            opravdaoCmb = new ComboBox();
-            opravdaoLbl = new Label();
-            Razlog = new Label();
-            razlogTxt = new TextBox();
             ((System.ComponentModel.ISupportInitialize)brojCasaNP).BeginInit();
             SuspendLayout();
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(12, 131);
+            label2.Location = new Point(12, 73);
             label2.Name = "label2";
             label2.Size = new Size(59, 15);
             label2.TabIndex = 18;
@@ -55,20 +49,11 @@
             // 
             // komentarTxt
             // 
-            komentarTxt.Location = new Point(85, 128);
+            komentarTxt.Location = new Point(85, 70);
             komentarTxt.Name = "komentarTxt";
             komentarTxt.Size = new Size(218, 64);
             komentarTxt.TabIndex = 17;
             komentarTxt.Text = "";
-            // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.Location = new Point(12, 73);
-            label3.Name = "label3";
-            label3.Size = new Size(24, 15);
-            label3.TabIndex = 16;
-            label3.Text = "Tip";
             // 
             // label1
             // 
@@ -88,14 +73,6 @@
             Vrednost.TabIndex = 14;
             Vrednost.Text = "Broj casa";
             // 
-            // tipCmb
-            // 
-            tipCmb.FormattingEnabled = true;
-            tipCmb.Location = new Point(85, 70);
-            tipCmb.Name = "tipCmb";
-            tipCmb.Size = new Size(218, 23);
-            tipCmb.TabIndex = 13;
-            // 
             // brojCasaNP
             // 
             brojCasaNP.Location = new Point(85, 12);
@@ -113,66 +90,29 @@
             // 
             // dodajBtn
             // 
-            dodajBtn.Location = new Point(125, 235);
+            dodajBtn.Location = new Point(116, 140);
             dodajBtn.Name = "dodajBtn";
             dodajBtn.Size = new Size(85, 28);
             dodajBtn.TabIndex = 19;
             dodajBtn.Text = "Dodaj";
             dodajBtn.UseVisualStyleBackColor = true;
-            // 
-            // opravdaoCmb
-            // 
-            opravdaoCmb.FormattingEnabled = true;
-            opravdaoCmb.Location = new Point(85, 198);
-            opravdaoCmb.Name = "opravdaoCmb";
-            opravdaoCmb.Size = new Size(218, 23);
-            opravdaoCmb.TabIndex = 20;
-            // 
-            // opravdaoLbl
-            // 
-            opravdaoLbl.AutoSize = true;
-            opravdaoLbl.Location = new Point(12, 201);
-            opravdaoLbl.Name = "opravdaoLbl";
-            opravdaoLbl.Size = new Size(59, 15);
-            opravdaoLbl.TabIndex = 21;
-            opravdaoLbl.Text = "Opravdao";
-            // 
-            // Razlog
-            // 
-            Razlog.AutoSize = true;
-            Razlog.Location = new Point(12, 99);
-            Razlog.Name = "Razlog";
-            Razlog.Size = new Size(42, 15);
-            Razlog.TabIndex = 22;
-            Razlog.Text = "Razlog";
-            // 
-            // razlogTxt
-            // 
-            razlogTxt.Location = new Point(85, 99);
-            razlogTxt.Name = "razlogTxt";
-            razlogTxt.Size = new Size(218, 23);
-            razlogTxt.TabIndex = 23;
+            dodajBtn.Click += dodajBtn_Click;
             // 
             // DodajIzostanakForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(329, 275);
-            Controls.Add(razlogTxt);
-            Controls.Add(Razlog);
-            Controls.Add(opravdaoLbl);
-            Controls.Add(opravdaoCmb);
+            ClientSize = new Size(329, 177);
             Controls.Add(dodajBtn);
             Controls.Add(label2);
             Controls.Add(komentarTxt);
-            Controls.Add(label3);
             Controls.Add(label1);
             Controls.Add(Vrednost);
-            Controls.Add(tipCmb);
             Controls.Add(brojCasaNP);
             Controls.Add(datumDTP);
             Name = "DodajIzostanakForm";
             Text = "DodajIzostanakForm";
+            Load += DodajIzostanakForm_Load;
             ((System.ComponentModel.ISupportInitialize)brojCasaNP).EndInit();
             ResumeLayout(false);
             PerformLayout();
@@ -182,16 +122,10 @@
 
         private Label label2;
         private RichTextBox komentarTxt;
-        private Label label3;
         private Label label1;
         private Label Vrednost;
-        private ComboBox tipCmb;
         private NumericUpDown brojCasaNP;
         private DateTimePicker datumDTP;
         private Button dodajBtn;
-        private ComboBox opravdaoCmb;
-        private Label opravdaoLbl;
-        private Label Razlog;
-        private TextBox razlogTxt;
     }
 }
