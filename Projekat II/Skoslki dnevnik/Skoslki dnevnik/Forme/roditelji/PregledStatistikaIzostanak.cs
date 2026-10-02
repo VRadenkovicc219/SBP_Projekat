@@ -12,10 +12,17 @@ namespace Skoslki_dnevnik.Forme
     {
         private const string SVE_GODINE = "Sve skolske godine";
         private List<IzostanakStatistikaDTO> sviIzostanci = new List<IzostanakStatistikaDTO>();
+        private UcenikDTO u = null;
 
         public PregledStatistikaIzostanak()
         {
             InitializeComponent();
+        }
+
+        public PregledStatistikaIzostanak(UcenikDTO u)
+        {
+            InitializeComponent();
+            this.u = u;
         }
 
         private void PregledStatistikaIzostanak_Load_1(object sender, EventArgs e)
@@ -31,7 +38,8 @@ namespace Skoslki_dnevnik.Forme
         private void UcitajIzostanke()
         {
             string? godina = skoslkaGodinaCmb.SelectedItem as string;
-            sviIzostanci = DTOManager.vratiSveIzostankeZaStatistiku(godina == SVE_GODINE ? null : godina);
+
+            sviIzostanci = DTOManager.vratiSveIzostankeZaStatistiku(u.id, godina == SVE_GODINE ? null : godina);
 
             if (sviIzostanci.Count > 0)
             {
@@ -55,10 +63,9 @@ namespace Skoslki_dnevnik.Forme
             if (opravdaniCB.Checked) izabraniTipovi.Add(TipIzostanka.OPRAVDAN);
             if (neopravdaniCB.Checked) izabraniTipovi.Add(TipIzostanka.NEOPRAVDAN);
 
-            var od = datumOdDtp.Value;
-            var doo = datumDoDtp.Value;
-
-            var rezultat = sviIzostanci.Where(x => x.datum >= od && x.datum <= doo);
+            var rezultat = sviIzostanci.Where(x =>
+                x.datum.Date >= datumOdDtp.Value.Date &&
+                x.datum.Date <= datumDoDtp.Value.Date);
 
             rezultat = izabraniTipovi.Count > 0
                 ? rezultat.Where(x => izabraniTipovi.Contains(x.tip))

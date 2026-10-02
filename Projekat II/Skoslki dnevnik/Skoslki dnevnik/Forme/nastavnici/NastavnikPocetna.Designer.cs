@@ -67,6 +67,7 @@
             obrisiNastavnikaBtn.TabIndex = 10;
             obrisiNastavnikaBtn.Text = "obrisi nastavanika";
             obrisiNastavnikaBtn.UseVisualStyleBackColor = true;
+            obrisiNastavnikaBtn.Click += obrisiNastavnikaBtn_Click;
             // 
             // dodajNastavnikaBtn
             // 
@@ -86,6 +87,7 @@
             izmaniNastavnikaBtn.TabIndex = 18;
             izmaniNastavnikaBtn.Text = "izmeni nastavnika";
             izmaniNastavnikaBtn.UseVisualStyleBackColor = true;
+            izmaniNastavnikaBtn.Click += izmaniNastavnikaBtn_Click;
             // 
             // dodeliOcenuBtn
             // 

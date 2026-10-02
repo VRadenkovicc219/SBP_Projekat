@@ -21,6 +21,9 @@ namespace Skoslki_dnevnik.Forme
         {
             odeljenja = DTOManager.vratiOdeljenja();
             odeljenjaDgv.DataSource = odeljenja;
+            odeljenjaDgv.Columns["Id"].Visible = false;
+            odeljenjaDgv.Columns["Nastava"].Visible = false;
+            odeljenjaDgv.Columns["Ucenici"].Visible = false;
         }
 
 

@@ -4,14 +4,14 @@ namespace Skoslki_dnevnik.Forme
 {
     public partial class DodajNastavnikaForm : Form
     {
-        Nastavnik n = null;
+        NastavnikDTO n = null;
         private bool jmbgPrepoznat = false;
         public DodajNastavnikaForm()
         {
             InitializeComponent();
         }
 
-        public DodajNastavnikaForm(Nastavnik n)
+        public DodajNastavnikaForm(NastavnikDTO n)
         {
             InitializeComponent();
             this.n = n;
@@ -22,18 +22,23 @@ namespace Skoslki_dnevnik.Forme
             statusCb.DataSource = Enum.GetValues(typeof(StatusNastavnika));
             if (n != null)
             {
-                imeTb.Text = n.Ime;
-                prezimeTb.Text = n.Prezime;
-                jmbgTb.Text = n.JMBG;
-                adresaTb.Text = n.Adresa;
-                datumRodjenjaDtp.Value = n.DatumRodjenja;
-                emailTb.Text = n.Email;
-                statusCb.SelectedItem = n.Status;
-                zvanjeTxt.Text = n.Zvanje;
-                sSpremaTxt.Text = n.StrucnaSprema;
-                if (n.Pol == 'M') polMCk.Checked = true; else polZCk.Checked = true;
-                dZaposljenjaDtp.Value = n.DatumZaposlenja;
-                komentarTb.Text = n.Komentar;
+                Nastavnik nastavnik = DTOManager.vratiNastavnika(n.id);
+                imeTb.Text = nastavnik.Ime;
+                prezimeTb.Text = nastavnik.Prezime;
+                jmbgTb.Text = nastavnik.JMBG;
+                adresaTb.Text = nastavnik.Adresa;
+                datumRodjenjaDtp.Value = nastavnik.DatumRodjenja;
+                emailTb.Text = nastavnik.Email;
+                statusCb.SelectedItem = nastavnik.Status;
+                zvanjeTxt.Text = nastavnik.Zvanje;
+                sSpremaTxt.Text = nastavnik.StrucnaSprema;
+                if (nastavnik.Pol == 'M') polMCk.Checked = true; else polZCk.Checked = true;
+                dZaposljenjaDtp.Value = nastavnik.DatumZaposlenja;
+                komentarTb.Text = nastavnik.Komentar;
+                telefonTb.Text = nastavnik.Telefon;
+                dodajBtn.Text = "Izmeni";
+                jmbgTb.Enabled = false;
+                emailTb.Enabled = false;
             }
         }
 
@@ -61,8 +66,9 @@ namespace Skoslki_dnevnik.Forme
             }
             else
             {
-                DTOManager.izmeniNastavnika(n.Id, novi);
+                DTOManager.izmeniNastavnika(n.id, novi);
             }
+            this.DialogResult = DialogResult.OK;
             this.Close();
         }
 

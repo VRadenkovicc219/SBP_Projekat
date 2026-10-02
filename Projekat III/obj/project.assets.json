@@ -1121,23 +1121,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\vrade\\.nuget\\packages\\": {},
+    "C:\\Users\\desko\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\faks\\RII\\III godina\\VI semestar\\Sistemi baza podataka\\SBP_Projekat\\SBP_Projekat\\Projekat III\\Projekat III.csproj",
+      "projectUniqueName": "C:\\Users\\desko\\Desktop\\Baza\\GIT\\SBP_Projekat\\Projekat III\\Projekat III.csproj",
       "projectName": "Projekat III",
-      "projectPath": "D:\\faks\\RII\\III godina\\VI semestar\\Sistemi baza podataka\\SBP_Projekat\\SBP_Projekat\\Projekat III\\Projekat III.csproj",
-      "packagesPath": "C:\\Users\\vrade\\.nuget\\packages\\",
-      "outputPath": "D:\\faks\\RII\\III godina\\VI semestar\\Sistemi baza podataka\\SBP_Projekat\\SBP_Projekat\\Projekat III\\obj\\",
+      "projectPath": "C:\\Users\\desko\\Desktop\\Baza\\GIT\\SBP_Projekat\\Projekat III\\Projekat III.csproj",
+      "packagesPath": "C:\\Users\\desko\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\desko\\Desktop\\Baza\\GIT\\SBP_Projekat\\Projekat III\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\vrade\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\desko\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],

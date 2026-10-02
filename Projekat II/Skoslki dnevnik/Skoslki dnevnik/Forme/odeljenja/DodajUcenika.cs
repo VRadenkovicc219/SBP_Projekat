@@ -31,11 +31,19 @@ namespace Skoslki_dnevnik.Forme
         {
             List<Ucenik> ucenici = DTOManager.vratiUcenikeKojiNisuUOdeljenju(odeljenjeId);
             uceniciDgv.DataSource = ucenici;
+            uceniciDgv.Columns["Id"].Visible = false;
+            uceniciDgv.Columns["Roditelji"].Visible = false;
+            uceniciDgv.Columns["Ocene"].Visible = false;
+            uceniciDgv.Columns["Predmeti"].Visible = false;
+            uceniciDgv.Columns["Odeljenja"].Visible = false;
+            uceniciDgv.Columns["Izostanci"].Visible = false;
+
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             List<Ucenik> selektovano = new List<Ucenik>();
+
             foreach (DataGridViewRow red in uceniciDgv.SelectedRows)
             {
                 if (red.DataBoundItem is Ucenik ucenik)
@@ -43,10 +51,13 @@ namespace Skoslki_dnevnik.Forme
                     selektovano.Add(ucenik);
                 }
             }
+
             try
             {
-                DTOManager.dodajUcenikeUOdeljenje(selektovano);
+                DTOManager.dodajUcenikeUOdeljenje(selektovano, odeljenjeId);
+
                 MessageBox.Show("Uspesno dodavanje ucenika u odeljenje");
+
                 this.DialogResult = DialogResult.OK;
                 this.Close();
             }

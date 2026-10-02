@@ -74,7 +74,7 @@
             datumRodjenjaDtp.Name = "datumRodjenjaDtp";
             datumRodjenjaDtp.RightToLeft = RightToLeft.No;
             datumRodjenjaDtp.Size = new Size(264, 23);
-            datumRodjenjaDtp.TabIndex = 46;
+            datumRodjenjaDtp.TabIndex = 34;
             // 
             // label8
             // 
@@ -91,7 +91,7 @@
             statusCb.Location = new Point(331, 250);
             statusCb.Name = "statusCb";
             statusCb.Size = new Size(264, 23);
-            statusCb.TabIndex = 42;
+            statusCb.TabIndex = 33;
             // 
             // polCk
             // 
@@ -163,7 +163,7 @@
             polZCk.Location = new Point(374, 395);
             polZCk.Name = "polZCk";
             polZCk.Size = new Size(33, 19);
-            polZCk.TabIndex = 33;
+            polZCk.TabIndex = 39;
             polZCk.Text = "Z";
             polZCk.UseVisualStyleBackColor = true;
             polZCk.CheckedChanged += polZCk_CheckedChanged;
@@ -174,7 +174,7 @@
             polMCk.Location = new Point(331, 395);
             polMCk.Name = "polMCk";
             polMCk.Size = new Size(37, 19);
-            polMCk.TabIndex = 32;
+            polMCk.TabIndex = 38;
             polMCk.Text = "M";
             polMCk.UseVisualStyleBackColor = true;
             polMCk.CheckedChanged += polMCk_CheckedChanged;
@@ -184,7 +184,7 @@
             emailTb.Location = new Point(331, 163);
             emailTb.Name = "emailTb";
             emailTb.Size = new Size(264, 23);
-            emailTb.TabIndex = 31;
+            emailTb.TabIndex = 30;
             // 
             // adresaTb
             // 
@@ -222,7 +222,7 @@
             dodajBtn.Location = new Point(299, 571);
             dodajBtn.Name = "dodajBtn";
             dodajBtn.Size = new Size(209, 23);
-            dodajBtn.TabIndex = 25;
+            dodajBtn.TabIndex = 40;
             dodajBtn.Text = "Dodaj";
             dodajBtn.UseVisualStyleBackColor = true;
             dodajBtn.Click += dodajBtn_Click;
@@ -241,7 +241,7 @@
             zvanjeTxt.Location = new Point(331, 308);
             zvanjeTxt.Name = "zvanjeTxt";
             zvanjeTxt.Size = new Size(264, 23);
-            zvanjeTxt.TabIndex = 48;
+            zvanjeTxt.TabIndex = 35;
             // 
             // label10
             // 
@@ -257,7 +257,7 @@
             sSpremaTxt.Location = new Point(331, 337);
             sSpremaTxt.Name = "sSpremaTxt";
             sSpremaTxt.Size = new Size(264, 23);
-            sSpremaTxt.TabIndex = 50;
+            sSpremaTxt.TabIndex = 36;
             // 
             // label12
             // 
@@ -275,14 +275,14 @@
             dZaposljenjaDtp.Name = "dZaposljenjaDtp";
             dZaposljenjaDtp.RightToLeft = RightToLeft.No;
             dZaposljenjaDtp.Size = new Size(264, 23);
-            dZaposljenjaDtp.TabIndex = 54;
+            dZaposljenjaDtp.TabIndex = 37;
             // 
             // komentarTb
             // 
             komentarTb.Location = new Point(331, 221);
             komentarTb.Name = "komentarTb";
             komentarTb.Size = new Size(264, 23);
-            komentarTb.TabIndex = 56;
+            komentarTb.TabIndex = 32;
             komentarTb.Text = "";
             // 
             // telefon
@@ -299,7 +299,7 @@
             telefonTb.Location = new Point(331, 192);
             telefonTb.Name = "telefonTb";
             telefonTb.Size = new Size(264, 23);
-            telefonTb.TabIndex = 57;
+            telefonTb.TabIndex = 31;
             telefonTb.KeyPress += telefonTb_KeyPress;
             // 
             // DodajNastavnikaForm

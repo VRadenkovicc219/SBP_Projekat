@@ -107,10 +107,11 @@
                 else
                     polZCk.Checked = true;
                 adresaTb.Text = _ucenik.Adresa;
-                godinaUpisatxt.Text = _ucenik.Komentar ?? "";
+                godinaUpisatxt.Text = _ucenik.GodinaUpisa;
                 statusCb.SelectedItem = _ucenik.Status;
                 emailTb.Text = _ucenik.Email;
-                komentarTb.Text = _ucenik.GodinaUpisa;
+                telefontxt.Text = _ucenik.Telefon;
+                komentarTb.Text = _ucenik.Komentar ?? "";
                 datumRodjenjaDtp.Value = _ucenik.DatumRodjenja;
             }
         }

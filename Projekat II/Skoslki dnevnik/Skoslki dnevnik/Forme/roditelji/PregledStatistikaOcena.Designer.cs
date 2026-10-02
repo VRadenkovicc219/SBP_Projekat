@@ -151,12 +151,13 @@
             predmetCmb.Name = "predmetCmb";
             predmetCmb.Size = new Size(401, 23);
             predmetCmb.TabIndex = 27;
+            predmetCmb.SelectedIndexChanged += predmetCmb_SelectedIndexChanged;
             // 
             // PregledStatistikaOcena
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(432, 596);
+            ClientSize = new Size(431, 593);
             Controls.Add(predmetCmb);
             Controls.Add(tipCheckedListBox);
             Controls.Add(statistikaDgv);

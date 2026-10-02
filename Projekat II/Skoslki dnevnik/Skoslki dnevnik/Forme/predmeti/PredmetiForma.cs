@@ -71,7 +71,7 @@
                 )
                 == DialogResult.Yes)
             {
-                DTOManager.obrisiPredmet(p);
+                DTOManager.obrisiPredmet(p.Id);
                 ucitajPredmete();
             }
 

@@ -50,3 +50,55 @@ D:\faks\RII\III godina\VI semestar\Sistemi baza podataka\SBP_Projekat\SBP_Projek
 D:\faks\RII\III godina\VI semestar\Sistemi baza podataka\SBP_Projekat\SBP_Projekat\Projekat III\bin\Debug\net10.0\runtimes\linux\lib\net8.0\System.DirectoryServices.Protocols.dll
 D:\faks\RII\III godina\VI semestar\Sistemi baza podataka\SBP_Projekat\SBP_Projekat\Projekat III\bin\Debug\net10.0\runtimes\osx\lib\net8.0\System.DirectoryServices.Protocols.dll
 D:\faks\RII\III godina\VI semestar\Sistemi baza podataka\SBP_Projekat\SBP_Projekat\Projekat III\bin\Debug\net10.0\runtimes\win\lib\net8.0\System.DirectoryServices.Protocols.dll
+C:\Users\desko\Desktop\Baza\GIT\SBP_Projekat\Projekat III\bin\Debug\net10.0\appsettings.Development.json
+C:\Users\desko\Desktop\Baza\GIT\SBP_Projekat\Projekat III\bin\Debug\net10.0\appsettings.json
+C:\Users\desko\Desktop\Baza\GIT\SBP_Projekat\Projekat III\bin\Debug\net10.0\Projekat III.staticwebassets.endpoints.json
+C:\Users\desko\Desktop\Baza\GIT\SBP_Projekat\Projekat III\bin\Debug\net10.0\Projekat III.exe
+C:\Users\desko\Desktop\Baza\GIT\SBP_Projekat\Projekat III\bin\Debug\net10.0\Projekat III.deps.json
+C:\Users\desko\Desktop\Baza\GIT\SBP_Projekat\Projekat III\bin\Debug\net10.0\Projekat III.runtimeconfig.json
+C:\Users\desko\Desktop\Baza\GIT\SBP_Projekat\Projekat III\bin\Debug\net10.0\Projekat III.dll
+C:\Users\desko\Desktop\Baza\GIT\SBP_Projekat\Projekat III\bin\Debug\net10.0\Projekat III.pdb
+C:\Users\desko\Desktop\Baza\GIT\SBP_Projekat\Projekat III\bin\Debug\net10.0\Antlr3.Runtime.dll
+C:\Users\desko\Desktop\Baza\GIT\SBP_Projekat\Projekat III\bin\Debug\net10.0\FluentNHibernate.dll
+C:\Users\desko\Desktop\Baza\GIT\SBP_Projekat\Projekat III\bin\Debug\net10.0\Iesi.Collections.dll
+C:\Users\desko\Desktop\Baza\GIT\SBP_Projekat\Projekat III\bin\Debug\net10.0\Microsoft.AspNetCore.OpenApi.dll
+C:\Users\desko\Desktop\Baza\GIT\SBP_Projekat\Projekat III\bin\Debug\net10.0\Microsoft.OpenApi.dll
+C:\Users\desko\Desktop\Baza\GIT\SBP_Projekat\Projekat III\bin\Debug\net10.0\NHibernate.dll
+C:\Users\desko\Desktop\Baza\GIT\SBP_Projekat\Projekat III\bin\Debug\net10.0\Oracle.ManagedDataAccess.dll
+C:\Users\desko\Desktop\Baza\GIT\SBP_Projekat\Projekat III\bin\Debug\net10.0\Remotion.Linq.dll
+C:\Users\desko\Desktop\Baza\GIT\SBP_Projekat\Projekat III\bin\Debug\net10.0\Remotion.Linq.EagerFetching.dll
+C:\Users\desko\Desktop\Baza\GIT\SBP_Projekat\Projekat III\bin\Debug\net10.0\Swashbuckle.AspNetCore.Swagger.dll
+C:\Users\desko\Desktop\Baza\GIT\SBP_Projekat\Projekat III\bin\Debug\net10.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Users\desko\Desktop\Baza\GIT\SBP_Projekat\Projekat III\bin\Debug\net10.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Users\desko\Desktop\Baza\GIT\SBP_Projekat\Projekat III\bin\Debug\net10.0\System.Configuration.ConfigurationManager.dll
+C:\Users\desko\Desktop\Baza\GIT\SBP_Projekat\Projekat III\bin\Debug\net10.0\System.Diagnostics.PerformanceCounter.dll
+C:\Users\desko\Desktop\Baza\GIT\SBP_Projekat\Projekat III\bin\Debug\net10.0\System.DirectoryServices.Protocols.dll
+C:\Users\desko\Desktop\Baza\GIT\SBP_Projekat\Projekat III\bin\Debug\net10.0\System.Security.Cryptography.ProtectedData.dll
+C:\Users\desko\Desktop\Baza\GIT\SBP_Projekat\Projekat III\bin\Debug\net10.0\runtimes\win\lib\net8.0\System.Diagnostics.PerformanceCounter.dll
+C:\Users\desko\Desktop\Baza\GIT\SBP_Projekat\Projekat III\bin\Debug\net10.0\runtimes\linux\lib\net8.0\System.DirectoryServices.Protocols.dll
+C:\Users\desko\Desktop\Baza\GIT\SBP_Projekat\Projekat III\bin\Debug\net10.0\runtimes\osx\lib\net8.0\System.DirectoryServices.Protocols.dll
+C:\Users\desko\Desktop\Baza\GIT\SBP_Projekat\Projekat III\bin\Debug\net10.0\runtimes\win\lib\net8.0\System.DirectoryServices.Protocols.dll
+C:\Users\desko\Desktop\Baza\GIT\SBP_Projekat\Projekat III\obj\Debug\net10.0\Projekat III.csproj.AssemblyReference.cache
+C:\Users\desko\Desktop\Baza\GIT\SBP_Projekat\Projekat III\obj\Debug\net10.0\rpswa.dswa.cache.json
+C:\Users\desko\Desktop\Baza\GIT\SBP_Projekat\Projekat III\obj\Debug\net10.0\Projekat III.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\desko\Desktop\Baza\GIT\SBP_Projekat\Projekat III\obj\Debug\net10.0\Projekat III.AssemblyInfoInputs.cache
+C:\Users\desko\Desktop\Baza\GIT\SBP_Projekat\Projekat III\obj\Debug\net10.0\Projekat III.AssemblyInfo.cs
+C:\Users\desko\Desktop\Baza\GIT\SBP_Projekat\Projekat III\obj\Debug\net10.0\Projekat III.csproj.CoreCompileInputs.cache
+C:\Users\desko\Desktop\Baza\GIT\SBP_Projekat\Projekat III\obj\Debug\net10.0\Projekat III.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\desko\Desktop\Baza\GIT\SBP_Projekat\Projekat III\obj\Debug\net10.0\Projekat III.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\desko\Desktop\Baza\GIT\SBP_Projekat\Projekat III\obj\Debug\net10.0\Projekat III.sourcelink.json
+C:\Users\desko\Desktop\Baza\GIT\SBP_Projekat\Projekat III\obj\Debug\net10.0\rjimswa.dswa.cache.json
+C:\Users\desko\Desktop\Baza\GIT\SBP_Projekat\Projekat III\obj\Debug\net10.0\rjsmrazor.dswa.cache.json
+C:\Users\desko\Desktop\Baza\GIT\SBP_Projekat\Projekat III\obj\Debug\net10.0\rjsmcshtml.dswa.cache.json
+C:\Users\desko\Desktop\Baza\GIT\SBP_Projekat\Projekat III\obj\Debug\net10.0\scopedcss\bundle\Projekat III.styles.css
+C:\Users\desko\Desktop\Baza\GIT\SBP_Projekat\Projekat III\obj\Debug\net10.0\staticwebassets.build.json
+C:\Users\desko\Desktop\Baza\GIT\SBP_Projekat\Projekat III\obj\Debug\net10.0\staticwebassets.build.json.cache
+C:\Users\desko\Desktop\Baza\GIT\SBP_Projekat\Projekat III\obj\Debug\net10.0\staticwebassets.development.json
+C:\Users\desko\Desktop\Baza\GIT\SBP_Projekat\Projekat III\obj\Debug\net10.0\staticwebassets.build.endpoints.json
+C:\Users\desko\Desktop\Baza\GIT\SBP_Projekat\Projekat III\obj\Debug\net10.0\swae.build.ex.cache
+C:\Users\desko\Desktop\Baza\GIT\SBP_Projekat\Projekat III\obj\Debug\net10.0\Projekat.1BEC23CE.Up2Date
+C:\Users\desko\Desktop\Baza\GIT\SBP_Projekat\Projekat III\obj\Debug\net10.0\Projekat III.dll
+C:\Users\desko\Desktop\Baza\GIT\SBP_Projekat\Projekat III\obj\Debug\net10.0\refint\Projekat III.dll
+C:\Users\desko\Desktop\Baza\GIT\SBP_Projekat\Projekat III\obj\Debug\net10.0\Projekat III.pdb
+C:\Users\desko\Desktop\Baza\GIT\SBP_Projekat\Projekat III\obj\Debug\net10.0\Projekat III.genruntimeconfig.cache
+C:\Users\desko\Desktop\Baza\GIT\SBP_Projekat\Projekat III\obj\Debug\net10.0\ref\Projekat III.dll

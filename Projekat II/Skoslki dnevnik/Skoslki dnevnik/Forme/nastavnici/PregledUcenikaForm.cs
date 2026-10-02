@@ -37,6 +37,7 @@
             int id = ((PredmetiDTO)predmetiCB.SelectedItem!).id;
             ucenici = DTOManager.vratiUcenikeKojiSlusajuPredmet(id);
             uceniciDgv.DataSource = ucenici;
+            uceniciDgv.Columns["Id"].Visible = false;
         }
 
         private void oceneBtn_Click(object sender, EventArgs e)

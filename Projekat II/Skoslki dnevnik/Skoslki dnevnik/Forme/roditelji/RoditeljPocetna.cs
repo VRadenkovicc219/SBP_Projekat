@@ -27,23 +27,41 @@ namespace Skoslki_dnevnik.Forme
         private void UcitajRoditelje()
         {
             roditelji = DTOManager.vratiRoditelje();
+
             roditeljiDgv.DataSource = null;
             roditeljiDgv.DataSource = roditelji;
+
             UcitajDecu();
         }
 
         private RoditeljDTO? IzabraniRoditelj()
         {
-            if (roditeljiDgv.SelectedRows.Count != 1) return null;
+            if (roditeljiDgv.SelectedRows.Count != 1)
+                return null;
+
             return (RoditeljDTO)roditeljiDgv.SelectedRows[0].DataBoundItem!;
         }
 
-        private UcenikDTO? IzabranoDete() => decaCmb.SelectedItem as UcenikDTO;
+        private UcenikDTO? IzabranoDete()
+        {
+            return decaCmb.SelectedItem as UcenikDTO;
+        }
 
         private void UcitajDecu()
         {
-            var roditelj = IzabraniRoditelj();
-            deca = roditelj is null ? new List<UcenikDTO>() : DTOManager.vratiDecuRoditelja(roditelj.id);
+            RoditeljDTO? roditelj = IzabraniRoditelj();
+
+            if (roditelj == null)
+            {
+                deca = new List<UcenikDTO>();
+
+                decaCmb.DataSource = null;
+
+                OsveziStanjeDugmadi();
+                return;
+            }
+
+            deca = DTOManager.vratiDecuRoditelja(roditelj.id);
 
             decaCmb.DataSource = null;
             decaCmb.DataSource = deca;
@@ -54,88 +72,137 @@ namespace Skoslki_dnevnik.Forme
 
         private void OsveziStanjeDugmadi()
         {
-            bool imaRoditelja = IzabraniRoditelj() != null;
-            bool imaDete = IzabranoDete() != null;
+            bool imaRoditelja = roditeljiDgv.SelectedRows.Count == 1;
+            bool imaDete = decaCmb.SelectedItem is UcenikDTO;
 
             obrisiBtn.Enabled = imaRoditelja;
             izmeniBtn.Enabled = imaRoditelja;
 
             dodajVezuBtn.Enabled = imaRoditelja;
             raskiniVezuBtn.Enabled = imaRoditelja && imaDete;
+
             oceneBtn.Enabled = imaDete;
             izostanciBtn.Enabled = imaDete;
         }
 
-        private void roditeljiDgv_SelectionChanged(object sender, EventArgs e) => UcitajDecu();
+        private void roditeljiDgv_SelectionChanged(object sender, EventArgs e)
+        {
+            if (!IsHandleCreated)
+                return;
 
-        private void decaCmb_SelectedIndexChanged(object sender, EventArgs e) => OsveziStanjeDugmadi();
+            BeginInvoke(new Action(() =>
+            {
+                UcitajDecu();
+            }));
+        }
+
+        private void decaCmb_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            OsveziStanjeDugmadi();
+        }
 
         private void dodajBtn_Click(object sender, EventArgs e)
         {
-            new DodajRoditeljaForm().ShowDialog();
+            DodajRoditeljaForm nf = new DodajRoditeljaForm();
+            nf.ShowDialog();
+
             UcitajRoditelje();
         }
 
         private void izmeniBtn_Click(object sender, EventArgs e)
         {
-            var roditelj = IzabraniRoditelj();
-            if (roditelj is null) return;
+            RoditeljDTO? roditelj = IzabraniRoditelj();
+
+            if (roditelj == null)
+                return;
 
             RoditeljStaratelj? r = DTOManager.vratiRoditelja(roditelj.id);
-            if (r is null)
+
+            if (r == null)
             {
                 MessageBox.Show("Roditelj vise ne postoji u bazi podataka");
                 UcitajRoditelje();
                 return;
             }
 
-            new DodajRoditeljaForm(r).ShowDialog();
+            DodajRoditeljaForm nf = new DodajRoditeljaForm(r);
+            nf.ShowDialog();
+
             UcitajRoditelje();
         }
 
         private void obrisiBtn_Click(object sender, EventArgs e)
         {
-            var roditelj = IzabraniRoditelj();
-            if (roditelj is null) return;
+            RoditeljDTO? roditelj = IzabraniRoditelj();
 
-            var potvrda = MessageBox.Show(
+            if (roditelj == null)
+                return;
+
+            DialogResult potvrda = MessageBox.Show(
                 $"Da li ste sigurni da zelite da obrisete roditelja {roditelj.ime} {roditelj.prezime}?",
-                "Potvrda brisanja", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                "Potvrda brisanja",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question);
 
-            if (potvrda != DialogResult.Yes) return;
+            if (potvrda != DialogResult.Yes)
+                return;
 
             RoditeljStaratelj? r = DTOManager.vratiRoditelja(roditelj.id);
-            if (r is null) return;
+
+            if (r == null)
+                return;
 
             DTOManager.obrisiRoditelja(r);
+
             UcitajRoditelje();
         }
 
         private void dodajVezuBtn_Click(object sender, EventArgs e)
         {
-            if (roditeljiDgv.SelectedRows.Count != 0)
-            {
-                return;
-            }
-            int id = IzabraniRoditelj()!.id;
-            IzborDece nf = new IzborDece(id);
+            RoditeljDTO? roditelj = IzabraniRoditelj();
 
+            if (roditelj == null)
+                return;
+
+            IzborDece nf = new IzborDece(roditelj.id);
+            nf.ShowDialog();
+
+            UcitajDecu();
         }
 
         private void raskiniVezuBtn_Click(object sender, EventArgs e)
         {
-            if (roditeljiDgv.SelectedRows.Count != 0)
-            {
+            RoditeljDTO? roditelj = IzabraniRoditelj();
+
+            if (roditelj == null)
                 return;
-            }
-            int id = IzabraniRoditelj()!.id;
-            IzborDece nf = new IzborDece(id, false);
+
+            IzborDece nf = new IzborDece(roditelj.id, false);
+            nf.ShowDialog();
+
+            UcitajDecu();
         }
 
         private void oceneBtn_Click(object sender, EventArgs e)
         {
-            Ucenik u = (Ucenik)decaCmb.SelectedItem!;
-            PregledStatistikaOcena nf = new PregledStatistikaOcena();
+            UcenikDTO? u = IzabranoDete();
+
+            if (u == null)
+                return;
+
+            PregledStatistikaOcena nf = new PregledStatistikaOcena(u);
+            nf.ShowDialog();
+        }
+
+        private void izostanciBtn_Click(object sender, EventArgs e)
+        {
+            UcenikDTO? u = IzabranoDete();
+
+            if (u == null)
+                return;
+
+            PregledStatistikaIzostanak nf = new PregledStatistikaIzostanak(u);
+            nf.ShowDialog();
         }
     }
 }

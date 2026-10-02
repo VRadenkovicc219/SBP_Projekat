@@ -25,14 +25,18 @@ namespace Skoslki_dnevnik.Forme
             this.idPredmet = idPredmet;
         }
 
+        private void ucitajOcene() {
+            sveOcene = DTOManager.vratiOceneUcenikaNaPredmetu(idUcenik, idPredmet);
+            oceneDgv.DataSource = sveOcene;
+            oceneDgv.Columns["Id"].Visible = false;
+            oceneDgv.Columns["Nastava"].Visible = false;
+            oceneDgv.Columns["Ucenik"].Visible = false;
+
+        }
+
         private void PregledOcena_Load(object sender, EventArgs e)
         {
-            if (sveOcene.Count > 0)
-            {
-                datumOdDtp.Value = sveOcene.Min(x => x.DatumOcenjivanja);
-                datumDoDtp.Value = sveOcene.Max(x => x.DatumOcenjivanja);
-            }
-            PrimeniFiltere();
+            ucitajOcene();             
         }
 
         private void datumOdDtp_ValueChanged(object sender, EventArgs e) => PrimeniFiltere();
@@ -100,15 +104,18 @@ namespace Skoslki_dnevnik.Forme
         private void dodajOcenuBtn_Click(object sender, EventArgs e)
         {
             DodajOcenuForm df = new DodajOcenuForm(idUcenik, idPredmet, idNastavnik);
-            df.Show();
+            if (df.ShowDialog() == DialogResult.OK)
+                ucitajOcene();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            foreach (Ocena ocena in oceneDgv.SelectedRows)
+            foreach (DataGridViewRow red in oceneDgv.SelectedRows)
             {
-                DTOManager.obrisiOcenu(ocena);
+                Ocena o = (Ocena)red.DataBoundItem!;
+                DTOManager.obrisiOcenu(o);
             }
+            ucitajOcene();
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -119,7 +126,8 @@ namespace Skoslki_dnevnik.Forme
             }
             Ocena o = (Ocena)oceneDgv.SelectedRows[0].DataBoundItem!;
             DodajOcenuForm df = new DodajOcenuForm(o);
-            df.Show();
+            if (df.ShowDialog() == DialogResult.OK)
+                ucitajOcene();
         }
     }
 }

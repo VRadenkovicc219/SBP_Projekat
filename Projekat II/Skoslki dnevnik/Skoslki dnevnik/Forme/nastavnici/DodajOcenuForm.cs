@@ -52,6 +52,7 @@ namespace Skoslki_dnevnik.Forme
             {
                 DTOManager.izmeniOcenu(ocena.Id, novaOcena);
             }
+            this.DialogResult = DialogResult.OK;
             this.Close();
         }
 

@@ -22,7 +22,7 @@ namespace Skoslki_dnevnik
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"{porukaGreske}");
+                MessageBox.Show($"{porukaGreske}: {ex.ToString()}");
             }
         }
 
@@ -91,8 +91,17 @@ namespace Skoslki_dnevnik
         {
             izvrsiUpit(s =>
             {
-                Ucenik? uc = s.Query<Ucenik>().Where(x => x.Id == id).FirstOrDefault();
-                if (uc is null) throw new Exception("Ucenik sa unetim idjem ne postoji u bazi");
+                if (s.Query<Osoba>().Any(x => x.JMBG == u.JMBG && x.Id != id))
+                    throw new Exception("Osoba sa ovim JMBG-om vec postoji");
+
+                if (s.Query<Osoba>().Any(x => x.Email == u.Email && x.Id != id))
+                    throw new Exception("Osoba sa ovim emailom vec postoji");
+
+                Ucenik? uc = s.Get<Ucenik>(id);
+
+                if (uc is null)
+                    throw new Exception("Ucenik sa unetim id-jem ne postoji u bazi");
+
                 uc.Ime = u.Ime;
                 uc.Prezime = u.Prezime;
                 uc.JMBG = u.JMBG;
@@ -104,13 +113,48 @@ namespace Skoslki_dnevnik
                 uc.Status = u.Status;
                 uc.GodinaUpisa = u.GodinaUpisa;
                 uc.Telefon = u.Telefon;
-                s.Update(uc);
+
             }, "Greska prilikom izmene podataka ucenika");
         }
 
-        public static void obrisiUcenika(Ucenik u)
+        public static void obrisiUcenika(int id)
         {
-            izvrsiUpit(s => s.Delete(u), "Greska prilikom brisanja ucenika iz baze podataka");
+            izvrsiUpit(s =>
+            {
+                Ucenik? ucenik = s.Get<Ucenik>(id);
+
+                if (ucenik is null)
+                    throw new Exception("Ucenik sa unetim idjem ne postoji u bazi");
+
+                s.CreateSQLQuery("DELETE FROM IZOSTANAK WHERE ID_UCENIK = :id")
+                    .SetParameter("id", id)
+                    .ExecuteUpdate();
+
+                s.CreateSQLQuery("DELETE FROM OCENA WHERE ID_UCENIK = :id")
+                    .SetParameter("id", id)
+                    .ExecuteUpdate();
+
+                s.CreateSQLQuery("DELETE FROM SLUSA_PREDMET WHERE ID_UCENIK = :id")
+                    .SetParameter("id", id)
+                    .ExecuteUpdate();
+
+                s.CreateSQLQuery("DELETE FROM STARATELJSTVO WHERE ID_UCENIK = :id")
+                    .SetParameter("id", id)
+                    .ExecuteUpdate();
+
+                s.CreateSQLQuery("DELETE FROM UCENIK_ODELJENJE WHERE ID_UCENIK = :id")
+                    .SetParameter("id", id)
+                    .ExecuteUpdate();
+
+                s.CreateSQLQuery("DELETE FROM UCENIK WHERE ID_OSOBA = :id")
+                    .SetParameter("id", id)
+                    .ExecuteUpdate();
+
+                s.CreateSQLQuery("DELETE FROM OSOBA WHERE ID = :id")
+                    .SetParameter("id", id)
+                    .ExecuteUpdate();
+
+            }, "Greska prilikom brisanja ucenika iz baze podataka");
         }
 
         public static void dodeliPredmetUceniku(int uId, int pId)
@@ -406,18 +450,18 @@ namespace Skoslki_dnevnik
             }, "Greska pri dodavanju novog nastavnika");
         }
 
-        public static void obrisiNastavnika(Nastavnik nastavnik)
+        public static void obrisiNastavnika(int idNastavnik)
         {
             izvrsiUpit(s =>
             {
                 s.CreateSQLQuery("DELETE FROM RAZREDNI_STARESINA WHERE ID_NASTAVNIK = :id")
-         .SetParameter("id", nastavnik.Id).ExecuteUpdate();
+         .SetParameter("id", idNastavnik).ExecuteUpdate();
                 s.CreateSQLQuery("DELETE FROM RUKOVODECE_OSOBLJE WHERE ID_NASTAVNIK = :id")
-                 .SetParameter("id", nastavnik.Id).ExecuteUpdate();
+                 .SetParameter("id", idNastavnik).ExecuteUpdate();
                 s.CreateSQLQuery("DELETE FROM STRUCNI_SARADNIK WHERE ID_NASTAVNIK = :id")
-                 .SetParameter("id", nastavnik.Id).ExecuteUpdate();
+                 .SetParameter("id", idNastavnik).ExecuteUpdate();
 
-                Nastavnik? n = s.Get<Nastavnik>(nastavnik.Id);
+                Nastavnik? n = s.Get<Nastavnik>(idNastavnik);
                 if (n is null) return;
 
                 foreach (Predaje p in n.Predaje.ToList())
@@ -436,17 +480,17 @@ namespace Skoslki_dnevnik
                 s.Flush();
                 s.Evict(n);
 
-                if (!imaUlogu(s, "RODITELJ_STARATELJ", nastavnik.Id))
+                if (!imaUlogu(s, "RODITELJ_STARATELJ", idNastavnik))
                 {
                     s.CreateSQLQuery("DELETE FROM NASTAVNIK WHERE ID_OSOBA = :id")
-                     .SetParameter("id", nastavnik.Id).ExecuteUpdate();
+                     .SetParameter("id", idNastavnik).ExecuteUpdate();
                     s.CreateSQLQuery("DELETE FROM OSOBA WHERE ID = :id")
-                     .SetParameter("id", nastavnik.Id).ExecuteUpdate();
+                     .SetParameter("id", idNastavnik).ExecuteUpdate();
                 }
                 else
                 {
                     s.CreateSQLQuery("DELETE FROM NASTAVNIK WHERE ID_OSOBA = :id")
-                     .SetParameter("id", nastavnik.Id).ExecuteUpdate();
+                     .SetParameter("id", idNastavnik).ExecuteUpdate();
                 }
             }, "Greska pri brisanju nastavnika iz baze");
         }
@@ -671,29 +715,50 @@ namespace Skoslki_dnevnik
             izvrsiUpit(s => s.Save(p), "Greska prilikom dodavanja predmeta u bazu podataka");
         }
 
-        public static void obrisiPredmet(Predmet p)
-        {
-            izvrsiUpit(s => s.Delete(p), "Greska prilikom brisanja predmeta iz baze podataka");
-        }
-
-        public static void izmeniPredmet(int id, Predmet predmet)
+        public static void obrisiPredmet(int id)
         {
             izvrsiUpit(s =>
             {
-                if (predmet is null)
-                {
-                    throw new Exception("Greska prilikom izmene predmeta");
-                }
-                Predmet p = s.Get<Predmet>(id);
-                p.Naziv = predmet.Naziv;
-                p.SkolskaGodina = predmet.SkolskaGodina;
-                p.Opis = predmet.Opis;
-                p.Komentar = predmet.Komentar;
-                p.NedeljniFond = predmet.NedeljniFond;
-                p.Razred = predmet.Razred;
-                p.Tip = predmet.Tip;
-                if (p is null) throw new Exception("Predmet sa unetim Idjem ne postoji u bazi podataka");
+                Predmet? predmet = s.Get<Predmet>(id);
 
+                if (predmet is null)
+                    throw new Exception("Predmet ne postoji u bazi");
+
+                if (s.Query<Predaje>().Any(x => x.Predmet.Id == id))
+                    throw new Exception("Predmet nije moguce obrisati jer je dodeljen nastavniku");
+
+                s.Delete(predmet);
+
+            }, "Greska prilikom brisanja predmeta iz baze podataka"); ;
+        }
+
+        public static void izmeniPredmet(int id, Predmet p)
+        {
+            izvrsiUpit(s =>
+            {
+                Predmet? predmet = s.Get<Predmet>(id);
+
+                if (predmet is null)
+                    throw new Exception("Predmet ne postoji u bazi");
+
+                bool postoji = s.Query<Predmet>().Any(x =>
+                    x.Id != id &&
+                    x.Naziv == p.Naziv &&
+                    x.SkolskaGodina == p.SkolskaGodina &&
+                    x.Razred == p.Razred);
+
+                if (postoji)
+                    throw new Exception("Predmet sa tim nazivom, skolskom godinom i razredom vec postoji");
+
+                predmet.Naziv = p.Naziv;
+                predmet.SkolskaGodina = p.SkolskaGodina;
+                predmet.Razred = p.Razred;
+                predmet.Tip = p.Tip;
+                predmet.NedeljniFond = p.NedeljniFond;
+                predmet.Opis = p.Opis;
+                predmet.Komentar = p.Komentar;
+
+                s.Update(predmet);
 
             }, "Greska prilikom izmene predmeta iz baze podataka");
         }
@@ -866,16 +931,15 @@ namespace Skoslki_dnevnik
                 {
                     throw new Exception("Roditelj sa ovim JMBG-om vec postoji");
                 }
-                else if (postojeca is Nastavnik)
+                else
                 {
-                    // overlap: red u OSOBA vec postoji, dodaje se samo red u RODITELJ_STARATELJ
                     s.CreateSQLQuery(
-                            "INSERT INTO RODITELJ_STARATELJ (ID_OSOBA, ZANIMANJE, RADNO_MESTO) " +
-                            "VALUES (:id, :zanimanje, :radnoMesto)")
-                     .SetParameter("id", postojeca.Id)
-                     .SetParameter("zanimanje", r.Zanimanje)
-                     .SetParameter("radnoMesto", r.RadnoMesto)
-                     .ExecuteUpdate();
+                        "INSERT INTO RODITELJ_STARATELJ (ID_OSOBA, ZANIMANJE, RADNO_MESTO) " +
+                        "VALUES (:id, :zanimanje, :radnoMesto)")
+                        .SetParameter("id", postojeca.Id)
+                        .SetParameter("zanimanje", r.Zanimanje)
+                        .SetParameter("radnoMesto", r.RadnoMesto)
+                        .ExecuteUpdate();
                 }
             }, "Greska prilikom dodavanja roditelja");
         }
@@ -979,31 +1043,46 @@ namespace Skoslki_dnevnik
             }, "Greska prilikom pribavljanja ucenika za dodavanje veze") ?? new List<UcenikDTO>();
         }
 
-        public static void dodajVezuRoditeljUcenik(int roditeljId, int ucenikId)
+        public static void dodajVezuRoditeljUcenik(int idRoditelj, int idUcenik)
         {
             izvrsiUpit(s =>
             {
-                Ucenik? u = s.Get<Ucenik>(ucenikId);
-                RoditeljStaratelj? r = s.Get<RoditeljStaratelj>(roditeljId);
-                if (u is null) throw new Exception("Ucenik ne postoji u bazi");
-                if (r is null) throw new Exception("Roditelj ne postoji u bazi");
+                int postoji = Convert.ToInt32(
+                    s.CreateSQLQuery(
+                        "SELECT COUNT(*) FROM STARATELJSTVO " +
+                        "WHERE ID_STARATELJ = :idRoditelj AND ID_UCENIK = :idUcenik")
+                    .SetParameter("idRoditelj", idRoditelj)
+                    .SetParameter("idUcenik", idUcenik)
+                    .UniqueResult()
+                );
 
-                if (!u.Roditelji.Any(x => x.Id == roditeljId))
-                    u.Roditelji.Add(r);
+                if (postoji > 0)
+                    throw new Exception("Veza roditelja i ucenika vec postoji");
+
+                s.CreateSQLQuery(
+                    "INSERT INTO STARATELJSTVO (ID_UCENIK, ID_STARATELJ) " +
+                    "VALUES (:idUcenik, :idRoditelj)")
+                    .SetParameter("idUcenik", idUcenik)
+                    .SetParameter("idRoditelj", idRoditelj)
+                    .ExecuteUpdate();
+
             }, "Greska prilikom dodavanja veze roditelj-ucenik");
         }
 
-        public static void raskiniVezuRoditeljUcenik(int roditeljId, int ucenikId)
+        public static void raskiniVezuRoditeljUcenik(int idRoditelj, int idUcenik)
         {
             izvrsiUpit(s =>
             {
-                Ucenik? u = s.Get<Ucenik>(ucenikId);
-                if (u is null) throw new Exception("Ucenik ne postoji u bazi");
+                int brojObrisanih = s.CreateSQLQuery(
+                    "DELETE FROM STARATELJSTVO " +
+                    "WHERE ID_STARATELJ = :idRoditelj AND ID_UCENIK = :idUcenik")
+                    .SetParameter("idRoditelj", idRoditelj)
+                    .SetParameter("idUcenik", idUcenik)
+                    .ExecuteUpdate();
 
-                RoditeljStaratelj? r = u.Roditelji.FirstOrDefault(x => x.Id == roditeljId);
-                if (r is null) throw new Exception("Ova veza ne postoji u bazi");
+                if (brojObrisanih == 0)
+                    throw new Exception("Veza roditelja i ucenika ne postoji");
 
-                u.Roditelji.Remove(r);
             }, "Greska prilikom raskidanja veze roditelj-ucenik");
         }
         #endregion
@@ -1045,23 +1124,26 @@ namespace Skoslki_dnevnik
             }, "Greska prilikom pribavljanja ocena za statistiku") ?? new List<OcenaStatistikaDTO>();
         }
 
-        public static List<IzostanakStatistikaDTO> vratiSveIzostankeZaStatistiku(string? skolskaGodina = null)
+        public static List<IzostanakStatistikaDTO> vratiSveIzostankeZaStatistiku(int idUcenik, string? skolskaGodina)
         {
             return izvrsiUpit(s =>
             {
-                var upit = s.Query<Izostanak>();
-                if (!string.IsNullOrWhiteSpace(skolskaGodina))
+                var upit = s.Query<Izostanak>()
+                    .Where(x => x.Id.Ucenik.Id == idUcenik);
+
+                if (skolskaGodina != null)
                     upit = upit.Where(x => x.Nastava.Odeljenje.SkolskaGodina == skolskaGodina);
 
                 return upit.Select(x => new IzostanakStatistikaDTO(
-                        x.Id.Ucenik.Ime + " " + x.Id.Ucenik.Prezime,
-                        x.Nastava.predajePredmet.Predmet.Naziv,
-                        x.Nastava.Odeljenje.SkolskaGodina,
-                        x.Id.Datum,
-                        x.Id.RedniBrojCasa,
-                        x.TipIzostanka))
-                    .ToList();
-            }, "Greska prilikom pribavljanja izostanaka za statistiku") ?? new List<IzostanakStatistikaDTO>();
+                    x.Id.Ucenik.Ime + x.Id.Ucenik.Prezime, 
+                    x.Nastava.predajePredmet.Predmet.Naziv, 
+                    x.Nastava.Odeljenje.SkolskaGodina, 
+                    x.Id.Datum, 
+                    x.Id.RedniBrojCasa, 
+                    x.TipIzostanka
+                )).ToList();
+
+            }, "Greska prilikom vracanja izostanaka");
         }
 
         public static List<string> vratiSkolskeGodine()
@@ -1078,29 +1160,46 @@ namespace Skoslki_dnevnik
         {
             return izvrsiUpit(s =>
             {
-                Odeljenje o = s.Load<Odeljenje>(idOdeljenja);
-                return s.Query<Ucenik>().Where(x => !x.Odeljenja.Any(x => x.Id == idOdeljenja) && 
-                (
-                        (x.Status == StatusUcenika.AKTIVAN 
-                        && 
-                        int.Parse(o.SkolskaGodina.Substring(0, 4)) - o.Razred + 1 == int.Parse(x.GodinaUpisa.Substring(0, 4)))
-                    ||
-                        (x.Status == StatusUcenika.PONAVLJA 
-                        && 
-                        int.Parse(o.SkolskaGodina.Substring(0, 4)) - o.Razred == int.Parse(x.GodinaUpisa.Substring(0, 4))
+                Odeljenje? o = s.Get<Odeljenje>(idOdeljenja);
 
-                ))).ToList();
+                if (o is null)
+                    throw new Exception("Odeljenje ne postoji u bazi");
+
+                int godina = int.Parse(o.SkolskaGodina.Substring(0, 4));
+
+                string godinaUpisaAktivan = $"{godina - o.Razred + 1}/{godina - o.Razred + 2}";
+                string godinaUpisaPonavlja = $"{godina - o.Razred}/{godina - o.Razred + 1}";
+
+                return s.Query<Ucenik>()
+                    .Where(x =>
+                        !x.Odeljenja.Any(od => od.Id == idOdeljenja)
+                        &&
+                        (
+                            (x.Status == StatusUcenika.AKTIVAN &&
+                             x.GodinaUpisa == godinaUpisaAktivan)
+                            ||
+                            (x.Status == StatusUcenika.PONAVLJA &&
+                             x.GodinaUpisa == godinaUpisaPonavlja)
+                        ))
+                    .ToList();
+
             }, "Greska prilikom vracanja podataka iz baze");
         }
 
-        public static void dodajUcenikeUOdeljenje(List<Ucenik> selektovano)
+        public static void dodajUcenikeUOdeljenje(List<Ucenik> selektovano, int idOdeljenja)
         {
-            izvrsiUpit(s => {
-                foreach (var ucenik in selektovano)
+            izvrsiUpit(s =>
+            {
+                foreach (Ucenik ucenik in selektovano)
                 {
-                    s.Save(ucenik);
+                    s.CreateSQLQuery(
+                        "INSERT INTO UCENIK_ODELJENJE (ID_UCENIK, ID_ODELJENJE) " +
+                        "VALUES (:idUcenik, :idOdeljenje)")
+                        .SetParameter("idUcenik", ucenik.Id)
+                        .SetParameter("idOdeljenje", idOdeljenja)
+                        .ExecuteUpdate();
                 }
-            }, "Greska prilikom upisivanja ucenika u bazu");
+            }, "Greska prilikom dodavanja ucenika u odeljenje");
         }
 
         public static List<NastavaDTO> vratiNastavuZaDodavanjeOdeljenju(int odeljenjeID)

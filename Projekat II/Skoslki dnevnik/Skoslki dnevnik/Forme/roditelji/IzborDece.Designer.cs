@@ -40,6 +40,8 @@
             uceniciDgv.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             uceniciDgv.Location = new Point(12, 35);
             uceniciDgv.Name = "uceniciDgv";
+            uceniciDgv.ReadOnly = true;
+            uceniciDgv.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             uceniciDgv.Size = new Size(430, 604);
             uceniciDgv.TabIndex = 0;
             // 

@@ -37,6 +37,13 @@
             ucenici.Clear();
             ucenici = DTOManager.vratiUcenike();
             dataGridView1.DataSource = ucenici;
+            dataGridView1.Columns["Id"].Visible = false;
+            dataGridView1.Columns["Ocene"].Visible = false;
+            dataGridView1.Columns["Odeljenja"].Visible = false;
+            dataGridView1.Columns["Predmeti"].Visible = false;
+            dataGridView1.Columns["Roditelji"].Visible = false;
+            dataGridView1.Columns["Izostanci"].Visible = false;
+
         }
 
         private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -57,7 +64,7 @@
             if (MessageBox.Show($"Da li ste sigurni da zelite da obrisete ucenika {ucenik.Ime}", "Potvrda brisanja",
                 MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                DTOManager.obrisiUcenika(ucenik);
+                DTOManager.obrisiUcenika(ucenik.Id);
                 ucitajUcenike();
             }
 

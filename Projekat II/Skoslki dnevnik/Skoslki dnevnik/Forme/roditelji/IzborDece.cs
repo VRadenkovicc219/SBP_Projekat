@@ -39,9 +39,9 @@ namespace Skoslki_dnevnik.Forme.roditelji
         private void jmbgTb_Leave(object sender, EventArgs e)
         {
             if (jmbgTb.Text.Length == 13)
-            {
                 uceniciDgv.DataSource = deca.Where(x => x.JMBG == jmbgTb.Text).ToList();
-            }
+            else
+                uceniciDgv.DataSource = deca;
         }
 
         private void dodajBtn_Click(object sender, EventArgs e)
@@ -53,35 +53,48 @@ namespace Skoslki_dnevnik.Forme.roditelji
             else raskiniVezu();
         }
         private void ucitajPodatke() {
-            deca = DTOManager.vratiUcenikeKojiNisuDeteRoditelja(idRoditelj);
+            if (dodaj)
+                deca = DTOManager.vratiUcenikeKojiNisuDeteRoditelja(idRoditelj);
+            else
+                deca = DTOManager.vratiDecuRoditelja(idRoditelj);
+
+            uceniciDgv.DataSource = null;
             uceniciDgv.DataSource = deca;
         }
 
-        private void dodajVezu() {
+        private void dodajVezu()
+        {
             UcenikDTO u = (UcenikDTO)uceniciDgv.SelectedRows[0].DataBoundItem!;
+
             try
             {
                 DTOManager.dodajVezuRoditeljUcenik(idRoditelj, u.id);
+
                 MessageBox.Show("Uspesno dodata veza roditelj ucenik");
+
+                ucitajPodatke();
             }
             catch (Exception ex)
             {
                 MessageBox.Show($"Greska prilikom dodavanja veze roditelj ucenik: {ex.Message}");
-                this.Close();
             }
         }
 
-        private void raskiniVezu() {
+        private void raskiniVezu()
+        {
             UcenikDTO u = (UcenikDTO)uceniciDgv.SelectedRows[0].DataBoundItem!;
+
             try
             {
                 DTOManager.raskiniVezuRoditeljUcenik(idRoditelj, u.id);
+
                 MessageBox.Show("Uspesno raskinuta veza roditelj ucenik");
+
+                ucitajPodatke();
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Greska prilikom dodavanja veze roditelj ucenik: {ex.Message}");
-                this.Close();
+                MessageBox.Show($"Greska prilikom raskidanja veze roditelj ucenik: {ex.Message}");
             }
         }
     }

@@ -50,6 +50,7 @@
             roditeljiDgv.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             roditeljiDgv.Size = new Size(277, 459);
             roditeljiDgv.TabIndex = 0;
+            roditeljiDgv.SelectionChanged += roditeljiDgv_SelectionChanged;
             // 
             // decaCmb
             // 
@@ -77,6 +78,7 @@
             izostanciBtn.TabIndex = 3;
             izostanciBtn.Text = "Pogledaj izostanke";
             izostanciBtn.UseVisualStyleBackColor = true;
+            izostanciBtn.Click += izostanciBtn_Click;
             // 
             // dodajBtn
             // 
@@ -86,6 +88,7 @@
             dodajBtn.TabIndex = 4;
             dodajBtn.Text = "Dodaj roditelja";
             dodajBtn.UseVisualStyleBackColor = true;
+            dodajBtn.Click += dodajBtn_Click;
             // 
             // obrisiBtn
             // 
@@ -95,6 +98,7 @@
             obrisiBtn.TabIndex = 5;
             obrisiBtn.Text = "Obrisi roditelja";
             obrisiBtn.UseVisualStyleBackColor = true;
+            obrisiBtn.Click += obrisiBtn_Click;
             // 
             // izmeniBtn
             // 
@@ -105,6 +109,7 @@
             izmeniBtn.TabIndex = 6;
             izmeniBtn.Text = "Izmeni roditelja";
             izmeniBtn.UseVisualStyleBackColor = true;
+            izmeniBtn.Click += izmeniBtn_Click;
             // 
             // dodajVezuBtn
             // 
