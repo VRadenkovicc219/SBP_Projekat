@@ -37,7 +37,8 @@ namespace Skoslki_dnevnik.Forme.nastavnici
 
         private void button3_Click(object sender, EventArgs e)
         {
-            
+            DodajRukovodeciOrganForm nf = new DodajRukovodeciOrganForm(idNastavnik);
+            nf.Show();
         }
     }
 }

@@ -22,7 +22,7 @@ namespace Skoslki_dnevnik
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"{porukaGreske}: {ex.ToString()}");
+                MessageBox.Show($"{porukaGreske}");
             }
         }
 
@@ -40,7 +40,7 @@ namespace Skoslki_dnevnik
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"{porukaGreske}: {ex.ToString()}");
+                MessageBox.Show($"{porukaGreske}");
                 return default!;
             }
         }
@@ -464,9 +464,6 @@ namespace Skoslki_dnevnik
         {
             izvrsiUpit(s =>
             {
-                if (imaDodatnuUlogu(s, idNastavnik))
-                    throw new Exception("Nastavnik vec ima dodatnu ulogu (razredni staresina / rukovodece osoblje / strucni saradnik)");
-
                 Nastavnik? n = s.Get<Nastavnik>(idNastavnik);
 
                 if (n is null)
@@ -486,6 +483,16 @@ namespace Skoslki_dnevnik
 
                 if (postoji > 0)
                     throw new Exception("Ovo odeljenje vec ima razrednog staresinu");
+
+                int nastavnikJeRazredni = Convert.ToInt32(
+                    s.CreateSQLQuery(
+                        "SELECT COUNT(*) FROM RAZREDNI_STARESINA WHERE ID_NASTAVNIK = :id")
+                    .SetParameter("id", idNastavnik)
+                    .UniqueResult()
+                );
+
+                if (nastavnikJeRazredni > 0)
+                    throw new Exception("Nastavnik je vec razredni staresina");
 
                 s.CreateSQLQuery(
                     "INSERT INTO RAZREDNI_STARESINA " +
@@ -1165,10 +1172,14 @@ namespace Skoslki_dnevnik
         {
             return izvrsiUpit(s =>
             {
+                List<int> odeljenjaSaRazrednim = s.Query<RazredniStaresina>()
+                    .Select(x => x.Odeljenje.Id)
+                    .ToList();
+
                 return s.Query<Odeljenje>()
-                        .Where(x => !(s.Query<RazredniStaresina>().Select(x => x.Odeljenje.Id).ToList()).Contains(x.Id))
-                       .Select(x => new OdeljenjeDTO(x.Id, x.Oznaka, x.SkolskaGodina, x.Razred))
-                       .ToList();
+                    .Where(x => !odeljenjaSaRazrednim.Contains(x.Id))
+                    .Select(x => new OdeljenjeDTO(x.Id, x.Oznaka, x.SkolskaGodina, x.Razred))
+                    .ToList();
             }, "Greska prilikom vracanja podataka");
         }
 
@@ -1203,6 +1214,39 @@ namespace Skoslki_dnevnik
                     .ExecuteUpdate();
 
             }, "Greska prilikom dodavanja strucnog saradnika");
+        }
+
+        public static void dodajRukovodeciOrgan(int idNastavnik, RukovodecaPozicija pozicija, OblastOdgovornosti oblastOdgovornosti, DateTime datumPreuzimanjaFje, int staz)
+        {
+            izvrsiUpit(s =>
+            {
+                Nastavnik? nastavnik = s.Get<Nastavnik>(idNastavnik);
+
+                if (nastavnik is null)
+                    throw new Exception("Nastavnik ne postoji u bazi");
+
+                int postoji = Convert.ToInt32(
+                    s.CreateSQLQuery(
+                        "SELECT COUNT(*) FROM RUKOVODECE_OSOBLJE WHERE ID_NASTAVNIK = :id")
+                    .SetParameter("id", idNastavnik)
+                    .UniqueResult()
+                );
+
+                if (postoji > 0)
+                    throw new Exception("Nastavnik je vec deo rukovodeceg osoblja");
+
+                s.CreateSQLQuery(
+                    "INSERT INTO RUKOVODECE_OSOBLJE " +
+                    "(ID_NASTAVNIK, POZICIJA, OBLAST_ODGOVORNOSTI, DATUM_PREUZIMANJA_FUNKCIJE, GODINE_STAZA) " +
+                    "VALUES (:id, :pozicija, :oblast, :datum, :staz)")
+                    .SetParameter("id", idNastavnik)
+                    .SetParameter("pozicija", pozicija.ToString())
+                    .SetParameter("oblast", oblastOdgovornosti.ToString())
+                    .SetParameter("datum", datumPreuzimanjaFje)
+                    .SetParameter("staz", staz)
+                    .ExecuteUpdate();
+
+            }, "Greska prilikom dodavanja rukovodeceg osoblja");
         }
 
 

@@ -3,3 +3,5 @@ treba zameniti u dijagramu da je ucenik odeljenje M : N veza, zbog toga sto ucen
 Izbaciti razred iz ucenik, vec postoji veza ka odeljenju
 
 Nastava kao weak entity umesto spoja, i onda 
+
+Trenutno je slusa_predmet visak, imamo nastavu na odeljenje, ovo moze da vazi samo za izborne predmete, nepotrebna redudansa, ipak moze da se podeli po tipu predmeta, pa da se slusaPredmet koristi samo za izborne(fakultativne), a da se obavezni predstave ka odeljenju, i to je resenje, a nastavnik svakako predaje predmet odeljenju, nebitno od 

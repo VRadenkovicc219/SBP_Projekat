@@ -10,9 +10,16 @@ namespace Skoslki_dnevnik.Forme.nastavnici
 {
     public partial class DodajRukovodeciOrganForm : Form
     {
+        int idNastavnik = 0;
         public DodajRukovodeciOrganForm()
         {
             InitializeComponent();
+        }
+
+        public DodajRukovodeciOrganForm(int id)
+        {
+            InitializeComponent();
+            idNastavnik = id;
         }
 
         private void DodajRukovodeciOrganForm_Load(object sender, EventArgs e)
@@ -23,7 +30,11 @@ namespace Skoslki_dnevnik.Forme.nastavnici
 
         private void dodajBtn_Click(object sender, EventArgs e)
         {
-
+            RukovodecaPozicija pozicija = (RukovodecaPozicija)pozicijaCmb.SelectedItem!;
+            OblastOdgovornosti oblastOdgovornosti = (OblastOdgovornosti)oblastOdgovornostiCmb.SelectedItem!;
+            DateTime datumPreuzimanjaFje = datumPreuzimanjaFjeDtp.Value;
+            int staz = (int)godineStazaNM.Value;
+            DTOManager.dodajRukovodeciOrgan(idNastavnik, pozicija, oblastOdgovornosti, datumPreuzimanjaFje, staz);
         }
     }
 }

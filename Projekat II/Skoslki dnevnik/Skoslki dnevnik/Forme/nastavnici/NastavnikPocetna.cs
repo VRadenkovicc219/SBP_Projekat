@@ -1,4 +1,6 @@
-﻿namespace Skoslki_dnevnik.Forme
+﻿using Skoslki_dnevnik.Forme.nastavnici;
+
+namespace Skoslki_dnevnik.Forme
 {
     public partial class NastavnikPocetna : Form
     {
@@ -40,6 +42,13 @@
             NastavnikDTO nastavnik = (NastavnikDTO)nastavnici_dgv.SelectedRows[0].DataBoundItem!;
             PregledUcenikaForm pf = new PregledUcenikaForm(nastavnik);
             pf.Show();
+        }
+
+        private void ulogaBtn_Click(object sender, EventArgs e)
+        {
+            NastavnikDTO nastavnik = (NastavnikDTO)nastavnici_dgv.SelectedRows[0].DataBoundItem!;
+            UlogaNastavnika nf = new UlogaNastavnika(nastavnik.id);
+            nf.Show();
         }
     }
 }

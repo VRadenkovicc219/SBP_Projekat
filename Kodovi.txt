@@ -158,7 +158,7 @@ CREATE TABLE OCENA(
     CONSTRAINT PK_OCENA PRIMARY KEY(ID),
     CONSTRAINT FK_OCENA_UCENIK FOREIGN KEY(ID_UCENIK) REFERENCES UCENIK(ID),
     CONSTRAINT FK_OCENA_NASTAVA FOREIGN KEY(ID_NASTAVA) REFERENCES NASTAVA(ID),
-    CONSTRAINT CK_TIP_OCENE CHECK(TIP IN ('PISANA PROVERA', 'USMENI ODGOVOR', 'AKTIVNOST', 'ZAKLJUCNA')),
+    CONSTRAINT CK_TIP_OCENE CHECK(TIP IN ('PISANA_PROVERA', 'USMENI_ODGOVOR', 'AKTIVNOST', 'ZAKLJUCNA')),
     CONSTRAINT CK_POLUGODJE CHECK(POLUGODJE IN (1,2)),
     CONSTRAINT CK_VREDNOST_OCENE CHECK(VREDNOST BETWEEN 1 AND 5)
 );
@@ -197,3 +197,432 @@ CREATE TABLE PREDAJE(
     CONSTRAINT FK_PREDAJE_PREDMET FOREIGN KEY(ID_PREDMET) REFERENCES PREDMET(ID),
     CONSTRAINT FK_PREDAJE_NASTAVNIK FOREIGN KEY(ID_NASTAVNIK) REFERENCES NASTAVNIK(ID_OSOBA)
 );
+
+
+CREATE OR REPLACE TRIGGER TRG_DISJOINT_RAZREDNI
+BEFORE INSERT OR UPDATE ON RAZREDNI_STARESINA
+FOR EACH ROW
+DECLARE
+  V_COUNT NUMBER;
+BEGIN
+  SELECT COUNT(*) INTO V_COUNT FROM (
+    SELECT ID_NASTAVNIK FROM RUKOVODECE_OSOBLJE WHERE ID_NASTAVNIK = :NEW.ID_NASTAVNIK
+    UNION ALL
+    SELECT ID_NASTAVNIK FROM STRUCNI_SARADNIK WHERE ID_NASTAVNIK = :NEW.ID_NASTAVNIK
+  );
+  IF V_COUNT > 0 THEN
+    RAISE_APPLICATION_ERROR(-20012, 'Nastavnik moze imati najvise jednu dodatnu ulogu');
+  END IF;
+END;
+/
+ALTER TRIGGER TRG_DISJOINT_RAZREDNI ENABLE;
+
+CREATE OR REPLACE TRIGGER TRG_DISJOINT_RUKOVODECE
+BEFORE INSERT OR UPDATE ON RUKOVODECE_OSOBLJE
+FOR EACH ROW
+DECLARE
+  V_COUNT NUMBER;
+BEGIN
+  SELECT COUNT(*) INTO V_COUNT FROM (
+    SELECT ID_NASTAVNIK FROM RAZREDNI_STARESINA WHERE ID_NASTAVNIK = :NEW.ID_NASTAVNIK
+    UNION ALL
+    SELECT ID_NASTAVNIK FROM STRUCNI_SARADNIK WHERE ID_NASTAVNIK = :NEW.ID_NASTAVNIK
+  );
+  IF V_COUNT > 0 THEN
+    RAISE_APPLICATION_ERROR(-20012, 'Nastavnik moze imati najvise jednu dodatnu ulogu');
+  END IF;
+END;
+/
+ALTER TRIGGER TRG_DISJOINT_RUKOVODECE ENABLE;
+
+CREATE OR REPLACE TRIGGER TRG_DISJOINT_STRUCNI
+BEFORE INSERT OR UPDATE ON STRUCNI_SARADNIK
+FOR EACH ROW
+DECLARE
+  V_COUNT NUMBER;
+BEGIN
+  SELECT COUNT(*) INTO V_COUNT FROM (
+    SELECT ID_NASTAVNIK FROM RAZREDNI_STARESINA WHERE ID_NASTAVNIK = :NEW.ID_NASTAVNIK
+    UNION ALL
+    SELECT ID_NASTAVNIK FROM RUKOVODECE_OSOBLJE WHERE ID_NASTAVNIK = :NEW.ID_NASTAVNIK
+  );
+  IF V_COUNT > 0 THEN
+    RAISE_APPLICATION_ERROR(-20012, 'Nastavnik moze imati najvise jednu dodatnu ulogu');
+  END IF;
+END;
+/
+ALTER TRIGGER TRG_DISJOINT_STRUCNI ENABLE;
+
+
+SET SERVEROUTPUT ON;
+
+DECLARE
+  -- OSOBA
+  v_id_marko    OSOBA.ID%TYPE;  -- nastavnik: 
+  v_id_petar    OSOBA.ID%TYPE;  -- nastavnik: 
+  v_id_ana      OSOBA.ID%TYPE;  -- nastavnik: 
+  v_id_jovana   OSOBA.ID%TYPE;  -- nastavnik: 
+  v_id_nikola   OSOBA.ID%TYPE;  -- nastavnik: 
+  v_id_milica   OSOBA.ID%TYPE;  -- roditelj
+  v_id_stefan   OSOBA.ID%TYPE;  -- roditelj
+  v_id_jelena   OSOBA.ID%TYPE;  -- roditelj
+  v_id_luka     OSOBA.ID%TYPE;  -- ucenik, razred 1
+  v_id_mina     OSOBA.ID%TYPE;  -- ucenik, razred 1
+  v_id_filip    OSOBA.ID%TYPE;  -- ucenik, razred 2
+  v_id_sara     OSOBA.ID%TYPE;  -- ucenik, razred 2
+  v_id_vuk      OSOBA.ID%TYPE;  -- ucenik, razred 3
+  v_id_teodora  OSOBA.ID%TYPE;  -- ucenik, razred 3
+
+  -- ODELJENJE
+  v_od1 ODELJENJE.ID%TYPE; -- I-1,   2024/2025, razred 1
+  v_od2 ODELJENJE.ID%TYPE; -- II-1,  2024/2025, razred 2
+  v_od3 ODELJENJE.ID%TYPE; -- III-1, 2024/2025, razred 3
+  v_od4 ODELJENJE.ID%TYPE; -- II-1,  2023/2024, razred 2 
+
+  -- PREDMET
+  v_mat1_2425 PREDMET.ID%TYPE;
+  v_srp1_2425 PREDMET.ID%TYPE;
+  v_mat2_2425 PREDMET.ID%TYPE;
+  v_inf2_2425 PREDMET.ID%TYPE;
+  v_mat3_2425 PREDMET.ID%TYPE;
+  v_inf3_2425 PREDMET.ID%TYPE;
+  v_fiz3_2425 PREDMET.ID%TYPE;
+  v_hem3_2425 PREDMET.ID%TYPE;
+  v_mat2_2324 PREDMET.ID%TYPE;
+  v_inf2_2324 PREDMET.ID%TYPE;
+
+  -- PREDAJE
+  v_p_marko_mat1      PREDAJE.ID%TYPE;
+  v_p_marko_mat2      PREDAJE.ID%TYPE;
+  v_p_marko_mat3      PREDAJE.ID%TYPE;
+  v_p_marko_mat2_2324 PREDAJE.ID%TYPE;
+  v_p_petar_inf2      PREDAJE.ID%TYPE;
+  v_p_petar_inf3      PREDAJE.ID%TYPE;
+  v_p_petar_inf2_2324 PREDAJE.ID%TYPE;
+  v_p_ana_srp1        PREDAJE.ID%TYPE;
+  v_p_jovana_fiz3     PREDAJE.ID%TYPE;
+  v_p_nikola_hem3     PREDAJE.ID%TYPE;
+
+  -- NASTAVA
+  v_n_od1_mat  NASTAVA.ID%TYPE;
+  v_n_od1_srp  NASTAVA.ID%TYPE;
+  v_n_od2_mat  NASTAVA.ID%TYPE;
+  v_n_od2_inf  NASTAVA.ID%TYPE;
+  v_n_od3_mat  NASTAVA.ID%TYPE;
+  v_n_od3_inf  NASTAVA.ID%TYPE;
+  v_n_od3_fiz  NASTAVA.ID%TYPE;
+  v_n_od3_hem  NASTAVA.ID%TYPE;
+  v_n_od4_mat  NASTAVA.ID%TYPE;
+  v_n_od4_inf  NASTAVA.ID%TYPE;
+
+BEGIN
+
+  ----------------------------------------------------------------
+  -- 1. OSOBA — nastavnici
+  ----------------------------------------------------------------
+  INSERT INTO OSOBA (IME, PREZIME, JMBG, ADRESA, POL, DATUM_RODJENJA, EMAIL, TELEFON)
+  VALUES ('Marko', 'Markovic', '2000000000001', 'Knez Mihailova 1', 'M', TO_DATE('12.03.1980','DD.MM.YYYY'), 'marko.markovic@skola.edu', '0641000001')
+  RETURNING ID INTO v_id_marko;
+
+  INSERT INTO OSOBA (IME, PREZIME, JMBG, ADRESA, POL, DATUM_RODJENJA, EMAIL, TELEFON)
+  VALUES ('Petar', 'Petrovic', '2000000000002', 'Cara Dusana 5', 'M', TO_DATE('05.07.1982','DD.MM.YYYY'), 'petar.petrovic@skola.edu', '0641000002')
+  RETURNING ID INTO v_id_petar;
+
+  INSERT INTO OSOBA (IME, PREZIME, JMBG, ADRESA, POL, DATUM_RODJENJA, EMAIL, TELEFON)
+  VALUES ('Ana', 'Anic', '2000000000003', 'Njegoseva 10', 'Z', TO_DATE('20.11.1975','DD.MM.YYYY'), 'ana.anic@skola.edu', '0641000003')
+  RETURNING ID INTO v_id_ana;
+
+  INSERT INTO OSOBA (IME, PREZIME, JMBG, ADRESA, POL, DATUM_RODJENJA, EMAIL, TELEFON)
+  VALUES ('Jovana', 'Jovanovic', '2000000000004', 'Vojvode Stepe 3', 'Z', TO_DATE('14.09.1988','DD.MM.YYYY'), 'jovana.jovanovic@skola.edu', '0641000004')
+  RETURNING ID INTO v_id_jovana;
+
+  INSERT INTO OSOBA (IME, PREZIME, JMBG, ADRESA, POL, DATUM_RODJENJA, EMAIL, TELEFON)
+  VALUES ('Nikola', 'Nikolic', '2000000000005', 'Bulevar Oslobodjenja 22', 'M', TO_DATE('02.02.1979','DD.MM.YYYY'), 'nikola.nikolic@skola.edu', '0641000005')
+  RETURNING ID INTO v_id_nikola;
+
+  ----------------------------------------------------------------
+  -- 2. OSOBA — roditelji 
+  ----------------------------------------------------------------
+  INSERT INTO OSOBA (IME, PREZIME, JMBG, ADRESA, POL, DATUM_RODJENJA, EMAIL, TELEFON)
+  VALUES ('Milica', 'Miletic', '2000000000006', 'Kraljice Marije 7', 'Z', TO_DATE('18.05.1986','DD.MM.YYYY'), 'milica.miletic@gmail.com', '0641000006')
+  RETURNING ID INTO v_id_milica;
+
+  INSERT INTO OSOBA (IME, PREZIME, JMBG, ADRESA, POL, DATUM_RODJENJA, EMAIL, TELEFON)
+  VALUES ('Stefan', 'Stefanovic', '2000000000007', 'Gavrila Principa 12', 'M', TO_DATE('30.01.1984','DD.MM.YYYY'), 'stefan.stefanovic@gmail.com', '0641000007')
+  RETURNING ID INTO v_id_stefan;
+
+  INSERT INTO OSOBA (IME, PREZIME, JMBG, ADRESA, POL, DATUM_RODJENJA, EMAIL, TELEFON)
+  VALUES ('Jelena', 'Jelic', '2000000000008', 'Balkanska 4', 'Z', TO_DATE('09.08.1987','DD.MM.YYYY'), 'jelena.jelic@gmail.com', '0641000008')
+  RETURNING ID INTO v_id_jelena;
+
+  ----------------------------------------------------------------
+  -- 3. OSOBA — ucenici
+  ----------------------------------------------------------------
+  INSERT INTO OSOBA (IME, PREZIME, JMBG, ADRESA, POL, DATUM_RODJENJA, EMAIL, TELEFON)
+  VALUES ('Luka', 'Lukic', '2000000000009', 'Skolska 1', 'M', TO_DATE('10.04.2017','DD.MM.YYYY'), 'luka.lukic@ucenik.edu', '0641000009')
+  RETURNING ID INTO v_id_luka;
+
+  INSERT INTO OSOBA (IME, PREZIME, JMBG, ADRESA, POL, DATUM_RODJENJA, EMAIL, TELEFON)
+  VALUES ('Mina', 'Minic', '2000000000010', 'Skolska 2', 'Z', TO_DATE('22.06.2017','DD.MM.YYYY'), 'mina.minic@ucenik.edu', '0641000010')
+  RETURNING ID INTO v_id_mina;
+
+  INSERT INTO OSOBA (IME, PREZIME, JMBG, ADRESA, POL, DATUM_RODJENJA, EMAIL, TELEFON)
+  VALUES ('Filip', 'Filipovic', '2000000000011', 'Skolska 3', 'M', TO_DATE('15.02.2016','DD.MM.YYYY'), 'filip.filipovic@ucenik.edu', '0641000011')
+  RETURNING ID INTO v_id_filip;
+
+  INSERT INTO OSOBA (IME, PREZIME, JMBG, ADRESA, POL, DATUM_RODJENJA, EMAIL, TELEFON)
+  VALUES ('Sara', 'Saric', '2000000000012', 'Skolska 4', 'Z', TO_DATE('03.12.2016','DD.MM.YYYY'), 'sara.saric@ucenik.edu', '0641000012')
+  RETURNING ID INTO v_id_sara;
+
+  INSERT INTO OSOBA (IME, PREZIME, JMBG, ADRESA, POL, DATUM_RODJENJA, EMAIL, TELEFON)
+  VALUES ('Vuk', 'Vukic', '2000000000013', 'Skolska 5', 'M', TO_DATE('27.09.2015','DD.MM.YYYY'), 'vuk.vukic@ucenik.edu', '0641000013')
+  RETURNING ID INTO v_id_vuk;
+
+  INSERT INTO OSOBA (IME, PREZIME, JMBG, ADRESA, POL, DATUM_RODJENJA, EMAIL, TELEFON)
+  VALUES ('Teodora', 'Teodorovic', '2000000000014', 'Skolska 6', 'Z', TO_DATE('11.01.2015','DD.MM.YYYY'), 'teodora.teodorovic@ucenik.edu', '0641000014')
+  RETURNING ID INTO v_id_teodora;
+
+  ----------------------------------------------------------------
+  -- 4. NASTAVNIK
+  ----------------------------------------------------------------
+  INSERT INTO NASTAVNIK (ID_OSOBA, STRUCNA_SPREMA, STATUS, ZVANJE, DATUM_ZAPOSLENJA)
+  VALUES (v_id_marko, 'VSS', 'AKTIVAN', 'Profesor', TO_DATE('01.09.2005','DD.MM.YYYY'));
+
+  INSERT INTO NASTAVNIK (ID_OSOBA, STRUCNA_SPREMA, STATUS, ZVANJE, DATUM_ZAPOSLENJA)
+  VALUES (v_id_petar, 'VSS', 'AKTIVAN', 'Profesor', TO_DATE('01.09.2008','DD.MM.YYYY'));
+
+  INSERT INTO NASTAVNIK (ID_OSOBA, STRUCNA_SPREMA, STATUS, ZVANJE, DATUM_ZAPOSLENJA)
+  VALUES (v_id_ana, 'VSS', 'AKTIVAN', 'Profesor', TO_DATE('01.09.2000','DD.MM.YYYY'));
+
+  INSERT INTO NASTAVNIK (ID_OSOBA, STRUCNA_SPREMA, STATUS, ZVANJE, DATUM_ZAPOSLENJA)
+  VALUES (v_id_jovana, 'VSS', 'AKTIVAN', 'Profesor', TO_DATE('01.09.2012','DD.MM.YYYY'));
+
+  INSERT INTO NASTAVNIK (ID_OSOBA, STRUCNA_SPREMA, STATUS, ZVANJE, DATUM_ZAPOSLENJA)
+  VALUES (v_id_nikola, 'VSS', 'AKTIVAN', 'Profesor', TO_DATE('01.09.2007','DD.MM.YYYY'));
+
+  ----------------------------------------------------------------
+  -- 5. RODITELJ_STARATELJ
+  ----------------------------------------------------------------
+  INSERT INTO RODITELJ_STARATELJ (ID_OSOBA, ZANIMANJE, RADNO_MESTO)
+  VALUES (v_id_milica, 'Doktor', 'Dom zdravlja');
+
+  INSERT INTO RODITELJ_STARATELJ (ID_OSOBA, ZANIMANJE, RADNO_MESTO)
+  VALUES (v_id_stefan, 'Inzenjer', 'IT kompanija');
+
+  INSERT INTO RODITELJ_STARATELJ (ID_OSOBA, ZANIMANJE, RADNO_MESTO)
+  VALUES (v_id_jelena, 'Pravnik', 'Advokatska kancelarija');
+
+  INSERT INTO RODITELJ_STARATELJ (ID_OSOBA, ZANIMANJE, RADNO_MESTO)
+  VALUES (v_id_nikola, 'Profesor', 'Skola'); -- overlap: Nikola je i nastavnik i roditelj
+
+  ----------------------------------------------------------------
+  -- 6. RUKOVODECE_OSOBLJE (Ana — direktor) i STRUCNI_SARADNIK (Jovana — psiholog)
+  ----------------------------------------------------------------
+  INSERT INTO RUKOVODECE_OSOBLJE (ID_NASTAVNIK, POZICIJA, DATUM_PREUZIMANJA_FUNKCIJE, OBLAST_ODGOVORNOSTI, GODINE_STAZA)
+  VALUES (v_id_ana, 'Direktor', TO_DATE('01.09.2018','DD.MM.YYYY'), 'Nastava i organizacija', 24);
+
+  INSERT INTO STRUCNI_SARADNIK (ID_NASTAVNIK, BROJ_SPROVEDENIH_RAZGOVORA, STRUCNA_OBLAST, LICENCA, BROJ_ODRZANIH_RADIONICA)
+  VALUES (v_id_jovana, 42, 'Psihologija', 'LIC-2020-114', 8);
+
+  ----------------------------------------------------------------
+  -- 7. ODELJENJE
+  ----------------------------------------------------------------
+  INSERT INTO ODELJENJE (OZNAKA, SKOLSKA_GODINA, RAZRED)
+  VALUES ('I-1', '2024/2025', 1) RETURNING ID INTO v_od1;
+
+  INSERT INTO ODELJENJE (OZNAKA, SKOLSKA_GODINA, RAZRED)
+  VALUES ('II-1', '2024/2025', 2) RETURNING ID INTO v_od2;
+
+  INSERT INTO ODELJENJE (OZNAKA, SKOLSKA_GODINA, RAZRED)
+  VALUES ('III-1', '2024/2025', 3) RETURNING ID INTO v_od3;
+
+  INSERT INTO ODELJENJE (OZNAKA, SKOLSKA_GODINA, RAZRED)
+  VALUES ('II-1', '2023/2024', 2) RETURNING ID INTO v_od4; -- istorijsko odeljenje (Vuk/Teodora prosle godine)
+
+  ----------------------------------------------------------------
+  -- 8. RAZREDNI_STARESINA
+  ----------------------------------------------------------------
+  INSERT INTO RAZREDNI_STARESINA (ID_NASTAVNIK, ID_ODELJENJE, BROJ_ODRZANIH_SASTANAKA, DATUM_PREUZIMANJA_STARESINSTVA, NAPOMENA)
+  VALUES (v_id_marko, v_od1, 2, TO_DATE('01.09.2024','DD.MM.YYYY'), NULL);
+
+  INSERT INTO RAZREDNI_STARESINA (ID_NASTAVNIK, ID_ODELJENJE, BROJ_ODRZANIH_SASTANAKA, DATUM_PREUZIMANJA_STARESINSTVA, NAPOMENA)
+  VALUES (v_id_petar, v_od2, 3, TO_DATE('01.09.2024','DD.MM.YYYY'), NULL);
+
+  -- III-1 namerno BEZ razrednog staresine (koristi se za testiranje "Odeljenja bez razrednog")
+
+  ----------------------------------------------------------------
+  -- 9. PREDMET
+  ----------------------------------------------------------------
+  INSERT INTO PREDMET (NAZIV, SKOLSKA_GODINA, RAZRED, NEDELJNI_FOND, TIP, OPIS)
+  VALUES ('Matematika', '2024/2025', 1, 4, 'OBAVEZNI', NULL) RETURNING ID INTO v_mat1_2425;
+
+  INSERT INTO PREDMET (NAZIV, SKOLSKA_GODINA, RAZRED, NEDELJNI_FOND, TIP, OPIS)
+  VALUES ('Srpski jezik', '2024/2025', 1, 5, 'OBAVEZNI', NULL) RETURNING ID INTO v_srp1_2425;
+
+  INSERT INTO PREDMET (NAZIV, SKOLSKA_GODINA, RAZRED, NEDELJNI_FOND, TIP, OPIS)
+  VALUES ('Matematika', '2024/2025', 2, 4, 'OBAVEZNI', NULL) RETURNING ID INTO v_mat2_2425;
+
+  INSERT INTO PREDMET (NAZIV, SKOLSKA_GODINA, RAZRED, NEDELJNI_FOND, TIP, OPIS)
+  VALUES ('Informatika', '2024/2025', 2, 2, 'IZBORNI', NULL) RETURNING ID INTO v_inf2_2425;
+
+  INSERT INTO PREDMET (NAZIV, SKOLSKA_GODINA, RAZRED, NEDELJNI_FOND, TIP, OPIS)
+  VALUES ('Matematika', '2024/2025', 3, 4, 'OBAVEZNI', NULL) RETURNING ID INTO v_mat3_2425;
+
+  INSERT INTO PREDMET (NAZIV, SKOLSKA_GODINA, RAZRED, NEDELJNI_FOND, TIP, OPIS)
+  VALUES ('Informatika', '2024/2025', 3, 2, 'IZBORNI', NULL) RETURNING ID INTO v_inf3_2425;
+
+  INSERT INTO PREDMET (NAZIV, SKOLSKA_GODINA, RAZRED, NEDELJNI_FOND, TIP, OPIS)
+  VALUES ('Fizika', '2024/2025', 3, 2, 'OBAVEZNI', NULL) RETURNING ID INTO v_fiz3_2425;
+
+  INSERT INTO PREDMET (NAZIV, SKOLSKA_GODINA, RAZRED, NEDELJNI_FOND, TIP, OPIS)
+  VALUES ('Hemija', '2024/2025', 3, 2, 'OBAVEZNI', NULL) RETURNING ID INTO v_hem3_2425;
+
+  INSERT INTO PREDMET (NAZIV, SKOLSKA_GODINA, RAZRED, NEDELJNI_FOND, TIP, OPIS)
+  VALUES ('Matematika', '2023/2024', 2, 4, 'OBAVEZNI', NULL) RETURNING ID INTO v_mat2_2324;
+
+  INSERT INTO PREDMET (NAZIV, SKOLSKA_GODINA, RAZRED, NEDELJNI_FOND, TIP, OPIS)
+  VALUES ('Informatika', '2023/2024', 2, 2, 'IZBORNI', NULL) RETURNING ID INTO v_inf2_2324;
+
+  ----------------------------------------------------------------
+  -- 10. PREDAJE
+  ----------------------------------------------------------------
+  INSERT INTO PREDAJE (ID_PREDMET, ID_NASTAVNIK) VALUES (v_mat1_2425, v_id_marko) RETURNING ID INTO v_p_marko_mat1;
+  INSERT INTO PREDAJE (ID_PREDMET, ID_NASTAVNIK) VALUES (v_mat2_2425, v_id_marko) RETURNING ID INTO v_p_marko_mat2;
+  INSERT INTO PREDAJE (ID_PREDMET, ID_NASTAVNIK) VALUES (v_mat3_2425, v_id_marko) RETURNING ID INTO v_p_marko_mat3;
+  INSERT INTO PREDAJE (ID_PREDMET, ID_NASTAVNIK) VALUES (v_mat2_2324, v_id_marko) RETURNING ID INTO v_p_marko_mat2_2324;
+
+  INSERT INTO PREDAJE (ID_PREDMET, ID_NASTAVNIK) VALUES (v_inf2_2425, v_id_petar) RETURNING ID INTO v_p_petar_inf2;
+  INSERT INTO PREDAJE (ID_PREDMET, ID_NASTAVNIK) VALUES (v_inf3_2425, v_id_petar) RETURNING ID INTO v_p_petar_inf3;
+  INSERT INTO PREDAJE (ID_PREDMET, ID_NASTAVNIK) VALUES (v_inf2_2324, v_id_petar) RETURNING ID INTO v_p_petar_inf2_2324;
+
+  INSERT INTO PREDAJE (ID_PREDMET, ID_NASTAVNIK) VALUES (v_srp1_2425, v_id_ana) RETURNING ID INTO v_p_ana_srp1;
+  INSERT INTO PREDAJE (ID_PREDMET, ID_NASTAVNIK) VALUES (v_fiz3_2425, v_id_jovana) RETURNING ID INTO v_p_jovana_fiz3;
+  INSERT INTO PREDAJE (ID_PREDMET, ID_NASTAVNIK) VALUES (v_hem3_2425, v_id_nikola) RETURNING ID INTO v_p_nikola_hem3;
+
+  ----------------------------------------------------------------
+  -- 11. NASTAVA 
+  ----------------------------------------------------------------
+  INSERT INTO NASTAVA (ID_ODELJENJE, ID_PREDAJE) VALUES (v_od1, v_p_marko_mat1) RETURNING ID INTO v_n_od1_mat;
+  INSERT INTO NASTAVA (ID_ODELJENJE, ID_PREDAJE) VALUES (v_od1, v_p_ana_srp1) RETURNING ID INTO v_n_od1_srp;
+
+  INSERT INTO NASTAVA (ID_ODELJENJE, ID_PREDAJE) VALUES (v_od2, v_p_marko_mat2) RETURNING ID INTO v_n_od2_mat;
+  INSERT INTO NASTAVA (ID_ODELJENJE, ID_PREDAJE) VALUES (v_od2, v_p_petar_inf2) RETURNING ID INTO v_n_od2_inf;
+
+  INSERT INTO NASTAVA (ID_ODELJENJE, ID_PREDAJE) VALUES (v_od3, v_p_marko_mat3) RETURNING ID INTO v_n_od3_mat;
+  INSERT INTO NASTAVA (ID_ODELJENJE, ID_PREDAJE) VALUES (v_od3, v_p_petar_inf3) RETURNING ID INTO v_n_od3_inf;
+  INSERT INTO NASTAVA (ID_ODELJENJE, ID_PREDAJE) VALUES (v_od3, v_p_jovana_fiz3) RETURNING ID INTO v_n_od3_fiz;
+  INSERT INTO NASTAVA (ID_ODELJENJE, ID_PREDAJE) VALUES (v_od3, v_p_nikola_hem3) RETURNING ID INTO v_n_od3_hem;
+
+  INSERT INTO NASTAVA (ID_ODELJENJE, ID_PREDAJE) VALUES (v_od4, v_p_marko_mat2_2324) RETURNING ID INTO v_n_od4_mat;
+  INSERT INTO NASTAVA (ID_ODELJENJE, ID_PREDAJE) VALUES (v_od4, v_p_petar_inf2_2324) RETURNING ID INTO v_n_od4_inf;
+
+  ----------------------------------------------------------------
+  -- 12. UCENIK
+  ----------------------------------------------------------------
+  INSERT INTO UCENIK (ID_OSOBA, STATUS, GODINA_UPISA) VALUES (v_id_luka, 'AKTIVAN', '2024/2025');
+  INSERT INTO UCENIK (ID_OSOBA, STATUS, GODINA_UPISA) VALUES (v_id_mina, 'AKTIVAN', '2024/2025');
+  INSERT INTO UCENIK (ID_OSOBA, STATUS, GODINA_UPISA) VALUES (v_id_filip, 'AKTIVAN', '2023/2024');
+  INSERT INTO UCENIK (ID_OSOBA, STATUS, GODINA_UPISA) VALUES (v_id_sara, 'AKTIVAN', '2023/2024');
+  INSERT INTO UCENIK (ID_OSOBA, STATUS, GODINA_UPISA) VALUES (v_id_vuk, 'AKTIVAN', '2022/2023');
+  INSERT INTO UCENIK (ID_OSOBA, STATUS, GODINA_UPISA) VALUES (v_id_teodora, 'AKTIVAN', '2022/2023');
+
+  ----------------------------------------------------------------
+  -- 13. UCENIK_ODELJENJE 
+  ----------------------------------------------------------------
+  INSERT INTO UCENIK_ODELJENJE (ID_UCENIK, ID_ODELJENJE) VALUES (v_id_luka, v_od1);
+  INSERT INTO UCENIK_ODELJENJE (ID_UCENIK, ID_ODELJENJE) VALUES (v_id_mina, v_od1);
+  INSERT INTO UCENIK_ODELJENJE (ID_UCENIK, ID_ODELJENJE) VALUES (v_id_filip, v_od2);
+  INSERT INTO UCENIK_ODELJENJE (ID_UCENIK, ID_ODELJENJE) VALUES (v_id_sara, v_od2);
+  INSERT INTO UCENIK_ODELJENJE (ID_UCENIK, ID_ODELJENJE) VALUES (v_id_vuk, v_od3);
+  INSERT INTO UCENIK_ODELJENJE (ID_UCENIK, ID_ODELJENJE) VALUES (v_id_teodora, v_od3);
+  INSERT INTO UCENIK_ODELJENJE (ID_UCENIK, ID_ODELJENJE) VALUES (v_id_vuk, v_od4);      -- prosla skolska godina, razred 2
+  INSERT INTO UCENIK_ODELJENJE (ID_UCENIK, ID_ODELJENJE) VALUES (v_id_teodora, v_od4);  -- prosla skolska godina, razred 2
+
+  ----------------------------------------------------------------
+  -- 14. SLUSA_PREDMET 
+  ----------------------------------------------------------------
+  INSERT INTO SLUSA_PREDMET (ID_UCENIK, ID_PREDMET) VALUES (v_id_luka, v_mat1_2425);
+  INSERT INTO SLUSA_PREDMET (ID_UCENIK, ID_PREDMET) VALUES (v_id_luka, v_srp1_2425);
+  INSERT INTO SLUSA_PREDMET (ID_UCENIK, ID_PREDMET) VALUES (v_id_mina, v_mat1_2425);
+  INSERT INTO SLUSA_PREDMET (ID_UCENIK, ID_PREDMET) VALUES (v_id_mina, v_srp1_2425);
+
+  INSERT INTO SLUSA_PREDMET (ID_UCENIK, ID_PREDMET) VALUES (v_id_filip, v_mat2_2425);
+  INSERT INTO SLUSA_PREDMET (ID_UCENIK, ID_PREDMET) VALUES (v_id_filip, v_inf2_2425);
+  INSERT INTO SLUSA_PREDMET (ID_UCENIK, ID_PREDMET) VALUES (v_id_sara, v_mat2_2425);
+  INSERT INTO SLUSA_PREDMET (ID_UCENIK, ID_PREDMET) VALUES (v_id_sara, v_inf2_2425);
+
+  INSERT INTO SLUSA_PREDMET (ID_UCENIK, ID_PREDMET) VALUES (v_id_vuk, v_mat3_2425);
+  INSERT INTO SLUSA_PREDMET (ID_UCENIK, ID_PREDMET) VALUES (v_id_vuk, v_inf3_2425);
+  INSERT INTO SLUSA_PREDMET (ID_UCENIK, ID_PREDMET) VALUES (v_id_vuk, v_fiz3_2425);
+  INSERT INTO SLUSA_PREDMET (ID_UCENIK, ID_PREDMET) VALUES (v_id_vuk, v_hem3_2425);
+  INSERT INTO SLUSA_PREDMET (ID_UCENIK, ID_PREDMET) VALUES (v_id_vuk, v_mat2_2324);
+  INSERT INTO SLUSA_PREDMET (ID_UCENIK, ID_PREDMET) VALUES (v_id_vuk, v_inf2_2324);
+
+  INSERT INTO SLUSA_PREDMET (ID_UCENIK, ID_PREDMET) VALUES (v_id_teodora, v_mat3_2425);
+  INSERT INTO SLUSA_PREDMET (ID_UCENIK, ID_PREDMET) VALUES (v_id_teodora, v_inf3_2425);
+  INSERT INTO SLUSA_PREDMET (ID_UCENIK, ID_PREDMET) VALUES (v_id_teodora, v_fiz3_2425);
+  INSERT INTO SLUSA_PREDMET (ID_UCENIK, ID_PREDMET) VALUES (v_id_teodora, v_hem3_2425);
+  INSERT INTO SLUSA_PREDMET (ID_UCENIK, ID_PREDMET) VALUES (v_id_teodora, v_mat2_2324);
+  INSERT INTO SLUSA_PREDMET (ID_UCENIK, ID_PREDMET) VALUES (v_id_teodora, v_inf2_2324);
+
+  ----------------------------------------------------------------
+  -- 15. STARATELJSTVO (Nikola je overlap slucaj: nastavnik i roditelj Vuka)
+  ----------------------------------------------------------------
+  INSERT INTO STARATELJSTVO (ID_UCENIK, ID_STARATELJ) VALUES (v_id_luka, v_id_milica);
+  INSERT INTO STARATELJSTVO (ID_UCENIK, ID_STARATELJ) VALUES (v_id_mina, v_id_milica);
+  INSERT INTO STARATELJSTVO (ID_UCENIK, ID_STARATELJ) VALUES (v_id_filip, v_id_stefan);
+  INSERT INTO STARATELJSTVO (ID_UCENIK, ID_STARATELJ) VALUES (v_id_sara, v_id_jelena);
+  INSERT INTO STARATELJSTVO (ID_UCENIK, ID_STARATELJ) VALUES (v_id_vuk, v_id_nikola);
+
+  ----------------------------------------------------------------
+  -- 16. OCENA 
+  ----------------------------------------------------------------
+  INSERT INTO OCENA (ID_UCENIK, ID_NASTAVA, TIP, VREDNOST, POLUGODJE, DATUM_OCENJIVANJA, KOMENTAR)
+  VALUES (v_id_luka, v_n_od1_mat, 'PISANA_PROVERA', 5, 1, TO_DATE('15.10.2024','DD.MM.YYYY'), NULL);
+
+  INSERT INTO OCENA (ID_UCENIK, ID_NASTAVA, TIP, VREDNOST, POLUGODJE, DATUM_OCENJIVANJA, KOMENTAR)
+  VALUES (v_id_luka, v_n_od1_mat, 'USMENI_ODGOVOR', 4, 1, TO_DATE('20.10.2024','DD.MM.YYYY'), NULL);
+
+  INSERT INTO OCENA (ID_UCENIK, ID_NASTAVA, TIP, VREDNOST, POLUGODJE, DATUM_OCENJIVANJA, KOMENTAR)
+  VALUES (v_id_luka, v_n_od1_srp, 'AKTIVNOST', 3, 1, TO_DATE('18.10.2024','DD.MM.YYYY'), NULL);
+
+  INSERT INTO OCENA (ID_UCENIK, ID_NASTAVA, TIP, VREDNOST, POLUGODJE, DATUM_OCENJIVANJA, KOMENTAR)
+  VALUES (v_id_filip, v_n_od2_mat, 'ZAKLJUCNA', 5, 1, TO_DATE('20.01.2025','DD.MM.YYYY'), NULL);
+
+  INSERT INTO OCENA (ID_UCENIK, ID_NASTAVA, TIP, VREDNOST, POLUGODJE, DATUM_OCENJIVANJA, KOMENTAR)
+  VALUES (v_id_filip, v_n_od2_inf, 'PISANA_PROVERA', 4, 1, TO_DATE('05.11.2024','DD.MM.YYYY'), NULL);
+
+  INSERT INTO OCENA (ID_UCENIK, ID_NASTAVA, TIP, VREDNOST, POLUGODJE, DATUM_OCENJIVANJA, KOMENTAR)
+  VALUES (v_id_vuk, v_n_od3_mat, 'PISANA_PROVERA', 5, 1, TO_DATE('12.11.2024','DD.MM.YYYY'), NULL);
+
+  INSERT INTO OCENA (ID_UCENIK, ID_NASTAVA, TIP, VREDNOST, POLUGODJE, DATUM_OCENJIVANJA, KOMENTAR)
+  VALUES (v_id_vuk, v_n_od3_mat, 'USMENI_ODGOVOR', 4, 2, TO_DATE('10.03.2025','DD.MM.YYYY'), NULL);
+
+  INSERT INTO OCENA (ID_UCENIK, ID_NASTAVA, TIP, VREDNOST, POLUGODJE, DATUM_OCENJIVANJA, KOMENTAR)
+  VALUES (v_id_vuk, v_n_od3_hem, 'AKTIVNOST', 5, 1, TO_DATE('14.11.2024','DD.MM.YYYY'), NULL);
+
+  INSERT INTO OCENA (ID_UCENIK, ID_NASTAVA, TIP, VREDNOST, POLUGODJE, DATUM_OCENJIVANJA, KOMENTAR)
+  VALUES (v_id_teodora, v_n_od3_fiz, 'PISANA_PROVERA', 3, 1, TO_DATE('08.11.2024','DD.MM.YYYY'), NULL);
+
+  ----------------------------------------------------------------
+  -- 17. IZOSTANAK
+  ----------------------------------------------------------------
+  INSERT INTO IZOSTANAK (ID_UCENIK, DATUM, REDNI_BROJ_CASA, TIP, ID_NASTAVA, RAZLOG_IZOSTANKA, OPRAVDAO, KOMENTAR)
+  VALUES (v_id_luka, TO_DATE('05.10.2024','DD.MM.YYYY'), 1, 'NEOPRAVDAN', v_n_od1_mat, NULL, NULL, NULL);
+
+  INSERT INTO IZOSTANAK (ID_UCENIK, DATUM, REDNI_BROJ_CASA, TIP, ID_NASTAVA, RAZLOG_IZOSTANKA, OPRAVDAO, KOMENTAR)
+  VALUES (v_id_filip, TO_DATE('07.10.2024','DD.MM.YYYY'), 2, 'OPRAVDAN', v_n_od2_inf, 'Bolest', 'STARATELJ', NULL);
+
+  INSERT INTO IZOSTANAK (ID_UCENIK, DATUM, REDNI_BROJ_CASA, TIP, ID_NASTAVA, RAZLOG_IZOSTANKA, OPRAVDAO, KOMENTAR)
+  VALUES (v_id_vuk, TO_DATE('01.11.2024','DD.MM.YYYY'), 3, 'OPRAVDAN', v_n_od3_hem, 'Lekarski pregled', 'LEKAR', NULL);
+
+  COMMIT;
+  DBMS_OUTPUT.PUT_LINE('Test podaci uspesno uneti.');
+
+EXCEPTION
+  WHEN OTHERS THEN
+    ROLLBACK;
+    DBMS_OUTPUT.PUT_LINE('Greska prilikom unosa: ' || SQLERRM);
+    RAISE;
+END;
+/

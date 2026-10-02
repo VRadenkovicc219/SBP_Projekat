@@ -106,6 +106,7 @@
             ulogaBtn.TabIndex = 20;
             ulogaBtn.Text = "Dodaj Ulogu";
             ulogaBtn.UseVisualStyleBackColor = true;
+            ulogaBtn.Click += ulogaBtn_Click;
             // 
             // NastavnikPocetna
             // 
