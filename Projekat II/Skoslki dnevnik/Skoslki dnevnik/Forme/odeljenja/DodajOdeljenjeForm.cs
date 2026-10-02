@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Skoslki_dnevnik.Forme.odeljenja;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -98,6 +99,19 @@ namespace Skoslki_dnevnik.Forme
 
             Odeljenje o = (Odeljenje)odeljenjaDgv.SelectedRows[0].DataBoundItem!;
             DodajNastavu nf = new DodajNastavu(o.Id);
+            nf.Show();
+        }
+
+        private void uceniciBtn_Click(object sender, EventArgs e)
+        {
+            if (odeljenjaDgv.SelectedRows.Count != 1)
+            {
+                MessageBox.Show("Morate selektovati jedno odeljenje");
+                return;
+            }
+
+            Odeljenje o = (Odeljenje)odeljenjaDgv.SelectedRows[0].DataBoundItem!;
+            PregledUcenika nf = new PregledUcenika(o.Id, o.SkolskaGodina);
             nf.Show();
         }
     }

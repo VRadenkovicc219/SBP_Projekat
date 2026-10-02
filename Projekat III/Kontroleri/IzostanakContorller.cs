@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
 [ApiController]
@@ -41,6 +42,36 @@ public class IzostanakController : ControllerBase
         catch (Exception ex)
         {
             return BadRequest(ex.Message);
+        }
+    }
+
+     [HttpPut("opravdaj")]
+    public IActionResult OpravdajIzostanak(
+        [FromBody] OpravdajIzostanakDTO dto)
+    {
+        try
+        {
+            DTOManager.opravdajIzostanak(
+                dto.UcenikId,
+                dto.Datum,
+                dto.Cas,
+                dto.RazredniId,
+                dto.opravdao,
+                dto.Razlog,
+                dto.Komentar
+            );
+
+            return Ok(new
+            {
+                poruka = "Izostanak je uspesno opravdan"
+            });
+        }
+        catch (Exception ex)
+        {
+            return BadRequest(new
+            {
+                poruka = ex.Message
+            });
         }
     }
 }

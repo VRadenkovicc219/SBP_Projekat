@@ -1804,5 +1804,41 @@ namespace Skoslki_dnevnik
         }
 
         #endregion
+
+        public static void opravdajIzostanak(int idUcenik, DateTime datum, int cas, int idRazrednog, Opravdao opravdao, string? razlog, string? komentar)
+        {
+            izvrsiUpit(s =>
+            {
+                Izostanak? izostanak = s.Query<Izostanak>()
+                    .FirstOrDefault(x =>
+                        x.Id.Ucenik.Id == idUcenik &&
+                        x.Id.Datum.Date == datum.Date &&
+                        x.Id.RedniBrojCasa == cas);
+
+                if (izostanak is null)
+                    throw new Exception("Izostanak ne postoji");
+
+                RazredniStaresina? razredni =
+                    s.Get<RazredniStaresina>(idRazrednog);
+
+                if (razredni is null)
+                    throw new Exception("Razredni staresina ne postoji");
+
+                bool pripadaOdeljenju = razredni.Odeljenje.Ucenici
+                    .Any(x => x.Id == idUcenik);
+
+                if (!pripadaOdeljenju)
+                    throw new Exception(
+                        "Razredni staresina ne moze opravdati izostanak ovog ucenika");
+
+                izostanak.TipIzostanka = TipIzostanka.OPRAVDAN;
+                izostanak.Opravdao = opravdao;
+                izostanak.RazlogIzostanka = razlog;
+                izostanak.Komentar = komentar;
+
+                s.Update(izostanak);
+
+            }, "Greska prilikom opravdavanja izostanka");
+        }
     }
 }

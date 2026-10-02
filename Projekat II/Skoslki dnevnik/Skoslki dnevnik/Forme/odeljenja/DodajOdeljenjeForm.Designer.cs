@@ -34,6 +34,7 @@
             azurirajBtn = new Button();
             dodajUcenikaBtn = new Button();
             dodajNastavuBtn = new Button();
+            uceniciBtn = new Button();
             ((System.ComponentModel.ISupportInitialize)odeljenjaDgv).BeginInit();
             SuspendLayout();
             // 
@@ -97,11 +98,22 @@
             dodajNastavuBtn.UseVisualStyleBackColor = true;
             dodajNastavuBtn.Click += dodajNastavuBtn_Click;
             // 
+            // uceniciBtn
+            // 
+            uceniciBtn.Location = new Point(370, 174);
+            uceniciBtn.Name = "uceniciBtn";
+            uceniciBtn.Size = new Size(118, 23);
+            uceniciBtn.TabIndex = 6;
+            uceniciBtn.Text = "Pregled ucenika";
+            uceniciBtn.UseVisualStyleBackColor = true;
+            uceniciBtn.Click += uceniciBtn_Click;
+            // 
             // DodajOdeljenjeForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(500, 606);
+            Controls.Add(uceniciBtn);
             Controls.Add(dodajNastavuBtn);
             Controls.Add(dodajUcenikaBtn);
             Controls.Add(azurirajBtn);
@@ -123,5 +135,6 @@
         private Button azurirajBtn;
         private Button dodajUcenikaBtn;
         private Button dodajNastavuBtn;
+        private Button uceniciBtn;
     }
 }

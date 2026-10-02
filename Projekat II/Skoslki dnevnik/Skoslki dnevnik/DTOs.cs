@@ -18,4 +18,6 @@
 
     public record NastavnikDTO(int id, string ime, string prezime, string jmbg, string adresa, string email, string telefon, StatusNastavnika status, string zvanje, string strucna_sprema, DateTime datum_zaposlenja);
     public record OdeljenjeDTO(int id, string oznaka, string skolskaGodina, int razred);
+
+
 }

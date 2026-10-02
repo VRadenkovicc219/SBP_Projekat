@@ -43,4 +43,7 @@
 
     public record DodelaUcenikaOdeljenjuGrupnoDTO(List<int> ucenikIds);
 
+    public record OpravdajIzostanakDTO(int UcenikId, DateTime Datum, int Cas, int RazredniId, Opravdao opravdao, string? Razlog, string? Komentar);
+
+
 }

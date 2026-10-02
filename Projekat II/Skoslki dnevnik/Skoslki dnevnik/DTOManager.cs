@@ -1348,6 +1348,62 @@ namespace Skoslki_dnevnik
             }, "Greska prilikom dodavanja rukovodeceg osoblja");
         }
 
+        public static List<UcenikDTO> vratiUcenikeOdeljenja(int odeljenjeID)
+        {
+            return izvrsiUpit(s =>
+            {
+                return s.Query<Ucenik>()
+               .Where(x => x.Odeljenja.Any(o => o.Id == odeljenjeID))
+               .Select(x => new UcenikDTO(
+                   x.Id,
+                   x.Ime,
+                   x.Prezime,
+                   x.JMBG,
+                   x.Adresa,
+                   x.Status.ToString()))
+               .ToList();
+            }, "Greska prilikom pribavljanja ucenika");
+        }
+
+        public static List<OcenaDTO> vratiSveOceneUcenika(int ucenikId, string skolska_godina)
+        {
+            return izvrsiUpit(s => s.Query<Ocena>()
+                    .Where(x => x.Ucenik.Id == ucenikId && x.Nastava.Odeljenje.SkolskaGodina == skolska_godina)
+                    .Select(x => new OcenaDTO(x.Vrednost, x.DatumOcenjivanja, x.Polugodje))
+                    .ToList()
+                    , "Greska prilikom pribavljanja podataka iz baze");
+        }
+
+        public static List<IzostanakDTO> vratiIzostankeZaGodinu(int ucenikId, string skolskaGodina)
+        {
+            return izvrsiUpit(s => s.Query<Izostanak>()
+                                    .Where(x => x.Id.Ucenik.Id == ucenikId && x.Nastava.Odeljenje.SkolskaGodina == skolskaGodina)
+                                    .Select(x => new IzostanakDTO(x.Nastava.predajePredmet.Predmet.Naziv, 
+                                                                  x.Id.RedniBrojCasa, 
+                                                                  x.Id.Datum,
+                                                                  x.TipIzostanka.ToString(), 
+                                                                  (x.Opravdao == null) ? " " : x.Opravdao.ToString()!, 
+                                                                  x.RazlogIzostanka, 
+                                                                  x.Komentar))
+                                    .ToList(), "Greska prilikom dobavljanja podataka");
+        }
+
+        public static void opravdajIzostanke(int ucenikId, List<IzostanakDTO> zaOpravdati,string? razlog = null, string? komentar = null)
+        {
+            izvrsiUpit(s =>
+            {
+                zaOpravdati.ForEach(x =>
+                {
+                    Izostanak i = s.Query<Izostanak>().Where(p => p.Id.Ucenik.Id == ucenikId && p.Id.RedniBrojCasa == x.cas && p.Id.Datum == x.datum).FirstOrDefault();
+                    if (i is null) throw new Exception("Greska prilikom pribavljanja izostanka");
+                    i.TipIzostanka = TipIzostanka.OPRAVDAN;
+                    i.Komentar = komentar;
+                    i.RazlogIzostanka = razlog;
+                    s.Update(i);
+                });
+            }, "Greska prilikom opravdavanja izabranih izostanaka");
+        }
+
 
         #endregion
     }

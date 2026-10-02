@@ -31,6 +31,15 @@
     <Compile Update="Forme\odeljenja\DodajOdeljenjeForm.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Forme\odeljenja\Izostanak.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forme\odeljenja\Ocene.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forme\odeljenja\PregledUcenika.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Forme\predmeti\DodajPredmetForm.cs">
       <SubType>Form</SubType>
     </Compile>
